@@ -1,0 +1,144 @@
+title: iAct8 Lab — Bulk RSA-2048 Keypair Generation in Offender Process
+id: 8f4a1b3c-ire-0023
+status: experimental
+description: |
+  Detects generation of multiple fresh RSA-2048 keypairs in a short
+  window by the same process. This is the behavioural signature of
+  §22 case 2/3/7 (attacker re-signs the bplist with their own key
+  and re-verifies). Each iteration of the §21 pipeline produces a
+  new keypair; an attacker iterating the pipeline N times to test
+  signatures will produce N keypairs in a few seconds.
+
+  Reference: 01_REPORTS/BYPASS_CORE.md §23
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+references:
+  - https://attack.mitre.org/techniques/T1573/  # Encrypted Channel
+  - https://attack.mitre.org/techniques/T1027/  # Obfuscated Files
+logsource:
+  category: process_access
+  product: windows
+detection:
+  selection_cryptoapi:
+    SourceImage|endswith:
+      - '\python.exe'
+      - '\pythonw.exe'
+      - '\powershell.exe'
+      - '\cmd.exe'
+    CallTrace|contains:
+      - 'cryptsp.dll'
+      - 'bcrypt.dll'
+      - 'ncrypt.dll'
+  selection_count:
+    # Same source process, multiple calls within 60s
+  condition: selection_cryptoapi
+  timeframe: 60s
+fields:
+  - SourceImage
+  - SourceProcessId
+  - CallTrace
+  - User
+falsepositives:
+  - Cryptography developers iterating test fixtures
+  - iRemoval PRO v5.2 itself (the binary, not the lab pipeline)
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1573
+  - attack.t1027
+  - iRemovalLabTest
+
+---
+title: iAct8 Lab — iRemoval OFFENSIVE Test Marker in Production Envelope
+id: 8f4a1b3c-ire-0024
+status: experimental
+description: |
+  Detects the lab_marker field "iRemovalOFFENSIVE Test" in any
+  JSON envelope that crosses the wire (file write, network
+  egress, or process arg). This marker is emitted by
+  test_adversarial.py for every envelope (cases 1, 3, 8, 9, 10).
+  An attacker reusing the §21 pipeline outside the lab will
+  propagate this marker unless they patch the source.
+
+  Reference: 01_REPORTS/BYPASS_CORE.md §23
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+references:
+  - https://attack.mitre.org/techniques/T1027/
+logsource:
+  category: file_event
+  product: windows
+detection:
+  selection_marker:
+    TargetFilename|endswith:
+      - '.json'
+    TargetFilename|contains:
+      - 'iact'
+      - 'envelope'
+      - 'activation'
+    TargetContent|contains:
+      - 'iRemovalOFFENSIVE Test'
+  condition: selection_marker
+fields:
+  - TargetFilename
+  - TargetContent
+  - User
+  - Image
+falsepositives:
+  - The lab itself (test_adversarial.py) — expected
+  - Replays of §21 fixtures in an isolated test environment
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1027
+  - iRemovalLabTest
+
+---
+title: iAct8 Lab — Repeated iActivation Envelope Verification
+id: 8f4a1b3c-ire-0025
+status: experimental
+description: |
+  Detects the same iActivation envelope being verified (signature
+  check) more than 3 times in 5 minutes by the same process.
+  This is the behavioural signature of §22 case 10 (replay) and
+  also of an attacker iterating variations of the same forged
+  envelope to find one iOS accepts.
+
+  Reference: 01_REPORTS/BYPASS_CORE.md §23
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+references:
+  - https://attack.mitre.org/techniques/T1497/  # VM/Sandbox Evasion
+  - https://attack.mitre.org/techniques/T1116/  # Code Signing (bypass)
+logsource:
+  category: process_access
+  product: windows
+detection:
+  selection_seckey:
+    SourceImage|endswith:
+      - '\python.exe'
+      - '\pythonw.exe'
+      - '\powershell.exe'
+      - '\iRemoval PRO.exe'
+      - '\iremovalpro.dll'
+    CallTrace|contains:
+      - 'SecKeyRawVerify'
+      - 'BCryptVerifySignature'
+      - 'CryptVerifySignatureW'
+      - 'CryptVerifySignatureA'
+  condition: selection_seckey
+  timeframe: 5m
+  count: 3
+fields:
+  - SourceImage
+  - SourceProcessId
+  - CallTrace
+  - User
+falsepositives:
+  - Legitimate iOS device drivers doing key verification
+  - Software signing tools (signtool, OpenSSL) iterating test signatures
+level: medium
+tags:
+  - attack.defense_evasion
+  - attack.t1497
+  - iRemovalLabTest

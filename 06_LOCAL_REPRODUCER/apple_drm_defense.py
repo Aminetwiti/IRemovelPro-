@@ -210,6 +210,16 @@ class AppleDRMDefender:
 
     #: Bundle IDs déposés sur l'iDevice cible.
     #: Source : ``ioc_catalog.md`` — "Bundles iOS déployés".
+    #:
+    #: .. note::
+    #:
+    #:   **Heuristique d'extension** (rapport §14 #12) : pour ajouter une
+    #:   nouvelle entrée, utiliser le script ``forensic_discovery.py`` qui
+    #:   scanne les dumps de strings et remonte les Bundle IDs candidats
+    #:   matchant les patterns typiques des outils de bypass commerciaux.
+    #:   Tout candidat doit être **validé manuellement** (reverse engineering
+    #:   + OSINT) avant ajout ici. Les faux positifs évidents (troncatures
+    #:   de Bundle IDs déjà catalogués) sont filtrés automatiquement.
     FORBIDDEN_BUNDLE_IDS: Dict[str, str] = {
         "com.panyolsoft.blackhound":
             "tweak Cydia Substrate (BY-EXT-001)",
@@ -492,13 +502,12 @@ class AppleDRMDefender:
 
         # --- Couches G (DeviceCheck + client-cert, B3 / B4) --- #
 
-        # 16) Apple DeviceCheck token validation
-        if ticket.devicecheck_token:
-            reasons.extend(self._check_devicecheck_token(ticket))
+        # 16) Apple DeviceCheck token validation (toujours évalué —
+        # un token absent est *aussi* suspect qu'un token mal-formé).
+        reasons.extend(self._check_devicecheck_token(ticket))
 
-        # 17) Client-cert pinning (mTLS)
-        if ticket.client_cert_sha256:
-            reasons.extend(self._check_client_cert_pin(ticket))
+        # 17) Client-cert pinning (mTLS) — idem, toujours évalué.
+        reasons.extend(self._check_client_cert_pin(ticket))
 
         return (len(reasons) == 0), reasons
 
@@ -976,10 +985,23 @@ def _run_self_test() -> int:
     base_ticket = ActivationTicket(
         udid="00000000-AAAA-BBBB-CCCC-AAAAAAAAAAAA",
         public_key_modulus=os.urandom(256),
-        plist_data={"ActivationState": "Activated"},
+        plist_data={
+            "ActivationState": "Activated",
+            "BoardID": 0x02, "ChipID": 0x8015,
+            "SecurityDomain": 1, "ProductionStatus": 1,
+            "CertificateSecurityMode": 1,
+            "DMDOperations": {
+                "ActivationLockStatus": "OFF",
+                "DeviceLockState": "Unlocked",
+                "BackupPasswordProtected": False,
+            },
+        },
         nonce="abcdef0123456789" * 2,  # 32-char nonce
         sequence_number=1,
         client_hwid="hwid-legit-1",
+        device_cert_issuer="CN=Apple Device CA, O=Apple Inc.",
+        devicecheck_token="a.b.c",
+        client_cert_sha256="A0B1C2D3E4F5" + "00" * 27,
     )
     ok1, reasons1 = defender.validate_ticket(base_ticket, session=state)
     ok2, reasons2 = defender.validate_ticket(base_ticket, session=state)
@@ -991,13 +1013,30 @@ def _run_self_test() -> int:
     # 3.8 — Séquence régressive
     state2 = SessionState()
     udid_seq = "00000000-BBBB-AAAA-CCCC-BBBBBBBBBBBB"
+    full_session_setup = dict(
+        device_cert_issuer="CN=Apple Device CA, O=Apple Inc.",
+        devicecheck_token="a.b.c",
+        client_cert_sha256="A0B1C2D3E4F5" + "00" * 27,
+        plist_data={
+            "BoardID": 0x02, "ChipID": 0x8015,
+            "SecurityDomain": 1, "ProductionStatus": 1,
+            "CertificateSecurityMode": 1,
+            "DMDOperations": {
+                "ActivationLockStatus": "OFF",
+                "DeviceLockState": "Unlocked",
+                "BackupPasswordProtected": False,
+            },
+        },
+    )
     t1 = ActivationTicket(
         udid=udid_seq, public_key_modulus=os.urandom(256),
         nonce="n1", sequence_number=10, client_hwid="h",
+        **full_session_setup,
     )
     t2 = ActivationTicket(
         udid=udid_seq, public_key_modulus=os.urandom(256),
         nonce="n2", sequence_number=5, client_hwid="h",  # régression !
+        **full_session_setup,
     )
     defender.validate_ticket(t1, session=state2)
     ok, reasons = defender.validate_ticket(t2, session=state2)
@@ -1010,10 +1049,12 @@ def _run_self_test() -> int:
     t_a = ActivationTicket(
         udid=udid_seq, public_key_modulus=os.urandom(256),
         nonce="na", sequence_number=1, client_hwid="h",
+        **full_session_setup,
     )
     t_b = ActivationTicket(
         udid=udid_seq, public_key_modulus=os.urandom(256),
         nonce="nb", sequence_number=10_000, client_hwid="h",  # saut > 1000
+        **full_session_setup,
     )
     defender.validate_ticket(t_a, session=state3)
     ok, reasons = defender.validate_ticket(t_b, session=state3)
@@ -1027,10 +1068,12 @@ def _run_self_test() -> int:
     t_h1 = ActivationTicket(
         udid=udid_h, public_key_modulus=os.urandom(256),
         nonce="nh1", sequence_number=1, client_hwid="hwid-original",
+        **full_session_setup,
     )
     t_h2 = ActivationTicket(
         udid=udid_h, public_key_modulus=os.urandom(256),
         nonce="nh2", sequence_number=2, client_hwid="hwid-pirate",
+        **full_session_setup,
     )
     defender.validate_ticket(t_h1, session=state4)  # enregistre hwid-original
     ok, reasons = defender.validate_ticket(t_h2, session=state4)

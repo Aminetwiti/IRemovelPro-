@@ -5,18 +5,18 @@
 > Chaque candidat **doit être validé manuellement** avant ajout
 > à `FORBIDDEN_BUNDLE_IDS` dans `apple_drm_defense.py`.
 
-## Sources scannées (1)
+## Sources scannées (2)
 - `C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\03_OUTPUTS\strings_all_long.txt`
+- `C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\03_OUTPUTS\strings_report.txt`
 
 ## Résultats
-- **Candidats à valider** : 1
+- **Candidats à valider** : 0
 - **Déjà catalogués** : 2
+- **Faux positifs** (troncatures) : 1
 
-## 🔍 Candidats
+## ⚠️ Faux positifs détectés (troncatures)
 
-| Bundle ID | Patterns matchés | Raison |
-|---|---|---|
-| `com.iremovalpro.bypas` | `iRemoval`, `iremovalpro` | match 2 pattern(s) bypass: iRemoval, iremovalpro |
+- `com.iremovalpro.bypas` — troncature connue d'un Bundle ID déjà catalogué
 
 ## ✅ Déjà catalogués (auto-test OK)
 

@@ -28,6 +28,8 @@ import socketserver
 import ssl
 import sys
 import threading
+import time
+from collections import deque
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 
@@ -191,6 +193,21 @@ class _State:
             "BY-SES-004": 0, "BY-SES-005": 0, "BY-SES-006": 0,
             "BY-SES-007": 0,
         }
+        # ----------------------------------------------------------------- #
+        # Item 14 — server-side processing time instrumentation
+        # ----------------------------------------------------------------- #
+        # The client puts its own ``server_proc_ms`` claim in the JSON
+        # payload (what it *thinks* the server took). The defender uses
+        # that number to detect pre-signed tickets (BY-SES-005: <5ms =
+        # suspicious). But the defender sees a *client-asserted* value.
+        # We therefore also measure the *real* processing time on our
+        # side and expose the gap to the SIEM. A high delta between the
+        # client claim and the measured value is itself an indicator.
+        self.last_server_proc_ms: float = 0.0
+        self.max_server_proc_ms: float = 0.0
+        self.proc_ms_samples: deque = deque(maxlen=512)
+        self.proc_ms_client_claim_samples: deque = deque(maxlen=512)
+        self.proc_ms_delta_samples: deque = deque(maxlen=512)
 
     def record(self, record: Dict[str, Any]) -> None:
         with self.lock:
@@ -489,6 +506,60 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                     f'iact_mock_defender_hits_total{{check="{code}"}} '
                     f'{hits}\n'
                 ).encode("utf-8")
+            # ---------------------------------------------------------- #
+            # Item 14 — server_proc_ms summary (measured / client-claim
+            # / delta). All three are exposed as Prometheus *summaries*
+            # with p50/p95/p99 quantiles + a "_count" line so the SIEM
+            # can write rate() over them and alert on sudden drops to
+            # p50 < 5ms (forged / pre-signed ticket batch).
+            # ---------------------------------------------------------- #
+            def _quantile(samples: deque, q: float) -> float:
+                if not samples:
+                    return 0.0
+                # Nearest-rank quantile — cheap and stable for n≤512.
+                ordered = sorted(samples)
+                idx = max(0, min(len(ordered) - 1,
+                                  int(round(q * (len(ordered) - 1)))))
+                return float(ordered[idx])
+
+            measured = self.state.proc_ms_samples
+            claimed = self.state.proc_ms_client_claim_samples
+            deltas = self.state.proc_ms_delta_samples
+            for name, series, count in (
+                ("iact_mock_server_proc_ms_measured", measured, len(measured)),
+                ("iact_mock_server_proc_ms_client_claim", claimed, len(claimed)),
+                ("iact_mock_server_proc_ms_delta", deltas, len(deltas)),
+            ):
+                body += (
+                    f"# HELP {name} Server processing time observed at "
+                    f"/apple_drm_check.ph (ms) [{TEST_MARKER}]\n"
+                    f"# TYPE {name} summary\n"
+                    f'{name}{{quantile="0.5"}} '
+                    f'{_quantile(series, 0.5):.3f}\n'
+                    f'{name}{{quantile="0.95"}} '
+                    f'{_quantile(series, 0.95):.3f}\n'
+                    f'{name}{{quantile="0.99"}} '
+                    f'{_quantile(series, 0.99):.3f}\n'
+                    f'{name}_sum '
+                    f'{sum(series):.3f}\n'
+                    f'{name}_count {count}\n'
+                ).encode("utf-8")
+            # Gauges: last / max — useful for "is the server suddenly
+            # fast?" panels.
+            body += (
+                f"# HELP iact_mock_server_proc_ms_last "
+                f"Last observed server processing time at "
+                f"/apple_drm_check.ph (ms) [{TEST_MARKER}]\n"
+                f"# TYPE iact_mock_server_proc_ms_last gauge\n"
+                f"iact_mock_server_proc_ms_last "
+                f"{self.state.last_server_proc_ms:.3f}\n"
+                f"# HELP iact_mock_server_proc_ms_max "
+                f"Max observed server processing time at "
+                f"/apple_drm_check.ph (ms) [{TEST_MARKER}]\n"
+                f"# TYPE iact_mock_server_proc_ms_max gauge\n"
+                f"iact_mock_server_proc_ms_max "
+                f"{self.state.max_server_proc_ms:.3f}\n"
+            ).encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", "text/plain; version=0.0.4")
             self.send_header("Content-Length", str(len(body)))
@@ -697,8 +768,22 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
         increments per-check counters in ``state.defender_hits`` so the
         dashboard can show which forgery vector each request triggered.
         Never returns a working iActivation ticket.
+
+        **Item 14 instrumentation** — we also measure the *real* server
+        processing time (``time.monotonic``) end-to-end. The defender
+        only sees the client-asserted ``server_proc_ms`` (which is what
+        BY-SES-005 inspects), but the *gap* between the client claim
+        and our measured value is itself a SIEM signal (a forged client
+        that *invents* a 12ms latency to bypass BY-SES-005 cannot fake
+        what *we* observed). The measured value, the client claim, and
+        their delta are all stored in ``state.proc_ms_samples`` and
+        surfaced in ``/metrics.ph``.
         """
         import base64
+        # ----------------------------------------------------------------- #
+        # Item 14 — start the wall-clock for server-side processing time
+        # ----------------------------------------------------------------- #
+        _t0 = time.monotonic()
         try:
             payload = json.loads(body.decode("utf-8", errors="replace"))
         except json.JSONDecodeError as exc:
@@ -740,7 +825,11 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
             client_hwid=payload.get("client_hwid"),
             client_timestamp=payload.get("client_timestamp"),
         )
-        server_proc_ms = float(payload.get("server_proc_ms") or 0.0)
+        client_proc_claim = float(payload.get("server_proc_ms") or 0.0)
+        # When the client does not provide a value, fall back to the
+        # measured value (this is the *honest* path). The client claim
+        # is recorded separately for the delta computation.
+        server_proc_ms = client_proc_claim
         try:
             ok, reasons = self.state.defender.validate_ticket(
                 ticket,
@@ -762,6 +851,18 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                 for code in self.state.defender_hits:
                     if code in r:
                         self.state.defender_hits[code] += 1
+            # ------------------------------------------------------------ #
+            # Item 14 — record the measured / client-claim / delta
+            # ------------------------------------------------------------ #
+            _t1 = time.monotonic()
+            measured_ms = (_t1 - _t0) * 1000.0
+            delta_ms = abs(measured_ms - client_proc_claim)
+            self.state.last_server_proc_ms = measured_ms
+            if measured_ms > self.state.max_server_proc_ms:
+                self.state.max_server_proc_ms = measured_ms
+            self.state.proc_ms_samples.append(measured_ms)
+            self.state.proc_ms_client_claim_samples.append(client_proc_claim)
+            self.state.proc_ms_delta_samples.append(delta_ms)
         response = {
             "request_id": request_id,
             "status": "LAB_DRM_VERDICT" if ok else "LAB_DRM_FORGERY_DETECTED",
@@ -770,6 +871,15 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
             "reasons": reasons,
             "defender_version": self.state.defender.VERSION,
             "policy_snapshot": self.state.defender.policy_snapshot(),
+            # Item 14: surface the instrumentation in the verdict so a
+            # forensic capture can correlate client claim vs server
+            # measurement without re-reading /metrics.ph.
+            "proc_ms": {
+                "measured": round(measured_ms, 3),
+                "client_claim": round(client_proc_claim, 3),
+                "delta": round(delta_ms, 3),
+                "lab_marker": TEST_MARKER,
+            },
             "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
         }
         http_code = 200 if ok else 403

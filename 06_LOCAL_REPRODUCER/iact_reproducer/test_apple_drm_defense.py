@@ -56,15 +56,68 @@ from apple_drm_defense import (  # noqa: E402
 # --------------------------------------------------------------------------- #
 
 def _make_legit_ticket(udid: str, **kwargs) -> ActivationTicket:
-    """Build a *legit-looking* ticket (RSA-2048, clean plist, fresh nonce)."""
+    """Build a *legit-looking* ticket (RSA-2048, clean plist, fresh nonce,
+    **SecureROM-attested** identity file, **MDM-attested** DMD ops,
+    **Apple Device CA** cert chain, **DeviceCheck** token).
+
+    A legit ticket must carry, inside ``plist_data``:
+
+    * ``ActivationState``
+    * the 5 SecureROM attestation fields (BY-D-002)
+    * a ``DMDOperations`` dict that contains the 3 critical MDM ops
+      (BY-F-002) — ``ActivationLockStatus``, ``DeviceLockState``,
+      ``BackupPasswordProtected``.
+
+    And on the ticket object itself:
+
+    * ``device_cert_issuer`` starting with ``"CN=Apple Device CA"``
+      (BY-D-001) — empty string would trigger the check.
+    * ``client_cert_sha256`` starting with the Apple pin prefix
+      (BY-G-003/G-004).
+    * ``devicecheck_token`` shaped as a JWS (2 dots) (BY-G-001/G-002).
+
+    Without them, the corresponding checks block the ticket — and the
+    ALLOW-path tests (S6/R1/R3/Q1/H1/H3/T1) would fail for the wrong
+    reason.
+    """
+    plist = {
+        "ActivationState": "Activated",
+        "BoardID": 0x02,
+        "ChipID": 0x8015,
+        "SecurityDomain": 1,
+        "ProductionStatus": 1,
+        "CertificateSecurityMode": 1,
+        "DMDOperations": {
+            "ActivationLockStatus": "OFF",
+            "DeviceLockState": "Unlocked",
+            "BackupPasswordProtected": True,
+        },
+    }
+    plist.update(kwargs.pop("plist_extra", {}))
     return ActivationTicket(
         udid=udid,
         public_key_modulus=os.urandom(256),  # RSA-2048 random
-        plist_data={"ActivationState": "Activated"},
+        plist_data=plist,
         nonce=kwargs.pop("nonce", os.urandom(16).hex()),
         sequence_number=kwargs.pop("sequence_number", 1),
         client_hwid=kwargs.pop("client_hwid", "hwid-default"),
         client_timestamp=kwargs.pop("client_timestamp", time.time()),
+        device_cert_issuer=kwargs.pop(
+            "device_cert_issuer", "CN=Apple Device CA, O=Apple Inc."
+        ),
+        client_cert_sha256=kwargs.pop(
+            "client_cert_sha256",
+            # Must start with the EXPECTED_CLIENT_CERT_SHA256_PREFIX
+            # (A0B1C2D3E4F5) to satisfy BY-G-003/G-004.
+            "A0B1C2D3E4F5" + "0" * 58,
+        ),
+        devicecheck_token=kwargs.pop(
+            "devicecheck_token",
+            # Minimal JWS shape: header.payload.signature (3 base64
+            # segments separated by 2 dots). Real validation is out of
+            # scope of BY-G-001/G-002 (which only check the shape).
+            "eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiJkZXZpY2VjaGVjay5hcHBsZS5jb20ifQ.signature",
+        ),
         **kwargs,
     )
 

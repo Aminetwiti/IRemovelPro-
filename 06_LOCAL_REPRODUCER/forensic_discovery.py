@@ -421,7 +421,12 @@ def main(argv: List[str] | None = None) -> int:
 
     candidates = [r for r in classified if r["status"] == "candidate"]
     already = [r for r in classified if r["status"] == "already_known"]
-    print(f"[INFO] {len(candidates)} candidats, {len(already)} déjà catalogués")
+    fp = [r for r in classified if r["status"] == "false_positive"]
+    print(
+        f"[INFO] {len(candidates)} candidats, "
+        f"{len(already)} déjà catalogués, "
+        f"{len(fp)} faux positifs (troncatures filtrées)"
+    )
     if candidates:
         print("[INFO] Prochaine étape : valider manuellement chaque candidat")
     return 0

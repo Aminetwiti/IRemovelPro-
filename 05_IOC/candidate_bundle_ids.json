@@ -3,18 +3,16 @@
   "scanner_purpose": "forensic discovery for FORBIDDEN_BUNDLE_IDS extension",
   "recommendation_ref": "01_REPORTS/NOUVELLES_DECOUVERTES.md §14 #12",
   "sources": [
-    "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\03_OUTPUTS\\strings_all_long.txt"
+    "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\03_OUTPUTS\\strings_all_long.txt",
+    "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\03_OUTPUTS\\strings_report.txt"
   ],
   "patterns_count": 18,
   "results": [
     {
       "bundle_id": "com.iremovalpro.bypas",
-      "status": "candidate",
-      "patterns": [
-        "iRemoval",
-        "iremovalpro"
-      ],
-      "reason": "match 2 pattern(s) bypass: iRemoval, iremovalpro"
+      "status": "false_positive",
+      "patterns": [],
+      "reason": "troncature connue d'un Bundle ID déjà catalogué"
     },
     {
       "bundle_id": "com.iremovalpro.bypass",
@@ -30,7 +28,8 @@
     }
   ],
   "stats": {
-    "candidates": 1,
-    "already_known": 2
+    "candidates": 0,
+    "already_known": 2,
+    "false_positives": 1
   }
 }
