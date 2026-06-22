@@ -1,0 +1,270 @@
+{
+  "$schema": "https://raw.githubusercontent.com/MISP/MISP/master/2.4/format_taxonomies/tags.jsonld",
+  "schema_version": "1.0",
+  "artifact_type": "build_hash_correlation",
+  "description": "Cross-file correlation artifact for iRemoval PRO v5.2 (BlackHound 0.7.1) build hashes 1643379a (arm64) and 50c6260a (arm64e).",
+  "family": {
+    "commercial_name": "iRemoval PRO Premium Edition",
+    "version_marketing": "v5.2",
+    "version_internal": "BlackHound 0.7.1",
+    "build_year": 2022,
+    "build_marker": "Blackhound iRemovalPro Public build 0.7.1 @2022",
+    "author_path_leak": "/Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/",
+    "toolchain": "theos (iOS tweak)",
+    "language_runtime": "Mono / Xamarin.iOS (.NET 4.5.2)"
+  },
+  "hashes": [
+    {
+      "hash": "1643379a",
+      "architecture": "arm64",
+      "theos_path_template": "/Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/blackhound.x.1643379a.o",
+      "stable": true,
+      "first_seen": "2022",
+      "occurrences": [
+        {
+          "file": "05_IOC/ioc_catalog.md",
+          "line": 19,
+          "context": "table row | Build hash arm64 | 1643379a | .theos/obj/debug/arm64/blackhound.x.1643379a.o",
+          "category": "documentation"
+        },
+        {
+          "file": "05_IOC/ioc_catalog.md",
+          "line": 145,
+          "context": "samples-known table | blackhound (arm64) | build 1643379a | debug",
+          "category": "documentation"
+        },
+        {
+          "file": "05_IOC/BUILD_HASH_CORRELATION.md",
+          "line": 31,
+          "context": "this correlation artifact (entry #1)",
+          "category": "documentation"
+        },
+        {
+          "file": "05_IOC/BUILD_HASH_CORRELATION.json",
+          "line": 0,
+          "context": "this sidecar JSON (entry #1)",
+          "category": "documentation"
+        },
+        {
+          "file": "SECURITY_ADVISORY.md",
+          "line": 212,
+          "context": "Build path leak: /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/blackhound.x.1643379a.o reveals author & build machine",
+          "category": "documentation"
+        },
+        {
+          "file": "01_REPORTS/NOUVELLES_DECOUVERTES.md",
+          "line": 52,
+          "context": "§1 Attribution: build hash 1643379a (arm64)",
+          "category": "documentation"
+        },
+        {
+          "file": "01_REPORTS/NOUVELLES_DECOUVERTES.md",
+          "line": 59,
+          "context": "§1 Hypothèse défensive: les dérivés (hashes, hash de build 1643379a et 50c6260a) sont des identifiants uniques de build",
+          "category": "documentation"
+        },
+        {
+          "file": "01_REPORTS/NOUVELLES_DECOUVERTES.md",
+          "line": 480,
+          "context": "§14 #9 recommandation: Extraire les chemins de build hashés (1643379a, 50c6260a) pour corrélation",
+          "category": "documentation"
+        },
+        {
+          "file": "01_REPORTS/PHASE5_RUNTIME_NATIVEAOT.md",
+          "line": 131,
+          "context": "Phase 5 — Fichier: blackhound.x.1643379a.o",
+          "category": "documentation"
+        },
+        {
+          "file": "06_LOCAL_REPRODUCER/verify_short_term_recommendations.py",
+          "line": 50,
+          "context": "check list entry ('1643379a', 'arm64 build hash')",
+          "category": "audit_script"
+        },
+        {
+          "file": "06_LOCAL_REPRODUCER/iact_reproducer/bplist_builder.py",
+          "line": 147,
+          "context": "BuildPath: /Users/josuealonsorodriguez/.../blackhound.x.o (factice)",
+          "category": "defensive_reproducer"
+        },
+        {
+          "file": "06_LOCAL_REPRODUCER/iact_reproducer/README.md",
+          "line": 340,
+          "context": "doc du reproducteur — exemple de plist",
+          "category": "defensive_reproducer"
+        },
+        {
+          "file": "03_OUTPUTS/strings_report.txt",
+          "line": 284,
+          "context": "strings tool dump — chemin Theos complet",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/strings_report.txt",
+          "line": 299,
+          "context": "strings tool dump — chemin Theos complet (duplicate)",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/strings_report.txt",
+          "line": 459,
+          "context": "strings tool dump — chemin Theos complet (3rd ref)",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/strings_all_long.txt",
+          "line": 9278,
+          "context": "strings ≥ 8 chars",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/nativeaot/nativeaot_20260622_022333.all.json",
+          "line": 105304,
+          "context": "NativeAOT JSON dump — string entry value",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/nativeaot/category_bypass_20260622_022333.txt",
+          "line": 42,
+          "context": "0x00868a45 [ascii] chemin Theos complet",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/nativeaot/category_apple-ios_20260622_022333.txt",
+          "line": 249,
+          "context": "0x00868a45 [ascii] chemin Theos complet",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/ghidra/macho_8534d3_DYLIB_ARM64_ALL.bin_strings.txt",
+          "line": 187,
+          "context": "00015572 chemin Theos complet (DYLIB arm64)",
+          "category": "static_analysis"
+        }
+      ]
+    },
+    {
+      "hash": "50c6260a",
+      "architecture": "arm64e",
+      "theos_path_template": "/Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/blackhound.x.50c6260a.o",
+      "stable": true,
+      "first_seen": "2022",
+      "occurrences": [
+        {
+          "file": "05_IOC/ioc_catalog.md",
+          "line": 20,
+          "context": "table row | Build hash arm64e | 50c6260a | .theos/obj/debug/arm64e/blackhound.x.50c6260a.o",
+          "category": "documentation"
+        },
+        {
+          "file": "05_IOC/ioc_catalog.md",
+          "line": 146,
+          "context": "samples-known table | blackhound (arm64e) | build 50c6260a | debug",
+          "category": "documentation"
+        },
+        {
+          "file": "05_IOC/BUILD_HASH_CORRELATION.md",
+          "line": 31,
+          "context": "this correlation artifact (entry #2)",
+          "category": "documentation"
+        },
+        {
+          "file": "05_IOC/BUILD_HASH_CORRELATION.json",
+          "line": 0,
+          "context": "this sidecar JSON (entry #2)",
+          "category": "documentation"
+        },
+        {
+          "file": "01_REPORTS/NOUVELLES_DECOUVERTES.md",
+          "line": 53,
+          "context": "§1 Attribution: build hash 50c6260a (arm64e)",
+          "category": "documentation"
+        },
+        {
+          "file": "01_REPORTS/NOUVELLES_DECOUVERTES.md",
+          "line": 59,
+          "context": "§1 Hypothèse défensive: corrélation",
+          "category": "documentation"
+        },
+        {
+          "file": "01_REPORTS/NOUVELLES_DECOUVERTES.md",
+          "line": 480,
+          "context": "§14 #9 recommandation",
+          "category": "documentation"
+        },
+        {
+          "file": "06_LOCAL_REPRODUCER/verify_short_term_recommendations.py",
+          "line": 51,
+          "context": "check list entry ('50c6260a', 'arm64e build hash')",
+          "category": "audit_script"
+        },
+        {
+          "file": "03_OUTPUTS/strings_report.txt",
+          "line": 286,
+          "context": "strings tool dump",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/strings_report.txt",
+          "line": 301,
+          "context": "strings tool dump (duplicate)",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/strings_report.txt",
+          "line": 461,
+          "context": "strings tool dump (3rd ref)",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/strings_all_long.txt",
+          "line": 9282,
+          "context": "strings ≥ 8 chars",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/nativeaot/nativeaot_20260622_022333.all.json",
+          "line": 106234,
+          "context": "NativeAOT JSON dump",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/nativeaot/category_bypass_20260622_022333.txt",
+          "line": 64,
+          "context": "0x00880902 [ascii] chemin Theos complet",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/nativeaot/category_apple-ios_20260622_022333.txt",
+          "line": 299,
+          "context": "0x00880902 [ascii] chemin Theos complet",
+          "category": "static_analysis"
+        },
+        {
+          "file": "03_OUTPUTS/ghidra/macho_86b4d3_DYLIB_ARM64_ARM64E.bin_strings.txt",
+          "line": 183,
+          "context": "0001542f chemin Theos complet (DYLIB arm64e)",
+          "category": "static_analysis"
+        }
+      ]
+    }
+  ],
+  "yara_rule_reference": {
+    "file": "05_IOC/YARA_RULES.yar",
+    "rule_name": "iRemovalPro_BlackHound_BuildMarker",
+    "covers_hashes": ["1643379a", "50c6260a"]
+  },
+  "validation_script": {
+    "file": "06_LOCAL_REPRODUCER/verify_short_term_recommendations.py",
+    "checks": [
+      "presence of 1643379a in ioc_catalog.md",
+      "presence of 50c6260a in ioc_catalog.md",
+      "presence of both hashes in YARA_RULES.yar",
+      "presence of both hashes in audit list"
+    ]
+  },
+  "mitre_attack_mapping": {
+    "T1195.002": "Supply Chain Compromise — Compromise Software Supply Chain (tooling leaks author identity)",
+    "T1083": "File and Directory Discovery (via leaked build path)"
+  }
+}

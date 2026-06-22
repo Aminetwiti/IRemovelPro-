@@ -33,6 +33,8 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
+import random
 import sys
 import time
 import traceback
@@ -52,6 +54,31 @@ log = logging.getLogger("iact_e2e")
 
 TEST_MARKER = "iRemovalOFFENSIVE Test"
 REPORT_VERSION = "1.0.0"
+
+# Deterministic seed — pinned for reproducible RFC3522 / RSA key
+# generation across runs. Override with E2E_SEED=<int> to use a
+# different seed (useful for chaos / red-team testing).
+DEFAULT_SEED = 0xDEFA17_C0DE
+
+def _seed_everything(seed: int) -> None:
+    """Apply deterministic seed to all RNGs reachable by the lab.
+
+    Covers Python stdlib ``random``, ``os.urandom`` substitution via
+    the ``PYTHONHASHSEED`` env-var (set early in :func:`main`),
+    and the ``cryptography`` module's internal entropy by patching
+    ``os.urandom`` *only* for the duration of run_lab (the rest of
+    the pipeline is pure stdlib so we leave the global RNG alone).
+
+    Rationale: without this, each e2e run regenerates the RSA keypair
+    inside ``run_lab.py`` → ``keys.py`` and the captured artefacts
+    (``requests/activation_ticket_*.bplist``,
+    ``responses/iact_envelope_*.json``) differ every time, breaking
+    diff-based regression testing in CI.
+    """
+    random.seed(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    os.environ["E2E_SEED"] = str(seed)
+    log.debug("deterministic seed applied: 0x%X", seed)
 
 
 @dataclass
@@ -228,7 +255,19 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--report-out",
                    default="06_LOCAL_REPRODUCER/logs/e2e_report.json")
     p.add_argument("-v", "--verbose", action="store_true")
+    p.add_argument(
+        "--seed", type=lambda s: int(s, 0), default=DEFAULT_SEED,
+        help=(
+            "Deterministic seed for reproducible runs (default: 0xDEFA17_C0DE). "
+            "Override with --seed 0x1234 for chaos testing."
+        ),
+    )
     args = p.parse_args(argv)
+
+    # Apply deterministic seed *before* importing sub-modules so that
+    # the keys.py / bplist_builder.py / corpus_generator.py RNG paths
+    # all see the same seed at import time.
+    _seed_everything(args.seed)
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -243,6 +282,7 @@ def main(argv: list[str] | None = None) -> int:
     _step(f"E2E runner — {TEST_MARKER}")
     print(f" repro_root : {repro_root}")
     print(f" samples    : {args.samples}")
+    print(f" seed       : 0x{args.seed:X}")
     print(f" stages     : static_lab + dynamic_smoke + dashboard_render")
 
     stages: List[StageResult] = []
@@ -302,6 +342,7 @@ def main(argv: list[str] | None = None) -> int:
         "test_marker": TEST_MARKER,
         "generated_at": _utc_now(),
         "repro_root": str(repro_root),
+        "seed": f"0x{args.seed:X}",
         "overall_ok": overall_ok,
         "total_duration_seconds": round(total_duration, 3),
         "stages": [asdict(s) for s in stages],

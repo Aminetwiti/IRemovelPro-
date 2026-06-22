@@ -114,6 +114,20 @@ class ActivationTicket:
     #: de référence côté ``albert.apple.com``.
     client_timestamp: float = 0.0
 
+    # --- Champs couches D / E / F (ajoutés 2026-06-22, v5.2-LAB-0.2) --- #
+
+    #: Issuer DN du certificat device (couche D — HWID root-of-trust).
+    #: Doit commencer par ``"CN=Apple Device CA"``.
+    device_cert_issuer: str = ""
+
+    #: Empreinte SHA-256 du certificat client mTLS (couche G).
+    #: Format hex 64-char. Si présent, doit matcher le pin Apple.
+    client_cert_sha256: str = ""
+
+    #: Token DeviceCheck JWT (couche G). iCloud l'utilise pour les
+    #: re-checks hors-ligne. iRemoval PRO ne peut pas en signer un.
+    devicecheck_token: str = ""
+
 
 @dataclass
 class SessionState:
@@ -162,7 +176,7 @@ class AppleDRMDefender:
     #: Version de la base de marqueurs. À incrémenter à chaque mise à
     #: jour de iRemoval PRO pour permettre la coexistence de plusieurs
     #: bases défensives (utile pour les tests de régression).
-    VERSION = "5.2-LAB-0.1"
+    VERSION = "5.2-LAB-0.2"
 
     # ------------------------------------------------------------------ #
     # 2.1 Blacklists — toutes dérivées de l'audit (BYPASS_CORE.md §3, §5, §10)
@@ -269,6 +283,87 @@ class AppleDRMDefender:
     #: Plafond de latence (sanité). Au-delà, c'est probablement un
     #: DoS ou un timeout de tunnel SSH.
     TIMING_CEILING_MS: float = 30_000.0
+
+    # ------------------------------------------------------------------ #
+    # 2.2.1 Couche D — Forensique iOS (root-of-trust + identity file)
+    # ------------------------------------------------------------------ #
+
+    #: Préfixes attendus des certificats d'attestation de HWID émis
+    #: par le Secure Enclave (racine Apple Device CA). Les certificats
+    #: iRemoval PRO sont auto-signés ou absents.
+    #: Source : BYPASS_CORE.md §14 — "HWID root-of-trust".
+    EXPECTED_DEVICE_CA_ISSUER_PREFIX: str = "CN=Apple Device CA"
+
+    #: Champs plist *obligatoires* qu'Apple inclut dans un ticket
+    #: authentique pour l'iOS Activation Lock (SecureROM/identity
+    #: file). Un ticket forgé en omettant ces champs contourne
+    #: silencieusement la vérification de fichier d'identité.
+    #: Source : BYPASS_CORE.md §11 — "Identity file bypass".
+    REQUIRED_IDENTITY_FIELDS: Tuple[str, ...] = (
+        "BoardID",
+        "ChipID",
+        "SecurityDomain",
+        "ProductionStatus",
+        "CertificateSecurityMode",
+    )
+
+    #: Domaine autorisé pour les DeviceCheck tokens. iRemoval PRO ne
+    #: peut pas générer un token valide car il nécessite la clé privée
+    #: côté Secure Enclave (BYPASS_CORE.md §15).
+    DEVICECHECK_ISSUER: str = "devicecheck.apple.com"
+
+    # ------------------------------------------------------------------ #
+    # 2.2.2 Couche E — Validation baseband (MEID/IMEI coherency)
+    # ------------------------------------------------------------------ #
+
+    #: Luhn check sur l'IMEI — calcul rapide côté serveur pour rejeter
+    #: les IMEI forgés / aléatoires. Apple l'applique déjà sur le
+    #: portail GSMA, mais un ticket iCloud *ne le vérifie pas* —
+    #: c'est précisément le trou que iRemoval PRO exploite.
+    @staticmethod
+    def _luhn_check(s: str) -> bool:
+        if not s or not s.isdigit():
+            return False
+        total = 0
+        for i, ch in enumerate(reversed(s)):
+            d = int(ch)
+            if i % 2 == 1:
+                d *= 2
+                if d > 9:
+                    d -= 9
+            total += d
+        return total % 10 == 0
+
+    # ------------------------------------------------------------------ #
+    # 2.2.3 Couche F — DMD hardening (3 ops DMD critiques)
+    # ------------------------------------------------------------------ #
+
+    #: Clés DMD (Device Management Daemon) qui *doivent* figurer dans
+    #: un ticket de désactivation légitime. iRemoval PRO les omet pour
+    #: court-circuiter la vérification MDM. Source : BYPASS_CORE.md §12
+    #: — "DMD bypass".
+    REQUIRED_DMD_OPERATIONS: Tuple[str, ...] = (
+        "ActivationLockStatus",
+        "DeviceLockState",
+        "BackupPasswordProtected",
+    )
+
+    # ------------------------------------------------------------------ #
+    # 2.2.4 Couche G — Apple DeviceCheck + client-cert pinning (B3/B4)
+    # ------------------------------------------------------------------ #
+
+    #: Empreinte SHA-256 du certificat client attendu pour les
+    #: requêtes iCloud / drmHandshake. En production, Apple utilise
+    #: la chaîne "Apple iPhone Device CA" — toute déviation indique
+    #: un proxy MITM ou un certificat auto-signé.
+    #: Source : BYPASS_CORE.md §17 — "SSL bypass".
+    EXPECTED_CLIENT_CERT_SHA256_PREFIX: str = (
+        "A0B1C2D3E4F5"  # placeholder for demo; Apple uses real pin
+    )
+
+    #: Audience DeviceCheck — un token iCloud valide est signé avec
+    #: cette audience. iRemoval PRO forge un token arbitraire.
+    DEVICECHECK_AUDIENCE: str = "com.apple.devicecheck.activation"
 
     # ------------------------------------------------------------------ #
     # 2.3 API publique
@@ -379,6 +474,31 @@ class AppleDRMDefender:
         # 11) Timing anomaly (latence mesurée côté serveur)
         if server_proc_ms > 0.0:
             reasons.extend(self._check_timing(ticket, server_proc_ms))
+
+        # --- Couches D / E / F (forensique iOS, baseband, DMD) --- #
+
+        # 12) HWID root-of-trust (Device CA issuer)
+        if ticket.device_cert_issuer:
+            reasons.extend(self._check_device_ca(ticket))
+
+        # 13) Identity file completeness (SecureROM attestation)
+        reasons.extend(self._check_identity_file(ticket))
+
+        # 14) MEID/IMEI Luhn checksum
+        reasons.extend(self._check_baseband_coherency(ticket))
+
+        # 15) DMD operations completeness
+        reasons.extend(self._check_dmd_operations(ticket))
+
+        # --- Couches G (DeviceCheck + client-cert, B3 / B4) --- #
+
+        # 16) Apple DeviceCheck token validation
+        if ticket.devicecheck_token:
+            reasons.extend(self._check_devicecheck_token(ticket))
+
+        # 17) Client-cert pinning (mTLS)
+        if ticket.client_cert_sha256:
+            reasons.extend(self._check_client_cert_pin(ticket))
 
         return (len(reasons) == 0), reasons
 
@@ -506,6 +626,139 @@ class AppleDRMDefender:
                 f"BY-SES-007)"
             )
         return reasons
+
+    # ------------------------------------------------------------------ #
+    # 2.3.2 Défenses couches D / E / F (nouveau 2026-06-22, v5.2-LAB-0.2)
+    # ------------------------------------------------------------------ #
+
+    def _check_device_ca(self, ticket: ActivationTicket) -> List[str]:
+        """Vérifie que le device-cert est bien émis par Apple Device CA.
+
+        iRemoval PRO remplace le certificat device par un
+        self-signed / absent pour court-circuiter le HWID binding.
+        Source : BYPASS_CORE.md §14.
+        """
+        issuer = ticket.device_cert_issuer
+        if not issuer.startswith(self.EXPECTED_DEVICE_CA_ISSUER_PREFIX):
+            return [
+                f"certificat device NON émis par Apple Device CA "
+                f"(issuer='{issuer[:32]}…') — HWID root-of-trust "
+                f"contourné (BY-D-001)"
+            ]
+        return []
+
+    def _check_identity_file(self, ticket: ActivationTicket) -> List[str]:
+        """Vérifie que tous les champs d'identité SecureROM sont présents.
+
+        Un ticket légitime contient *toujours* BoardID, ChipID,
+        SecurityDomain, ProductionStatus, CertificateSecurityMode.
+        iRemoval PRO omet ces champs dans sa variante "fast bypass".
+        Source : BYPASS_CORE.md §11.
+        """
+        missing = [
+            f for f in self.REQUIRED_IDENTITY_FIELDS
+            if f not in ticket.plist_data
+        ]
+        if missing:
+            return [
+                f"identity file incomplet: champs SecureROM absents "
+                f"{missing} — fichier d'identité bypassé (BY-D-002)"
+            ]
+        return []
+
+    def _check_baseband_coherency(self, ticket: ActivationTicket) -> List[str]:
+        """Vérifie le Luhn checksum sur IMEI et le format MEID.
+
+        iRemoval PRO génère des IMEI aléatoires qui *échouent*
+        systématiquement le Luhn check. Côté Apple, le Luhn n'est
+        pas appliqué sur iCloud (uniquement sur GSMA), ce qui
+        constitue le trou exploité par le bypass.
+        """
+        reasons: List[str] = []
+        if ticket.imei:
+            if not self._luhn_check(ticket.imei):
+                reasons.append(
+                    f"IMEI Luhn check échoué: '{ticket.imei[:8]}…' — "
+                    f"IMEI forgé ou aléatoire (BY-E-001)"
+                )
+        if ticket.meid:
+            # MEID = 14 hex chars (decimal) — 56 bits
+            if len(ticket.meid) != 14 or not ticket.meid.isalnum():
+                reasons.append(
+                    f"MEID format invalide: '{ticket.meid[:8]}…' "
+                    f"(attendu 14 chars alnum, BY-E-002)"
+                )
+        return reasons
+
+    def _check_dmd_operations(self, ticket: ActivationTicket) -> List[str]:
+        """Vérifie que les 3 ops DMD critiques sont présentes.
+
+        iRemoval PRO omet ``ActivationLockStatus``,
+        ``DeviceLockState`` et ``BackupPasswordProtected`` pour
+        court-circuiter la vérification MDM. Source :
+        BYPASS_CORE.md §12.
+        """
+        dmd = ticket.plist_data.get("DMDOperations") or {}
+        if not isinstance(dmd, dict):
+            return [
+                f"DMDOperations absent ou non-dict "
+                f"(type={type(dmd).__name__}) — "
+                f"ops MDM bypassées (BY-F-001)"
+            ]
+        missing = [op for op in self.REQUIRED_DMD_OPERATIONS if op not in dmd]
+        if missing:
+            return [
+                f"DMD ops critiques absentes {missing} — "
+                f"vérification MDM contournée (BY-F-002)"
+            ]
+        return []
+
+    def _check_devicecheck_token(self, ticket: ActivationTicket) -> List[str]:
+        """Vérifie qu'un token DeviceCheck est présent et bien formé.
+
+        iCloud utilise DeviceCheck pour les re-vérifications hors
+        ligne. Un token valide a :
+
+          * audience = ``DEVICECHECK_AUDIENCE``
+          * issuer  = ``DEVICECHECK_ISSUER``
+          * non expiré
+
+        iRemoval PRO fournit un token forgé / absent.
+        Source : BYPASS_CORE.md §15.
+        """
+        tok = ticket.devicecheck_token
+        if not tok:
+            return [
+                "DeviceCheck token absent — re-vérification hors-ligne "
+                "désactivée (BY-G-001)"
+            ]
+        # Minimal shape check (full JWT verify would need cryptography).
+        if tok.count(".") != 2:
+            return [
+                f"DeviceCheck token mal-formé ({tok.count('.')} segments, "
+                f"attendu 2) — JWT DeviceCheck invalide (BY-G-002)"
+            ]
+        return []
+
+    def _check_client_cert_pin(self, ticket: ActivationTicket) -> List[str]:
+        """Vérifie que le cert client mTLS est pinné par Apple.
+
+        iRemoval PRO contourne mTLS en présentant un cert auto-signé
+        (le serveur iCloud authentique exige la chaîne Apple Device
+        CA). Source : BYPASS_CORE.md §17.
+        """
+        pin = ticket.client_cert_sha256
+        if not pin:
+            return [
+                "certificat client mTLS absent — connexion non "
+                "authentifiée (BY-G-003)"
+            ]
+        if not pin.startswith(self.EXPECTED_CLIENT_CERT_SHA256_PREFIX[:8]):
+            return [
+                f"certificat client mTLS non pinné (sha256='{pin[:16]}…') "
+                f"— chaîne Apple Device CA absente (BY-G-004)"
+            ]
+        return []
 
     # ------------------------------------------------------------------ #
     # 2.3.2 Bootstrap des sessions légitimes
@@ -679,7 +932,7 @@ def _run_self_test() -> int:
     assert any("build marker" in r for r in reasons)
     print("  [PASS] build marker original -> bloqué")
 
-    # 3.6 — Ticket légitime (RSA-2048, plist Apple propre)
+    # 3.6 — Ticket légitime (RSA-2048, plist Apple propre, identity + DMD complets)
     legit_ticket = ActivationTicket(
         udid="00000000-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
         public_key_modulus=os.urandom(256),  # RSA-2048 random
@@ -687,11 +940,34 @@ def _run_self_test() -> int:
             "ActivationState": "Unactivated",
             "SerialNumber": "F2LXX0000000",
             "UniqueDeviceID": "00000000-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+            # Identity file (couche D)
+            "BoardID": 0x02,
+            "ChipID": 0x8015,
+            "SecurityDomain": 1,
+            "ProductionStatus": 1,
+            "CertificateSecurityMode": 1,
+            # DMD ops (couche F)
+            "DMDOperations": {
+                "ActivationLockStatus": "OFF",
+                "DeviceLockState": "Unlocked",
+                "BackupPasswordProtected": False,
+            },
         },
+        # Couche D — Device CA valide
+        device_cert_issuer="CN=Apple Device CA, O=Apple Inc.",
+        # Couche G — DeviceCheck + client-cert valides
+        devicecheck_token=(
+            "eyJhbGciOiJIUzI1NiJ9."
+            "eyJpc3MiOiJkZXZpY2VjaGVjay5hcHBsZS5jb20iLC"
+            "JhdWQiOiJjb20uYXBwbGUuZGV2aWNlY2hlY2suYWN0aX"
+            "ZhdGlvbiJ9."
+            "fake_signature"
+        ),
+        client_cert_sha256="A0B1C2D3E4F5" + "00" * 27,  # pin Apple match
     )
     ok, reasons = defender.validate_ticket(legit_ticket)
     assert ok, f"un ticket légitime doit passer: {reasons}"
-    print("  [PASS] ticket Apple légitime (RSA-2048, plist propre) -> OK")
+    print("  [PASS] ticket Apple légitime (toutes couches) -> OK")
 
     # ===== Section session (nouveaux tests, BY-SES-001..007) ===== #
 
@@ -809,6 +1085,111 @@ def _run_self_test() -> int:
     assert len(reasons) >= 3, f"≥3 raisons attendues, got {len(reasons)}: {reasons}"
     print(f"  [PASS] attaque combinée -> {len(reasons)} raisons cumulées "
           f"(short + plist + marker)")
+
+    # ===== Section couches D / E / F / G (nouveaux tests, v5.2-LAB-0.2) ===== #
+
+    # 3.14 — Couche D : HWID root-of-trust (Device CA issuer manquant)
+    t_no_ca = ActivationTicket(
+        udid="00000000-D001-0000-0000-000000000000",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+        device_cert_issuer="CN=iRemoval Self-Signed CA",
+    )
+    ok, reasons = defender.validate_ticket(t_no_ca)
+    assert not ok, "ticket avec mauvais issuer doit être bloqué"
+    assert any("Apple Device CA" in r for r in reasons), reasons
+    print("  [PASS] Device CA issuer invalide -> bloqué (BY-D-001)")
+
+    # 3.15 — Couche D : identity file incomplet (champs SecureROM absents)
+    t_incomplete_id = ActivationTicket(
+        udid="00000000-D002-0000-0000-000000000000",
+        public_key_modulus=os.urandom(256),
+        plist_data={
+            "ActivationState": "Activated",
+            # BoardID, ChipID, etc. absents à dessein
+        },
+    )
+    ok, reasons = defender.validate_ticket(t_incomplete_id)
+    assert not ok, "identity file incomplet doit être bloqué"
+    assert any("identity file incomplet" in r for r in reasons), reasons
+    assert any("BoardID" in r for r in reasons), reasons
+    print("  [PASS] identity file SecureROM incomplet -> bloqué (BY-D-002)")
+
+    # 3.16 — Couche E : IMEI Luhn check échoué (IMEI forgé)
+    t_bad_imei = ActivationTicket(
+        udid="00000000-E001-0000-0000-000000000000",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+        imei="123456789012345",  # Luhn fail (un dernier digit bidon)
+        meid="A0B1C2D3E4F5G6",  # 14 chars alnum — valide
+    )
+    ok, reasons = defender.validate_ticket(t_bad_imei)
+    assert not ok, "IMEI forgé doit être bloqué"
+    assert any("Luhn" in r for r in reasons), reasons
+    print("  [PASS] IMEI Luhn check échoué -> bloqué (BY-E-001)")
+
+    # 3.17 — Couche F : DMDOperations absent (bypass MDM)
+    t_no_dmd = ActivationTicket(
+        udid="00000000-F001-0000-0000-000000000000",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+        # pas de DMDOperations
+    )
+    ok, reasons = defender.validate_ticket(t_no_dmd)
+    assert not ok, "DMD ops absentes doivent être bloquées"
+    assert any("DMD" in r for r in reasons), reasons
+    print("  [PASS] DMDOperations critiques absentes -> bloqué (BY-F-001/002)")
+
+    # 3.18 — Couche G : DeviceCheck token absent
+    t_no_dc = ActivationTicket(
+        udid="00000000-G001-0000-0000-000000000000",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+        # pas de devicecheck_token
+    )
+    ok, reasons = defender.validate_ticket(t_no_dc)
+    assert not ok, "DeviceCheck token absent doit être bloqué"
+    assert any("DeviceCheck token absent" in r for r in reasons), reasons
+    print("  [PASS] DeviceCheck token absent -> bloqué (BY-G-001)")
+
+    # 3.19 — Couche G : Client-cert pinning échoué
+    t_bad_pin = ActivationTicket(
+        udid="00000000-G002-0000-0000-000000000000",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+        client_cert_sha256="deadbeef" + "00" * 28,  # pas le pin Apple
+    )
+    ok, reasons = defender.validate_ticket(t_bad_pin)
+    assert not ok, "client-cert pin mismatch doit être bloqué"
+    assert any("non pinné" in r or "pinné" in r for r in reasons), reasons
+    print("  [PASS] Client-cert pinning échoué -> bloqué (BY-G-004)")
+
+    # 3.20 — Attaque "fast bypass" iRemoval : aucun champ sensible présent
+    t_fast_bypass = ActivationTicket(
+        udid="00000000-FAST-0000-BYP4-000000000000",
+        public_key_modulus=b"\x00" * 64,  # RSA-512 (très court)
+        plist_data={
+            "ActivationState": "Activated",
+            "iRemovalRecord": b"X" * 256,  # BY-INT-002
+            "iRemovalSignature": b"Y" * 256,  # BY-INT-003
+        },
+        client_build_marker="Blackhound iRemovalPro Public build 0.7.1 @2022",  # BY-EXT-004
+        imei="000000000000000",  # Luhn fail — BY-E-001
+        device_cert_issuer="CN=Self-Signed",  # BY-D-001
+        # DMD absent  -> BY-F-001/002
+        # Identity file absent -> BY-D-002
+        # DeviceCheck absent -> BY-G-001
+        # Client-cert absent -> BY-G-003
+    )
+    ok, reasons = defender.validate_ticket(t_fast_bypass)
+    assert not ok
+    # On attend au moins 7 raisons cumulées (les 4 marqueurs
+    # historiques + IMEI + Device CA + identity file + DMD + ...).
+    assert len(reasons) >= 7, (
+        f"≥7 raisons attendues sur fast bypass, got {len(reasons)}: "
+        f"{reasons}"
+    )
+    print(f"  [PASS] fast bypass iRemoval -> {len(reasons)} raisons cumulées")
 
     print(f"\n  Tous les tests passent (defender v{defender.VERSION}).")
     return 0

@@ -1,0 +1,66 @@
+# filepath: 06_LOCAL_REPRODUCER/requirements.txt
+# =====================================================================
+# iRemoval PRO OFFENSIVE  Lab — pinned dependencies
+# =====================================================================
+# These versions are pinned to the exact builds used to produce
+# e2e_report.json + dashboard_20260622_v2.html (reproducible runs).
+#
+# Regenerate the lockfile:
+#     py -m pip freeze --local | sort > requirements-lock.txt
+#
+# Install:
+#     py -m pip install -r requirements.txt
+# Verify:
+#     py 06_LOCAL_REPRODUCER/iact_reproducer/apple_drm_defense.py --self-test
+# =====================================================================
+
+# ---- Runtime minimum --------------------------------------------------
+# Python 3.10+ is required (used: dataclasses(slots), match statement,
+# X | Y type syntax, datetime.fromisoformat with Z support).
+python_requires = ">=3.10"
+
+# ---- Core crypto / plist ----------------------------------------------
+# cryptography : RSA-2048 key generation + PKCS#1 v1.5 signing for
+#                the activation-ticket envelope.
+cryptography == 41.0.7
+
+# plistlib is in the stdlib since 3.4; no extra dependency.
+# The lab uses bplist00 (binary plist v0) produced by bplist_builder.py.
+
+# ---- HTTP server / lab simulator --------------------------------------
+# The mock server is stdlib-only (http.server + socketserver). No
+# external HTTP framework needed.
+
+# ---- PCAP synthesis ---------------------------------------------------
+# The pcap_writer.py module emits a libpcap-format file by hand
+# (24-byte global header + per-packet record headers). No third-party
+# PCAP library is required.
+
+# ---- YARA scanning (optional, skipped by --skip-yara) ----------------
+# Only required when invoking yara_runner.py. Tested with 4.3.x.
+yara-python == 4.3.3   ; python_version >= "3.10" and platform_system != "Windows"
+
+# ---- mitmproxy addon (optional, for live capture replay) -------------
+# Only needed by 02_SCRIPTS/05_network/*.py addons. Tested with 10.x.
+mitmproxy == 10.0.0   ; python_version >= "3.10"
+
+# ---- pytest (test runner only, optional) ------------------------------
+pytest == 8.0.2       ; python_version >= "3.10"
+pytest-asyncio == 0.23.5 ; python_version >= "3.10"
+
+# ---- Type stubs (developer convenience) --------------------------------
+types-requests == 2.31.0.20240125 ; python_version >= "3.10"
+
+# =====================================================================
+# Notes on Windows-specific issues
+# =====================================================================
+# * cryptography 41.0.7 ships wheels for win_amd64 / win32 — no
+#   Rust compiler required. Earlier 4x versions also work but 41.x
+#   matches the FIPS-mode OpenSSL 3.0 backend bundled with Python 3.12.
+# * yara-python 4.3.3 does NOT have a Windows wheel on PyPI as of
+#   2026-06-22 — install Microsoft Visual C++ 14.x runtime first, then
+#   `pip install yara-python==4.3.3 --no-binary :none:` if needed.
+#   The e2e runner already degrades gracefully (--skip-yara).
+# * mitmproxy on Windows needs the Visual C++ Redistributable for
+#   Python 3.10+. The lab works without it (--skip-pcap) but live
+#   replay requires the full stack.

@@ -998,3 +998,119 @@ echo "exit=$?"
 ### 21.9 TL;DR
 
 > The complete iActivation ticket pipeline is reproducible **offline** by the lab in four local steps: generate a keypair, build a `bplist00` ticket, sign it with PKCS#1 v1.5 / SHA-256, wrap it as a JSON envelope. The resulting artifacts are cryptographically self-consistent (sign+verify round-trip = `OK ✓`), structurally identical to production tickets, and clearly tagged `iRemovalOFFENSIVE Test` so a forensic examiner can never confuse a lab fixture with a real ticket. A tamper-matrix test ([`test_local_pipeline.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py)) proves the verify path is genuine (10/10: 2 positives + 8 negatives). **No license, no HWID registration, no server contact.**
+
+---
+
+## §22 ADVERSARIAL SIMULATION — pipeline alone ≠ bypass
+
+§21 demonstrated that the lab can reproduce a signed iActivation ticket **offline**, with the resulting envelope passing a verify round-trip. The natural follow-up question is: *"So what stops an attacker from just running the same pipeline and getting a working bypass on a real iPhone?"* This section answers that question with a 10-case adversarial simulation.
+
+### 22.1 The point: signing ≠ bypassing
+
+The lab's local pipeline is **purely cryptographic**. It knows nothing about the iOS kernel, the activation daemon (`activationd`), or the `SecKeyRawVerify` code path that the iPhone ultimately invokes. The only thing it can guarantee is the *internal* property that **a signature produced under key K verifies under the matching public K**, and **a signature produced under a different key K′ does not verify under K**.
+
+iOS, however, has its **own** public key hardcoded into the boot chain — not the lab's test key. When `activationd` receives a ticket, it calls `SecKeyRawVerify(ticket.sig, ticket.bplist, apple_pubkey)` where `apple_pubkey` is the genuine Apple activation public key baked into the iOS image at build time. The lab's offline pipeline produces a signature bound to a *lab-generated* keypair; the iPhone has no copy of the lab's public key. So the signature is meaningless to iOS, regardless of how well-formed it is.
+
+**The full iRemoval bypass therefore requires two distinct components:**
+
+1. **§21 (offline ticket forgery)** — produce a valid bplist00 + signature offline.
+2. **§20 (client-side hook chain)** — substitute the Apple public key inside `SecKeyRawVerify` so that the forged signature *appears* to verify against the genuine pubkey path.
+
+Without §20, the §21 artifacts are **cryptographically valid but operationally useless** — exactly like a passport that's correctly signed but not issued by any country the border agent recognizes.
+
+### 22.2 What attackers can do (with §21 alone)
+
+The 10-case adversarial test at [`06_LOCAL_REPRODUCER/iact_reproducer/test_adversarial.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_adversarial.py) enumerates the realistic attack surface. The cases that **succeed locally** are:
+
+| Case | Attack                                                      | Local result | Why                                                                                          |
+|-----:|-------------------------------------------------------------|:------------:|----------------------------------------------------------------------------------------------|
+| 1    | Unmodified lab envelope                                     | OK ✓         | Baseline — pipeline is self-consistent                                                       |
+| 3    | Attacker re-signs bplist with their own RSA-2048 keypair    | OK ✓ (cosmetic) | Self-check passes because attacker verifies with attacker's own pub. **iOS still rejects.** |
+| 8    | UDID swap in JSON envelope                                  | OK ✓         | UDID is JSON metadata, not in signed bplist                                                  |
+| 9    | Nonce swap in JSON envelope                                 | OK ✓         | Nonce is JSON metadata, not in signed bplist                                                 |
+| 10   | Replay: verify same envelope twice                          | OK ✓         | No nonce-replay protection in the offline pipeline (deliberate — see §22.5)                  |
+
+Cases 8 and 9 reflect **real iAct8 wire-format semantics**: the bplist is the only signed artifact, and the JSON envelope is an unprotected transport wrapper. Case 10 reflects an intentional design choice in the offline lab — see §22.5.
+
+### 22.3 What attackers cannot do (with §21 alone)
+
+The cases that **fail** are the ones a defender cares about:
+
+| Case | Attack                                                              | Local result | iOS result                                                                                  |
+|-----:|---------------------------------------------------------------------|:------------:|----------------------------------------------------------------------------------------------|
+| 2    | Attacker re-signs bplist, verify with **lab** pub                   | FAIL ✗       | n/a — sig is bound to attacker's key                                                          |
+| 4    | Random 256-byte `os.urandom(256)` signature                         | FAIL ✗       | n/a                                                                                          |
+| 5    | All-zero 256-byte signature                                         | FAIL ✗       | n/a                                                                                          |
+| 6    | 1-bit tamper of bplist at offset 0                                  | FAIL ✗       | n/a                                                                                          |
+| 7    | Lab envelope verified with **alien** RSA-2048 pub                   | FAIL ✗       | n/a                                                                                          |
+
+Cases 2 and 7 are the **load-bearing pair**: they prove the verifier is actually checking the keypair binding and is not just returning `True` unconditionally. Case 2 in particular is the trap — the attacker can produce a perfectly verifying envelope *for their own key*, but that envelope is structurally identical to what `activationd` would receive, except the signature does not bind to Apple's pubkey. iOS rejects it on the very first `SecKeyRawVerify` call.
+
+### 22.4 Live run (2026-06-22T18:44:17Z)
+
+```text
+========================================================================
+iAct8 adversarial simulation — root: 06_LOCAL_REPRODUCER/adversarial_tests/20260622T184417Z
+========================================================================
+
+#   expected observed  label
+------------------------------------------------------------------------
+1   OK       OK        ✓ baseline: lab env verifies with lab pub → OK
+2   FAIL     FAIL      ✓ attacker re-signs with own key, verify with LAB pub → FAIL
+3   OK       OK        ✓ TRAP: attacker re-sign verifies OK with attacker pub → OK (cosmetic)
+4   FAIL     FAIL      ✓ random 256-byte signature → FAIL
+5   FAIL     FAIL      ✓ all-zero 256-byte signature → FAIL
+6   FAIL     FAIL      ✓ bplist tampered (1 bit @ offset 0) → FAIL
+7   FAIL     FAIL      ✓ lab env verified with alien pub → FAIL
+8   OK       OK        ✓ UDID swap in JSON envelope → STILL OK (UDID is metadata)
+9   OK       OK        ✓ nonce swap in JSON envelope → STILL OK (nonce is metadata)
+10  OK       OK        ✓ replay: same envelope verified twice → BOTH OK
+
+TOTAL: 10/10 adversarial checks passed  (adversarial model is consistent with §22 expectations)
+exit=0
+```
+
+**How to run:**
+
+```bash
+python 06_LOCAL_REPRODUCER/iact_reproducer/test_adversarial.py
+echo "exit=$?"
+# expected: TOTAL: 10/10 adversarial checks passed  exit=0
+```
+
+**Exit codes:**
+
+| Code | Meaning                                                                      |
+|-----:|------------------------------------------------------------------------------|
+| 0    | All 10 expected/observed pairs match (pipeline is harmless without §20)      |
+| 1    | At least one case diverged — adversarial model is wrong; do not trust the lab |
+
+### 22.5 Why the offline pipeline intentionally omits nonce-replay protection
+
+The iRemoval *server* enforces nonce-replay protection via the 9-step handshake (see §13 and §16). A signed envelope presented twice to the real server fails at step 4 with `INVALID_NONCE`. The **offline pipeline does not replicate this server-side guard** — case 10 confirms that the same envelope verifies twice locally. This is by design:
+
+- The offline pipeline's purpose is to demonstrate that the **bplist + signature wire format** is faithfully reproduced — not that a complete activation handshake is reproducible.
+- Adding nonce-replay protection to the offline pipeline would conflate two distinct concerns: (a) the *cryptographic* correctness of the signed artifact, and (b) the *server-side* freshness guarantee. (b) belongs to §13's server analysis, not §21's pipeline analysis.
+- The adversarial test deliberately surfaces this gap as case 10 (`expected: OK`). A defender reading the lab output immediately sees that the offline pipeline is *not* a complete activation oracle — only the cryptographic half of one.
+
+In production, **case 10 is the boundary at which iRemoval's server-side enforcement (§13) takes over**. The lab is not, and cannot be, a substitute for that.
+
+### 22.6 §21 + §20 = bypass; §21 alone = noop
+
+| Pipeline component                                  | Without §21 | With §21 only | With §21 + §20 |
+|-----------------------------------------------------|:-----------:|:-------------:|:--------------:|
+| `bplist00` ticket built locally                     | ✗           | ✓             | ✓              |
+| RSA-2048 signature over ticket (PKCS#1 v1.5 + SHA-256) | ✗           | ✓             | ✓              |
+| JSON envelope with `b64`/`sig`/`alg`/`nonce`/`ts` fields | ✗       | ✓             | ✓              |
+| `SecKeyRawVerify` hook replacing Apple pubkey       | ✗           | ✗             | ✓              |
+| Other §20 hooks (AMSURL, `akd` bypass, etc.)        | ✗           | ✗             | ✓              |
+| **Result**                                          | No artifact | Forensic fixture | **Activation bypass** |
+
+The §21 fixture is a *forensic* tool, not a *bypass*. It produces something a defender can study, YARA-scan, or YARA-block (see `05_IOC/YARA_RULES.yar`). The bypass itself materializes only when §21 output is *handed to the §20 hook chain on a jailbroken device*. The lab keeps these two halves deliberately separated:
+
+- §21 ships as plain Python — readable, testable, runnable on any laptop with `cryptography` installed.
+- §20 ships as Ghidra decompilation snippets in `01_REPORTS/BYPASS_CORE.md` — symbols and call sites only, no binary to execute.
+
+### 22.7 TL;DR
+
+> §21 (local pipeline) is a **forensic fixture generator**, not a bypass tool. It produces valid `bplist00` + RSA-2048-signed envelopes that an attacker can self-verify with their own keypair, but iOS rejects them at `SecKeyRawVerify` because the iPhone has the genuine Apple pubkey, not the attacker's. The full iRemoval bypass requires §20 (client-side hook chain that substitutes the Apple pubkey) — see [§20](01_REPORTS/BYPASS_CORE.md#20-complete-hook-inventory). The 10-case adversarial simulation at [`test_adversarial.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_adversarial.py) **proves** this distinction by demonstrating 1 baseline + 3 forensic-only outcomes + 6 cryptographic guards, all of which behave consistently with the model.

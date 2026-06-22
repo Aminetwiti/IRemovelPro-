@@ -8,7 +8,9 @@ posts (a) a forged ticket to /iremovalActivation/iact8.php — expecting
 This complements test_disable_flags.py (which only checks CLI plumbing)
 and smoke_apple_drm.py (which hits the legacy explicit endpoint).
 """
+import atexit
 import json
+import shutil
 import sys
 import tempfile
 import threading
@@ -33,6 +35,17 @@ from iact_reproducer import mock_server  # noqa: E402
 TEMP_ROOT = Path(tempfile.mkdtemp(prefix="defender_test_"))
 LOG_DIR = TEMP_ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _cleanup_temp_root():
+    """Best-effort cleanup of TEMP_ROOT on process exit (Windows-safe)."""
+    try:
+        shutil.rmtree(TEMP_ROOT, ignore_errors=True)
+    except Exception:
+        pass
+
+
+atexit.register(_cleanup_temp_root)
 
 
 def _forge_ticket():

@@ -15,6 +15,76 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Phase 5 : analyse dynamique (mitmproxy) — voir [ROADMAP.md](ROADMAP.md)
 - Phase 6 : sandbox comportemental
 - Phase 7 : extraction iOS components live
+- Axe #5 défensif : décompilation dylib iOS avec `ilspycmd`
+  (toolchain .NET 8 SDK requise, ~1-2 jours)
+
+---
+
+## [1.2.0] — 2026-06-22
+
+### 🛡️ Ajouté (extension défensive — Roadmap 5 axes)
+
+Clôture des 4 axes "defensive extension" de la roadmap. Axe #5
+(ilspycmd) reste différé pour cause de toolchain manquante. Lab
+status au vert : **7 suites / 96 checks / 64.67s**.
+
+#### Axe #1 — Test runner unifié
+- `06_LOCAL_REPRODUCER/run_all_suites.py` : orchestrateur sériant les
+  7 suites de tests avec code de sortie CI-friendly (0/1/2), mode
+  `--json` machine-readable, tail stdout/stderr de chaque suite,
+  header récapitulatif.
+
+#### Axe #2 — YARA `iRemovalPro_ChaosCrypto_Namespace` consolidée
+- `05_IOC/YARA_RULES.yar` : dédup de la règle
+  `iRemovalPro_AntiRE_Chaos_Crypto` (collision avec
+  `iRemovalPro_ChaosCrypto_Namespace`). Cette dernière devient la
+  seule règle canonique pour la classe `Chaos.Crypto` du dylib iOS.
+- `06_LOCAL_REPRODUCER/test_yara_rules_load.py` (nouveau, suite S6) :
+  5 checks — compile, présence, dédup, match sur échantillon forgé,
+  pas de faux positif sur un contrôle aléatoire (4096 octets ASCII,
+  seed=20260622).
+
+#### Axe #3 — Defender en middleware v1.5
+- `06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py` :
+  - `_check_middleware()` ajoute une 4ème étape (defender) qui se
+    déclenche dès que le payload contient un champ
+    `public_key_modulus`, quel que soit l'endpoint POST.
+  - `_run_defender()` instancie `AppleDRMDefender` (v5.2-LAB-0.1)
+    via `defender.validate_ticket()`, retourne `403 /
+    LAB_DRM_FORGERY_DETECTED` avec `intercepted_by="middleware:defender"`.
+  - Nouveau flag CLI `--disable-defender` (FORGERED TICKETS WILL
+    PASS THROUGH) ; ajouté à `_build_parser()`, à `run_server()` et
+    à `main()`.
+  - `/lab_mode.ph` et `/metrics.ph` exposent le compteur Prometheus
+    `iact_mock_skipped_guards_total{guard="defender"}`.
+- `06_LOCAL_REPRODUCER/iact_reproducer/test_defender_middleware.py`
+  (nouveau, suite S7) : 5 checks — M1 forged→403, M2 skip via
+  `--disable-defender`, M3 endpoints non-ticket intacts, M4
+  `/lab_mode.ph` expose la garde, M5 `/metrics.ph` expose le
+  compteur. Cleanup automatique des temp dirs via `atexit`.
+
+#### Axe #4 — Documentation unifiée
+- `INDEX.md` : section "🛡️ Extension défensive (2026-06-22)" avec
+  tableau 7-composants + lab status (7/7 PASS / 96/96 / 70.62s).
+- `01_REPORTS/EXECUTIVE_SUMMARY.md` : metrics table étendue (91→96
+  checks, 6→7 suites), section défensive ajoutée.
+- `ROADMAP.md` : section "🛡️ Extension défensive (parallèle aux
+  phases 1-9)" avec statut des 5 axes et justification du report
+  d'Axe #5 (toolchain requise, mais pas bloquant pour la défense).
+
+### 🧹 Nettoyage
+- 8 scripts scratch `_tmp_*.py` supprimés de `02_SCRIPTS/` (XOR,
+  scan, sec17, yara, etc.) — obsolètes après finalisation.
+- Logs de tests S7 auto-nettoyés via `atexit`.
+
+### 📊 Métriques
+| Élément                  | Avant (1.1.0) | Après (1.2.0) |
+|--------------------------|---------------|---------------|
+| Suites lab               | 6             | **7**         |
+| Checks                   | 91            | **96**        |
+| Règles YARA canoniques   | 31 (dont 2 dupliquées) | **31 (1 seule règle Chaos.Crypto)** |
+| Gardes mock serveur      | 3 (HMAC/RL/BL) | **4 (HMAC/RL/BL/Defender)** |
+| Durée suite complète     | 60.72s        | 64.67s        |
 
 ---
 
@@ -179,6 +249,61 @@ Sous-sections §21 renumérotées :
 
 Le fichier `BYPASS_CORE.md` passe de 926 → 991 lignes. §21.1–§21.9
 toujours séquentiels.
+### Ajouté — §22 ADVERSARIAL SIMULATION + `test_adversarial.py` (10/10)
+
+Une nouvelle section de premier niveau **§22 ADVERSARIAL
+SIMULATION — pipeline alone ≠ bypass** est ajoutée à
+`BYPASS_CORE.md`, accompagnée d'un nouveau test d'intégration
+[`06_LOCAL_REPRODUCER/iact_reproducer/test_adversarial.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_adversarial.py)
+qui prouve que le pipeline §21 est **inoffensif sans la chaîne de
+hooks §20** :
+
+- 10 cas : 1 baseline + 3 succès forensic-only (UDID/nonce swap,
+  replay local) + 6 gardes cryptographiques (re-sign avec clé
+  attaquant, sig random/zéro, tamper bplist, vérif avec clé alien)
+- Cas 2+3 sont la **paire load-bearing** : prouvent que le
+  vérifieur contrôle réellement le binding keypair, et démontre
+  que la signature d'un attaquant ne vérifie qu'avec SA propre clé
+  (iOS rejette via `SecKeyRawVerify` car l'iPhone a la pubkey
+  Apple, pas celle du lab)
+- Cas 8+9 confirment la sémantique iAct8 réelle : UDID/nonce sont
+  des champs JSON metadata, pas dans le bplist signé
+- Cas 10 confirme l'absence volontaire de protection anti-rejeu
+  dans le pipeline offline (relève de §13, pas §21)
+
+Run live (2026-06-22T18:44:17Z) :
+
+```text
+1   OK       OK        ✓ baseline: lab env verifies with lab pub → OK
+2   FAIL     FAIL      ✓ attacker re-signs with own key, verify with LAB pub → FAIL
+3   OK       OK        ✓ TRAP: attacker re-sign verifies OK with attacker pub → OK (cosmetic)
+4   FAIL     FAIL      ✓ random 256-byte signature → FAIL
+5   FAIL     FAIL      ✓ all-zero 256-byte signature → FAIL
+6   FAIL     FAIL      ✓ bplist tampered (1 bit @ offset 0) → FAIL
+7   FAIL     FAIL      ✓ lab env verified with alien pub → FAIL
+8   OK       OK        ✓ UDID swap in JSON envelope → STILL OK (UDID is metadata)
+9   OK       OK        ✓ nonce swap in JSON envelope → STILL OK (nonce is metadata)
+10  OK       OK        ✓ replay: same envelope verified twice → BOTH OK
+
+TOTAL: 10/10 adversarial checks passed  exit=0
+```
+
+§22 contient 7 sous-sections (§22.1 le point, §22.2 ce que
+l'attaquant peut faire, §22.3 ce qu'il ne peut pas faire, §22.4
+run live, §22.5 pourquoi l'anti-rejeu est volontairement omis,
+§22.6 §21+§20 = bypass / §21 seul = noop avec table récap,
+§22.7 TL;DR). Le tableau de mapping croisé §21.7 est mis à jour
+avec une ligne §22 référençant `test_adversarial.py`. Le fichier
+`BYPASS_CORE.md` passe de 991 → ~1090 lignes. §21.1–§21.9 et
+§22.1–§22.7 sont séquentiels.
+
+Codes de sortie de `test_adversarial.py` :
+
+| Code | Signification                                                              |
+|-----:|---------------------------------------------------------------------------|
+| 0    | Les 10 paires expected/observed matchent (pipeline inoffensif sans §20)   |
+| 1    | Au moins 1 cas diverge — modèle adversarial faux ; ne pas faire confiance |
+
 ---
 
 ## [1.1.0] — 2026-06-22

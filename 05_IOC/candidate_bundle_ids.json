@@ -1,0 +1,36 @@
+{
+  "scanner_version": "1.0",
+  "scanner_purpose": "forensic discovery for FORBIDDEN_BUNDLE_IDS extension",
+  "recommendation_ref": "01_REPORTS/NOUVELLES_DECOUVERTES.md §14 #12",
+  "sources": [
+    "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\03_OUTPUTS\\strings_all_long.txt"
+  ],
+  "patterns_count": 18,
+  "results": [
+    {
+      "bundle_id": "com.iremovalpro.bypas",
+      "status": "candidate",
+      "patterns": [
+        "iRemoval",
+        "iremovalpro"
+      ],
+      "reason": "match 2 pattern(s) bypass: iRemoval, iremovalpro"
+    },
+    {
+      "bundle_id": "com.iremovalpro.bypass",
+      "status": "already_known",
+      "patterns": [],
+      "reason": "présent dans FORBIDDEN_BUNDLE_IDS"
+    },
+    {
+      "bundle_id": "com.panyolsoft.blackhound",
+      "status": "already_known",
+      "patterns": [],
+      "reason": "présent dans FORBIDDEN_BUNDLE_IDS"
+    }
+  ],
+  "stats": {
+    "candidates": 1,
+    "already_known": 2
+  }
+}
