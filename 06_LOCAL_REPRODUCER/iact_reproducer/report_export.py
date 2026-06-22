@@ -359,37 +359,68 @@ def write_pdf(findings: List[Finding], out_path: Path, *, e2e_report: Optional[D
 # --------------------------------------------------------------------------- #
 
 def load_findings_from_logs(repro_root: Path) -> List[Finding]:
-    """Aggregate defender reasons from the dynamic_smoke stage of e2e_report.json.
+    """Aggregate defender hits from logs/ artefacts.
 
-    Falls back to scanning ``mock_server_requests.jsonl`` for validation errors.
+    The mock server logs each request as JSON. The defender is invoked when
+    middleware is not disabled; its verdicts surface in two places:
+
+    1. ``lab_mode.defender_hits`` — dict of BY-XXX-NNN → count (per request)
+    2. ``validation_error`` — a single free-form reason string (rare)
+
+    Both feeds are merged into a flat :class:`Finding` list. We deduplicate
+    by (rule_id, uri) so a single rule that fires 5 times is one finding.
     """
     repro_root = Path(repro_root).resolve()
-    findings: List[Finding] = []
+    seen: Dict[Tuple[str, str], Finding] = {}
 
-    e2e = repro_root / "logs" / "e2e_report.json"
-    if e2e.is_file():
-        try:
-            doc = json.loads(e2e.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            doc = None
-        if doc:
-            smoke = next((s for s in doc.get("stages", []) if s.get("name") == "dynamic_smoke"), None)
-            if smoke:
-                for sid, info in (smoke.get("details", {}).get("scenarios") or {}).items():
-                    for reason in info.get("reasons", []) or []:
-                        findings.extend(parse_reasons([reason], default_uri=f"mock://scenario/{sid}"))
+    def _record(rule_id: str, message: str, uri: str, severity: Optional[str] = None) -> None:
+        key = (rule_id, uri)
+        if key in seen:
+            return
+        seen[key] = Finding(
+            rule_id=rule_id,
+            message=message,
+            severity=severity or _infer_severity(rule_id),
+            uri=uri,
+            location=uri,
+            snippet=message,
+        )
 
-    # Tail-back stop-gap: also walk any historical mock logs
+    # 1. Walk every smoke log under logs/smoke_*/
     for p in (repro_root / "logs").glob("smoke_*/mock_server_requests.jsonl"):
-        for line in p.read_text(encoding="utf-8").splitlines()[-50:]:
+        for line in p.read_text(encoding="utf-8").splitlines():
             try:
                 row = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            for reason in row.get("reasons", []) or []:
-                findings.extend(parse_reasons([reason], default_uri=row.get("path", "mock://albert.apple.com")))
+            uri = row.get("path", "mock://albert.apple.com")
+            lab_mode = row.get("lab_mode") or {}
+            for rid, n in (lab_mode.get("defender_hits") or {}).items():
+                if not isinstance(rid, str) or not isinstance(n, int):
+                    continue
+                if n <= 0:
+                    continue
+                _record(rid, f"Defender hit {rid} x{n} on {uri}", uri)
+            for reason in (row.get("reasons") or []):
+                for finding in parse_reasons([reason], default_uri=uri):
+                    _record(finding.rule_id, finding.message, finding.uri, finding.severity)
+            for reason_str in (row.get("validation_error") or "",):
+                if reason_str:
+                    for finding in parse_reasons([reason_str], default_uri=uri):
+                        _record(finding.rule_id, finding.message, finding.uri, finding.severity)
 
-    return findings
+    # 2. Pull aggregated counts from yara_report.json (BY-INT-* family)
+    yara = repro_root / "logs" / "yara_report.json"
+    if yara.is_file():
+        try:
+            doc = json.loads(yara.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            doc = None
+        if doc:
+            for rid, n in (doc.get("by_rule") or {}).items():
+                _record(rid, f"YARA rule {rid} fired {n}x", "yara://scan", severity="medium")
+
+    return list(seen.values())
 
 
 # --------------------------------------------------------------------------- #

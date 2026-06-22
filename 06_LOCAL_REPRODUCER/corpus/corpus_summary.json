@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-22T19:14:48.336144+00:00",
-  "samples": 10,
+  "generated_at": "2026-06-22T19:24:48.557137+00:00",
+  "samples": 5,
   "include_negatives": true,
-  "total_variants": 16,
+  "total_variants": 8,
   "by_label": {
-    "positive": 10,
-    "negative_tampered_bplist": 2,
-    "negative_truncated_signature": 2,
-    "negative_alg_mismatch": 2
+    "positive": 5,
+    "negative_tampered_bplist": 1,
+    "negative_truncated_signature": 1,
+    "negative_alg_mismatch": 1
   }
 }

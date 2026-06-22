@@ -1,26 +1,28 @@
 {
   "report_version": "1.0.0",
   "test_marker": "iRemovalOFFENSIVE Test",
-  "generated_at": "2026-06-22T19:14:50.444352+00:00",
+  "generated_at": "2026-06-22T19:24:55.700679+00:00",
   "repro_root": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER",
   "seed": "0xDEFA17C0DE",
   "overall_ok": true,
-  "total_duration_seconds": 2.297,
+  "total_duration_seconds": 7.969,
   "stages": [
     {
       "name": "static_lab",
       "ok": true,
-      "started_at": "2026-06-22T19:14:48.156286+00:00",
-      "finished_at": "2026-06-22T19:14:49.041498+00:00",
-      "duration_seconds": 0.891,
+      "started_at": "2026-06-22T19:24:47.732046+00:00",
+      "finished_at": "2026-06-22T19:24:50.940295+00:00",
+      "duration_seconds": 3.219,
       "details": {
         "args": {
           "repro_root": "06_LOCAL_REPRODUCER",
-          "samples": 10,
+          "samples": 5,
           "skip_yara": true,
           "skip_pcap": true,
           "skip_smoke": false,
           "skip_dashboard": false,
+          "skip_reports": false,
+          "reports_format": "both",
           "dashboard_out": "06_LOCAL_REPRODUCER/dashboard_20260622_v2.html",
           "report_out": "06_LOCAL_REPRODUCER/logs/e2e_report.json",
           "verbose": false,
@@ -33,37 +35,37 @@
           "dashboard": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\logs\\dashboard.html"
         },
         "pcap_bytes": 78814,
-        "dashboard_bytes": 55208
+        "dashboard_bytes": 57716
       },
       "error": null
     },
     {
       "name": "dynamic_smoke",
       "ok": true,
-      "started_at": "2026-06-22T19:14:49.041498+00:00",
-      "finished_at": "2026-06-22T19:14:49.855221+00:00",
-      "duration_seconds": 0.812,
+      "started_at": "2026-06-22T19:24:50.940295+00:00",
+      "finished_at": "2026-06-22T19:24:52.558224+00:00",
+      "duration_seconds": 1.609,
       "details": {
         "artifacts": {
-          "smoke_log_dir": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\logs\\smoke_1782155689",
-          "mock_log": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\logs\\smoke_1782155689\\mock_server_requests.jsonl"
+          "smoke_log_dir": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\logs\\smoke_1782156290",
+          "mock_log": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\logs\\smoke_1782156290\\mock_server_requests.jsonl"
         },
         "scenarios": {
-          "20260622T191449342114": {
+          "20260622T192452541224": {
             "outcome": "middleware_403",
             "validation_ok": null,
             "reasons_count": 0,
             "reasons": [],
             "defender_version": null
           },
-          "20260622T191449346115": {
+          "20260622T192452545222": {
             "outcome": "middleware_403",
             "validation_ok": null,
             "reasons_count": 0,
             "reasons": [],
             "defender_version": null
           },
-          "20260622T191449349114": {
+          "20260622T192452548223": {
             "outcome": "middleware_403",
             "validation_ok": null,
             "reasons_count": 0,
@@ -77,11 +79,27 @@
     {
       "name": "dashboard_render",
       "ok": true,
-      "started_at": "2026-06-22T19:14:49.856218+00:00",
-      "finished_at": "2026-06-22T19:14:50.443352+00:00",
-      "duration_seconds": 0.594,
+      "started_at": "2026-06-22T19:24:52.558224+00:00",
+      "finished_at": "2026-06-22T19:24:55.377683+00:00",
+      "duration_seconds": 2.828,
       "details": {
         "dashboard": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\dashboard_20260622_v2.html"
+      },
+      "error": null
+    },
+    {
+      "name": "reports_export",
+      "ok": true,
+      "started_at": "2026-06-22T19:24:55.379680+00:00",
+      "finished_at": "2026-06-22T19:24:55.700679+00:00",
+      "duration_seconds": 0.313,
+      "details": {
+        "artifacts": {
+          "sarif": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\logs\\defender_findings.sarif.json",
+          "pdf_html": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\logs\\defender_summary.pdf.html"
+        },
+        "findings_count": 7,
+        "format": "both"
       },
       "error": null
     }

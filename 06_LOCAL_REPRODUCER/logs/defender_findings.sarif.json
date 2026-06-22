@@ -1,0 +1,383 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "iAct8Defender",
+          "version": "5.2-LAB-0.2",
+          "informationUri": "https://github.com/iremovalpro/iact8-defender",
+          "semanticVersion": "5.2-LAB-0.2",
+          "rules": [
+            {
+              "id": "BY-EXT-004",
+              "name": "BY_EXT_004",
+              "shortDescription": {
+                "text": "Extension applicative — BY-EXT-004"
+              },
+              "fullDescription": {
+                "text": "Defender hit BY-EXT-004 x1 on /iremovalActivation/apple_drm_check.ph"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "category": "Extension applicative",
+                "severity": "medium",
+                "tags": [
+                  "security",
+                  "iremovaldetection",
+                  "iact8"
+                ]
+              }
+            },
+            {
+              "id": "BY-SES-001",
+              "name": "BY_SES_001",
+              "shortDescription": {
+                "text": "Anti-replay session — BY-SES-001"
+              },
+              "fullDescription": {
+                "text": "Defender hit BY-SES-001 x1 on /iremovalActivation/apple_drm_check.ph"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "category": "Anti-replay session",
+                "severity": "high",
+                "tags": [
+                  "security",
+                  "iremovaldetection",
+                  "iact8"
+                ]
+              }
+            },
+            {
+              "id": "BY-SES-005",
+              "name": "BY_SES_005",
+              "shortDescription": {
+                "text": "Anti-replay session — BY-SES-005"
+              },
+              "fullDescription": {
+                "text": "Defender hit BY-SES-005 x1 on /iremovalActivation/apple_drm_check.ph"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "category": "Anti-replay session",
+                "severity": "high",
+                "tags": [
+                  "security",
+                  "iremovaldetection",
+                  "iact8"
+                ]
+              }
+            },
+            {
+              "id": "BY-SES-006",
+              "name": "BY_SES_006",
+              "shortDescription": {
+                "text": "Anti-replay session — BY-SES-006"
+              },
+              "fullDescription": {
+                "text": "Defender hit BY-SES-006 x1 on /iremovalActivation/apple_drm_check.ph"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "category": "Anti-replay session",
+                "severity": "high",
+                "tags": [
+                  "security",
+                  "iremovaldetection",
+                  "iact8"
+                ]
+              }
+            },
+            {
+              "id": "iRemovalPro_Bplist00Ticket_Marker",
+              "name": "iRemovalPro_Bplist00Ticket_Marker",
+              "shortDescription": {
+                "text": "Autre — iRemovalPro_Bplist00Ticket_Marker"
+              },
+              "fullDescription": {
+                "text": "YARA rule iRemovalPro_Bplist00Ticket_Marker fired 320x"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "category": "Autre",
+                "severity": "medium",
+                "tags": [
+                  "security",
+                  "iremovaldetection",
+                  "iact8"
+                ]
+              }
+            },
+            {
+              "id": "iRemovalPro_OFFENSIVE Lab_Marker",
+              "name": "iRemovalPro_OFFENSIVE Lab_Marker",
+              "shortDescription": {
+                "text": "Autre — iRemovalPro_OFFENSIVE Lab_Marker"
+              },
+              "fullDescription": {
+                "text": "YARA rule iRemovalPro_OFFENSIVE Lab_Marker fired 160x"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "category": "Autre",
+                "severity": "medium",
+                "tags": [
+                  "security",
+                  "iremovaldetection",
+                  "iact8"
+                ]
+              }
+            },
+            {
+              "id": "iRemovalPro_WireEnvelope_Fields",
+              "name": "iRemovalPro_WireEnvelope_Fields",
+              "shortDescription": {
+                "text": "Autre — iRemovalPro_WireEnvelope_Fields"
+              },
+              "fullDescription": {
+                "text": "YARA rule iRemovalPro_WireEnvelope_Fields fired 202x"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "category": "Autre",
+                "severity": "medium",
+                "tags": [
+                  "security",
+                  "iremovaldetection",
+                  "iact8"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "automationDetails": {
+        "id": "iact8-20260622T192455Z"
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2026-06-22T19:24:55Z"
+        }
+      ],
+      "results": [
+        {
+          "ruleId": "BY-EXT-004",
+          "level": "warning",
+          "message": {
+            "text": "Defender hit BY-EXT-004 x1 on /iremovalActivation/apple_drm_check.ph"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/iremovalActivation/apple_drm_check.ph"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 68,
+                  "snippet": {
+                    "text": "Defender hit BY-EXT-004 x1 on /iremovalActivation/apple_drm_check.ph"
+                  }
+                }
+              },
+              "properties": {
+                "category": "Extension applicative"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "BY-SES-005",
+          "level": "error",
+          "message": {
+            "text": "Defender hit BY-SES-005 x1 on /iremovalActivation/apple_drm_check.ph"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/iremovalActivation/apple_drm_check.ph"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 68,
+                  "snippet": {
+                    "text": "Defender hit BY-SES-005 x1 on /iremovalActivation/apple_drm_check.ph"
+                  }
+                }
+              },
+              "properties": {
+                "category": "Anti-replay session"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "BY-SES-006",
+          "level": "error",
+          "message": {
+            "text": "Defender hit BY-SES-006 x1 on /iremovalActivation/apple_drm_check.ph"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/iremovalActivation/apple_drm_check.ph"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 68,
+                  "snippet": {
+                    "text": "Defender hit BY-SES-006 x1 on /iremovalActivation/apple_drm_check.ph"
+                  }
+                }
+              },
+              "properties": {
+                "category": "Anti-replay session"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "BY-SES-001",
+          "level": "error",
+          "message": {
+            "text": "Defender hit BY-SES-001 x1 on /iremovalActivation/apple_drm_check.ph"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/iremovalActivation/apple_drm_check.ph"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 68,
+                  "snippet": {
+                    "text": "Defender hit BY-SES-001 x1 on /iremovalActivation/apple_drm_check.ph"
+                  }
+                }
+              },
+              "properties": {
+                "category": "Anti-replay session"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iRemovalPro_Bplist00Ticket_Marker",
+          "level": "warning",
+          "message": {
+            "text": "YARA rule iRemovalPro_Bplist00Ticket_Marker fired 320x"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "yara://scan"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 54,
+                  "snippet": {
+                    "text": "YARA rule iRemovalPro_Bplist00Ticket_Marker fired 320x"
+                  }
+                }
+              },
+              "properties": {
+                "category": "Autre"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iRemovalPro_OFFENSIVE Lab_Marker",
+          "level": "warning",
+          "message": {
+            "text": "YARA rule iRemovalPro_OFFENSIVE Lab_Marker fired 160x"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "yara://scan"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 53,
+                  "snippet": {
+                    "text": "YARA rule iRemovalPro_OFFENSIVE Lab_Marker fired 160x"
+                  }
+                }
+              },
+              "properties": {
+                "category": "Autre"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iRemovalPro_WireEnvelope_Fields",
+          "level": "warning",
+          "message": {
+            "text": "YARA rule iRemovalPro_WireEnvelope_Fields fired 202x"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "yara://scan"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 52,
+                  "snippet": {
+                    "text": "YARA rule iRemovalPro_WireEnvelope_Fields fired 202x"
+                  }
+                }
+              },
+              "properties": {
+                "category": "Autre"
+              }
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "lab_version": "5.2-LAB-0.2",
+        "generated_at": "2026-06-22T19:24:55Z"
+      }
+    }
+  ]
+}

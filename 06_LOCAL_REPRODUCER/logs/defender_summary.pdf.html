@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>iAct8 Defender — Rapport de détection</title>
+<style>
+    @page { size: A4; margin: 16mm 14mm; }
+    body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+           color: #0f172a; }
+    h1 { color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 6px; }
+    h2 { color: #1d4ed8; margin-top: 24px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    th, td { padding: 4px 6px; border: 1px solid #cbd5e1; text-align: left;
+             vertical-align: top; }
+    th { background: #1d4ed8; color: white; text-transform: uppercase; font-size: 9px; }
+    .kpi-row { display: flex; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+    .kpi { flex: 1; min-width: 80px; padding: 8px 10px; border: 1px solid #cbd5e1;
+           border-radius: 4px; background: #f1f5f9; }
+    .kpi .label { font-size: 9px; text-transform: uppercase; color: #475569; }
+    .kpi .value { font-size: 18px; font-weight: 700; color: #0f172a; }
+    .sev-critical { background: #fee2e2; color: #b91c1c; font-weight: 700; }
+    .sev-high     { background: #ffedd5; color: #c2410c; font-weight: 700; }
+    .sev-medium   { background: #fef9c3; color: #854d0e; font-weight: 700; }
+    .sev-low      { background: #dcfce7; color: #166534; }
+    .footer { margin-top: 24px; color: #64748b; font-size: 9px; text-align: center; }
+    code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 10px;
+           background: #f1f5f9; padding: 1px 3px; border-radius: 2px; }
+    </style>
+</head>
+<body>
+<h1>iAct8 Defender — Rapport de détection</h1>
+<p><b>Outil :</b> iAct8Defender v5.2-LAB-0.2<br>
+<b>Généré :</b> 2026-06-22T19:24:55Z<br>
+<b>Findings :</b> 7<br>
+<b>Catégories :</b> Anti-replay session, Autre, Extension applicative</p>
+
+<div class="kpi-row"><div class='kpi'><div class='label'>CRITICAL</div><div class='value'>0</div></div><div class='kpi'><div class='label'>HIGH</div><div class='value'>3</div></div><div class='kpi'><div class='label'>MEDIUM</div><div class='value'>4</div></div><div class='kpi'><div class='label'>LOW</div><div class='value'>0</div></div></div>
+
+<h2>E2E runner</h2><p>overall_ok : <b>True</b> &middot; duration : 2.30s &middot; seed : <code>0xDEFA17C0DE</code></p><table><tr><th>Stage</th><th>Status</th><th>Duration</th></tr><tr><td><b>static_lab</b></td><td>✅</td><td>0.89s</td></tr><tr><td><b>dynamic_smoke</b></td><td>✅</td><td>0.81s</td></tr><tr><td><b>dashboard_render</b></td><td>✅</td><td>0.59s</td></tr></table>
+
+<h2>Top 25 rules déclenchées</h2>
+<table>
+<tr><th>Rule ID</th><th>#</th><th>Catégorie</th><th>Sévérité</th></tr>
+<tr><td><code>BY-EXT-004</code></td><td>1</td><td>Extension applicative</td><td>medium</td></tr><tr><td><code>BY-SES-005</code></td><td>1</td><td>Anti-replay session</td><td>high</td></tr><tr><td><code>BY-SES-006</code></td><td>1</td><td>Anti-replay session</td><td>high</td></tr><tr><td><code>BY-SES-001</code></td><td>1</td><td>Anti-replay session</td><td>high</td></tr><tr><td><code>iRemovalPro_Bplist00Ticket_Marker</code></td><td>1</td><td>Autre</td><td>medium</td></tr><tr><td><code>iRemovalPro_OFFENSIVE Lab_Marker</code></td><td>1</td><td>Autre</td><td>medium</td></tr><tr><td><code>iRemovalPro_WireEnvelope_Fields</code></td><td>1</td><td>Autre</td><td>medium</td></tr>
+</table>
+
+<h2>Détail des findings (top 80)</h2>
+<table>
+<tr><th>Rule</th><th>Sévérité</th><th>Message</th></tr>
+<tr><td><code>BY-EXT-004</code></td><td><span class='sev-medium'>MEDIUM</span></td><td>Defender hit BY-EXT-004 x1 on /iremovalActivation/apple_drm_check.ph</td></tr><tr><td><code>BY-SES-005</code></td><td><span class='sev-high'>HIGH</span></td><td>Defender hit BY-SES-005 x1 on /iremovalActivation/apple_drm_check.ph</td></tr><tr><td><code>BY-SES-006</code></td><td><span class='sev-high'>HIGH</span></td><td>Defender hit BY-SES-006 x1 on /iremovalActivation/apple_drm_check.ph</td></tr><tr><td><code>BY-SES-001</code></td><td><span class='sev-high'>HIGH</span></td><td>Defender hit BY-SES-001 x1 on /iremovalActivation/apple_drm_check.ph</td></tr><tr><td><code>iRemovalPro_Bplist00Ticket_Marker</code></td><td><span class='sev-medium'>MEDIUM</span></td><td>YARA rule iRemovalPro_Bplist00Ticket_Marker fired 320x</td></tr><tr><td><code>iRemovalPro_OFFENSIVE Lab_Marker</code></td><td><span class='sev-medium'>MEDIUM</span></td><td>YARA rule iRemovalPro_OFFENSIVE Lab_Marker fired 160x</td></tr><tr><td><code>iRemovalPro_WireEnvelope_Fields</code></td><td><span class='sev-medium'>MEDIUM</span></td><td>YARA rule iRemovalPro_WireEnvelope_Fields fired 202x</td></tr>
+</table>
+
+<div class="footer">iAct8 Defender v5.2-LAB-0.2 &middot; offline report &middot; for blue teams</div>
+</body>
+</html>

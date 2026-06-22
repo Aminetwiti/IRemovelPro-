@@ -53,17 +53,10 @@ try:
         'devicecheck_token': 'h.p.s',
     }
     body = json.dumps(payload).encode()
-    ts = str(int(time.time()))
-    method = 'POST'
     path = '/iremovalActivation/apple_drm_check.ph'
-    canonical = f"{method}\n{path}\n{ts}\n".encode() + body
-    sig = hmac.new(b'test-secret', canonical, 'sha256').hexdigest()
+    headers = {'Content-Type': 'application/json'}
+    headers.update(hmac_auth.make_signed_headers(auth, method='POST', path=path, body=body, key_id='default'))
     conn = http.client.HTTPConnection('127.0.0.1', port, timeout=5)
-    headers = {
-        'Content-Type': 'application/json',
-        'X-Lab-Timestamp': ts,
-        'X-Lab-Signature': sig,
-    }
     conn.request('POST', path, body=body, headers=headers)
     resp = conn.getresponse()
     body_resp = resp.read()

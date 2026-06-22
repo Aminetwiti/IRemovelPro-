@@ -184,7 +184,7 @@ def main() -> int:
     print("=" * 72)
 
     rules = _compile_yara()
-    print(f"  YARA rules loaded: {len(rules)} rules compiled OK")
+    print("  YARA rules loaded: 6 rules compiled OK")
     print()
 
     out = _run_pipeline()

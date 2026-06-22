@@ -1,0 +1,162 @@
+// =====================================================================
+// iAct8 / iRemoval PRO v5.2 — Splunk SPL queries for blue teams
+// Lab version : 5.2-LAB-0.2
+// Source       : 06_LOCAL_REPRODUCER / 01_REPORTS / 05_IOC
+// Author       : iAct8 Defender (offline reproducer)
+// =====================================================================
+//
+// Usage in Splunk:
+//   1. Save this file as `iact8_queries.spl` in your Splunk app's `lookups/`
+//      or paste queries one-by-one into the Search & Reporting app.
+//   2. Adjust the index name (`iact8`) to match your environment.
+//   3. All queries are stateless and return the last 30 days by default.
+//
+// Data sources expected (in any SIEM / log shipper):
+//   * Web proxy logs   : method, dest_host, url_path, status, src_ip, udid
+//   * Endpoint EDR     : process_name, parent_process, signed, command_line
+//   * iOS syslog       : mdm_channel, bundle_id, operation, status
+//   * DNS resolver     : query, qtype, response_ip, src_ip
+//   * Network IDS      : signature_id, src_ip, dest_ip, payload
+//
+// All queries are read-only and safe to run in production.
+// =====================================================================
+
+
+// ---------------------------------------------------------------------
+// R1 — Pas de signature Authenticode
+// ---------------------------------------------------------------------
+// Detect unsigned iRemoval binaries (Win x64) appearing in endpoint EDR.
+// Expected hit: iremovaldriver.exe, iremovaldriver64.exe, etc.
+index=iact8 sourcetype=edr:process
+  (file_name="iremoval*" OR file_name="minaeraser*" OR file_name="blackhound*")
+| eval signed_status=if(signed="true","signed","UNSIGNED")
+| where signed_status="UNSIGNED"
+| stats count
+         values(file_path) as file_paths
+         values(signed) as sig_chain
+         values(command_line) as cmdlines
+         by host, file_name, signed_status
+| sort - count
+| rename host as "Endpoint", file_name as "Binaire suspect", signed_status as "Authenticode"
+| head 50
+
+
+// ---------------------------------------------------------------------
+// R2 — Bypass SSL custom (hooks SecKey*)
+// ---------------------------------------------------------------------
+// Find web-proxy flows targeting the albert.apple.com / deviceservices
+// endpoint, where the TLS chain validation looks suspicious (e.g. unusual
+// JA3/JA3S, missing certificate chain, or a known-bad Cydia source).
+index=iact8 sourcetype=proxy:web
+  (dest_host="albert.apple.com" OR dest_host="*.albert.apple.com")
+  (url_path="*/drmHandshake*" OR url_path="*/deviceservices/*" OR url_path="/iremovalActivation/*")
+| stats count
+         values(src_ip) as client_ips
+         values(user_agent) as user_agents
+         values(tls_ja3) as ja3_hashes
+         values(tls_issuer) as issuers
+         by dest_host, url_path
+| sort - count
+| rename dest_host as "Apple host", url_path as "Endpoint"
+| head 50
+
+
+// ---------------------------------------------------------------------
+// R3 — Télémétrie device (UDID/IMEI/MEID/SN)
+// ---------------------------------------------------------------------
+// Surface proxy / MDM queries that include serialised device identifiers.
+// The lab reproducer shows UDID + MEID + IMEI + SerialNumber flows.
+index=iact8 sourcetype=proxy:web OR sourcetype=edr:process
+  (query="*UDID*" OR query="*IMEI*" OR query="*MEID*" OR query="*SerialNumber*")
+| rex field=query "(?<device_udid>[0-9A-F]{8}-[0-9A-F]{16})"
+| rex field=query "(?<device_imei>\d{14,15})"
+| stats count
+         values(src_ip) as src_ips
+         values(device_udid) as udids
+         values(device_imei) as imeis
+         by host, dest_host
+| where count > 3
+| sort - count
+
+
+// ---------------------------------------------------------------------
+// R4 — Bypass anti-vol iCloud (ActivationLock)
+// ---------------------------------------------------------------------
+// Track calls to MobileActivation / Security.framework that match the
+// Cydia Substrate hooking pattern. Useful when the device's unified log
+// is shipped to your SIEM.
+index=iact8 sourcetype=os:macos OR sourcetype=os:ios subsystem="com.apple.MobileActivation"
+  (event_message="*SecKeyRawVerify*" OR
+   event_message="*SecKeyVerifySignature*" OR
+   event_message="*SecTrustEvaluateWithError*" OR
+   event_message="*MobileActivation*")
+| stats count
+         values(process) as procs
+         values(bundle_id) as bundles
+         by host, subsystem
+| sort - count
+| head 50
+
+
+// ---------------------------------------------------------------------
+// R5 — Réécriture NAND irréversible (minaeraser12 + A12Eraser)
+// ---------------------------------------------------------------------
+// EDR / filesystem audit: detect any of the bypass toolkit's payload
+// staging paths.
+index=iact8 sourcetype=edr:file OR sourcetype=edr:process
+  (file_path="*/minaeraser*" OR
+   file_path="*/A12Eraser*" OR
+   file_path="*/private/var/root/identity*" OR
+   file_path="*/private/var/root/payloa*" OR
+   command_line="*minaeraser*")
+| stats count
+         values(file_path) as paths
+         values(command_line) as cmdlines
+         by host, user
+| sort - count
+
+
+// ---------------------------------------------------------------------
+// R6 — Tweak jailbreak (unsigned dylib via Cydia Substrate)
+// ---------------------------------------------------------------------
+// Apple AMFI / MobileInstallation events indicating an unknown dylib
+// has been loaded into a system process.
+index=iact8 sourcetype=os:ios amfi_event="load_dylib"
+  (dylib_path="*blackhound*" OR dylib_path="*iremoval*" OR bundle_id="com.panyolsoft.*")
+| stats count
+         values(dylib_path) as dylibs
+         values(bundle_id) as bundles
+         values(signing_status) as sigs
+         by host, target_process
+| sort - count
+| head 50
+
+
+// ---------------------------------------------------------------------
+// Lab-specific: monitor the dynamic_smoke e2e stage
+// ---------------------------------------------------------------------
+// Surface the BY-XXX-NNN defender hits produced by 06_LOCAL_REPRODUCER
+// and exported in SARIF.
+index=iact8 sourcetype=iact:defender_hits rule_id="BY-*"
+| stats count
+         values(defender_version) as versions
+         values(outcome) as outcomes
+         by rule_id, severity
+| sort - count
+| head 25
+
+
+// ---------------------------------------------------------------------
+// Lab-specific: watch for the bypass RSA modulus (BY-INT-001)
+// ---------------------------------------------------------------------
+// Forensic search for any TLS handshake or signed payload that contains
+// the well-known iRemoval PRO v5.2 RSA-1024 modulus prefix.
+index=iact8 (sourcetype=proxy:tls OR sourcetype=edr:file OR sourcetype=suricata)
+  (payload="*032476fc5c2ff5e6*" OR cert_modulus="*032476fc5c2ff5e6*")
+| stats count
+         values(src_ip) as src_ips
+         values(payload) as sample_payloads
+         by dest_host, sourcetype
+| sort - count
+| rename dest_host as "Destination suspecte", sourcetype as "Source de log"
+| head 50

@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>iRemovalProWPF</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>True</UseWPF>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="resources\iremovalphone.image.png" />
+    <None Remove="resources\phonelogo.image.png" />
+    <None Remove="mainwindow.baml" />
+    <None Remove="resources\plugdevice.image.png" />
+    <None Remove="app.baml" />
+    <EmbeddedResource Include="resources\iremovalphone.image.png" LogicalName="resources/iremovalphone.image.png" />
+    <EmbeddedResource Include="resources\phonelogo.image.png" LogicalName="resources/phonelogo.image.png" />
+    <EmbeddedResource Include="mainwindow.baml" LogicalName="mainwindow.baml" />
+    <EmbeddedResource Include="resources\plugdevice.image.png" LogicalName="resources/plugdevice.image.png" />
+    <EmbeddedResource Include="app.baml" LogicalName="app.baml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Management" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+</Project>

@@ -48,7 +48,7 @@ _PKG_ROOT = _THIS_DIR.parent
 if str(_PKG_ROOT) not in sys.path:
     sys.path.insert(0, str(_PKG_ROOT))
 
-from iact_reproducer import dashboard, run_lab, smoke_apple_drm  # noqa: E402
+from iact_reproducer import dashboard, report_export, run_lab, smoke_apple_drm  # noqa: E402
 
 log = logging.getLogger("iact_e2e")
 
@@ -233,6 +233,46 @@ def render_dashboard(repro_root: Path, out_path: Path) -> StageResult:
     )
 
 
+def export_reports(repro_root: Path, out_dir: Path, *, fmt: str = "both") -> StageResult:
+    """Stage 4 — write SARIF 2.1.0 + PDF-friendly HTML for the run."""
+    started = _utc_now()
+    t0 = time.monotonic()
+    error: Optional[str] = None
+    ok = True
+    artifacts: Dict[str, Any] = {}
+    findings_count = 0
+    try:
+        findings = report_export.load_findings_from_logs(repro_root)
+        findings_count = len(findings)
+        e2e_report_path = repro_root / "logs" / "e2e_report.json"
+        e2e_report: Optional[Dict[str, Any]] = None
+        if e2e_report_path.is_file():
+            try:
+                e2e_report = json.loads(e2e_report_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                e2e_report = None
+        out_dir.mkdir(parents=True, exist_ok=True)
+        if fmt in ("sarif", "both"):
+            p = report_export.write_sarif(findings, out_dir / "defender_findings.sarif.json")
+            artifacts["sarif"] = str(p)
+        if fmt in ("pdf", "both"):
+            p = report_export.write_pdf(findings, out_dir / "defender_summary.pdf.html",
+                                        e2e_report=e2e_report)
+            artifacts["pdf_html"] = str(p)
+    except Exception:
+        ok = False
+        error = traceback.format_exc()
+    return StageResult(
+        name="reports_export",
+        ok=ok,
+        started_at=started,
+        finished_at=_utc_now(),
+        duration_seconds=round(time.monotonic() - t0, 3),
+        details={"artifacts": artifacts, "findings_count": findings_count, "format": fmt},
+        error=error,
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(
         prog="iact_e2e",
@@ -250,6 +290,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--skip-smoke", action="store_true",
                    help="Skip the dynamic smoke test (mock server + defender)")
     p.add_argument("--skip-dashboard", action="store_true")
+    p.add_argument("--skip-reports", action="store_true",
+                   help="Skip the SARIF + PDF export stage")
+    p.add_argument("--reports-format", default="both", choices=["sarif", "pdf", "both"],
+                   help="Which report artefacts to write in stage 4")
     p.add_argument("--dashboard-out",
                    default="06_LOCAL_REPRODUCER/dashboard_20260622_v2.html")
     p.add_argument("--report-out",
@@ -283,7 +327,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f" repro_root : {repro_root}")
     print(f" samples    : {args.samples}")
     print(f" seed       : 0x{args.seed:X}")
-    print(f" stages     : static_lab + dynamic_smoke + dashboard_render")
+    print(f" stages     : static_lab + dynamic_smoke + dashboard_render + reports_export")
 
     stages: List[StageResult] = []
     overall_ok = True
@@ -334,6 +378,26 @@ def main(argv: list[str] | None = None) -> int:
             details={"skipped": True},
         ))
         print("   --  dashboard skipped (--skip-dashboard)")
+
+    if not args.skip_reports:
+        _step("Stage 4/4 — Reports export (SARIF + PDF)")
+        rep_res = export_reports(repro_root, repro_root / "logs", fmt=args.reports_format)
+        stages.append(rep_res)
+        overall_ok = overall_ok and rep_res.ok
+        print(f"   {'OK ' if rep_res.ok else 'FAIL'}  "
+              f"findings={rep_res.details.get('findings_count', 0)}")
+        for kind, p in (rep_res.details.get("artifacts") or {}).items():
+            print(f"     → {kind:9s}: {p}")
+    else:
+        stages.append(StageResult(
+            name="reports_export",
+            ok=True,
+            started_at=_utc_now(),
+            finished_at=_utc_now(),
+            duration_seconds=0.0,
+            details={"skipped": True},
+        ))
+        print("   --  reports export skipped (--skip-reports)")
 
     # ----------------- Final report ----------------- #
     total_duration = sum(s.duration_seconds for s in stages)
