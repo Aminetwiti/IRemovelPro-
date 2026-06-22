@@ -1,0 +1,30 @@
+Binary Analysis Summary
+=======================
+
+File: macho_8ea1a8_EXECUTE_ARM64_ALL.bin
+Architecture: AARCH64
+Address Size: 64 bit
+Endianness: false (big endian)
+Compiler: default
+
+Functions:
+  Total: 1
+  External: 0
+  Thunks: 0
+  User-defined: 1
+
+Memory Sections:
+  __TEXT: 100000000 - 100007eef (32496 bytes) [X] [R]
+  __text: 100007ef0 - 100007f3f (80 bytes) [X] [R]
+  __stubs: 100007f40 - 100007f6f (48 bytes) [X] [R]
+  __stub_helper: 100007f70 - 100007fb7 (72 bytes) [X] [R]
+  __unwind_info: 100007fb8 - 100007fff (72 bytes) [R]
+  __got: 100008000 - 100008007 (8 bytes) [W] [R]
+  __objc_imageinfo: 100008008 - 10000800f (8 bytes) [W] [R]
+  __DATA_CONST: 100008010 - 10000bfff (16368 bytes) [W] [R]
+  __la_symbol_ptr: 10000c000 - 10000c01f (32 bytes) [W] [R]
+  __data: 10000c020 - 10000c027 (8 bytes) [W] [R]
+  __DATA: 10000c028 - 10000ffff (16344 bytes) [W] [R]
+  __LINKEDIT: 100010000 - 1000117bf (6080 bytes) [R]
+  __LINKEDIT: 1000117c0 - 100013fff (10304 bytes) [R]
+  EXTERNAL: 100014000 - 100014027 (40 bytes) [W] [R]

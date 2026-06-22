@@ -1,0 +1,9 @@
+[
+  {
+    "name": "entry",
+    "address": "10000c00c",
+    "signature": "undefined entry()",
+    "external": false,
+    "calls": []
+  }
+]

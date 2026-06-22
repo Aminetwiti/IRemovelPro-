@@ -1,0 +1,49 @@
+Interesting Functions and Patterns
+===================================
+
+[CRYPT related]
+  _CCCrypt @ 000074c8
+  _CCCrypt @ 00018000
+
+[SHA related]
+  _CC_SHA256 @ 000074d4
+  _CC_SHA256 @ 00018008
+
+[KEY related]
+  _replace_SecKeyRawVerify @ 00006188
+  _replace_SecKeyVerifySignature @ 000061d8
+  _SecKeyCreateWithData @ 000074f8
+  _SecKeyVerifySignature @ 00007504
+  _SecKeyCreateWithData @ 00018068
+  _SecKeyVerifySignature @ 00018078
+
+[SEND related]
+  _objc_msgSend @ 0000757c
+  _objc_msgSend @ 00018110
+
+[ALLOC related]
+  _objc_alloc @ 00007540
+  _objc_alloc @ 000180e8
+
+[LOG related]
+  _logger @ 00006164
+  __logosLocalCtor_7d5e59f6 @ 00006208
+  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$ @ 00006394
+  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$ @ 00006414
+  ___os_log_helper_16_0_0 @ 000074ac
+  __os_log_impl @ 00007528
+  _os_log_create @ 000075d0
+  _os_log_type_enabled @ 000075dc
+  __os_log_impl @ 000180b0
+  _os_log_create @ 00018148
+  _os_log_type_enabled @ 00018150
+
+[ERROR related]
+  _replace_SecTrustEvaluateWithError @ 000061b4
+  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$ @ 00006394
+
+[FAIL related]
+  ___stack_chk_fail @ 0000751c
+  ___stack_chk_fail @ 000180a0
+
+[POTENTIALLY DANGEROUS FUNCTIONS]

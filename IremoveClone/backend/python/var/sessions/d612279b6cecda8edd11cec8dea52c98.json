@@ -1,0 +1,18 @@
+{
+  "id": "d612279b6cecda8edd11cec8dea52c98",
+  "state": "ACTIVATED",
+  "created_at": "2026-06-22T14:02:42.830443",
+  "updated_at": "2026-06-22T14:02:42.890446",
+  "device_info": {
+    "udid": "00008101-001234567890ABCD",
+    "model": "iPhone14,2",
+    "serial": "F2LXX0Q0A1B2",
+    "imei": "359241080000000",
+    "meid": "35924100000000",
+    "ecid": "0x1234567890ABCDEF"
+  },
+  "nonce_a_b64": "buixB3IDhn3Za8YkoTsbhw==",
+  "nonce_b_b64": "6N6UY2wHHlIqxTkQjbpymA==",
+  "nonce_c_b64": "B3+DAnslvAVfxIntNWIVZA==",
+  "ticket_path": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\IremoveClone\\backend\\python\\var\\tickets\\d612279b6cecda8edd11cec8dea52c98.json"
+}

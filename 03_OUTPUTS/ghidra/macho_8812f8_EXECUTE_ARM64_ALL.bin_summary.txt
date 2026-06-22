@@ -1,0 +1,35 @@
+Binary Analysis Summary
+=======================
+
+File: macho_8812f8_EXECUTE_ARM64_ALL.bin
+Architecture: AARCH64
+Address Size: 64 bit
+Endianness: false (big endian)
+Compiler: default
+
+Functions:
+  Total: 1
+  External: 0
+  Thunks: 0
+  User-defined: 1
+
+Memory Sections:
+  __TEXT: 100000000 - 10000703b (28732 bytes) [X] [R]
+  __text: 10000703c - 10001771f (67300 bytes) [X] [R]
+  __stubs: 100017720 - 1000177bb (156 bytes) [X] [R]
+  __stub_helper: 1000177bc - 10001786f (180 bytes) [X] [R]
+  __objc_methname: 100017870 - 1000178b7 (72 bytes) [R]
+  __unwind_info: 1000178b8 - 100017a67 (432 bytes) [R]
+  __eh_frame: 100017a68 - 100017fff (1432 bytes) [R]
+  __got: 100018000 - 10001802f (48 bytes) [W] [R]
+  __la_symbol_ptr: 100018030 - 100018097 (104 bytes) [W] [R]
+  __objc_imageinfo: 100018098 - 10001809f (8 bytes) [W] [R]
+  __objc_selrefs: 1000180a0 - 1000180bf (32 bytes) [W] [R]
+  __objc_classrefs: 1000180c0 - 1000180cf (16 bytes) [W] [R]
+  __data: 1000180d0 - 100018fff (3888 bytes) [W] [R]
+  __common: 100019000 - 100019007 (8 bytes) [W] [R]
+  __bss: 100019008 - 100019013 (12 bytes) [W] [R]
+  __DATA: 100019014 - 10001bfff (12268 bytes) [W] [R]
+  __LINKEDIT: 10001c000 - 100022acf (27344 bytes) [R]
+  __LINKEDIT: 100022ad0 - 100023fff (5424 bytes) [R]
+  EXTERNAL: 100024000 - 1000240af (176 bytes) [W] [R]

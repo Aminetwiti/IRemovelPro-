@@ -1,0 +1,39 @@
+Binary Analysis Summary
+=======================
+
+File: macho_86b4d3_DYLIB_ARM64_ARM64E.bin
+Architecture: AARCH64
+Address Size: 64 bit
+Endianness: false (big endian)
+Compiler: default
+
+Functions:
+  Total: 0
+  External: 0
+  Thunks: 0
+  User-defined: 0
+
+Memory Sections:
+  __TEXT: 00000000 - 00005efb (24316 bytes) [X] [R]
+  __text: 00005efc - 000075a7 (5804 bytes) [X] [R]
+  __auth_stubs: 000075a8 - 00007737 (400 bytes) [X] [R]
+  __gcc_except_tab: 00007738 - 0000795f (552 bytes) [R]
+  __cstring: 00007960 - 00007c6c (781 bytes) [R]
+  __objc_methname: 00007c6d - 00007f87 (795 bytes) [R]
+  __unwind_info: 00007f88 - 00007fff (120 bytes) [R]
+  __oslogstring: 00008000 - 0000bfff (16384 bytes) [R]
+  __auth_got: 0000c000 - 0000c0c7 (200 bytes) [W] [R]
+  __got: 0000c0c8 - 0000c11f (88 bytes) [W] [R]
+  __mod_init_func: 0000c120 - 0000c127 (8 bytes) [W] [R]
+  __cfstring: 0000c128 - 0000c3a7 (640 bytes) [W] [R]
+  __objc_imageinfo: 0000c3a8 - 0000c3af (8 bytes) [W] [R]
+  __DATA_CONST: 0000c3b0 - 0000ffff (15440 bytes) [W] [R]
+  __objc_selrefs: 00010000 - 000100ff (256 bytes) [W] [R]
+  __objc_classrefs: 00010100 - 0001013f (64 bytes) [W] [R]
+  __data: 00010140 - 00010147 (8 bytes) [W] [R]
+  __bss: 00010148 - 0001015f (24 bytes) [W] [R]
+  __common: 00010160 - 00010177 (24 bytes) [W] [R]
+  __DATA: 00010178 - 00013fff (16008 bytes) [W] [R]
+  __LINKEDIT: 00014000 - 00015e1f (7712 bytes) [R]
+  __LINKEDIT: 00015e20 - 00017fff (8672 bytes) [R]
+  EXTERNAL: 00018000 - 0001815f (352 bytes) [W] [R]

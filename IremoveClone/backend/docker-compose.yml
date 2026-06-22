@@ -1,0 +1,65 @@
+version: "3.8"
+
+# ============================================================================
+# iRemovalClone — Docker compose pour dev local
+# ============================================================================
+#
+# Lance le clone du serveur dans 3 versions :
+#   - php    : version standalone (PHP built-in server)
+#   - python : version Flask
+#   - nginx  : reverse proxy (optionnel)
+#
+# Usage :
+#   docker compose up -d
+#   curl http://localhost:8080/version33.txt
+#
+# ============================================================================
+
+services:
+  php:
+    build:
+      context: ../standalone
+      dockerfile: Dockerfile
+    container_name: iremo-clone-php
+    ports:
+      - "8080:8080"
+    volumes:
+      - iremo-data:/app/var
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/version33.txt"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  python:
+    build:
+      context: ../python
+      dockerfile: Dockerfile
+    container_name: iremo-clone-python
+    ports:
+      - "5000:5000"
+    volumes:
+      - iremo-data-py:/app/var
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/version33.txt"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  nginx:
+    image: nginx:alpine
+    container_name: iremo-clone-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - php
+      - python
+    restart: unless-stopped
+
+volumes:
+  iremo-data:
+  iremo-data-py:

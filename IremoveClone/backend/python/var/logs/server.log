@@ -1,0 +1,28 @@
+[2026-06-22 14:57:40,593] WARNING No RSA key found, generating new RSA-1024 pair...
+[2026-06-22 14:57:41,198] INFO ======================================================================
+[2026-06-22 14:57:41,199] INFO  iRemovalClone (Python) — Ready
+[2026-06-22 14:57:41,200] INFO ======================================================================
+[2026-06-22 14:57:41,200] INFO  RSA-1024 modulus: tgG2HaoIem9g2pEBts6e7JEknlAo7Hrdqzv+GFRvlCB3v+ci3J...
+[2026-06-22 14:57:41,200] INFO  PBKDF2 salt:      'iremovalpro-iact8-v1'
+[2026-06-22 14:57:41,203] INFO  PBKDF2 iterations:10000
+[2026-06-22 14:57:41,203] INFO  Listening on:      http://127.0.0.1:5000
+[2026-06-22 14:57:41,203] INFO ======================================================================
+[2026-06-22 14:57:41,340] INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2026-06-22 14:57:41,341] INFO [33mPress CTRL+C to quit[0m
+[2026-06-22 14:58:46,032] INFO version33 hit
+[2026-06-22 14:58:46,033] INFO 127.0.0.1 - - [22/Jun/2026 14:58:46] "GET /version33.txt HTTP/1.1" 200 -
+[2026-06-22 15:02:42,825] INFO version33 hit
+[2026-06-22 15:02:42,825] INFO 127.0.0.1 - - [22/Jun/2026 15:02:42] "GET /version33.txt HTTP/1.1" 200 -
+[2026-06-22 15:02:42,831] INFO Session created: d612279b6cecda8edd11cec8dea52c98
+[2026-06-22 15:02:42,834] INFO auth3: session=d612279b6cecda8edd11cec8dea52c98 udid=00008101-001234567890ABCD
+[2026-06-22 15:02:42,834] INFO 127.0.0.1 - - [22/Jun/2026 15:02:42] "POST /iremovalActivation/auth3.php HTTP/1.1" 200 -
+[2026-06-22 15:02:42,866] INFO checkm8: session=d612279b6cecda8edd11cec8dea52c98 nonceC=B3+DAnslvAVfxIntNWIVZA==
+[2026-06-22 15:02:42,866] INFO 127.0.0.1 - - [22/Jun/2026 15:02:42] "POST /iremovalActivation/checkm8.php HTTP/1.1" 200 -
+[2026-06-22 15:02:42,891] INFO iact8: ACTIVATED session=d612279b6cecda8edd11cec8dea52c98 udid=00008101-001234567890ABCD
+[2026-06-22 15:02:42,891] INFO   sig_len=128 record_len=766
+[2026-06-22 15:02:42,892] INFO 127.0.0.1 - - [22/Jun/2026 15:02:42] "POST /iremovalActivation/iact8.php HTTP/1.1" 200 -
+[2026-06-22 15:02:42,970] INFO 127.0.0.1 - - [22/Jun/2026 15:02:42] "GET /tickets/d612279b6cecda8edd11cec8dea52c98.json HTTP/1.1" 200 -
+[2026-06-22 15:02:42,995] INFO pub: method=POST body={"test": "x"}
+[2026-06-22 15:02:42,996] INFO 127.0.0.1 - - [22/Jun/2026 15:02:42] "POST /pub.php HTTP/1.1" 200 -
+[2026-06-22 15:02:43,012] INFO 127.0.0.1 - - [22/Jun/2026 15:02:43] "GET /admin/key-info HTTP/1.1" 200 -

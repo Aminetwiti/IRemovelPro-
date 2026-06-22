@@ -1,0 +1,832 @@
+# Category: network
+# Source: IRemovalPro\iremovalpro.dll
+# Total: 828 strings
+
+0x00742dcb  [ascii]  Renci.SshNet
+0x00742e81  [ascii]   Renci.SshNet.dll$System.Net.Sockets
+0x00742edf  [ascii]  ,System.Net.Sockets.dll*System.Net.Primitives
+0x00743149  [ascii]  (System.Threading.dll8SshNet.Security.Cryptography
+0x007431e0  [ascii]  @SshNet.Security.Cryptography.dll<System.Diagnostics.TraceSource
+0x007445ba  [ascii]  RepositoryUrlBhttps://github.com/dotnet/runtime
+0x00745647  [ascii]  SSH.NETHad816c5e-6f13-4589-9f3e-59523f8b77a4cK
+0x0074567b  [ascii]  Renci.SshNet.Tests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100f9194e1eb66b7e2575aaee115ee1d27bc100920e7150e43992d6f668f9737de8b9c7ae892b62b8a36dd1d57929ff1541665d101...
+0x00745941  [ascii]  SSH.NET is a Secure Shell (SSH) library for .NET, optimized for parallelism.
+0x00745c06  [ascii]  \SshNet.Security.Cryptography for .NET Standard@Cryptographic functions for .NET8Copyright 
+0x0077530a  [ascii]  "SshMessageFactory+
+0x0077c957  [ascii]  SocketAddress
+0x007856de  [ascii]  ServicePoint SocketPermission2SocketPermissionAttribute
+0x00788157  [ascii]   SslStreamContext4SecurityStatusPalErrorCode
+0x0078a368  [ascii]  UsbmuxdSocket
+0x0078b9ae  [ascii]  Driver.<BypassMeidSignal>d__516<CommonConnectDevice>d__107"MibTcpRowOwnerPid*<>c__DisplayClass73_0
+0x00790c74  [ascii]  ^Renci.SshNet.IAuthenticationMethod.Authenticate@
+0x00790df2  [ascii]  0CreateChannelDirectTcpip@
+0x00790e13  [ascii]  6CreateChannelForwardedTcpip@
+0x00791fc8  [ascii]  DRenci.SshNet.ISession.WaitOnHandle:Renci.SshNet.ISession.TryWait
+0x00792251  [ascii]  JRenci.SshNet.ISession.OnDisconnectingFOnUserAuthenticationRequestReceived@
+0x00792675  [ascii]  "IsSocketConnected
+0x00792688  [ascii]  TrySocketRead
+0x007926c2  [ascii]  4SocketDisconnectAndDispose
+0x00792746  [ascii]  FinalizePRenci.SshNet.ISession.get_ConnectionInfodRenci.SshNet.ISession.get_MessageListenerCompletedTRenci.SshNet.ISession.CreateChannelSession\Renci.SshNet.ISession.CreateChannelDirectTcpipbRenci....
+0x007928d2  [ascii]  Infinite(MaximumSshPacketSize
+0x00792945  [ascii]  9$_sshMessageFactory
+0x00792ae2  [ascii]  _socketFactory
+0x00792b01  [ascii]  _socketReadLock
+0x00792b14  [ascii]   _socketWriteLock$_socketDisposeLock0_isDisconnectMessageSent$_nextChannelNumber4<SessionId>k__BackingField
+0x00792f57  [ascii]  HRenci.SshNet.ISession.ConnectionInfo
+0x00792f80  [ascii]  \Renci.SshNet.ISession.MessageListenerCompleted
+0x00793579  [ascii]  &CreateSocketFactory@
+0x00793e84  [ascii]  Renci.SshNet.IConnectionInfoInternal.UserAuthenticationBannerReceived
+0x00793eca  [ascii]  Renci.SshNet.IConnectionInfoInternal.CreateNoneAuthenticationMethod|Renci.SshNet.IConnectionInfoInternal.get_AuthenticationMethods
+0x007945c7  [ascii]  tRenci.SshNet.IConnectionInfoInternal.AuthenticationMethods
+0x00795206  [ascii]  .get_PartialSuccessLimit
+0x0079525b  [ascii]  (_partialSuccessLimit&PartialSuccessLimit
+0x00795521  [ascii]  NRenci.SshNet.IForwardedPort.add_ClosingTRenci.SshNet.IForwardedPort.remove_Closing
+0x00795675  [ascii]  FRenci.SshNet.IForwardedPort.Closing
+0x0079581a  [ascii]  "CloseClientSocket
+0x0079688c  [ascii]  SshDataReader
+0x00796a74  [ascii]  "ParseOpenSshV1Key@
+0x00799a3e  [ascii]  SshDataStream
+0x0079add7  [ascii]  SshException
+0x0079b2c5  [ascii]  ,SshConnectionException
+0x0079b341  [ascii]  4SshAuthenticationException
+0x0079bdcf  [ascii]  ScpException2SftpPathNotFoundException:SftpPermissionDeniedException8SshOperationTimeoutExceptionBSshPassPhraseNullOrEmptyException
+0x0079c0ec  [ascii]  &IChannelDirectTcpip
+0x0079c124  [ascii]  ,IChannelForwardedTcpip
+0x0079c7d4  [ascii]  $ChannelDirectTcpip
+0x0079c9de  [ascii]  *ChannelForwardedTcpip
+0x0079e1b4  [ascii]  ISocketFactory
+0x0079e21f  [ascii]  "SshIdentification
+0x0079e4a4  [ascii]  SocketFactory
+0x007a182e  [ascii]  "SocketAbstractionY
+0x007a1c7c  [ascii]  (SocketAsyncEventArgs
+0x007a1d06  [ascii]  SocketShutdown
+0x007a1d42  [ascii]  NetworkStream.SocketReceiveFromResult<SocketReceiveMessageFromResult SocketsTelemetry
+0x007a1da5  [ascii]  MulticastOption&IPv6MulticastOption SafeSocketHandle0UnixDomainSocketEndPoint*DynamicWinsockMethods[
+0x007a29f5  [ascii]  SocketException
+0x007a2a05  [ascii]  SslPolicyErrors
+0x007a2afb  [ascii]  SslProtocols
+0x007a947c  [ascii]  ConnectCallback(SSLHandshakeCallback"AsyncReadCallback
+0x007ab0d4  [ascii]  System.CodeDom"SafeProcessHandle
+0x007ad161  [ascii]  NSocketsHttpPlaintextStreamFilterContext(AuthenticationHelper+
+0x007ae29c  [ascii]  8SocketsHttpConnectionContext$SocketsHttpHandler
+0x007aeff6  [ascii]  TlsAlertMessage
+0x007af509  [ascii]  TryAgain HandshakeStarted:<szCertificate>e__FixedBuffer0<szCipher>e__FixedBuffer:<szCipherSuite>e__FixedBuffer4<szExchange>e__FixedBuffer,<szHash>e__FixedBuffer,SslApplicationProtocol
+0x007af744  [ascii]  E(SyncReadWriteAdapter0SslAuthenticationOptions<SslClientAuthenticationOptions<SslServerAuthenticationOptions SslSessionsCache[
+0x007af9b4  [ascii]  6SslStreamCertificateContext
+0x007af9d1  [ascii]  TlsContentType
+0x007afa1b  [ascii]   TlsHandshakeType
+0x007afb0d  [ascii]  &TlsAlertDescription
+0x007afc8a  [ascii]  TlsFrameHelper
+0x007afd04  [ascii]  TlsCipherSuite
+0x007b10d2  [ascii]  SslStreamPal
+0x007b111e  [ascii]  &SafeFreeCredentials"SafeDeleteContext,SafeSspiAuthDataHandle*SafeFreeContextBuffer<SafeFreeContextBuffer_SECURITY&SafeFreeCertContext6SafeFreeCredential_SECURITY(SafeDeleteSslContextFSafeFreeConte...
+0x007b31de  [ascii]  SetSocketBs4
+0x007b5a02  [ascii]  spanP<InitializeTlsBucketsAndTrimming>b__11_0
+0x007b5ffb  [ascii]  socketFactory
+0x007b693a  [ascii]  &partialSuccessLimit'
+0x007b69cc  [ascii]  clientSocket
+0x007b7b5f  [ascii]  LCancelTcpIpForwardGlobalRequestMessage
+0x007b7c61  [ascii]  ,DirectTcpipChannelInfo
+0x007b7d60  [ascii]  2ForwardedTcpipChannelInfo
+0x007b86cd  [ascii]  @TcpIpForwardGlobalRequestMessage,KeyExchangeInitMessage
+0x007bc304  [ascii]  ForwardedTcpip
+0x007bc313  [ascii]  DirectTcpip*ForwardedPort_Closing
+0x007bc348  [ascii]  ShutdownSocket@
+0x007bc4f8  [ascii]  6_socketShutdownAndCloseLock,SendChannelOpenMessage ReleaseSemaphore&_failedOpenAttempts2_sessionSemaphoreObtained<_channelOpenResponseWaitHandle._channelRequestResponse*_channelRequestSucces
+0x007bdc96  [ascii]   SshDataSignature
+0x007be494  [ascii]  "get_SocketFactory"set_SocketFactory
+0x007be4b9  [ascii]  SocketConnect@
+0x007be4db  [ascii]  SocketReadByte
+0x007be53a  [ascii]  <<SocketFactory>k__BackingField@
+0x007be58b  [ascii]  SocketReadLine
+0x007be7a6  [ascii]  RequestLStat
+0x007bec7d  [ascii]  get_IsSocket
+0x007bec8a  [ascii]  set_IsSocket$get_IsSymbolicLink$set_IsSymbolicLink"get_IsRegularFile"set_IsRegularFile"get_IsBlockDevice"set_IsBlockDevice
+0x007bf14a  [ascii]  D<LastAccessTimeUtc>k__BackingFieldB<LastWriteTimeUtc>k__BackingField.<UserId>k__BackingField0<GroupId>k__BackingField2<IsSocket>k__BackingField><IsSymbolicLink>k__BackingField<<IsRegularFile>k__Ba...
+0x007bf881  [ascii]  2SSH_FXE_STATVFS_ST_RDONLY2SSH_FXE_STATVFS_ST_NOSUID
+0x007c1e18  [ascii]  ExecuteThread4TaskSocketAsyncEventArgs`1:AwaitableSocketAsyncEventArgs
+0x007c1fd1  [ascii]  @MultiConnectSocketAsyncEventArgsB<<DnsConnectAsync>g__Core|112_0>d
+0x007c2066  [ascii]  Both(SocketDelegateHelper
+0x007c23a1  [ascii]  $TooManyOpenSocketsC9
+0x007c244f  [ascii]  $SocketNotSupported
+0x007c25a3  [ascii]  ProcessLimit
+0x007c963a  [ascii]  ,<ConnectQuicAsync>d__3B<EstablishSslConnectionAsync>d__2
+0x007c9ac2  [ascii]  <<FlushOutgoingBytesAsync>d__604<ProcessHeadersFrame>d__64B<ProcessIncomingFramesAsync>d__62B<ProcessOutgoingFramesAsync>d__82*<ReadFrameAsync>d__61"<SendAsync>d__111.<SendHeadersAsync>d__974<SendS...
+0x007c9f7b  [ascii]  SslProxyTunnel
+0x007c9fa3  [ascii]  SslSocksTunnel
+0x007ca0cf  [ascii]  ><AddHttp11ConnectionAsync>d__79<<AddHttp2ConnectionAsync>d__83B<ApplyPlaintextFilterAsync>d__107(<ConnectAsync>d__103:<ConnectToTcpHostAsync>d__104L<ConstructHttp11ConnectionAsync>d__108J<Construc...
+0x007ca62a  [ascii]  "ConnectionMetrics2SocketsHttpHandlerMetrics
+0x007cb45b  [ascii]  b<<WriteSingleChunk>g__WaitAndWriteAsync|157_0>d`1(<DisposeAsync>d__113B<EnsureFullTlsFrameAsync>d__161`1D<ForceAuthenticationAsync>d__150`16<ReadAsyncInternal>d__163`1H<ReceiveHandshakeFrameAsync>...
+0x007cb732  [ascii]  .TLS_NULL_WITH_NULL_NULL
+0x007cb74d  [ascii]  H*TLS_RSA_WITH_NULL_MD5*TLS_RSA_WITH_NULL_SHA<TLS_RSA_EXPORT_WITH_RC4_40_MD50TLS_RSA_WITH_RC4_128_MD50TLS_RSA_WITH_RC4_128_SHADTLS_RSA_EXPORT_WITH_RC2_CBC_40_MD52TLS_RSA_WITH_IDEA_CBC_SHABTLS_RSA_E...
+0x007cbef4  [ascii]  BTLS_RSA_WITH_CAMELLIA_128_CBC_SHA
+0x007cbf17  [ascii]  HTLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA
+0x007cbf3d  [ascii]  HTLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA
+0x007cbf63  [ascii]  JTLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA
+0x007cbf8a  [ascii]  JTLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA
+0x007cbfb1  [ascii]  JTLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA
+0x007cbfd8  [ascii]  FTLS_DHE_RSA_WITH_AES_128_CBC_SHA256
+0x007cbffd  [ascii]  DTLS_DH_DSS_WITH_AES_256_CBC_SHA256
+0x007cc021  [ascii]  DTLS_DH_RSA_WITH_AES_256_CBC_SHA256
+0x007cc045  [ascii]  FTLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+0x007cc06a  [ascii]  FTLS_DHE_RSA_WITH_AES_256_CBC_SHA256
+0x007cc08f  [ascii]  FTLS_DH_anon_WITH_AES_128_CBC_SHA256
+0x007cc0b4  [ascii]  FTLS_DH_anon_WITH_AES_256_CBC_SHA256
+0x007cc0d9  [ascii]  BTLS_RSA_WITH_CAMELLIA_256_CBC_SHA
+0x007cc0fd  [ascii]  HTLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA
+0x007cc124  [ascii]  HTLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA
+0x007cc14b  [ascii]  JTLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA
+0x007cc173  [ascii]  JTLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA!
+0x007cc19b  [ascii]  JTLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA%
+0x007cc1c3  [ascii]  0TLS_PSK_WITH_RC4_128_SHA)
+0x007cc1de  [ascii]  :TLS_PSK_WITH_3DES_EDE_CBC_SHA-
+0x007cc1fe  [ascii]  8TLS_PSK_WITH_AES_128_CBC_SHA1
+0x007cc21d  [ascii]  8TLS_PSK_WITH_AES_256_CBC_SHA5
+0x007cc23c  [ascii]  8TLS_DHE_PSK_WITH_RC4_128_SHA9
+0x007cc25b  [ascii]  BTLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA=
+0x007cc27f  [ascii]  @TLS_DHE_PSK_WITH_AES_128_CBC_SHAA
+0x007cc2a2  [ascii]  @TLS_DHE_PSK_WITH_AES_256_CBC_SHAE
+0x007cc2c5  [ascii]  8TLS_RSA_PSK_WITH_RC4_128_SHAI
+0x007cc2e4  [ascii]  BTLS_RSA_PSK_WITH_3DES_EDE_CBC_SHAM
+0x007cc308  [ascii]  @TLS_RSA_PSK_WITH_AES_128_CBC_SHAQ
+0x007cc32b  [ascii]  @TLS_RSA_PSK_WITH_AES_256_CBC_SHAU
+0x007cc34e  [ascii]  2TLS_RSA_WITH_SEED_CBC_SHAY
+0x007cc36a  [ascii]  8TLS_DH_DSS_WITH_SEED_CBC_SHA]
+0x007cc389  [ascii]  8TLS_DH_RSA_WITH_SEED_CBC_SHAa
+0x007cc3a8  [ascii]  :TLS_DHE_DSS_WITH_SEED_CBC_SHAe
+0x007cc3c8  [ascii]  :TLS_DHE_RSA_WITH_SEED_CBC_SHAi
+0x007cc3e8  [ascii]  :TLS_DH_anon_WITH_SEED_CBC_SHAm
+0x007cc408  [ascii]  >TLS_RSA_WITH_AES_128_GCM_SHA256q
+0x007cc42a  [ascii]  >TLS_RSA_WITH_AES_256_GCM_SHA384u
+0x007cc44c  [ascii]  FTLS_DHE_RSA_WITH_AES_128_GCM_SHA256y
+0x007cc472  [ascii]  FTLS_DHE_RSA_WITH_AES_256_GCM_SHA384}
+0x007cc498  [ascii]  DTLS_DH_RSA_WITH_AES_128_GCM_SHA256
+0x007cc4bd  [ascii]  DTLS_DH_RSA_WITH_AES_256_GCM_SHA384
+0x007cc4e2  [ascii]  FTLS_DHE_DSS_WITH_AES_128_GCM_SHA256
+0x007cc508  [ascii]  FTLS_DHE_DSS_WITH_AES_256_GCM_SHA384
+0x007cc52e  [ascii]  DTLS_DH_DSS_WITH_AES_128_GCM_SHA256
+0x007cc553  [ascii]  DTLS_DH_DSS_WITH_AES_256_GCM_SHA384
+0x007cc578  [ascii]  FTLS_DH_anon_WITH_AES_128_GCM_SHA256
+0x007cc59e  [ascii]  FTLS_DH_anon_WITH_AES_256_GCM_SHA384
+0x007cc5c4  [ascii]  >TLS_PSK_WITH_AES_128_GCM_SHA256
+0x007cc5e6  [ascii]  >TLS_PSK_WITH_AES_256_GCM_SHA384
+0x007cc608  [ascii]  FTLS_DHE_PSK_WITH_AES_128_GCM_SHA256
+0x007cc62e  [ascii]  FTLS_DHE_PSK_WITH_AES_256_GCM_SHA384
+0x007cc654  [ascii]  FTLS_RSA_PSK_WITH_AES_128_GCM_SHA256
+0x007cc67a  [ascii]  FTLS_RSA_PSK_WITH_AES_256_GCM_SHA384
+0x007cc6a0  [ascii]  >TLS_PSK_WITH_AES_128_CBC_SHA256
+0x007cc6c2  [ascii]  >TLS_PSK_WITH_AES_256_CBC_SHA384
+0x007cc6e4  [ascii]  0TLS_PSK_WITH_NULL_SHA256
+0x007cc6ff  [ascii]  0TLS_PSK_WITH_NULL_SHA384
+0x007cc71a  [ascii]  FTLS_DHE_PSK_WITH_AES_128_CBC_SHA256
+0x007cc740  [ascii]  FTLS_DHE_PSK_WITH_AES_256_CBC_SHA384
+0x007cc766  [ascii]  8TLS_DHE_PSK_WITH_NULL_SHA256
+0x007cc785  [ascii]  8TLS_DHE_PSK_WITH_NULL_SHA384
+0x007cc7a4  [ascii]  FTLS_RSA_PSK_WITH_AES_128_CBC_SHA256
+0x007cc7ca  [ascii]  FTLS_RSA_PSK_WITH_AES_256_CBC_SHA384
+0x007cc7f0  [ascii]  8TLS_RSA_PSK_WITH_NULL_SHA256
+0x007cc80f  [ascii]  8TLS_RSA_PSK_WITH_NULL_SHA384
+0x007cc82e  [ascii]  HTLS_RSA_WITH_CAMELLIA_128_CBC_SHA256
+0x007cc855  [ascii]  NTLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256
+0x007cc87f  [ascii]  NTLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256
+0x007cc8a9  [ascii]  PTLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256
+0x007cc8d4  [ascii]  PTLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256
+0x007cc8ff  [ascii]  PTLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256
+0x007cc92a  [ascii]  HTLS_RSA_WITH_CAMELLIA_256_CBC_SHA256
+0x007cc951  [ascii]  NTLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256
+0x007cc97b  [ascii]  NTLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256
+0x007cc9a5  [ascii]  PTLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256
+0x007cc9d0  [ascii]  PTLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256
+0x007cc9fb  [ascii]  PTLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256
+0x007cca26  [ascii]  ,TLS_AES_128_GCM_SHA256
+0x007cca3e  [ascii]  L,TLS_AES_256_GCM_SHA384
+0x007cca57  [ascii]  L8TLS_CHACHA20_POLY1305_SHA256
+0x007cca76  [ascii]  L,TLS_AES_128_CCM_SHA256
+0x007cca8f  [ascii]  L0TLS_AES_128_CCM_8_SHA256
+0x007ccaaa  [ascii]  L8TLS_ECDH_ECDSA_WITH_NULL_SHA
+0x007ccacb  [ascii]  >TLS_ECDH_ECDSA_WITH_RC4_128_SHA
+0x007ccaee  [ascii]  HTLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA
+0x007ccb16  [ascii]  FTLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA#
+0x007ccb3d  [ascii]  FTLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA+
+0x007ccb64  [ascii]  :TLS_ECDHE_ECDSA_WITH_NULL_SHA3
+0x007ccb85  [ascii]  @TLS_ECDHE_ECDSA_WITH_RC4_128_SHA;
+0x007ccba9  [ascii]  JTLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHAC
+0x007ccbd2  [ascii]  HTLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHAK
+0x007ccbfa  [ascii]  HTLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHAS
+0x007ccc22  [ascii]  4TLS_ECDH_RSA_WITH_NULL_SHA[
+0x007ccc40  [ascii]  :TLS_ECDH_RSA_WITH_RC4_128_SHAc
+0x007ccc61  [ascii]  DTLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHAk
+0x007ccc87  [ascii]  BTLS_ECDH_RSA_WITH_AES_128_CBC_SHAs
+0x007cccac  [ascii]  BTLS_ECDH_RSA_WITH_AES_256_CBC_SHA{
+0x007cccd1  [ascii]  6TLS_ECDHE_RSA_WITH_NULL_SHA
+0x007cccf0  [ascii]  <TLS_ECDHE_RSA_WITH_RC4_128_SHA
+0x007ccd12  [ascii]  FTLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA
+0x007ccd39  [ascii]  DTLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+0x007ccd5f  [ascii]  DTLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+0x007ccd85  [ascii]  6TLS_ECDH_anon_WITH_NULL_SHA
+0x007ccda4  [ascii]  <TLS_ECDH_anon_WITH_RC4_128_SHA
+0x007ccdc6  [ascii]  FTLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA
+0x007ccded  [ascii]  DTLS_ECDH_anon_WITH_AES_128_CBC_SHA
+0x007cce13  [ascii]  DTLS_ECDH_anon_WITH_AES_256_CBC_SHA
+0x007cce39  [ascii]  BTLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA
+0x007cce5e  [ascii]  JTLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA
+0x007cce87  [ascii]  JTLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA
+0x007cceb0  [ascii]  @TLS_SRP_SHA_WITH_AES_128_CBC_SHA
+0x007cced4  [ascii]  HTLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA
+0x007ccefc  [ascii]  HTLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA
+0x007ccf24  [ascii]  @TLS_SRP_SHA_WITH_AES_256_CBC_SHA
+0x007ccf48  [ascii]  HTLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA
+0x007ccf70  [ascii]  HTLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA
+0x007ccf98  [ascii]  NTLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+0x007ccfc3  [ascii]  NTLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384#
+0x007ccfee  [ascii]  LTLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256+
+0x007cd018  [ascii]  LTLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA3843
+0x007cd042  [ascii]  JTLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256;
+0x007cd06b  [ascii]  JTLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384C
+0x007cd094  [ascii]  HTLS_ECDH_RSA_WITH_AES_128_CBC_SHA256K
+0x007cd0bc  [ascii]  HTLS_ECDH_RSA_WITH_AES_256_CBC_SHA384S
+0x007cd0e4  [ascii]  NTLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256[
+0x007cd10f  [ascii]  NTLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384c
+0x007cd13a  [ascii]  LTLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256k
+0x007cd164  [ascii]  LTLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384s
+0x007cd18e  [ascii]  JTLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256{
+0x007cd1b7  [ascii]  JTLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+0x007cd1e0  [ascii]  HTLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
+0x007cd208  [ascii]  HTLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
+0x007cd230  [ascii]  <TLS_ECDHE_PSK_WITH_RC4_128_SHA
+0x007cd252  [ascii]  FTLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA
+0x007cd279  [ascii]  DTLS_ECDHE_PSK_WITH_AES_128_CBC_SHA
+0x007cd29f  [ascii]  DTLS_ECDHE_PSK_WITH_AES_256_CBC_SHA
+0x007cd2c5  [ascii]  JTLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256
+0x007cd2ee  [ascii]  JTLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384
+0x007cd317  [ascii]  6TLS_ECDHE_PSK_WITH_NULL_SHA
+0x007cd336  [ascii]  <TLS_ECDHE_PSK_WITH_NULL_SHA256
+0x007cd358  [ascii]  <TLS_ECDHE_PSK_WITH_NULL_SHA384
+0x007cd37a  [ascii]  @TLS_RSA_WITH_ARIA_128_CBC_SHA256
+0x007cd39e  [ascii]  @TLS_RSA_WITH_ARIA_256_CBC_SHA384
+0x007cd3c2  [ascii]  FTLS_DH_DSS_WITH_ARIA_128_CBC_SHA256
+0x007cd3e9  [ascii]  FTLS_DH_DSS_WITH_ARIA_256_CBC_SHA384
+0x007cd410  [ascii]  FTLS_DH_RSA_WITH_ARIA_128_CBC_SHA256
+0x007cd437  [ascii]  FTLS_DH_RSA_WITH_ARIA_256_CBC_SHA384
+0x007cd45e  [ascii]  HTLS_DHE_DSS_WITH_ARIA_128_CBC_SHA256
+0x007cd486  [ascii]  HTLS_DHE_DSS_WITH_ARIA_256_CBC_SHA384
+0x007cd4ae  [ascii]  HTLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256#
+0x007cd4d6  [ascii]  HTLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384+
+0x007cd4fe  [ascii]  HTLS_DH_anon_WITH_ARIA_128_CBC_SHA2563
+0x007cd526  [ascii]  HTLS_DH_anon_WITH_ARIA_256_CBC_SHA384;
+0x007cd54e  [ascii]  PTLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256C
+0x007cd57a  [ascii]  PTLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384K
+0x007cd5a6  [ascii]  NTLS_ECDH_ECDSA_WITH_ARIA_128_CBC_SHA256S
+0x007cd5d1  [ascii]  NTLS_ECDH_ECDSA_WITH_ARIA_256_CBC_SHA384[
+0x007cd5fc  [ascii]  LTLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256c
+0x007cd626  [ascii]  LTLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384k
+0x007cd650  [ascii]  JTLS_ECDH_RSA_WITH_ARIA_128_CBC_SHA256s
+0x007cd679  [ascii]  JTLS_ECDH_RSA_WITH_ARIA_256_CBC_SHA384{
+0x007cd6a2  [ascii]  @TLS_RSA_WITH_ARIA_128_GCM_SHA256
+0x007cd6c6  [ascii]  @TLS_RSA_WITH_ARIA_256_GCM_SHA384
+0x007cd6ea  [ascii]  HTLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256
+0x007cd712  [ascii]  HTLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384
+0x007cd73a  [ascii]  FTLS_DH_RSA_WITH_ARIA_128_GCM_SHA256
+0x007cd761  [ascii]  FTLS_DH_RSA_WITH_ARIA_256_GCM_SHA384
+0x007cd788  [ascii]  HTLS_DHE_DSS_WITH_ARIA_128_GCM_SHA256
+0x007cd7b0  [ascii]  HTLS_DHE_DSS_WITH_ARIA_256_GCM_SHA384
+0x007cd7d8  [ascii]  FTLS_DH_DSS_WITH_ARIA_128_GCM_SHA256
+0x007cd7ff  [ascii]  FTLS_DH_DSS_WITH_ARIA_256_GCM_SHA384
+0x007cd826  [ascii]  HTLS_DH_anon_WITH_ARIA_128_GCM_SHA256
+0x007cd84e  [ascii]  HTLS_DH_anon_WITH_ARIA_256_GCM_SHA384
+0x007cd876  [ascii]  PTLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256
+0x007cd8a2  [ascii]  PTLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384
+0x007cd8ce  [ascii]  NTLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256
+0x007cd8f9  [ascii]  NTLS_ECDH_ECDSA_WITH_ARIA_256_GCM_SHA384
+0x007cd924  [ascii]  LTLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256
+0x007cd94e  [ascii]  LTLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384
+0x007cd978  [ascii]  JTLS_ECDH_RSA_WITH_ARIA_128_GCM_SHA256
+0x007cd9a1  [ascii]  JTLS_ECDH_RSA_WITH_ARIA_256_GCM_SHA384
+0x007cd9ca  [ascii]  @TLS_PSK_WITH_ARIA_128_CBC_SHA256#
+0x007cd9ee  [ascii]  @TLS_PSK_WITH_ARIA_256_CBC_SHA384+
+0x007cda12  [ascii]  HTLS_DHE_PSK_WITH_ARIA_128_CBC_SHA2563
+0x007cda3a  [ascii]  HTLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384;
+0x007cda62  [ascii]  HTLS_RSA_PSK_WITH_ARIA_128_CBC_SHA256C
+0x007cda8a  [ascii]  HTLS_RSA_PSK_WITH_ARIA_256_CBC_SHA384K
+0x007cdab2  [ascii]  @TLS_PSK_WITH_ARIA_128_GCM_SHA256S
+0x007cdad6  [ascii]  @TLS_PSK_WITH_ARIA_256_GCM_SHA384[
+0x007cdafa  [ascii]  HTLS_DHE_PSK_WITH_ARIA_128_GCM_SHA256c
+0x007cdb22  [ascii]  HTLS_DHE_PSK_WITH_ARIA_256_GCM_SHA384k
+0x007cdb4a  [ascii]  HTLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256s
+0x007cdb72  [ascii]  HTLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384{
+0x007cdb9a  [ascii]  LTLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256
+0x007cdbc4  [ascii]  LTLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384
+0x007cdbee  [ascii]  XTLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256
+0x007cdc1e  [ascii]  XTLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384
+0x007cdc4e  [ascii]  VTLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256
+0x007cdc7d  [ascii]  VTLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384
+0x007cdcac  [ascii]  TTLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256
+0x007cdcda  [ascii]  TTLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384
+0x007cdd08  [ascii]  RTLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256
+0x007cdd35  [ascii]  RTLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384
+0x007cdd62  [ascii]  HTLS_RSA_WITH_CAMELLIA_128_GCM_SHA256
+0x007cdd8a  [ascii]  HTLS_RSA_WITH_CAMELLIA_256_GCM_SHA384
+0x007cddb2  [ascii]  PTLS_DHE_RSA_WITH_CAMELLIA_128_GCM_SHA256
+0x007cddde  [ascii]  PTLS_DHE_RSA_WITH_CAMELLIA_256_GCM_SHA384
+0x007cde0a  [ascii]  NTLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256
+0x007cde35  [ascii]  NTLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384
+0x007cde60  [ascii]  PTLS_DHE_DSS_WITH_CAMELLIA_128_GCM_SHA256
+0x007cde8c  [ascii]  PTLS_DHE_DSS_WITH_CAMELLIA_256_GCM_SHA384
+0x007cdeb8  [ascii]  NTLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256
+0x007cdee3  [ascii]  NTLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384
+0x007cdf0e  [ascii]  PTLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256#
+0x007cdf3a  [ascii]  PTLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384+
+0x007cdf66  [ascii]  XTLS_ECDHE_ECDSA_WITH_CAMELLIA_128_GCM_SHA2563
+0x007cdf96  [ascii]  XTLS_ECDHE_ECDSA_WITH_CAMELLIA_256_GCM_SHA384;
+0x007cdfc6  [ascii]  VTLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256C
+0x007cdff5  [ascii]  VTLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384K
+0x007ce024  [ascii]  TTLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256S
+0x007ce052  [ascii]  TTLS_ECDHE_RSA_WITH_CAMELLIA_256_GCM_SHA384[
+0x007ce080  [ascii]  RTLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256c
+0x007ce0ad  [ascii]  RTLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384k
+0x007ce0da  [ascii]  HTLS_PSK_WITH_CAMELLIA_128_GCM_SHA256s
+0x007ce102  [ascii]  HTLS_PSK_WITH_CAMELLIA_256_GCM_SHA384{
+0x007ce12a  [ascii]  PTLS_DHE_PSK_WITH_CAMELLIA_128_GCM_SHA256
+0x007ce156  [ascii]  PTLS_DHE_PSK_WITH_CAMELLIA_256_GCM_SHA384
+0x007ce182  [ascii]  PTLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256
+0x007ce1ae  [ascii]  PTLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384
+0x007ce1da  [ascii]  HTLS_PSK_WITH_CAMELLIA_128_CBC_SHA256
+0x007ce202  [ascii]  HTLS_PSK_WITH_CAMELLIA_256_CBC_SHA384
+0x007ce22a  [ascii]  PTLS_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256
+0x007ce256  [ascii]  PTLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384
+0x007ce282  [ascii]  PTLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256
+0x007ce2ae  [ascii]  PTLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384
+0x007ce2da  [ascii]  TTLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256
+0x007ce308  [ascii]  TTLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384
+0x007ce336  [ascii]  0TLS_RSA_WITH_AES_128_CCM
+0x007ce352  [ascii]  0TLS_RSA_WITH_AES_256_CCM
+0x007ce36e  [ascii]  8TLS_DHE_RSA_WITH_AES_128_CCM
+0x007ce38e  [ascii]  8TLS_DHE_RSA_WITH_AES_256_CCM
+0x007ce3ae  [ascii]  4TLS_RSA_WITH_AES_128_CCM_8
+0x007ce3cc  [ascii]  4TLS_RSA_WITH_AES_256_CCM_8
+0x007ce3ea  [ascii]  <TLS_DHE_RSA_WITH_AES_128_CCM_8
+0x007ce40c  [ascii]  <TLS_DHE_RSA_WITH_AES_256_CCM_8
+0x007ce42e  [ascii]  0TLS_PSK_WITH_AES_128_CCM#
+0x007ce44a  [ascii]  0TLS_PSK_WITH_AES_256_CCM+
+0x007ce466  [ascii]  8TLS_DHE_PSK_WITH_AES_128_CCM3
+0x007ce486  [ascii]  8TLS_DHE_PSK_WITH_AES_256_CCM;
+0x007ce4a6  [ascii]  4TLS_PSK_WITH_AES_128_CCM_8C
+0x007ce4c4  [ascii]  4TLS_PSK_WITH_AES_256_CCM_8K
+0x007ce4e2  [ascii]  <TLS_PSK_DHE_WITH_AES_128_CCM_8S
+0x007ce504  [ascii]  <TLS_PSK_DHE_WITH_AES_256_CCM_8[
+0x007ce526  [ascii]  @TLS_ECDHE_ECDSA_WITH_AES_128_CCMc
+0x007ce54a  [ascii]  @TLS_ECDHE_ECDSA_WITH_AES_256_CCMk
+0x007ce56e  [ascii]  DTLS_ECDHE_ECDSA_WITH_AES_128_CCM_8s
+0x007ce594  [ascii]  DTLS_ECDHE_ECDSA_WITH_AES_256_CCM_8{
+0x007ce5ba  [ascii]  DTLS_ECCPWD_WITH_AES_128_GCM_SHA256
+0x007ce5e0  [ascii]  DTLS_ECCPWD_WITH_AES_256_GCM_SHA384
+0x007ce606  [ascii]  DTLS_ECCPWD_WITH_AES_128_CCM_SHA256
+0x007ce62c  [ascii]  DTLS_ECCPWD_WITH_AES_256_CCM_SHA384
+0x007ce652  [ascii]  VTLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256Ce
+0x007ce681  [ascii]  ZTLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256Ke
+0x007ce6b2  [ascii]  RTLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256Se
+0x007ce6df  [ascii]  JTLS_PSK_WITH_CHACHA20_POLY1305_SHA256[e
+0x007ce708  [ascii]  VTLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256ce
+0x007ce737  [ascii]  RTLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256ke
+0x007ce764  [ascii]  RTLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256se
+0x007ce791  [ascii]  JTLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256
+0x007ce7ba  [ascii]  JTLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384
+0x007ce7e3  [ascii]  NTLS_ECDHE_PSK_WITH_AES_128_CCM_8_SHA256
+0x007ce80e  [ascii]  JTLS_ECDHE_PSK_WITH_AES_128_CCM_SHA256+
+0x007cf6d4  [ascii]  sslPolicyErrors
+0x007cf8aa  [ascii]  SYSLIB0050Dhttps://aka.ms/dotnet-warnings/{0}
+0x007d0a30  [ascii]  System.Collections.Generic.IEnumerator<Renci.SshNet.IAuthenticationMethod>.get_CurrentHSystem.Collections.IEnumerator.ResetTSystem.Collections.IEnumerator.get_Current
+0x007d0ad7  [ascii]  System.Collections.Generic.IEnumerable<Renci.SshNet.IAuthenticationMethod>.GetEnumerator@
+0x007d0c1d  [ascii]  System.Collections.Generic.IEnumerator<Renci.SshNet.IAuthenticationMethod>.Current@
+0x007d0eb1  [ascii]  ,SSH_MSG_GLOBAL_REQUEST@
+0x007d0ee9  [ascii]  ;.SSH_MSG_REQUEST_SUCCESSQ.SSH_MSG_REQUEST_FAILURER
+0x007d0fb6  [ascii]  ;(SSH_MSG_CHANNEL_OPEN
+0x007d1022  [ascii]  ;BSSH_MSG_CHANNEL_OPEN_CONFIRMATION
+0x007d10d7  [ascii]  ;8SSH_MSG_CHANNEL_OPEN_FAILURE
+0x007d1158  [ascii]  ;:SSH_MSG_CHANNEL_WINDOW_ADJUST
+0x007d11d4  [ascii]  ;(SSH_MSG_CHANNEL_DATA@
+0x007d11fe  [ascii]  :SSH_MSG_CHANNEL_EXTENDED_DATA_&SSH_MSG_CHANNEL_EOF*SSH_MSG_CHANNEL_CLOSEa
+0x007d12c9  [ascii]  ;.SSH_MSG_CHANNEL_REQUESTb.SSH_MSG_CHANNEL_SUCCESSc.SSH_MSG_CHANNEL_FAILURE
+0x007d148e  [ascii]  direct-tcpip<<PortToConnect>k__BackingField
+0x007d1572  [ascii]  forwarded-tcpip<<ConnectedPort>k__BackingField ConnectedAddress
+0x007d163d  [ascii]  eow@openssh.com get_VariableName"get_VariableValue
+0x007d17e2  [ascii]  $<*keepalive@openssh.com.get_EnvironmentVariable.set_EnvironmentVariable
+0x007d1d2a  [ascii]  TcpIpForward
+0x007d1d38  [ascii]  )Y$CancelTcpIpForward
+0x007d1d59  [ascii]  set_Cookie6get_ServerHostKeyAlgorithms6set_ServerHostKeyAlgorithmsLget_EncryptionAlgorithmsClientToServerLset_EncryptionAlgorithmsClientToServerLget_EncryptionAlgorithmsServerToClientLset_Encryptio...
+0x007d23ab  [ascii]  SSH_MSG_KEXINIT
+0x007d23e3  [ascii]  o<0SSH_MSG_KEX_DH_GEX_GROUP
+0x007d2464  [ascii]  t<0SSH_MSG_KEX_DH_GEX_REPLY
+0x007d2485  [ascii]  y<$SSH_MSG_DISCONNECT.HostNotAllowedToConnect"KeyExchangeFailed
+0x007d2572  [ascii]  SSH_MSG_IGNORE*SSH_MSG_UNIMPLEMENTED&get_IsAlwaysDisplay&set_IsAlwaysDisplay@<IsAlwaysDisplay>k__BackingField
+0x007d25fc  [ascii]  SSH_MSG_DEBUG
+0x007d2636  [ascii]  <.SSH_MSG_SERVICE_REQUEST
+0x007d2683  [ascii]  <,SSH_MSG_SERVICE_ACCEPT&SSH_MSG_KEXDH_REPLY
+0x007d2708  [ascii]  <,SSH_MSG_KEX_ECDH_REPLY
+0x007d2721  [ascii]  SSH_MSG_NEWKEYS
+0x007d275d  [ascii]  <.SSH_MSG_KEX_DH_GEX_INIT
+0x007d2855  [ascii]  <4SSH_MSG_KEX_DH_GEX_REQUEST$SSH_MSG_KEXDH_INIT
+0x007d28c7  [ascii]  <*SSH_MSG_KEX_ECDH_INIT.SSH_MSG_USERAUTH_BANNER:SSH_MSG_USERAUTH_INFO_REQUEST
+0x007d2923  [ascii]  <BSSH_MSG_USERAUTH_PASSWD_CHANGEREQ4get_PublicKeyAlgorithmName4set_PublicKeyAlgorithmName"get_PublicKeyData"set_PublicKeyDataN<PublicKeyAlgorithmName>k__BackingField<<PublicKeyData>k__BackingField,...
+0x007d2a1b  [ascii]  <,SSH_MSG_USERAUTH_PK_OK
+0x007d2ab4  [ascii]  <0SSH_MSG_USERAUTH_REQUEST$get_PartialSuccess$set_PartialSuccess><PartialSuccess>k__BackingField
+0x007d2b2b  [ascii]  <0SSH_MSG_USERAUTH_FAILURE0SSH_MSG_USERAUTH_SUCCESS
+0x007d2bba  [ascii]  <<SSH_MSG_USERAUTH_INFO_RESPONSE,get_PublicKeyAlgorithm,set_PublicKeyAlgorithm"get_PublicHostKey"set_PublicHostKey$get_ClientHostName$set_ClientHostName$get_ClientUsername$set_ClientUsername@
+0x007d5634  [ascii]  $<RequestLStat>b__0@
+0x007d5653  [ascii]  $<RequestLStat>b__1 <BeginLStat>b__0 <BeginLStat>b__1
+0x007d63de  [ascii]  socketError&<ExecuteThread>b__0
+0x007d6534  [ascii]  $listenSocketHandle$acceptSocketHandle$localAddressLength&remoteAddressLength
+0x007d6582  [ascii]  bytesReceived"receiveDataLength$localSocketAddress0localSocketAddressLength&remoteSocketAddress2remoteSocketAddressLength
+0x007d6600  [ascii]  socketHandle
+0x007d660d  [ascii]  socketAddress
+0x007d664f  [ascii]  #%vSslProtocols.Ssl2 has been deprecated and is not supported.vSslProtocols.Ssl3 has been deprecated and is not supported.}
+0x007d66cb  [ascii]  TLS versions 1.0 and 1.1 have known vulnerabilities and are not recommended. Use a newer TLS version instead, or use SslProtocols.None to defer to OS defaults.
+0x007d6776  [ascii]  |SslProtocols.Default has been deprecated and is not supported.
+0x007d7051  [ascii]  &d$IgnoreNotTimeValid*IgnoreCtlNotTimeValid&IgnoreNotTimeNested:IgnoreInvalidBasicConstraints@AllowUnknownCertificateAuthority IgnoreWrongUsage"IgnoreInvalidName&IgnoreInvalidPolicy4IgnoreEndRevoca...
+0x007d9433  [ascii]  <ReadAsync>d__6T<WaitWithConnectionCancellationAsync>d__14$<SendAsync>b__57_0:<RegisterCancellation>b__60_0,<LogExceptions>b__23_0F<EstablishSslConnectionAsync>b__2_0\<SetUpRemoteCertificateValidat...
+0x007d9ab9  [ascii]  3R<WaitForConnectionWithTelemetryAsync>d__6*<HandleAltSvc>b__91_0><ConnectToTcpHostAsync>b__104_0"<Dispose>b__122_0@
+0x007e5544  [ascii]  ProcessLength
+0x007ed3be  [ascii]  RaiseOnExited,GetOrOpenProcessHandle@
+0x007ed4f3  [ascii]   GetProcessHandle@
+0x007ed628  [ascii]  *GetProcessHandlePairs@
+0x007ed6a3  [ascii]  Z<GetProcessHandlePairs>g__SafeGetHandle|271_0
+0x007edae0  [ascii]  &GetProcessShortName
+0x007f4a51  [ascii]  6EstablishSslConnectionAsync
+0x007f4f44  [ascii]  &ProcessHeadersFrame@
+0x007f5f8f  [ascii]   IsHttp3Supported&ConstructSslOptions
+0x007f6325  [ascii]  *ConnectToTcpHostAsync@
+0x007f6387  [ascii]  .GetSslOptionsForRequest@
+0x007f69ad  [ascii]  get_SslOptions@
+0x007f6c49  [ascii]  &IsMatchInBypassList@
+0x007f6df9  [ascii]  ParseBase4CheckIncompleteHeaderBlock$ProcessHeaderValue
+0x007f96b0  [ascii]  @ThrowSocketOperationNotSupported
+0x007f9915  [ascii]  &get_SocketErrorCode@
+0x007f99d1  [ascii]  StatusFailed.get_QUIC_STATUS_SUCCESS.get_QUIC_STATUS_PENDING0get_QUIC_STATUS_CONTINUE:get_QUIC_STATUS_OUT_OF_MEMORYBget_QUIC_STATUS_INVALID_PARAMETER:get_QUIC_STATUS_INVALID_STATE:get_QUIC_STATUS_N...
+0x007f9fa7  [ascii]  IsTls13Disabled
+0x007fb4d8  [ascii]  GetPortV6.CreateFtpListenerSocket$GetPortCommandLine FormatFtpCommand&CreateFtpDataSocket
+0x007fc113  [ascii]  get_net_io_eof8get_net_ssl_renegotiate_data"EnsureStoreOpened
+0x007fc8df  [ascii]  BFilterOutIncompatibleSslProtocols
+0x007fcacb  [ascii]  get_SslProtocol@
+0x007fcae2  [ascii]  ,GetSslProtocolInternalBget_NegotiatedApplicationProtocol@
+0x007fcb93  [ascii]  ProcessTlsFrame@
+0x007fcc08  [ascii]   HaveFullTlsFrame
+0x007fcd72  [ascii]  .ProcessHandshakeSuccess@
+0x007fd0ba  [ascii]  .UpdateSslConnectionInfo@
+0x007fd2ae  [ascii]  2TlsMinorVersionToProtocol
+0x007fdcb2  [ascii]  ,SetSocketTimeoutOption@
+0x007fdd5c  [ascii]  8ThrowSocketDisposedException@
+0x007fdee8  [ascii]  SetSocketOption@
+0x007fdf0c  [ascii]  GetSocketOption@
+0x007fe0d0  [ascii]  $UpdateAcceptSocket@
+0x007fe121  [ascii]  "SetToDisconnectedZUpdateStatusAfterSocketErrorAndThrowException@
+0x007fe175  [ascii]  8UpdateStatusAfterSocketError@
+0x007fe1a2  [ascii]  (ValidateBlockingModeFUpdateReceiveSocketErrorForDisposed@
+0x007fe1eb  [ascii]  @UpdateSendSocketErrorForDisposed@
+0x007fe218  [ascii]  8ThrowIfConnectedStreamSocket@CheckNonBlockingConnectCompleted@
+0x007fe308  [ascii]  .ValidateBufferArgumentsJDisposeCachedTaskSocketAsyncEventArgs0LoadSocketTypeFromHandle@
+0x007fe3a4  [ascii]  ,EnableReuseUnicastPort.GetOrCreateAcceptSocket@
+0x007fe4b7  [ascii]  System.Threading.Tasks.Sources.IValueTaskSource<System.Net.Sockets.Socket>.GetResult@
+0x007fe8d1  [ascii]  ,FinishOperationConnect6UpdateReceivedSocketAddressBFinishOperationReceiveMessageFrom4FinishOperationSendPackets4GetOverlappedResultOnError@
+0x007feb26  [ascii]  @SupportsKeepAliveViaSocketOption
+0x007feb77  [ascii]  CreateSocket
+0x0080262c  [ascii]  4ProcessHebrewTerminalState
+0x0080c564  [ascii]  y&FailFastViaClasslib
+0x0080c58d  [ascii]  BOnFirstChanceExceptionViaClassLib>OnUnhandledExceptionViaClassLibJUnhandledExceptionFailFastViaClasslib
+0x0080c60d  [ascii]  HAppendExceptionStackFrameViaClasslib
+0x0080c64a  [ascii]  (GetClasslibException
+0x0080c66f  [ascii]  <ThrowClasslibOverflowExceptionDThrowClasslibDivideByZeroException FailedAllocation
+0x0080c73d  [ascii]  (FindFirstPassHandler
+0x00817161  [ascii]  4CanInstantiationsShareCode@
+0x0082b562  [ascii]  DecryptV2&GetExtendedTcpTable
+0x0082c663  [ascii]  fSystem.Collections.Generic.ICollection<TSource>.AddjSystem.Collections.Generic.ICollection<TSource>.Clear`System.Collections.Generic.IList<TSource>.InsertlSystem.Collections.Generic.ICollection<TS...
+0x0082cafb  [ascii]  >InitializeTlsBucketsAndTrimming@
+0x0082f61c  [ascii]   WriteSingleChunk.EnsureFullTlsFrameAsync@
+0x00830b49  [ascii]  :NumberToFloatingPointBitsSlow
+0x008329d0  [ascii]  PSslClientAuthenticationOptionsExtensions"CertificateHelper
+0x00832d47  [ascii]  *NameResolutionMetrics0SocketProtocolSupportPal'
+0x00832d82  [ascii]   SocketAddressPal
+0x00832da6  [ascii]  IpSocketAddress IpAdapterAddress
+0x00832e5e  [ascii]  "IPv4AddressHelper"IPv6AddressHelper
+0x00832f03  [ascii]  .SocketAddressExtensions
+0x00833052  [ascii]  7(SslConnectionOptions'
+0x0083327b  [ascii]  ProtocolToken"SslConnectionInfo'
+0x008333e2  [ascii]  ,SocketExceptionFactory
+0x008369b2  [ascii]  d&SslCertificateTrust
+0x00836a0a  [ascii]  TlsAlertType
+0x00836a72  [ascii]  "SocketOptionLevel SocketOptionName
+0x00836abb  [ascii]  e<,SocketConstructorFlags(IPv6MulticastRequest>FileCompletionNotificationModes
+0x00836b40  [ascii]  sI<(SocketAsyncOperation
+0x00838b94  [ascii]  J"TokenAccessLevels
+0x00838ebc  [ascii]  TCP_TABLE_CLASS
+0x0083a240  [ascii]  TlsFrameHeader
+0x0083a24f  [ascii]  TlsFrameInfo
+0x0083a25c  [ascii]  TlsAlertLevel
+0x0083c6c8  [ascii]  8Failed to allocate SSL/TLS context, OpenSSL error - {0}.
+0x0083ccfd  [ascii]  GAuthentication failed because the remote party sent a TLS alert: '{0}'.
+0x0083cd46  [ascii]  >The '{0}' option was already set in the SslStream constructor.
+0x0083d921  [ascii]  vThe requested combination of SslProtocols ({0}) is not valid for this platform because it skips intermediate versions.
+0x0083d999  [ascii]  DThe requested SslProtocols ({0}) are not supported on this platform.
+0x0083dac5  [ascii]  BSSL certificate private key check failed with OpenSSL error - {0}.
+0x0083db40  [ascii]  (Decrypt failed with OpenSSL error - {0}.
+0x0083db6a  [ascii]  (Encrypt failed with OpenSSL error - {0}.
+0x0083db94  [ascii]  MThe '{0}' encryption policy is not supported by this installation of OpenSSL.
+0x0083dbe3  [ascii]  ?Fetching channel binding token failed with OpenSSL error - {0}.
+0x0083dc24  [ascii]  <Getting SSL connection info failed with OpenSSL error - {0}.
+0x0083dc62  [ascii]  .SSL Handshake failed with OpenSSL error - {0}.
+0x0083dc92  [ascii]  9SSL certificate returned is invalid, OpenSSL error - {0}.
+0x0083de44  [ascii]  KThe server mode SSL must use a certificate with the associated private key.
+0x0083dee5  [ascii]  -SSL Read BIO failed with OpenSSL error - {0}.
+0x0083e021  [ascii]  6Using SSL certificate failed with OpenSSL error - {0}.
+0x0083e059  [ascii]  BUsing SSL certificate private key failed with OpenSSL error - {0}.
+0x0083e09d  [ascii]  .SSL Write BIO failed with OpenSSL error - {0}.
+0x0083efc9  [ascii]    xmlns       %URI;          #FIXED 'http://www.w3.org/1999/xhtml'
+0x00843098  [ascii]    xmlns       %URI;          #FIXED 'http://www.w3.org/1999/xhtml'
+0x008482bb  [ascii]    xmlns       %URI;          #FIXED 'http://www.w3.org/1999/xhtml'
+0x0089e26f  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x0089fa81  [ascii]  http://crl.apple.com/root.crl0
+0x0089fe9b  [ascii]  https://www.apple.com/appleca/0
+0x008a0377  [ascii]  #http://ocsp.apple.com/ocsp03-wwdr190
+0x008a0491  [ascii]  *http://www.apple.com/certificateauthority/0
+0x008a07ea  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x008c4c02  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x008c664c  [ascii]  http://crl.apple.com/root.crl0
+0x008c6a66  [ascii]  https://www.apple.com/appleca/0
+0x008c6f42  [ascii]  #http://ocsp.apple.com/ocsp03-wwdr190
+0x008c705c  [ascii]  *http://www.apple.com/certificateauthority/0
+0x008c73b5  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x008fa7e3  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x0092c302  [ascii]  &CreateSocketFactory
+0x0092c3c3  [ascii]  0CreateChannelDirectTcpip
+0x0092c3e4  [ascii]  6CreateChannelForwardedTcpip
+0x0092d130  [ascii]  RequestLStat
+0x0092e4c1  [ascii]  ProcessLength
+0x00b9be50  [ascii]  StressLogLevel
+0x00b9be60  [ascii]  TotalStressLogSize
+0x00b9c540  [ascii]  m_pThreadStressLog
+0x00b9c6a0  [ascii]  ThreadStressLog
+0x00b9c760  [ascii]  StressLogChunk
+0x00b9c770  [ascii]  StressLogChunk_ChunkSize
+0x00bd9ea0  [ascii]  timedownlifeleftbackcodedatashowonlysitecityopenjustlikefreeworktextyearoverbodyloveformbookplaylivelinehelphomesidemorewordlongthemviewfindpagedaysfullheadtermeachareafromtruemarkableuponhighdatel...
+0x00bda5e4  [ascii]  coolfeet.php<br>ericmostguidbelldeschairmathatom/img&#82luckcent000;tinygonehtmlselldrugFREEnodenick?id=losenullvastwindRSS wearrelybeensamedukenasacapewishgulfT23:hitsslotgatekickblurthey15px'');)...
+0x00bda7a8  [ascii]  barshear00);milk -->ironfreddiskwentsoilputs/js/holyT22:ISBNT20:adamsees<h2>json', 'contT21: RSSloopasiamoon</p>soulLINEfortcartT14:<h1>80px!--<9px;T04:mike:46ZniceinchYorkricezh:
+0x00bdaea0  [ascii]  firstvideolightworldmediawhitecloseblackrightsmallbooksplacemusicfieldorderpointvalueleveltableboardhousegroupworksyearsstatetodaywaterstartstyledeathpowerphonenighterrorinputabouttermstitletoolsev...
+0x00bdba4e  [ascii]  mount (199FAQ</rogerfrankClass28px;feeds<h1><scotttests22px;drink) || lewisshall#039; for lovedwaste00px;ja:
+0x00bdcb0a  [ascii]  .gif" onloadloaderOxfordsistersurvivlistenfemaleDesignsize="appealtext">levelsthankshigherforcedanimalanyoneAfricaagreedrecentPeople<br />wonderpricesturned|| {};main">inlinesundaywrap">failedcensu...
+0x00be18be  [ascii]  here isencoded.  The balloondone by/commonbgcolorlaw of Indianaavoidedbut the2px 3pxjquery.after apolicy.men andfooter-= true;for usescreen.Indian image =family,http:// &nbsp;driverseternalsame asn...
+0x00be2a8a  [ascii]  nsaludospodemosmejorarpositionbusinesshomepagesecuritylanguagestandardcampaignfeaturescategoryexternalchildrenreservedresearchexchangefavoritetemplatemilitaryindustryservicesmaterialproductsz-index...
+0x00be3bb8  [ascii]  _popups|sciences,&quot; quality Windows assignedheight: <b classle&quot; value=" Companyexamples<iframe believespresentsmarshallpart of properly).
+0x00be7592  [ascii]    conversionabout the </p></div>integrated" lang="enPortuguesesubstituteindividualimpossiblemultimediaalmost allpx solid #apart fromsubject toin Englishcriticizedexcept forguidelinesoriginallyremar...
+0x00be96a0  [ascii]  sByTagName(.jpg" alt="1px solid #.gif" alt="transparentinformationapplication" onclick="establishedadvertising.png" alt="environmentperformanceappropriate&amp;mdash;immediately</strong></rather tha...
+0x00be99db  [ascii]  <div id="illustratedengineeringterritoriesauthoritiesdistributed6" height="sans-serif;capable of disappearedinteractivelooking forit would beAfghanistanwas createdMath.floor(surroundingcan also beo...
+0x00bec294  [ascii]  nconformidadline-height:font-family:" : "http://applicationslink" href="specifically//<![CDATA[
+0x00becb34  [ascii]  such as the influence ofa particularsrc='http://navigation" half of the substantial &nbsp;</div>advantage ofdiscovery offundamental metropolitanthe opposite" xml:lang="deliberatelyalign=centerevolu...
+0x00becf31  [ascii]  <li class="instrumentalSoviet Unionacknowledgedwhich can bename for theattention toattempts to developmentsIn fact, the<li class="aimplicationssuitable formuch of the colonizationpresidentialcancel...
+0x00bed247  [ascii]  <were createdmore generalinformation used for theindependent the Imperialcomponent ofto the northinclude the Constructionside of the would not befor instanceinvention ofmore complexcollectivelyback...
+0x00bed6ec  [ascii]  said to havein the firstwhile othershypotheticalphilosopherspower of thecontained inperformed byinability towere writtenspan style="input name="the questionintended forrejection ofimplies thatinven...
+0x00bef782  [ascii]  <link rel=" src='http://interested inconventional " alt="" /></are generallyhas also beenmost popular correspondingcredited withtyle="border:</a></span></.gif" width="<iframe src="table class="inli...
+0x00befe69  [ascii]  <div class="more commonlyorganisationsfunctionalitywas completed &amp;mdash; participationthe characteran additionalappears to befact that thean example ofsignificantlyonmouseover="because they asy...
+0x00bf0ea7  [ascii]  (function() {recommendationform action="/transformationreconstruction.style.display According to hidden" name="along with thedocument.body.approximately Communicationspost" action="meaning &quot;--...
+0x00bf10c8  [ascii]  <table class="accompanied byaccount of the<script src="/nature of the the people in in addition tos); js.id = id" width="100%"regarding the Roman Catholican independentfollowing the .gif" width="1t...
+0x00bf14ea  [ascii]  <div iwas consideredpercent of the" /></a></div>collection of descended fromsection of theaccept-charsetto be confusedmember of the padding-right:translation ofinterpretation href='http://whether o...
+0x00bf2050  [ascii]  environmental to prevent thehave been usedespecially forunderstand theis essentiallywere the firstis the largesthave been made" src="http://interpreted assecond half ofcrolling="no" is composed ofI...
+0x00bf28b8  [ascii]  <meta " href="http://"><span class="members of the window.locationvertical-align:/a> | <a href="<!doctype html>media="screen" <option value="favicon.ico" />
+0x00bf3860  [ascii]  </span><a href="<a href="http://); return false;text-decoration: scrolling="no" border-collapse:associated with Bahasa IndonesiaEnglish language<text xml:space=.gif" border="0"</body>
+0x00bf3920  [ascii]  overflow:hidden;img src="http://addEventListenerresponsible for s.js"></script>
+0x00bf3fa0  [ascii]  robots" content="<div id="footer">the United States<img src="http://.jpg|right|thumb|.js"></script>
+0x00bf40f4  [ascii]  information about<div id="header">" action="http://<a href="https://<div id="content"</div>
+0x00bf4159  [ascii]  <derived from the <img src='http://according to the 
+0x00bf419e  [ascii]  style="font-size:script language="Arial, Helvetica,</a><span class="</script><script political partiestd></tr></table><href="http://www.interpretation ofrel="stylesheet" document.write('<charset="u...
+0x00bf4964  [ascii]  <img src="http://s;text-align:centerfont-weight: bold; According to the difference between" frameborder="0" " style="position:link href="http://html4/loose.dtd">
+0x00bf4aef  [ascii]  <&nbsp;&nbsp;&nbsp;"><a href="http://style="float:left;concerned with the=http%3A%2F%2Fwww.in popular culturetype="text/css" />it is possible to Harvard Universitytylesheet" href="/the main charact...
+0x00bf5a20  [ascii]  keywords" content="w3.org/1999/xhtml"><a target="_blank" text/html; charset=" target="_blank"><table cellpadding="autocomplete="off" text-align: center;to last version by background-color: #" href=...
+0x00bf5b3e  [ascii]  <script language="//EN" "http://www.wencodeURIComponent(" href="javascript:<div class="contentdocument.write('<scposition: absolute;script src="http:// style="margin-top:.min.js"></script>
+0x00bf5c2d  [ascii]  </html>distinction between/" target="_blank"><link href="http://encoding="utf-8"?>
+0x00bf5c80  [ascii]  w.addEventListener?action="http://www.icon" href="http:// style="background:type="text/css" />
+0x00bf5de1  [ascii]  <script  style="font-size:1></span><span id=gbLibrary of Congress<img src="http://imEnglish translationAcademy of Sciencesdiv style="display:construction of the.getElementById(id)in conjunction wit...
+0x00bf5ee0  [ascii]   type="text" name=">Privacy Policy</a>administered by theenableSingleRequeststyle=&quot;margin:</div></div></div><><img src="http://i style=&quot;float:referred to as the total population ofin Wash...
+0x00bf614b  [ascii]  <script under the influencecontribution to theOfficial website ofheadquarters of thecentered around theimplications of thehave been developedFederal Republic ofbecame increasinglycontinuation of th...
+0x00bf64a9  [ascii]  <script type="t<a href='http://www.hortcut icon" href="</div>
+0x00bf64e8  [ascii]  <div class="<script src="http://" rel="stylesheet" t</div>
+0x00bf6523  [ascii]  <script type=/a> <a href="http:// allowTransparency="X-UA-Compatible" conrelationship between
+0x00bf658c  [ascii]  <script </a></li></ul></div>associated with the programming language</a><a href="http://</a></li><li class="form action="http://<div style="display:type="text" name="q"<table width="100%" backgroun...
+0x00bf68d6  [ascii]  <div cduring his lifetime,corresponding to thetype="image/x-icon" an increasing numberdiplomatic relationsare often consideredmeta charset="utf-8" <input type="text" examples include the"><img src=...
+0x00bf6da0  [ascii]  html; charset=UTF-8" setTimeout(function()display:inline-block;<input type="submit" type = 'text/javascri<img src="http://www." "http://www.w3.org/shortcut icon" href="" autocomplete="off" </a></di...
+0x00bf6e7c  [ascii]  <li class="css" type="text/css" <form action="http://xt/css" href="http://link rel="alternate" 
+0x00bf6edd  [ascii]  <script type="text/ onclick="javascript:(new Date).getTime()}height="1" width="1" People's Republic of  <a href="http://www.text-decoration:underthe beginning of the </div>
+0x00bf6fd8  [ascii]  <script src="http://option><option value=often referred to as /option>
+0x00bf7057  [ascii]  <a href="http://www</a><a href="http://w
+0x00bf7332  [ascii]  <html <meta charset="utf-8">:url" content="http://.css" rel="stylesheet"style type="text/css">type="text/css" href="w3.org/1999/xhtml" xmltype="text/javascript" method="get" action="link rel="style...
+0x00bf7652  [ascii]  <a href="http://www.css" rel="stylesheet" </div></div><div classlanguage="javascript">aria-hidden="true">
+0x00bf7718  [ascii]  <li><a href="http://ator" aria-hidden="tru> <a href="http://www.language="javascript" /option>
+0x00bf7860  [ascii]  <!DOCTYPE html PUBLIC "nt-Type" content="text/<meta http-equiv="Conteransitional//EN" "http:<html xmlns="http://www-//W3C//DTD XHTML 1.0 TDTD/xhtml1-transitional//www.w3.org/TR/xhtml1/pe = 'text/ja...
+0x00bf7aea  [ascii]  <html xmlns="http-//W3C//DTD HTML 4.01 TentsByTagName('script')input type="hidden" nam<script type="text/javas" style="display:none;">document.getElementById(=document.createElement(' type='text/ja...
+0x00bf7ca8  [ascii]   style="display:none;"><<li><a href="http://www. type='text/javascript'>
+0x0083ae18  [utf16-le]  net_allocate_ssl_context_failed
+0x0083aeaf  [utf16-le]  net_android_ssl_api_level_unsupported
+0x0083b1fe  [utf16-le]  net_auth_tls_alert
+0x0083bd71  [utf16-le]  net_security_sslprotocol_contiguous
+0x0083bdbc  [utf16-le]  net_security_sslprotocol_notsupported
+0x0083be89  [utf16-le]  net_ssl_app_protocol_invalid
+0x0083bec6  [utf16-le]  net_ssl_app_protocols_invalid
+0x0083bf05  [utf16-le]  net_ssl_certificate_exist
+0x0083bf3c  [utf16-le]  net_ssl_check_private_key_failed
+0x0083bf81  [utf16-le]  net_ssl_ciphersuites_policy_not_supported
+0x0083bfd8  [utf16-le]  net_ssl_decrypt_failed
+0x0083c009  [utf16-le]  net_ssl_encrypt_failed
+0x0083c03a  [utf16-le]  net_ssl_encryptionpolicy_notsupported
+0x0083c089  [utf16-le]  net_ssl_get_channel_binding_token_failed
+0x0083c0de  [utf16-le]  net_ssl_get_connection_info_failed
+0x0083c127  [utf16-le]  net_ssl_handshake_failed_error
+0x0083c168  [utf16-le]  net_ssl_invalid_certificate
+0x0083c1a3  [utf16-le]  net_ssl_io_already_shutdown
+0x0083c1de  [utf16-le]  net_ssl_io_cert_chain_validation
+0x0083c223  [utf16-le]  net_ssl_io_cert_custom_validation
+0x0083c26a  [utf16-le]  net_ssl_io_cert_validation
+0x0083c2a3  [utf16-le]  net_ssl_io_frame
+0x0083c2c8  [utf16-le]  net_ssl_io_no_server_cert
+0x0083c2ff  [utf16-le]  net_ssl_io_renego
+0x0083c326  [utf16-le]  net_ssl_read_bio_failed_error
+0x0083c365  [utf16-le]  net_ssl_renegotiate_buffer
+0x0083c39e  [utf16-le]  net_ssl_renegotiate_data
+0x0083c3d3  [utf16-le]  net_ssl_trust_collection
+0x0083c408  [utf16-le]  net_ssl_trust_handshake
+0x0083c43b  [utf16-le]  net_ssl_trust_store
+0x0083c466  [utf16-le]  net_ssl_use_cert_failed
+0x0083c499  [utf16-le]  net_ssl_use_private_key_failed
+0x0083c4da  [utf16-le]  net_ssl_write_bio_failed_error
+0x009f4320  [utf16-le]  DES-EDE3EDE3-CBCEDE3-CFBAES-128--128-CBCAES-192--192-CBCAES-256--256-CBCSSH2 ENCNCRYPTED3des-cbcssh-ed25-ed25519aes256-cs256-cbct
+0x009f4850  [utf16-le]  secp256recp256r1secp384recp384r1secp521recp521r1direct-tct-tcpipforwardeed-tcpip       
+0x009f49c0  [utf16-le]  ssh-useruserauthssh-connnnection
+0x009f6870  [utf16-le]  https://socks4:/    
+0x009f6e30  [utf16-le]  AUTH TLSTH TLS
+0x00a122c6  [utf16-le]   for openssh key file is not supporte
+0x00a12421  [utf16-le]   is not supported for openssh key fil
+0x00a146e0  [utf16-le]  '{0}' is missing native code or metadata. This can happen for code that is not compatible with trimming or AOT. Inspect and fix trimming and AOT related warnings that were generated when the app wa...
+0x00a1490a  [utf16-le]  '{0}' is missing native code. MethodInfo.MakeGenericMethod() is not compatible with AOT compilation. Inspect and fix AOT related warnings that were generated when the app was published. For more in...
+0x00a14b04  [utf16-le]  '{0}' is missing structure marshalling data. This can happen for code that is not compatible with AOT. Inspect and fix AOT related warnings that were generated when the app was published. For more ...
+0x00a15b81  [utf16-le]  , SSL TargetHost
+0x00a1e1b2  [utf16-le]  An asynchronous socket operation is already in progress using this SocketAsyncEventArgs instance
+0x00a206b9  [utf16-le]  Asynchronous operations are not allowed on this socket. The underlying OS handle might have been already bound to an IO completion port
+0x00a209de  [utf16-le]  At this time only one public key in the openssh key is supported
+0x00a20b1f  [utf16-le]  Attempt to read past the end of the SSH data stream
+0x00a21317  [utf16-le]  Authentication failed because the remote party sent a TLS alert: '{0}'
+0x00a22f9c  [utf16-le]  Cannot block a call on this socket while an earlier asynchronous call is in progress
+0x00a265b8  [utf16-le]  ConnectToTcpHostAsyn
+0x00a2810b  [utf16-le]  Could not use a TLS version required by Quic. TLS 1.3 may have been disabled in the registry
+0x00a293ca  [utf16-le]  DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_FLOWCONTROL_MAXSTREAMWINDOWSIZ
+0x00a29463  [utf16-le]  DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_FLOWCONTROL_STREAMWINDOWSCALETHRESHOLDMULTIPLIE
+0x00a2951e  [utf16-le]  DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP2FLOWCONTROL_DISABLEDYNAMICWINDOWSIZIN
+0x00a295cf  [utf16-le]  DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP2SUPPOR
+0x00a29642  [utf16-le]  DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP3SUPPOR
+0x00a296b5  [utf16-le]  DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_MAXCONNECTIONSPERSERVE
+0x00a2973e  [utf16-le]  DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_PENDINGCONNECTIONTIMEOUTONREQUESTCOMPLETIO
+0x00a2983c  [utf16-le]  DOTNET_SYSTEM_NET_SOCKETS_INLINE_COMPLETION
+0x00a2989b  [utf16-le]  DOTNET_SYSTEM_NET_SOCKETS_THREAD_COUN
+0x00a2e0d0  [utf16-le]  Failed to establish web socket connection over HTTP/2 because extended CONNECT is not supported. Try to downgrade the request version to HTTP/1.1
+0x00a2fdc7  [utf16-le]  GetExtendedTcpTable failed:
+0x00a2ff4e  [utf16-le]  GetSocketOptio
+0x00a309fd  [utf16-le]  HTTP/2 requires TLS 1.2 or newer, but '{0}' was negotiated
+0x00a33b65  [utf16-le]  Invalid SSH2 private key
+0x00a3b7a5  [utf16-le]  No authentication methods defined on SSH server
+0x00a3c347  [utf16-le]  None of the discovered or specified addresses match the socket address family
+0x00a3cdc3  [utf16-le]  OS does not support dual mode sockets
+0x00a3dd44  [utf16-le]  Once the socket has been disconnected, you can only accept again asynchronously.  BeginAccept must be called on a thread that won't exit until the operation has been completed
+0x00a3deac  [utf16-le]  Once the socket has been disconnected, you can only reconnect again asynchronously, and only to a different EndPoint.  BeginConnect must be called on a thread that won't exit until the operation ha...
+0x00a3eacb  [utf16-le]  Only the invariant culture is supported in globalization-invariant mode. See https://aka.ms/GlobalizationInvariantMode for more information
+0x00a3f155  [utf16-le]  PKCS12 (PFX) without a supplied password has exceeded maximum allowed iterations. See https://go.microsoft.com/fwlink/?linkid=2233907 for more information
+0x00a3f480  [utf16-le]  Padding of openssh key format contained wrong byte at position:
+0x00a407a1  [utf16-le]  Prefix "xml" is reserved for use by XML and can be mapped only to namespace name "http://www.w3.org/XML/1998/namespace"
+0x00a42116  [utf16-le]  QUIC_STATUS_TLS_ERRO
+0x00a45aa0  [utf16-le]  SSH connection established successfully
+0x00a45b05  [utf16-le]  SSH-2.0-Renci.SshNet.SshClient.0.0.
+0x00a45b54  [utf16-le]  SSH_FXP_EXTENDED operation is not supported in {0} version that server operates in
+0x00a45c01  [utf16-le]  SSH_FXP_READLINK operation is not supported in {0} version that server operates in
+0x00a45cae  [utf16-le]  SSH_FXP_RENAME operation is not supported in {0} version that server operates in
+0x00a45d57  [utf16-le]  SSH_FXP_SYMLINK operation is not supported in {0} version that server operates in
+0x00a45e02  [utf16-le]  SSH_MSG_CHANNEL_CLOS
+0x00a45e33  [utf16-le]  SSH_MSG_CHANNEL_DAT
+0x00a45e62  [utf16-le]  SSH_MSG_CHANNEL_EO
+0x00a45e8f  [utf16-le]  SSH_MSG_CHANNEL_EXTENDED_DAT
+0x00a45ed0  [utf16-le]  SSH_MSG_CHANNEL_FAILUR
+0x00a45f05  [utf16-le]  SSH_MSG_CHANNEL_OPE
+0x00a45f34  [utf16-le]  SSH_MSG_CHANNEL_OPEN_CONFIRMATIO
+0x00a45f7d  [utf16-le]  SSH_MSG_CHANNEL_OPEN_FAILUR
+0x00a45fbc  [utf16-le]  SSH_MSG_CHANNEL_REQUES
+0x00a45ff1  [utf16-le]  SSH_MSG_CHANNEL_SUCCES
+0x00a46026  [utf16-le]  SSH_MSG_CHANNEL_WINDOW_ADJUS
+0x00a46067  [utf16-le]  SSH_MSG_DEBU
+0x00a46088  [utf16-le]  SSH_MSG_DISCONNEC
+0x00a460b3  [utf16-le]  SSH_MSG_GLOBAL_REQUES
+0x00a460e6  [utf16-le]  SSH_MSG_IGNOR
+0x00a46109  [utf16-le]  SSH_MSG_KEXDH_REPL
+0x00a46136  [utf16-le]  SSH_MSG_KEXINI
+0x00a4615b  [utf16-le]  SSH_MSG_KEX_DH_GEX_GROU
+0x00a46192  [utf16-le]  SSH_MSG_KEX_DH_GEX_REPL
+0x00a461c9  [utf16-le]  SSH_MSG_KEX_ECDH_REPL
+0x00a461fc  [utf16-le]  SSH_MSG_NEWKEY
+0x00a46221  [utf16-le]  SSH_MSG_REQUEST_FAILUR
+0x00a46256  [utf16-le]  SSH_MSG_REQUEST_SUCCES
+0x00a4628b  [utf16-le]  SSH_MSG_SERVICE_ACCEP
+0x00a462be  [utf16-le]  SSH_MSG_UNIMPLEMENTE
+0x00a462ef  [utf16-le]  SSH_MSG_USERAUTH_BANNE
+0x00a46324  [utf16-le]  SSH_MSG_USERAUTH_FAILUR
+0x00a4635b  [utf16-le]  SSH_MSG_USERAUTH_INFO_REQUES
+0x00a4639c  [utf16-le]  SSH_MSG_USERAUTH_INFO_RESPONS
+0x00a463df  [utf16-le]  SSH_MSG_USERAUTH_PASSWD_CHANGERE
+0x00a46428  [utf16-le]  SSH_MSG_USERAUTH_PK_O
+0x00a4645b  [utf16-le]  SSH_MSG_USERAUTH_SUCCES
+0x00a46492  [utf16-le]  SSL authentication faile
+0x00a465f1  [utf16-le]  SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Clien
+0x00a466a0  [utf16-le]  SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Serve
+0x00a468f2  [utf16-le]  Sec-WebSocket-Accep
+0x00a46921  [utf16-le]  Sec-WebSocket-Extension
+0x00a46958  [utf16-le]  Sec-WebSocket-Ke
+0x00a46981  [utf16-le]  Sec-WebSocket-Protoco
+0x00a469b4  [utf16-le]  Sec-WebSocket-Versio
+0x00a47405  [utf16-le]  SetSocketOptio
+0x00a4770c  [utf16-le]  Socket read operation has timed out after {0:F0} milliseconds
+0x00a483f8  [utf16-le]  SshNet.Loggin
+0x00a48439  [utf16-le]  SslApplicationProtoco
+0x00a4a846  [utf16-le]  System.Net.Http.SocketsHttpHandler.Http2Suppor
+0x00a4a996  [utf16-le]  System.Net.SocketsHttpHandler.Http2FlowControl.DisableDynamicWindowSizin
+0x00a4aa2f  [utf16-le]  System.Net.SocketsHttpHandler.Http3Suppor
+0x00a4aa8a  [utf16-le]  System.Net.SocketsHttpHandler.MaxConnectionsPerServe
+0x00a4aafb  [utf16-le]  System.Net.SocketsHttpHandler.PendingConnectionTimeoutOnRequestCompletio
+0x00a4bccc  [utf16-le]  The 'xmlns' attribute is bound to the reserved namespace 'http://www.w3.org/2000/xmlns/'
+0x00a4bf3d  [utf16-le]  The '{0}' option was already set in the SslStream constructor
+0x00a4e1b3  [utf16-le]  The SSL connection could not be established, see inner exception
+0x00a50111  [utf16-le]  The checkints differed, the openssh key was not correctly decoded
+0x00a54257  [utf16-le]  The operation is not allowed on a non-blocking Socket
+0x00a542ca  [utf16-le]  The operation is not allowed on non-connected sockets
+0x00a5433d  [utf16-le]  The operation is not allowed on non-stream oriented sockets
+0x00a5497d  [utf16-le]  The path '{0}' is of an invalid length for use with domain sockets on this platform.  The length must be between 1 and {1} characters, inclusive
+0x00a54c13  [utf16-le]  The prefix 'xml' is bound to the namespace name 'http://www.w3.org/XML/1998/namespace'. Other prefixes must not be bound to this namespace name, and it must not be declared as the default namespace
+0x00a54da7  [utf16-le]  The prefix 'xmlns' is bound to the namespace name 'http://www.w3.org/2000/xmlns/'. It must not be declared. Other prefixes must not be bound to this namespace name, and it must not be declared as t...
+0x00a570cd  [utf16-le]  The server mode SSL must use a certificate with the associated private key
+0x00a571b6  [utf16-le]  The server response contains a null character at position 0x{0:X8}:{1}{1}{2}{1}{1}A server must not send a null character before the Protocol Version Exchange is complete.{1}{1}More information is ...
+0x00a573ca  [utf16-le]  The server response does not contain an SSH identification string.{0}The connection to the remote server was closed before any data was received.{0}{0}More information on the Protocol Version Excha...
+0x00a575ec  [utf16-le]  The server response does not contain an SSH identification string:{0}{0}{1}{0}{0}More information on the Protocol Version Exchange is available here:{0}https://tools.ietf.org/html/rfc4253#section-4.
+0x00a5d0fa  [utf16-le]  There was a problem with the PKCS12 (PFX) without a supplied password. See https://go.microsoft.com/fwlink/?linkid=2233907 for more information
+0x00a5dd1a  [utf16-le]  This openssh key does not contain the 'openssh-key-v1' format magic heade
+0x00a62532  [utf16-le]  Use the Blocking property to change the status of the Socket
+0x00a660e5  [utf16-le]  ^SSH-(?<protoversion>[^-]+)-(?<softwareversion>.+?)([ ](?<comments>.+))?
+0x00a67969  [utf16-le]  cancel-tcpip-forwar
+0x00a68b73  [utf16-le]  curve25519-sha256@libssh.or
+0x00a69d8a  [utf16-le]  eow@openssh.co
+0x00a6a454  [utf16-le]  forwarded-tcpi
+0x00a6a4c6  [utf16-le]  fstatvfs@openssh.co
+0x00a6a8e4  [utf16-le]  hardlink@openssh.co
+0x00a6aa14  [utf16-le]  hmac-ripemd160@openssh.co
+0x00a6ae15  [utf16-le]  http://127.0.0.1:4915
+0x00a6ae48  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsi
+0x00a6aeed  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysi
+0x00a6af88  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegrou
+0x00a6b033  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsi
+0x00a6b0ba  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsi
+0x00a6b14f  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysi
+0x00a6b1da  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/rol
+0x00a6b259  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclai
+0x00a6b2f4  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegrou
+0x00a6b38f  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthorit
+0x00a6b42c  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclai
+0x00a6b4c3  [utf16-le]  http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysi
+0x00a6b54c  [utf16-le]  http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nam
+0x00a6b5df  [utf16-le]  http://www.apple.com/DTDs/PropertyList-1.0.dt
+0x00a6b642  [utf16-le]  http://www.w3.org/2000/xmlns
+0x00a6b683  [utf16-le]  http://www.w3.org/2001/XMLSchem
+0x00a6b6ca  [utf16-le]  http://www.w3.org/2001/XMLSchema#boolea
+0x00a6b721  [utf16-le]  http://www.w3.org/2001/XMLSchema#integer6
+0x00a6b77c  [utf16-le]  http://www.w3.org/2001/XMLSchema#strin
+0x00a6b7d1  [utf16-le]  http://www.w3.org/2001/XMLSchema#uinteger6
+0x00a6b82e  [utf16-le]  http://www.w3.org/2001/XMLSchema-instanc
+0x00a6b887  [utf16-le]  http://www.w3.org/2003/11/xpath-datatype
+0x00a6b8e0  [utf16-le]  http://www.w3.org/XML/1998/namespac
+0x00a6b994  [utf16-le]  https://aka.ms/dotnet-warnings/{0
+0x00a6b9df  [utf16-le]  https://albert.apple.com/deviceservices/drmHandshak
+0x00a6ba4e  [utf16-le]  https://iremovalpro.co
+0x00a6ba83  [utf16-le]  https://iremovalpro.com/Payax0.ph
+0x00a6bace  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/ars2.ph
+0x00a6bb43  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/auth3.ph
+0x00a6bbba  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/checkm8.ph
+0x00a6bc35  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/iact8.ph
+0x00a6bcac  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf5.ph
+0x00a6bd1f  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf6.ph
+0x00a6bd92  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf7.ph
+0x00a6be05  [utf16-le]  https://s13.iremovalpro.com/pub.ph
+0x00a6be52  [utf16-le]  https://s13.iremovalpro.com/version33.tx
+0x00a6beab  [utf16-le]  https://t.me/iremova
+0x00a6bedc  [utf16-le]  https://www.trustpilot.com/review/iremovalpro.co
+0x00a6cbc3  [utf16-le]  keepalive@openssh.co
+0x00a6dcb1  [utf16-le]  net_ssl_renegotiate_dat
+0x00a6e783  [utf16-le]  openssh key type:
+0x00a6e7ae  [utf16-le]  openssh-key-v
+0x00a6ea47  [utf16-le]  partialSuccessLimi
+0x00a6ef74  [utf16-le]  posix-rename@openssh.co
+0x00a70418  [utf16-le]  socketAddres
+0x00a70439  [utf16-le]  socketFactor
+0x00a70660  [utf16-le]  ssh-connectio
+0x00a706e5  [utf16-le]  sslClientAuthenticationOption
+0x00a70952  [utf16-le]  statvfs@openssh.co
+0x00a70e9e  [utf16-le]  tcpip-forwar
+0x00a7249f  [utf16-le]  zlib@openssh.or
+0x00a72c71  [utf16-le]  {0}: The socket must not be bound or connected

@@ -1,0 +1,682 @@
+# Category: apple-ios
+# Source: IRemovalPro\iremovalpro.dll
+# Total: 678 strings
+
+0x00742f49  [ascii]  2System.Net.Primitives.dll8System.Security.Cryptography
+0x00742fdd  [ascii]  @System.Security.Cryptography.dll<System.Text.RegularExpressions
+0x00743149  [ascii]  (System.Threading.dll8SshNet.Security.Cryptography
+0x007431e0  [ascii]  @SshNet.Security.Cryptography.dll<System.Diagnostics.TraceSource
+0x00743d25  [ascii]  &System.Net.Quic.dll&System.Net.Security
+0x00743d95  [ascii]  .System.Net.Security.dll.System.Net.ServicePoint
+0x0074415b  [ascii]  VSystem.Runtime.Serialization.Primitives.dll,System.Security.Claims
+0x007441da  [ascii]  4System.Security.Claims.dllBSystem.Security.Principal.Windows
+0x00744259  [ascii]  JSystem.Security.Principal.Windows.dll2System.Threading.Channels
+0x00745941  [ascii]  SSH.NET is a Secure Shell (SSH) library for .NET, optimized for parallelism.
+0x00745c06  [ascii]  \SshNet.Security.Cryptography for .NET Standard@Cryptographic functions for .NET8Copyright 
+0x0074c786  [ascii]  TargetvM:System.Security.Cryptography.CryptoConfigForwarder.#cctor
+0x00750617  [ascii]  OrdinalComparer8OrdinalCaseSensitiveComparer2OrdinalIgnoreCaseComparer
+0x00766f1c  [ascii]  $RestResponseCookieM
+0x0076953a  [ascii]  SECURITY_STATUS
+0x00769829  [ascii]  BSecPkgContext_ApplicationProtocolS
+0x00769869  [ascii]  k $2Sec_Application_Protocols
+0x0076b11a  [ascii]  .MobileActivationService2Mobilebackup2ServiceIFPDZ
+0x0076d30c  [ascii]  LeapSecondCache
+0x0076e44e  [ascii]  delayt"millisecondsDelayv&millisecondsTimeoutx
+0x007703d9  [ascii]  SecureString"SecurityException*VerificationException
+0x00771477  [ascii]  IdnMapping JapaneseCalendarE
+0x007802ea  [ascii]  XmlCDataSection XmlCharacterData
+0x007841f4  [ascii]  CodeCatchClause2CodeCatchClauseCollection$CodeChecksumPragma
+0x00784bcf  [ascii]  BApplicationScopedSettingAttribute.ApplicationSettingsBase0ApplicationSettingsGroup"AppSettingsReader*ClientSettingsSection,ConfigurationException*ConfigurationSettings"ConfigXmlDocument8DefaultSet...
+0x00784d0f  [ascii]  IdnElement(IgnoreSectionHandler2IPersistComponentSettings"IriParsingElement0ISettingsProviderService2LocalFileSettingsProvider6NameValueFileSectionHandler.NameValueSectionHandlerBNoSettingsVersionU...
+0x00784eaf  [ascii]  SettingsContext8SettingsDescriptionAttributeBSettingsGroupDescriptionAttribute4SettingsGroupNameAttribute.SettingsLoadedEventArgs4SettingsLoadedEventHandler*SettingsManageability<SettingsManageabil...
+0x00785131  [ascii]  UriSection4UserScopedSettingAttribute"UserSettingsGroup
+0x00787f88  [ascii]  "SecurityQosFailed
+0x00788093  [ascii]  $CERT_CHAIN_ELEMENT<SecPkgContext_IssuerListInfoEx
+0x007880c6  [ascii]  SecBuffer0CertificateValidationPal
+0x00788157  [ascii]   SslStreamContext4SecurityStatusPalErrorCode
+0x00788453  [ascii]  8SecPkgContext_ConnectionInfo0SecPkgContext_CipherInfoS
+0x0078852b  [ascii]  k $<SecPkgContext_NegotiationInfoW0SecurityPackageInfoClass
+0x00788574  [ascii]  ISSPIInterface*SSPISecureChannelType2SecPkgContext_StreamSizesK
+0x00795637  [ascii]  RaiseClosing
+0x0079581a  [ascii]  "CloseClientSocket
+0x00797452  [ascii]  NSecureExecutionRequestRejectedException
+0x0079817f  [ascii]  LUnsubscribeFromEventsAndDisposeChannel@
+0x007a4d1d  [ascii]  N<CallVoidFuncWhenFinishCoreAsync>d__5`1^<ContinueBoolTaskFuncWhenFalseCoreAsync>d__13`1N<ReturnTrueTaskWhenFinishCoreAsync>d__7"<FlushAsync>d__11
+0x007a5779  [ascii]  P<DtdParserProxy_ParseCommentAsync>d__494^<DtdParserProxy_ParseNumericCharRefAsync>d__491F<DtdParserProxy_ParsePIAsync>d__493L<DtdParserProxy_PushEntityAsync>d__495\<DtdParserProxy_PushExternalSubs...
+0x007a6970  [ascii]  $UndeclaredNotationDParseElementOnlyContent_LocalFrame:<EatPublicKeywordAsync>d__200:<EatSystemKeywordAsync>d__201*<GetTokenAsync>d__173D<HandleEntityReferenceAsync>d__204$<ParseAsync>d__154:<Parse...
+0x007a7cdc  [ascii]  "XmlValueConverter XmlBaseConverter*XmlNumeric10Converter(XmlNumeric2Converter(XmlDateTimeConverter&XmlBooleanConverter XmlMiscConverter$XmlStringConverter&XmlUntypedConverter XmlListConverter
+0x007a8fa2  [ascii]  TrustFailure(SecureChannelFailure.ServerProtocolViolation KeepAliveFailure
+0x007a916f  [ascii]  0ServerWantsSecureSession
+0x007ab2d7  [ascii]  JSystem.Diagnostics.PerformanceCounter6System.Diagnostics.EventLog6System.Security.Permissions$ShellExecuteHelper
+0x007ab811  [ascii]  SemaphoreRights"SemaphoreSecurity.AuthenticationException
+0x007ae206  [ascii]  :HttpConnectionResponseContent
+0x007af713  [ascii]  (NetSecurityTelemetry*AsyncReadWriteAdapter
+0x007b111e  [ascii]  &SafeFreeCredentials"SafeDeleteContext,SafeSspiAuthDataHandle*SafeFreeContextBuffer<SafeFreeContextBuffer_SECURITY&SafeFreeCertContext6SafeFreeCredential_SECURITY(SafeDeleteSslContextFSafeFreeConte...
+0x007b23c4  [ascii]  $SecurityIdentifier
+0x007baccb  [ascii]  get_IsEchoed
+0x007bacd8  [ascii]  set_IsEchoed
+0x007bad38  [ascii]  &<Id>k__BackingField2<IsEchoed>k__BackingField0<Request>k__BackingField2<Response>k__BackingField
+0x007bd5ac  [ascii]  get_GroupPrime0SecondOkleyGroupReversed
+0x007c039d  [ascii]  .<StartReadAhead>b__24_0DReadAheadWaitTimeoutInMilliseconds
+0x007c1f26  [ascii]  IPv6"IPv6RoutingHeader$IPv6FragmentHeaderBIPSecEncapsulatingSecurityPayload2IPSecAuthenticationHeader
+0x007c4879  [ascii]  PI CondSectionStart
+0x007c488d  [ascii]  CondSectionEnd
+0x007c8f8a  [ascii]  ConnectionError*SecureConnectionError"HttpProtocolError6ExtendedConnectNotSupported.VersionNegotiationError.UserAuthenticationError ProxyTunnelError
+0x007c9c2a  [ascii]  EnhanceYourCalm$InadequateSecurity
+0x007c9e0f  [ascii]  &<DisposeAsync>d__26@<DrainContentLength0Frames>d__346<FlushSendBufferAsync>d__33:<ReadFrameEnvelopeAsync>d__45.<ReadHeadersAsync>d__46:<ReadNextDataFrameAsync>d__580<ReadResponseAsync>d__30><ReadR...
+0x007cb10e  [ascii]  DecryptError"ExportRestriction$InsuffientSecurity
+0x007d2fba  [ascii]  releaseCount*timeoutInMilliseconds
+0x007d6b3c  [ascii]  4HasECDiffieHellmanKeyUsage
+0x007d6b73  [ascii]   HasECDsaKeyUsage
+0x007da34d  [ascii]  EncryptionPolicy.NoEncryption and AllowEncryption significantly reduce security and should not be used in production code.
+0x007dd534  [ascii]  SecureRandomE
+0x007dd6b2  [ascii]  0SecurityUtilityException
+0x007df4b7  [ascii]  BaseContinue"CompressedHeaders HeaderFieldIndex
+0x007e3e03  [ascii]  SecNamedCurves+
+0x007e4233  [ascii]  NanoTime$NanosecondsPerTick
+0x007e8380  [ascii]  secureRandom
+0x007e843d  [ascii]  Secp256r1Holder
+0x007e8463  [ascii]  Secp384r1Holder
+0x007e8473  [ascii]  Secp521r1Holder
+0x007f5d49  [ascii]  .SkipUnknownPayloadAsync&ReadResponseContent@
+0x007f5d85  [ascii]  0ReadResponseContentAsync@
+0x007f5db2  [ascii]  DHandleReadResponseContentException@
+0x007f5fda  [ascii]  get_IsSecure"get_IsDefaultPort0get_Http2AltSvcOriginUri0ThrowGetVersionException
+0x007f684f  [ascii]  Sxy4IsSupportedNonSecureScheme.IsSupportedSecureScheme,IsSupportedProxyScheme
+0x007f6d8b  [ascii]  ParseHeaderName,ParseHeaderValueLength ParseHeaderValue<ParseHeaderValueLengthContinue,ParseCompressedHeaders
+0x007fb2b0  [ascii]  <ReceiveCommandResponseCallback@
+0x007fb9b7  [ascii]  *DeleteSecurityContext*AcceptSecurityContext
+0x007fba3b  [ascii]  4EnumerateSecurityPackagesW
+0x007fbb30  [ascii]  4InitializeSecurityContextW
+0x007fbd10  [ascii]  P<DeleteSecurityContext>g____PInvoke|26_0P<AcceptSecurityContext>g____PInvoke|27_0
+0x007fbdcd  [ascii]  Z<EnumerateSecurityPackagesW>g____PInvoke|30_0
+0x007fbf43  [ascii]  Z<InitializeSecurityContextW>g____PInvoke|35_0
+0x007fc2b1  [ascii]  2InitializeSecurityContext
+0x007fc3a5  [ascii]  y>GetSecurityStatusPalFromInterop
+0x007fc3d6  [ascii]  >GetInteropFromSecurityStatusPal
+0x007fc44f  [ascii]  (get_SecurityPackages@
+0x007fc46c  [ascii]  (set_SecurityPackages@
+0x007fc48d  [ascii]  2EnumerateSecurityPackages@
+0x007fc7ec  [ascii]  bQueryContextAttributes_SECPKG_ATTR_ISSUER_LIST_EX
+0x007fcc69  [ascii]  CloseContext:FindCertificateWithPrivateKey
+0x007fd194  [ascii]  $TryParseHelloFrame&TryParseClientHello&TryParseServerHello.TryParseHelloExtensions6TryGetSniFromServerNameList(GetSniFromServerName
+0x007fd514  [ascii]  ,CreateSecureCredential
+0x007fd5bf  [ascii]  @MustRunInitializeSecurityContext
+0x007fd634  [ascii]  JMustRunAcceptSecurityContext_SECURITY
+0x007fd761  [ascii]  y0ValidateSecurityProtocol
+0x007fe308  [ascii]  .ValidateBufferArgumentsJDisposeCachedTaskSocketAsyncEventArgs0LoadSocketTypeFromHandle@
+0x007feb4d  [ascii]  y.MicrosecondsToTimeValue
+0x007ffc3a  [ascii]  MemberwiseClone
+0x00800525  [ascii]  tIsSourceElementABaseClassOrInterfaceOfDestinationValueType
+0x00801976  [ascii]  (ThrowTicksOutOfRange ThrowInvalidKind4ThrowMillisecondOutOfRange&ThrowDateArithmetic$ThrowAddOutOfRange@
+0x00801a4a  [ascii]  $ValidateLeapSecond
+0x00801bd8  [ascii]  get_UtcNow4IsValidTimeWithLeapSeconds
+0x00801c1d  [ascii]  8FromFileTimeLeapSecondsAware
+0x00801c46  [ascii]  4ToFileTimeLeapSecondsAware
+0x00801c9a  [ascii]  8GetSystemSupportsLeapSeconds>GetGetSystemTimeAsFileTimeFnPtr
+0x00801cdf  [ascii]  HUpdateLeapSecondCacheAndReturnUtcNow
+0x00801d05  [ascii]  <UpdateLeapSecondCacheAndReturnUtcNow>g__LowGranularityNonCachedFallback|248_0@
+0x00801db9  [ascii]  8System.IComparable.CompareTo0FromUnixTimeMilliseconds
+0x00803969  [ascii]  ThrowStartIndexArgumentOutOfRange_ArgumentOutOfRange_IndexMustBeLessjThrowCountArgumentOutOfRange_ArgumentOutOfRange_Count8ThrowArgumentOutOfRange_Year:ThrowArgumentOutOfRange_MonthNThrowArgumentOu...
+0x008042d0  [ascii]  get_Minutes*get_TotalMilliseconds@
+0x00804321  [ascii]   FromMilliseconds
+0x00804c70  [ascii]  $get_BaseCalendarID@
+0x00804e2b  [ascii]  >SystemSupportsTaiwaneseCalendar:IcuLoadCalendarDataFromSystem@
+0x008059e3  [ascii]  get_ShortTimes0DeriveShortTimesFromLong.StripSecondsFromPattern>GetIndexOfNextTokenAfterSeconds
+0x0080666b  [ascii]  .GetJapaneseCalendarDTFI*GetTaiwanCalendarDTFI(CreateTokenHashTable@
+0x008073ac  [ascii]  ChangeCaseCore@
+0x00807a69  [ascii]  2VerifyTimeoutMilliseconds
+0x0080864f  [ascii]  GetMilliseconds
+0x0080872d  [ascii]  *ToTimeoutMilliseconds
+0x0080c76e  [ascii]   InvokeSecondPass
+0x0080d777  [ascii]  6SecureStringToCoTaskMemAnsi
+0x0080d79f  [ascii]  @SecureStringToGlobalAllocUnicode&StringToHGlobalAnsi$StringToHGlobalUni(StringToCoTaskMemUni*StringToCoTaskMemUTF8*StringToCoTaskMemAnsi,GetHRForLastWin32Error*ZeroFreeCoTaskMemUTF84ZeroFreeGlobal...
+0x0080dce2  [ascii]  get_PeekSecond
+0x0080debb  [ascii]  ParseCulture
+0x0080eddc  [ascii]  JGetImplicitlyOverriddenBaseClassEvent@
+0x0080ee0e  [ascii]  LGetImplicitlyOverriddenBaseClassMethod@
+0x0080ee41  [ascii]  PGetImplicitlyOverriddenBaseClassProperty@
+0x0080f081  [ascii]  $ParseConstantValue
+0x0080f0a4  [ascii]  2ParseConstantNumericValue*TryParseConstantValue
+0x0080f0e8  [ascii]  *TryParseConstantArray
+0x0080f112  [ascii]  2TryParseConstantEnumArray
+0x008185e1  [ascii]  nz$ParseCanonicalName
+0x008187dd  [ascii]  get_IsUncPathNget_DisablePathAndQueryCanonicalization*get_UserDrivenParsing(get_SecuredPathIndex
+0x00819d46  [ascii]  RawText0WriteRawWithCharChecking WriteCommentOrPi"WriteCDataSection
+0x0081ad34  [ascii]  *set_NamespaceResolver"StartCDataSection
+0x0081b628  [ascii]  4get_DtdParserProxy_BaseUri,DtdParserProxy_ParsePI6DtdParserProxy_ParseComment2DtdParserProxy_PushEntity@
+0x0081bc7e  [ascii]  ParseComment&ParseCDataOrComment@
+0x0081bd31  [ascii]  $ParseCharRefInline@
+0x0081c340  [ascii]  @DtdParserProxy_ParseCommentAsync<DtdParserProxy_PushEntityAsync@
+0x0081ca57  [ascii]  "ParseCommentAsync0ParseCDataOrCommentAsync@
+0x0081ca8e  [ascii]  :ParseCDataOrCommentTupleAsync@
+0x0081cd43  [ascii]  PSystem.Xml.IDtdParserAdapter.get_BaseUriLSystem.Xml.IDtdParserAdapter.get_IsEof\System.Xml.IDtdParserAdapter.get_ParsingBufferhSystem.Xml.IDtdParserAdapter.get_ParsingBufferLength`System.Xml.IDtdP...
+0x0081d1c5  [ascii]  `System.Xml.IDtdParserAdapterV1.get_NormalizationZSystem.Xml.IDtdParserAdapterV1.get_NamespaceslSystem.Xml.IDtdParserAdapterV1.get_V1CompatibilityModeTSystem.Xml.IDtdParserAdapter.ReadDataAsyncjSys...
+0x0081e266  [ascii]  $CreateCDataSection@
+0x0081ee10  [ascii]  ParseEntityDecl"ParseNotationDecl*AddUndeclaredNotation ParseCondSection
+0x0081f00b  [ascii]  ScanPublicId2 ScanCondSection1 ScanCondSection2 ScanCondSection3
+0x0081f340  [ascii]  :ParseElementMixedContentAsync(ParseEntityDeclAsync,ParseNotationDeclAsync*ParseCondSectionAsync(ParseExternalIdAsync@
+0x0081f4df  [ascii]  $ScanNotation1Async"ScanSystemIdAsync ScanEntity1Async ScanEntity2Async ScanEntity3Async$ScanPublicId1Async$ScanPublicId2Async*ScanCondSection1Async*ScanCondSection3Async
+0x00821d8a  [ascii]  System.Collections.Generic.IEnumerator<System.Security.Claims.Claim>.get_Current@
+0x00821de3  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Claims.Claim>.GetEnumerator@
+0x008224d4  [ascii]  L<CryptReleaseContext>g____PInvoke|28_0@<CryptSignHash>g____PInvoke|33_0
+0x00823c80  [ascii]  $get_EcPublicKeyOid get_secp256r1Oid get_secp384r1Oid get_secp521r1Oid0get_BasicConstraints2Oid.get_EnhancedKeyUsageOid
+0x00825273  [ascii]  VerifyHash&IsEccAlgorithmGroup
+0x008258ed  [ascii]  IsECNamedCurve@
+0x0082689d  [ascii]  IsECDsa"IsECDiffieHellman
+0x008268f6  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Cryptography.X509Certificates.X509Certificate2>.GetEnumerator@
+0x008269e1  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Cryptography.X509Certificates.X509ChainElement>.GetEnumerator@
+0x00826b6e  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Cryptography.X509Certificates.X509Extension>.GetEnumerator@
+0x00827c57  [ascii]  System.Collections.Generic.ICollection<System.Security.Principal.IdentityReference>.get_IsReadOnly@
+0x0082893a  [ascii]  MayOverlap8ParticipatesInCaseConversion:CanEasilyEnumerateSetContents
+0x0082898e  [ascii]  IsECMAWordChar$IsBoundaryWordChar(CharInClassRecursive
+0x00828cef  [ascii]  6CreateOneWithCaseConversion
+0x00828d23  [ascii]  BReverseConcatenationIfRightToLeft@
+0x0082971e  [ascii]  IsECMABoundary
+0x0082b451  [ascii]  ExecuteAsAdmin*SecureClearAndCollect$iDevice_Deactivate
+0x0083012a  [ascii]  P<FormatIPv6Address>g__AppendSections|6_0
+0x0083110f  [ascii]   ChangeCaseCommon@
+0x00831db2  [ascii]  LGetImplicitlyOverriddenBaseClassMember
+0x00831f58  [ascii]  LContinueBoolTaskFuncWhenFalseCoreAsync
+0x008331b2  [ascii]  e{(NegotiationInfoClass0SecurityStatusAdapterPal6UnmanagedCertificateContextw
+0x008332e5  [ascii]  /(InputSecurityBuffers
+0x00833303  [ascii]  SecurityBuffer
+0x008336b2  [ascii]  0Sha1ForNonSecretPurposes
+0x00836914  [ascii]  H"SecurityStatusPal
+0x00836a1b  [ascii]  SCHANNEL_CRED&InputSecurityBuffer$SecurityBufferType
+0x00836a58  [ascii]  (SecurityProtocolType
+0x00837e60  [ascii]  *ReadyToRunSectionType
+0x00838bba  [ascii]  J$WinSecurityContext
+0x00839e2e  [ascii]  &SECURITY_ATTRIBUTES
+0x0083a1d1  [ascii]  SecBufferDesc
+0x0083a1df  [ascii]  SCH_CREDENTIALS6SecPkgCred_ClientCertPolicy
+0x0083a26a  [ascii]  StreamSizes,SecPkgContext_Bindings
+0x0083a5cd  [ascii]  IO_STATUS_BLOCK6SECURITY_QUALITY_OF_SERVICE&RTL_OSVERSIONINFOEX
+0x0083c661  [ascii]  6System.Net.Security is not supported on this platform.
+0x0083c98c  [ascii]  _A security requirement was not fulfilled during authentication. Required: {0}, negotiated: {1}.
+0x0083c9ef  [ascii]  A remote side security requirement was not fulfilled during authentication. Try increasing the ProtectionLevel and/or ImpersonationLevel.
+0x0083cc5c  [ascii]  XThis operation is not allowed on a security context that has already been authenticated.
+0x0083d343  [ascii]  ?No channel binding check for requests without a secure channel.
+0x0083d9df  [ascii]  0The requested security package is not supported.
+0x0083da11  [ascii]  1The requested security protocol is not supported.
+0x00842933  [ascii]     "object | applet | img | map | iframe">
+0x00842fc5  [ascii]        table | br | span | bdo | object | applet | img | map |
+0x00845315  [ascii]  <!ELEMENT applet (#PCDATA | param | %block; | form | %inline; | %misc;)*>
+0x00845360  [ascii]  <!ATTLIST applet
+0x00847b58  [ascii]     "object | applet | img | map | iframe">
+0x008481e4  [ascii]        table | br | span | bdo | object | applet | img | map |
+0x0084a7ab  [ascii]  <!ELEMENT applet (#PCDATA | param | %block; | form | %inline; | %misc;)*>
+0x0084a7f6  [ascii]  <!ATTLIST applet
+0x0084cb69  [ascii]  <!ENTITY sect   "&#167;">
+0x0084d5b1  [ascii]  <!ENTITY sect   "&#167;">
+0x00853bcb  [ascii]  /Library/MobileSubstrate/DynamicLibraries/blackhound.dylib
+0x00853e0b  [ascii]  /System/Library/Frameworks/Security.framework/Security
+0x0085af12  [ascii]  com.panyolsoft.blackhound
+0x0085af30  [ascii]  MobileActivationDaemon
+0x0085b4d2  [ascii]  T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]->
+0x00867682  [ascii]  @_SecKeyRawVerify
+0x008676a0  [ascii]  @_SecKeyVerifySignature
+0x008676b9  [ascii]  @_SecTrustEvaluateWithError
+0x008676d6  [ascii]  @_kSecAttrKeyClass
+0x008676ec  [ascii]  @_kSecAttrKeyClassPublic
+0x00867706  [ascii]  @_kSecAttrKeyType
+0x00867719  [ascii]  @_kSecAttrKeyTypeRSA
+0x0086772f  [ascii]  @_kSecKeyAlgorithmRSASignatureRaw
+0x008677db  [ascii]  @_SecKeyCreateWithData
+0x008677f7  [ascii]  @_SecKeyVerifySignature
+0x00867a03  [ascii]  Qreplace_Sec
+0x0086834a  [ascii]  _orig_SecKeyRawVerify
+0x00868360  [ascii]  _orig_SecKeyVerifySignature
+0x0086837c  [ascii]  _orig_SecTrustEvaluateWithError
+0x008683a7  [ascii]  _replace_SecKeyRawVerify
+0x008683c0  [ascii]  _replace_SecKeyVerifySignature
+0x008683df  [ascii]  _replace_SecTrustEvaluateWithError
+0x00868548  [ascii]  _SecKeyCreateWithData
+0x0086855e  [ascii]  _SecKeyRawVerify
+0x0086856f  [ascii]  _SecKeyVerifySignature
+0x00868586  [ascii]  _SecTrustEvaluateWithError
+0x00868623  [ascii]  _kSecAttrKeyClass
+0x00868635  [ascii]  _kSecAttrKeyClassPublic
+0x0086864d  [ascii]  _kSecAttrKeyType
+0x0086865e  [ascii]  _kSecAttrKeyTypeRSA
+0x00868672  [ascii]  _kSecKeyAlgorithmRSASignatureRaw
+0x008687de  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x0086884e  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x008688e2  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00868950  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x008689d8  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/
+0x00868a36  [ascii]  blackhound.x.m
+0x00868a45  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/blackhound.x.1643379a.o
+0x00868ad4  [ascii]  _replace_SecKeyRawVerify
+0x00868aed  [ascii]  _replace_SecTrustEvaluateWithError
+0x00868b10  [ascii]  _replace_SecKeyVerifySignature
+0x00868b49  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00868bb9  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00868c49  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00868cb7  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00868d3f  [ascii]  _orig_SecKeyRawVerify
+0x00868d55  [ascii]  _orig_SecKeyVerifySignature
+0x00868d71  [ascii]  _orig_SecTrustEvaluateWithError
+0x00868e0f  [ascii]  blackhound.dylib.8b1348c6.unsigned
+0x0086903d  [ascii]  "blackhound.dylib.8b1348c6.unsigned
+0x00869102  [ascii]  blackhound.dylib.8b1348c6.unsigned
+0x0086bb7b  [ascii]  /Library/MobileSubstrate/DynamicLibraries/blackhound.dylib
+0x0086bdbb  [ascii]  /System/Library/Frameworks/Security.framework/Security
+0x00872f12  [ascii]  com.panyolsoft.blackhound
+0x00872f30  [ascii]  MobileActivationDaemon
+0x008734d2  [ascii]  T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]->
+0x0087f739  [ascii]  @_SecKeyCreateWithData
+0x0087f751  [ascii]  @_SecKeyRawVerify
+0x0087f764  [ascii]  @_SecKeyVerifySignature
+0x0087f77d  [ascii]  @_SecTrustEvaluateWithError
+0x0087f79a  [ascii]  @_kSecAttrKeyClass
+0x0087f7ae  [ascii]  @_kSecAttrKeyClassPublic
+0x0087f7c8  [ascii]  @_kSecAttrKeyType
+0x0087f7db  [ascii]  @_kSecAttrKeyTypeRSA
+0x0087f7f1  [ascii]  @_kSecKeyAlgorithmRSASignatureRaw
+0x0087f903  [ascii]  Qreplace_Sec
+0x00880226  [ascii]  _orig_SecKeyRawVerify
+0x0088023c  [ascii]  _orig_SecKeyVerifySignature
+0x00880258  [ascii]  _orig_SecTrustEvaluateWithError
+0x00880283  [ascii]  _replace_SecKeyRawVerify
+0x0088029c  [ascii]  _replace_SecKeyVerifySignature
+0x008802bb  [ascii]  _replace_SecTrustEvaluateWithError
+0x00880424  [ascii]  _SecKeyCreateWithData
+0x0088043a  [ascii]  _SecKeyRawVerify
+0x0088044b  [ascii]  _SecKeyVerifySignature
+0x00880462  [ascii]  _SecTrustEvaluateWithError
+0x008804ff  [ascii]  _kSecAttrKeyClass
+0x00880511  [ascii]  _kSecAttrKeyClassPublic
+0x00880529  [ascii]  _kSecAttrKeyType
+0x0088053a  [ascii]  _kSecAttrKeyTypeRSA
+0x0088054e  [ascii]  _kSecKeyAlgorithmRSASignatureRaw
+0x008806a9  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00880719  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x0088079e  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x0088080c  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00880894  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/
+0x008808f3  [ascii]  blackhound.x.m
+0x00880902  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/blackhound.x.50c6260a.o
+0x00880992  [ascii]  _replace_SecKeyRawVerify
+0x008809ab  [ascii]  _replace_SecTrustEvaluateWithError
+0x008809ce  [ascii]  _replace_SecKeyVerifySignature
+0x00880a07  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00880a77  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00880b07  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00880b75  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00880bfd  [ascii]  _orig_SecKeyRawVerify
+0x00880c13  [ascii]  _orig_SecKeyVerifySignature
+0x00880c2f  [ascii]  _orig_SecTrustEvaluateWithError
+0x00880ccf  [ascii]  blackhound.dylib.8b1348c6.unsigned
+0x00880efd  [ascii]  "blackhound.dylib.8b1348c6.unsigned
+0x00880fc2  [ascii]  blackhound.dylib.8b1348c6.unsigned
+0x0089db6c  [ascii]  /Users/minacriss/Documents/Minasoftware/minaeraser12/minaeraser/
+0x0089dbb4  [ascii]  /Users/minacriss/Documents/Minasoftware/minaeraser12/Build/Intermediates.noindex/minaeraser12.build/Debug-iphoneos/minaeraser12.build/Objects-normal/arm64/main.o
+0x0089dd3c  [ascii]  minaeraser12
+0x0089e1c0  [ascii]  minaeraser12
+0x0089e1f7  [ascii]  *Apple Development: weidong li (PBNGZQ8G6L)
+0x0089e26f  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x0089e3f2  [ascii]  <key>com.apple.BTServer.allowQuickRSSIRead</key>
+0x0089e42d  [ascii]  <key>com.apple.BTServer.allowRestrictedServices</key>
+0x0089e46d  [ascii]  <key>com.apple.BTServer.appleMfgDataAdvertising</key>
+0x0089e4ad  [ascii]  <key>com.apple.BTServer.appleMfgDataScanner</key>
+0x0089e4e9  [ascii]  <key>com.apple.BTServer.le.att</key>
+0x0089e518  [ascii]  <key>com.apple.BTServer.programmaticPairing</key>
+0x0089e554  [ascii]  <key>com.apple.CommCenter.fine-grained</key>
+0x0089e5ed  [ascii]  <key>com.apple.SystemConfiguration.SCDynamicStore-write-access</key>
+0x0089e63c  [ascii]  <key>com.apple.SystemConfiguration.SCPreferences-write-access</key>
+0x0089e68b  [ascii]  <string>com.apple.AutoWake.xml</string>
+0x0089e6be  [ascii]  <key>com.apple.accounts.appleaccount.fullaccess</key>
+0x0089e6fe  [ascii]  <key>com.apple.authkit.client.private</key>
+0x0089e734  [ascii]  <key>com.apple.bluetooth.system</key>
+0x0089e764  [ascii]  <key>com.apple.icloud.FindMyDevice.FindMyDeviceBTDiscoveryXPCService.access</key>
+0x0089e7c0  [ascii]  <key>com.apple.icloud.FindMyDevice.FindMyDeviceHelperXPCService.access</key>
+0x0089e817  [ascii]  <key>com.apple.icloud.FindMyDevice.FindMyDeviceIdentityXPCService.access</key>
+0x0089e870  [ascii]  <key>com.apple.icloud.FindMyDevice.FindMyDeviceUserNotificationsXPCService.access</key>
+0x0089e8d2  [ascii]  <key>com.apple.icloud.findmydeviced.access</key>
+0x0089e90d  [ascii]  <key>com.apple.icloud.ifccd</key>
+0x0089e939  [ascii]  <key>com.apple.itunesstored.private</key>
+0x0089e96d  [ascii]  <key>com.apple.keystore.absinthe</key>
+0x0089e99e  [ascii]  <key>com.apple.keystore.device</key>
+0x0089e9cd  [ascii]  <key>com.apple.keystore.sik.access</key>
+0x0089ea00  [ascii]  <key>com.apple.localnotification.schedulingproxy</key>
+0x0089ea41  [ascii]  <key>com.apple.locationd.authorizeapplications</key>
+0x0089ea80  [ascii]  <key>com.apple.locationd.effective_bundle</key>
+0x0089eaba  [ascii]  <key>com.apple.locationd.emergency_enabler</key>
+0x0089eaf5  [ascii]  <key>com.apple.locationd.status</key>
+0x0089eb25  [ascii]  <key>com.apple.managedconfiguration.profiled-access</key>
+0x0089eb69  [ascii]  <key>com.apple.mobileactivationd.spi</key>
+0x0089eb9e  [ascii]  <key>com.apple.mobilemail.mailservices</key>
+0x0089ebd5  [ascii]  <key>com.apple.nano.nanoregistry</key>
+0x0089ec06  [ascii]  <key>com.apple.nfcd.hwmanager</key>
+0x0089ec34  [ascii]  <key>com.apple.nfcd.seshat</key>
+0x0089ec5f  [ascii]  <key>com.apple.private.MobileActivation</key>
+0x0089eccb  [ascii]  <key>com.apple.private.MobileGestalt.AllowedProtectedKeys</key>
+0x0089ed15  [ascii]  <key>com.apple.private.bmk.allow</key>
+0x0089ed46  [ascii]  <key>com.apple.private.externalaccessory.showallaccessories</key>
+0x0089ed92  [ascii]  <key>com.apple.private.ids.messaging</key>
+0x0089edc8  [ascii]  <string>com.apple.private.alloy.findmydeviced.aoverc</string>
+0x0089ee08  [ascii]  <string>com.apple.private.alloy.findmydeviced.watch</string>
+0x0089ee50  [ascii]  <key>com.apple.private.ids.messaging.high-priority</key>
+0x0089ee94  [ascii]  <string>com.apple.private.alloy.findmydeviced.watch</string>
+0x0089eedc  [ascii]  <key>com.apple.private.iokit.assertonbattery</key>
+0x0089ef19  [ascii]  <key>com.apple.private.system-keychain</key>
+0x0089ef50  [ascii]  <key>com.apple.security.exception.mach-lookup.global-name</key>
+0x0089ef9b  [ascii]  <string>com.apple.nanoprefsync</string>
+0x0089efc5  [ascii]  <string>com.apple.icloud.ifccd</string>
+0x0089efef  [ascii]  <string>com.apple.FileCoordination</string>
+0x0089f01d  [ascii]  <string>com.apple.assistant.settings</string>
+0x0089f04d  [ascii]  <string>com.apple.nfcd.hwmanager</string>
+0x0089f079  [ascii]  <string>com.apple.icloud.findmydeviced</string>
+0x0089f0ab  [ascii]  <string>com.apple.server.bluetooth.le.att.xpc</string>
+0x0089f0e4  [ascii]  <string>com.apple.server.bluetooth.le.pipe.xpc</string>
+0x0089f11e  [ascii]  <string>com.apple.server.bluetooth</string>
+0x0089f14c  [ascii]  <string>com.apple.SharingServices</string>
+0x0089f179  [ascii]  <string>com.apple.wirelessproxd</string>
+0x0089f1a4  [ascii]  <string>com.apple.iap2d.xpc</string>
+0x0089f1cb  [ascii]  <string>com.apple.iaptransportd.ExternalAccessory.distributednotification.server</string>
+0x0089f227  [ascii]  <string>com.apple.iap2d.ExternalAccessory.distributednotification.server</string>
+0x0089f27b  [ascii]  <string>com.apple.iapd.xpc</string>
+0x0089f2a1  [ascii]  <string>com.apple.ExternalAccessory.distributednotification.server</string>
+0x0089f2ef  [ascii]  <string>com.apple.bluetooth.CoreBluetooth</string>
+0x0089f32d  [ascii]  <key>com.apple.security.exception.shared-preference.read-write</key>
+0x0089f37d  [ascii]  <string>com.apple.nanoprefsyncd</string>
+0x0089f3b1  [ascii]  <key>com.apple.security.system-groups</key>
+0x0089f3e8  [ascii]  <string>systemgroup.com.apple.icloud.ifccd</string>
+0x0089f41e  [ascii]  <string>systemgroup.com.apple.bluetooth</string>
+0x0089f451  [ascii]  <string>systemgroup.com.apple.pisco.suinfo</string>
+0x0089f487  [ascii]  <string>systemgroup.com.apple.sharedpclogging</string>
+0x0089f4c0  [ascii]  <string>systemgroup.com.apple.icloud.findmydevice.managed</string>
+0x0089f50e  [ascii]  <key>com.apple.springboard.activateawayviewplugins</key>
+0x0089f551  [ascii]  <key>com.apple.springboard.launchapplications</key>
+0x0089f58f  [ascii]  <key>com.apple.springboard.opensensitiveurl</key>
+0x0089f5cb  [ascii]  <key>com.apple.springboard.wipedevice</key>
+0x0089f601  [ascii]  <key>com.apple.wifi.manager-access</key>
+0x0089f634  [ascii]  <key>keychain-access-groups</key>
+0x0089f661  [ascii]  <string>appleaccount</string>
+0x0089f681  [ascii]  <string>apple</string>
+0x0089f69a  [ascii]  <string>com.apple.identities</string>
+0x0089f71d  [ascii]  <key>secure-key-vault-client</key>
+0x0089f7ee  [ascii]  Apple Inc.1&0$
+0x0089f803  [ascii]  Apple Certification Authority1
+0x0089f82b  [ascii]  Apple Root CA0
+0x0089f873  [ascii]  Apple Inc.1,0*
+0x0089f887  [ascii]  #Apple Worldwide Developer Relations1D0B
+0x0089f8b5  [ascii]  ;Apple Worldwide Developer Relations Certification Authority0
+0x0089fa81  [ascii]  http://crl.apple.com/root.crl0
+0x0089fc0d  [ascii]  Apple Inc.1&0$
+0x0089fc22  [ascii]  Apple Certification Authority1
+0x0089fc4a  [ascii]  Apple Root CA0
+0x0089fc91  [ascii]  Apple Inc.1&0$
+0x0089fca6  [ascii]  Apple Certification Authority1
+0x0089fcce  [ascii]  Apple Root CA0
+0x0089fe9b  [ascii]  https://www.apple.com/appleca/0
+0x008a00d4  [ascii]  Apple Inc.1,0*
+0x008a00e8  [ascii]  #Apple Worldwide Developer Relations1D0B
+0x008a0116  [ascii]  ;Apple Worldwide Developer Relations Certification Authority0
+0x008a019b  [ascii]  *Apple Development: weidong li (PBNGZQ8G6L)1
+0x008a0377  [ascii]  #http://ocsp.apple.com/ocsp03-wwdr190
+0x008a0491  [ascii]  *http://www.apple.com/certificateauthority/0
+0x008a066a  [ascii]  Apple Inc.1,0*
+0x008a067e  [ascii]  #Apple Worldwide Developer Relations1D0B
+0x008a06ac  [ascii]  ;Apple Worldwide Developer Relations Certification Authority
+0x008a07ea  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x008c4464  [ascii]  /Users/minacriss/Documents/Minasoftware/minaeraser/minaeraser/
+0x008c44aa  [ascii]  /Users/minacriss/Documents/Minasoftware/minaeraser/Build/Intermediates.noindex/minaeraser.build/Debug-iphoneos/minaeraser.build/Objects-normal/arm64/main.o
+0x008c4b8a  [ascii]  *Apple Development: weidong li (PBNGZQ8G6L)
+0x008c4c02  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x008c4cb4  [ascii]  <key>com.apple.appletv.pbs.osupdate-service-access</key>
+0x008c4cf7  [ascii]  <key>com.apple.dmd-access</key>
+0x008c4d21  [ascii]  <key>com.apple.dmd.operation.clear-activation-lock-bypass-code</key>
+0x008c4d70  [ascii]  <key>com.apple.dmd.operation.clear-device-passcode</key>
+0x008c4db3  [ascii]  <key>com.apple.dmd.operation.clear-restrictions-password</key>
+0x008c4dfc  [ascii]  <key>com.apple.dmd.operation.erase-device</key>
+0x008c4e36  [ascii]  <key>com.apple.dmd.operation.fetch-activation-lock-bypass-code</key>
+0x008c4e85  [ascii]  <key>com.apple.dmd.operation.fetch-applications</key>
+0x008c4ec5  [ascii]  <key>com.apple.dmd.operation.fetch-available-os-updates</key>
+0x008c4f0d  [ascii]  <key>com.apple.dmd.operation.fetch-certificates</key>
+0x008c4f4d  [ascii]  <key>com.apple.dmd.operation.fetch-device-properties</key>
+0x008c4f92  [ascii]  <key>com.apple.dmd.operation.fetch-os-update-status</key>
+0x008c4fd6  [ascii]  <key>com.apple.dmd.operation.fetch-profiles</key>
+0x008c5012  [ascii]  <key>com.apple.dmd.operation.fetch-provisioning-profiles</key>
+0x008c505b  [ascii]  <key>com.apple.dmd.operation.fetch-restrictions</key>
+0x008c509b  [ascii]  <key>com.apple.dmd.operation.fetch-security-information</key>
+0x008c50e3  [ascii]  <key>com.apple.dmd.operation.fetch-unlock-token</key>
+0x008c5123  [ascii]  <key>com.apple.dmd.operation.install-profile</key>
+0x008c5160  [ascii]  <key>com.apple.dmd.operation.install-provisioning-profile</key>
+0x008c51aa  [ascii]  <key>com.apple.dmd.operation.invite-to-volume-purchase-program</key>
+0x008c51f9  [ascii]  <key>com.apple.dmd.operation.lock-device</key>
+0x008c5232  [ascii]  <key>com.apple.dmd.operation.remove-profile</key>
+0x008c526e  [ascii]  <key>com.apple.dmd.operation.remove-provisioning-profile</key>
+0x008c52b7  [ascii]  <key>com.apple.dmd.operation.request-airplay-mirroring</key>
+0x008c52fe  [ascii]  <key>com.apple.dmd.operation.restart-device</key>
+0x008c533a  [ascii]  <key>com.apple.dmd.operation.schedule-os-update</key>
+0x008c537a  [ascii]  <key>com.apple.dmd.operation.schedule-os-update-scan</key>
+0x008c53bf  [ascii]  <key>com.apple.dmd.operation.set-app-analytics-enabled</key>
+0x008c5406  [ascii]  <key>com.apple.dmd.operation.set-app-attributes</key>
+0x008c5446  [ascii]  <key>com.apple.dmd.operation.set-app-configuration</key>
+0x008c5489  [ascii]  <key>com.apple.dmd.operation.set-bluetooth-enabled</key>
+0x008c54cc  [ascii]  <key>com.apple.dmd.operation.set-data-roaming-enabled</key>
+0x008c5512  [ascii]  <key>com.apple.dmd.operation.set-device-name</key>
+0x008c554f  [ascii]  <key>com.apple.dmd.operation.set-diagnostic-submission-enabled</key>
+0x008c559e  [ascii]  <key>com.apple.dmd.operation.set-maximum-resident-users</key>
+0x008c55e6  [ascii]  <key>com.apple.dmd.operation.set-passcode-lock-grace-period</key>
+0x008c5632  [ascii]  <key>com.apple.dmd.operation.set-personal-hotspot-enabled</key>
+0x008c567c  [ascii]  <key>com.apple.dmd.operation.set-user-language</key>
+0x008c56bb  [ascii]  <key>com.apple.dmd.operation.set-user-locale</key>
+0x008c56f8  [ascii]  <key>com.apple.dmd.operation.set-voice-roaming-enabled</key>
+0x008c573f  [ascii]  <key>com.apple.dmd.operation.set-wallpaper</key>
+0x008c577a  [ascii]  <key>com.apple.dmd.operation.shut-down-device</key>
+0x008c57b8  [ascii]  <key>com.apple.dmd.operation.stop-airplay-mirroring</key>
+0x008c57fc  [ascii]  <key>com.apple.dmd.operation.validate-applications</key>
+0x008c583f  [ascii]  <key>com.apple.frontboard.shutdown</key>
+0x008c5872  [ascii]  <key>com.apple.keystore.device</key>
+0x008c58a1  [ascii]  <key>com.apple.keystore.escrow.create</key>
+0x008c58d7  [ascii]  <key>com.apple.managedconfiguration.mdmd.push</key>
+0x008c5915  [ascii]  <key>com.apple.managedconfiguration.profiled-access</key>
+0x008c5959  [ascii]  <key>com.apple.managedconfiguration.profiled.configurationprofiles</key>
+0x008c5aaf  [ascii]  <key>com.apple.managedconfiguration.profiled.get</key>
+0x008c5b84  [ascii]  <key>com.apple.managedconfiguration.profiled.provisioningprofiles</key>
+0x008c5c61  [ascii]  <key>com.apple.managedconfiguration.profiled.set</key>
+0x008c5db4  [ascii]  <key>com.apple.managedconfiguration.profiled.shutdown</key>
+0x008c5dfa  [ascii]  <key>com.apple.managedconfiguration.profiled.usercompliance</key>
+0x008c5e46  [ascii]  <key>com.apple.managedconfiguration.teslad-access</key>
+0x008c5e88  [ascii]  <key>com.apple.private.InstallCoordination.allowed</key>
+0x008c5ecb  [ascii]  <key>com.apple.private.coreservices.canmaplsdatabase</key>
+0x008c5f10  [ascii]  <key>com.apple.private.lockdown.finegrained-get</key>
+0x008c5ffd  [ascii]  <key>com.apple.private.lockdown.finegrained-set</key>
+0x008c603e  [ascii]  <string>com.apple.mobile.user_preferences/UserSetLanguage</string>
+0x008c6083  [ascii]  <string>com.apple.mobile.user_preferences/UserSetLocale</string>
+0x008c60f2  [ascii]  <key>com.apple.private.lockdown.ignore-mc-name-restriction</key>
+0x008c613d  [ascii]  <key>com.apple.private.mobileinstall.allowedSPI</key>
+0x008c61be  [ascii]  <key>com.apple.private.system-keychain</key>
+0x008c61f5  [ascii]  <key>com.apple.springboard.wipedevice</key>
+0x008c622b  [ascii]  <key>com.apple.wifi.manager-access</key>
+0x008c625e  [ascii]  <key>com.apple.wipedevice</key>
+0x008c6288  [ascii]  <key>keychain-access-groups</key>
+0x008c62b5  [ascii]  <string>apple</string>
+0x008c62ce  [ascii]  <string>com.apple.certificates</string>
+0x008c62f8  [ascii]  <string>com.apple.identities</string>
+0x008c63b9  [ascii]  Apple Inc.1&0$
+0x008c63ce  [ascii]  Apple Certification Authority1
+0x008c63f6  [ascii]  Apple Root CA0
+0x008c643e  [ascii]  Apple Inc.1,0*
+0x008c6452  [ascii]  #Apple Worldwide Developer Relations1D0B
+0x008c6480  [ascii]  ;Apple Worldwide Developer Relations Certification Authority0
+0x008c664c  [ascii]  http://crl.apple.com/root.crl0
+0x008c67d8  [ascii]  Apple Inc.1&0$
+0x008c67ed  [ascii]  Apple Certification Authority1
+0x008c6815  [ascii]  Apple Root CA0
+0x008c685c  [ascii]  Apple Inc.1&0$
+0x008c6871  [ascii]  Apple Certification Authority1
+0x008c6899  [ascii]  Apple Root CA0
+0x008c6a66  [ascii]  https://www.apple.com/appleca/0
+0x008c6c9f  [ascii]  Apple Inc.1,0*
+0x008c6cb3  [ascii]  #Apple Worldwide Developer Relations1D0B
+0x008c6ce1  [ascii]  ;Apple Worldwide Developer Relations Certification Authority0
+0x008c6d66  [ascii]  *Apple Development: weidong li (PBNGZQ8G6L)1
+0x008c6f42  [ascii]  #http://ocsp.apple.com/ocsp03-wwdr190
+0x008c705c  [ascii]  *http://www.apple.com/certificateauthority/0
+0x008c7235  [ascii]  Apple Inc.1,0*
+0x008c7249  [ascii]  #Apple Worldwide Developer Relations1D0B
+0x008c7277  [ascii]  ;Apple Worldwide Developer Relations Certification Authority
+0x008c73b5  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x008ea6f8  [ascii]  /System/Library/PrivateFrameworks/MobileActivation.framework/MobileActivation
+0x008fa7e3  [ascii]  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+0x008fa897  [ascii]      <key>com.apple.private.security.container-required</key>
+0x008fa918  [ascii]  <key>com.apple.mobileactivationd.spi</key>
+0x008fa94d  [ascii]  <key>com.apple.mobileactivationd.device-identifiers</key>
+0x008fa991  [ascii]  <key>com.apple.CommCenter.fine-grained</key>
+0x008faa05  [ascii]  <key>com.apple.icloud.findmydeviced.access</key>
+0x008faa40  [ascii]  <key>com.apple.keystore.absinthe</key>
+0x008faa71  [ascii]  <key>com.apple.keystore.device.uuid</key>
+0x008faaa5  [ascii]  <key>com.apple.keystore.sik.access</key>
+0x008faad8  [ascii]  <key>com.apple.managedconfiguration.profiled-access</key>
+0x008fab1c  [ascii]  <key>com.apple.nfcd.hwmanager</key>
+0x008fab4a  [ascii]  <key>com.apple.private.MobileGestalt.AllowedProtectedKeys</key>
+0x008fad4c  [ascii]  <key>com.apple.private.lockdown.finegrained-get</key>
+0x008fb0a1  [ascii]  <key>com.apple.private.ProvInfoIOKitUserClient.access</key>
+0x008fb0e7  [ascii]  <key>com.apple.private.mobilestoredemo.helper</key>
+0x008fb125  [ascii]  <key>com.apple.private.system-keychain</key>
+0x008fb15c  [ascii]  <key>com.apple.private.xpc.launchd.app-server</key>
+0x008fb19a  [ascii]  <key>com.apple.security.attestation.access</key>
+0x008fb1d5  [ascii]  <key>com.apple.security.exception.files.absolute-path.read-only</key>
+0x008fb226  [ascii]  <string>/private/var/logs/mobileactivationd_restore/</string>
+0x008fb26f  [ascii]  <key>com.apple.security.exception.files.home-relative-path.read-write</key>
+0x008fb2c6  [ascii]  <string>/Library/Logs/mobileactivationd/</string>
+0x008fb303  [ascii]  <key>com.apple.security.exception.mach-lookup.global-name</key>
+0x008fb34e  [ascii]  <string>com.apple.CoreAuthentication.daemon</string>
+0x008fb385  [ascii]  <string>com.apple.mobileactivationd</string>
+0x008fb3b4  [ascii]  <string>com.apple.mobilestoredemod</string>
+0x008fb3eb  [ascii]  <key>com.apple.security.network.client</key>
+0x008fb422  [ascii]  <key>com.apple.security.system-container</key>
+0x008fb45b  [ascii]  <key>com.apple.security.system-group-containers</key>
+0x008fb49c  [ascii]  <string>systemgroup.com.apple.mobileactivationd</string>
+0x008fb4d7  [ascii]  <string>systemgroup.com.apple.pisco.suinfo</string>
+0x008fb50d  [ascii]  <string>systemgroup.com.apple.regulatory_images</string>
+0x008fb58c  [ascii]  <key>keychain-access-groups</key>
+0x008fb5b9  [ascii]  <string>apple</string>
+0x008fb62a  [ascii]  <string>mobileactivationd</string>
+0x008fb986  [ascii]  System.Net.Security, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aXFxResources.System.Net.Security.SR.resources
+0x009bc630  [ascii]  AcceptSecurityContext
+0x009bc780  [ascii]  CryptReleaseContext
+0x009bc7d6  [ascii]  DeleteSecurityContext
+0x009bc81c  [ascii]  EnumerateSecurityPackagesW
+0x009bc953  [ascii]  InitializeSecurityContextW
+0x009bcc8e  [ascii]  System.ComponentModel.TypeConverter.EnableUnsafeBinaryFormatterInDesigntimeLicenseContextSerialization
+0x00bdaea0  [ascii]  firstvideolightworldmediawhitecloseblackrightsmallbooksplacemusicfieldorderpointvalueleveltableboardhousegroupworksyearsstatetodaywaterstartstyledeathpowerphonenighterrorinputabouttermstitletoolsev...
+0x00bdc200  [ascii]  gustomentemariofirmacostofichaplatahogarartesleyesaquelmuseobasespocosmitadcielochicomiedoganarsantoetapadebesplayaredessietecortecoreadudasdeseoviejodeseaaguas&quot;domaincommonstatuseventsmasters...
+0x00bdcfa4  [ascii]  Whiltaylorclear:resortfrenchthough") + "<body>buyingbrandsMembername">oppingsector5px;">vspacepostermajor coffeemartinmaturehappen</nav>kansaslink">Images=falsewhile hspace0&amp; 
+0x00bdf2a0  [ascii]  profileservicedefaulthimselfdetailscontentsupportstartedmessagesuccessfashion<title>countryaccountcreatedstoriesresultsrunningprocesswritingobjectsvisiblewelcomearticleunknownnetworkcompanydynamicb...
+0x00bdf6b3  [ascii]  wrapperalreadycertainrealitystorageanotherdesktopofferedpatternunusualDigitalcapitalWebsitefailureconnectreducedAndroiddecadesregular &amp; animalsreleaseAutomatgettingmethodsnothingPopularcaptionl...
+0x00bdfcfd  [ascii]  paymenttroubleconceptcompareparentsplayersregionsmonitor ''The winningexploreadaptedGalleryproduceabilityenhancecareers). The collectSearch ancientexistedfooter handlerprintedconsoleEasternexportsw...
+0x00be0140  [ascii]   severalbecomesselect wedding00.htmlmonarchoff theteacherhighly biologylife ofor evenrise of&raquo;plusonehunting(thoughDouglasjoiningcirclesFor theAncientVietnamvehiclesuch ascrystalvalue =Windows...
+0x00be0c85  [ascii]  monthlyofficercouncilgainingeven inSummarydate ofloyaltyfitnessand wasemperorsupremeSecond hearingRussianlongestAlbertalateralset of small">.appenddo withfederalbank ofbeneathDespiteCapitalgrounds)...
+0x00be133f  [ascii]  bombingmailto:made in. Many carries||{};wiwork ofsynonymdefeatsfavoredopticalpageTraunless sendingleft"><comScorAll thejQuery.touristClassicfalse" Wilhelmsuburbsgenuinebishops.split(global followsb...
+0x00be1ca6  [ascii]    marketwho is ("DOMComanagedone fortypeof Kingdomprofitsproposeto showcenter;made itdressedwere inmixtureprecisearisingsrc = 'make a securedBaptistvoting 
+0x00be22ce  [ascii]  ditionsnow the, with man whoorg/Webone andcavalryHe diedseattle00,000 {windowhave toif(windand itssolely m&quot;renewedDetroitamongsteither them inSenatorUs</a><King ofFrancis-produche usedart andh...
+0x00be2a8a  [ascii]  nsaludospodemosmejorarpositionbusinesshomepagesecuritylanguagestandardcampaignfeaturescategoryexternalchildrenreservedresearchexchangefavoritetemplatemilitaryindustryservicesmaterialproductsz-index...
+0x00be34c8  [ascii]  electricscotlandcreationquantity. ISBN 0did not instance-search-" lang="speakersComputercontainsarchivesministerreactiondiscountItalianocriteriastrongly: 'http:'script'coveringofferingappearedBriti...
+0x00be3741  [ascii]  <title>versionssaturdayterminalitempropengineersectionsdesignerproposal="false"Espa
+0x00be3d58  [ascii]  article <sectionfindingsrole in popular  Octoberwebsite exposureused to  changesoperatedclickingenteringcommandsinformed numbers  </div>creatingonSubmitmarylandcollegesanalyticlistingscontact.logge...
+0x00be4477  [ascii]  asoftonicrevistascontienesectoresmomentosfacultadcr
+0x00be4aa0  [ascii]  resourcescountriesquestionsequipmentcommunityavailablehighlightDTD/xhtmlmarketingknowledgesomethingcontainerdirectionsubscribeadvertisecharacter" value="</select>Australia" class="situationauthorit...
+0x00be54e9  [ascii]  <!--American protectedNovember </style><furnitureInternet  onblur="suspendedrecipientbased on Moreover,abolishedcollectedwere madeemotionalemergencynarrativeadvocatespx;bordercommitteddir="ltr"empl...
+0x00be5b2a  [ascii]  <!-- interviewWith the copies ofconsensuswas builtVenezuela(formerlythe statepersonnelstrategicfavour ofinventionWikipediacontinentvirtuallywhich wasprincipleComplete identicalshow thatprimitiveawa...
+0x00be7592  [ascii]    conversionabout the </p></div>integrated" lang="enPortuguesesubstituteindividualimpossiblemultimediaalmost allpx solid #apart fromsubject toin Englishcriticizedexcept forguidelinesoriginallyremar...
+0x00be79d8  [ascii]  </style>evaluationemphasizedaccessible</section>successionalong withMeanwhile,industries</a><br />has becomeaspects ofTelevisionsufficientbasketballboth sidescontinuingan article<img alt="adventure...
+0x00bea003  [ascii]  </div>acquisitioncalled the persecutiondesignation{font-size:appeared ininvestigateexperiencedmost likelywidely useddiscussionspresence of (document.extensivelyIt has beenit does notcontrary toinha...
+0x00beab09  [ascii]  Continentaleliminatingwill not bepractice ofin front ofsite of theensure thatto create amississippipotentiallyoutstandingbetter thanwhat is nowsituated inmeta name="TraditionalsuggestionsTranslatio...
+0x00beb1fe  [ascii]  <begins withjavascript:constituentwas foundedequilibriumassume thatis given byneeds to becoordinatesthe variousare part ofonly in thesections ofis a commontheories ofdiscoveriesassociationedge of t...
+0x00bec145  [ascii]  stratesecretar
+0x00beda32  [ascii]    consultationcommunity ofthe nationalit should beparticipants align="leftthe greatestselection ofsupernaturaldependent onis mentionedallowing thewas inventedaccompanyinghis personalavailable atstu...
+0x00bee27f  [ascii]  nconsecuenciaelectr
+0x00bf05b9  [ascii]  <div style="almost alwaysare currentlyexpression ofphilosophy offor more thancivilizationson the islandselectedIndexcan result in" value="" />the structure /></a></div>Many of thesecaused by theof ...
+0x00bf14ea  [ascii]  <div iwas consideredpercent of the" /></a></div>collection of descended fromsection of theaccept-charsetto be confusedmember of the padding-right:translation ofinterpretation href='http://whether o...
+0x00bf1bf2  [ascii]  <link rel="srelease of thepoint out thatxMLHttpRequestand subsequentsecond largestvery importantspecificationssurface of theapplied to theforeign policy_setDomainNameestablished inis believed toIn ...
+0x00bf2050  [ascii]  environmental to prevent thehave been usedespecially forunderstand theis essentiallywere the firstis the largesthave been made" src="http://interpreted assecond half ofcrolling="no" is composed ofI...
+0x00bf3ab1  [ascii]    (function() {the 15th century.preventDefault(large number of Byzantine Empire.jpg|thumb|left|vast majority ofmajority of the  align="center">University Pressdominated by theSecond World Wardistri...
+0x00bf4aef  [ascii]  <&nbsp;&nbsp;&nbsp;"><a href="http://style="float:left;concerned with the=http%3A%2F%2Fwww.in popular culturetype="text/css" />it is possible to Harvard Universitytylesheet" href="/the main charact...
+0x00c111e0  [ascii]  InitializeCriticalSectionEx
+0x0083ad80  [utf16-le]  SystemNetSecurity_PlatformNotSupported=
+0x0083bd71  [utf16-le]  net_security_sslprotocol_contiguous
+0x0083bdbc  [utf16-le]  net_security_sslprotocol_notsupported
+0x0083be0b  [utf16-le]  net_securitypackagesupport
+0x0083be44  [utf16-le]  net_securityprotocolnotsupported
+0x0083c51b  [utf16-le]  security_ExtendedProtectionPolicy_NoEmptyServiceNameCollection
+0x0083c59d  [utf16-le]  security_ExtendedProtectionPolicy_UseDifferentConstructorForNever
+0x009f4850  [utf16-le]  secp256recp256r1secp384recp384r1secp521recp521r1direct-tct-tcpipforwardeed-tcpip       
+0x00a12d1c  [utf16-le]  #cdata-sectio
+0x00a1626d  [utf16-le]  -//Apple Computer//DTD PLIST 1.0//E
+0x00a1bb81  [utf16-le]  A conditional section is not allowed in an internal subset
+0x00a1df02  [utf16-le]  An action was attempted during deserialization that could lead to a security vulnerability. The action has been aborted. To allow the action, set the '{0}' AppContext switch to true
+0x00a1f6c3  [utf16-le]  AppleInternalInstallCapabilit
+0x00a1f706  [utf16-le]  AppleMobileDeviceServic
+0x00a22120  [utf16-le]  C:\ProgramData\Apple\Lockdow
+0x00a22161  [utf16-le]  C:\ProgramData\Apple\Lockdown
+0x00a2633a  [utf16-le]  Conditional sections must specify the keyword 'IGNORE' or 'INCLUDE'
+0x00a26699  [utf16-le]  Connection failed to establish within {0:F0} milliseconds
+0x00a26b0f  [utf16-le]  Content-Security-Polic
+0x00a2716f  [utf16-le]  Corrupt .resources file. Invalid offset '{0}' into data section
+0x00a271f6  [utf16-le]  Corrupt .resources file. Invalid offset '{0}' into name section
+0x00a2c4db  [utf16-le]  Error! Please install iTunes from apple web.
+0x00a2ed03  [utf16-le]  For security reasons DTD is prohibited in this XML document. To enable DTD processing set the DtdProcessing property on XmlReaderSettings to Parse and pass the settings into XmlReader.Create method
+0x00a314dc  [utf16-le]  Hour, Minute, and Second parameters describe an un-representable DateTime
+0x00a31977  [utf16-le]  INADEQUATE_SECURIT
+0x00a39d4b  [utf16-le]  Microsoft Unified Security Protocol Provide
+0x00a41044  [utf16-le]  ProcessStartInfo.LoadUserProfile and ProcessStartInfo.UseCredentialsForNetworkingOnly cannot both be set. Use only one of them
+0x00a465f1  [utf16-le]  SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Clien
+0x00a466a0  [utf16-le]  SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Serve
+0x00a468f2  [utf16-le]  Sec-WebSocket-Accep
+0x00a46921  [utf16-le]  Sec-WebSocket-Extension
+0x00a46958  [utf16-le]  Sec-WebSocket-Ke
+0x00a46981  [utf16-le]  Sec-WebSocket-Protoco
+0x00a469b4  [utf16-le]  Sec-WebSocket-Versio
+0x00a469e5  [utf16-le]  Second path fragment must not be a drive or UNC name
+0x00a46a68  [utf16-le]  Secure copy execution request was rejected by the server. Please consult the server logs
+0x00a46b21  [utf16-le]  Security error
+0x00a4770c  [utf16-le]  Socket read operation has timed out after {0:F0} milliseconds
+0x00a49395  [utf16-le]  Strict-Transport-Securit
+0x00a4aed6  [utf16-le]  System.Security.Cryptography.Pkcs12UnspecifiedPasswordIterationLimi
+0x00a4af65  [utf16-le]  System.Security.Cryptography.ThrowOnX509ChainBuildInternalErro
+0x00a550a0  [utf16-le]  The private key section must be a multiple of the block size (8
+0x00a55b7f  [utf16-le]  The releaseCount argument must be greater than zero
+0x00a56323  [utf16-le]  The request was canceled due to the configured HttpClient.Timeout of {0} seconds elapsing
+0x00a566ab  [utf16-le]  The requested security package is not supported
+0x00a56712  [utf16-le]  The requested security protocol is not supported
+0x00a56e71  [utf16-le]  The second character surrogate pair is not in the input buffer to be written
+0x00a571b6  [utf16-le]  The server response contains a null character at position 0x{0:X8}:{1}{1}{2}{1}{1}A server must not send a null character before the Protocol Version Exchange is complete.{1}{1}More information is ...
+0x00a573ca  [utf16-le]  The server response does not contain an SSH identification string.{0}The connection to the remote server was closed before any data was received.{0}{0}More information on the Protocol Version Excha...
+0x00a575ec  [utf16-le]  The server response does not contain an SSH identification string:{0}{0}{1}{0}{0}More information on the Protocol Version Exchange is available here:{0}https://tools.ietf.org/html/rfc4253#section-4.
+0x00a5a22c  [utf16-le]  The supplied DateTime must have the Year, Month, and Day properties set to 1.  The time cannot be specified more precisely than whole milliseconds
+0x00a5c277  [utf16-le]  The value needs to translate in milliseconds to -1 (signifying an infinite timeout), 0, or a positive integer less than or equal to the maximum allowed timer duration
+0x00a5cbff  [utf16-le]  There is an unclosed conditional section
+0x00a6211c  [utf16-le]  Upgrade-Insecure-Request
+0x00a6805f  [utf16-le]  com.apple.af
+0x00a68080  [utf16-le]  com.apple.afc.shim.remot
+0x00a680b9  [utf16-le]  com.apple.amfi.lockdow
+0x00a680ee  [utf16-le]  com.apple.iosdiagnostics.rela
+0x00a68131  [utf16-le]  com.apple.misagen
+0x00a6815c  [utf16-le]  com.apple.mobile.MCInstal
+0x00a68197  [utf16-le]  com.apple.mobile.diagnostics_rela
+0x00a681e2  [utf16-le]  com.apple.mobile.house_arres
+0x00a68223  [utf16-le]  com.apple.mobile.house_arrest.shim.remot
+0x00a6827c  [utf16-le]  com.apple.mobile.installation_prox
+0x00a682c9  [utf16-le]  com.apple.mobile.installation_proxy.shim.remot
+0x00a6832e  [utf16-le]  com.apple.mobile.lockdow
+0x00a68367  [utf16-le]  com.apple.mobile.wireless_lockdow
+0x00a683b2  [utf16-le]  com.apple.mobileactivation
+0x00a683ef  [utf16-le]  com.apple.mobilebackup
+0x00a68424  [utf16-le]  com.apple.os_trace_rela
+0x00a6845b  [utf16-le]  com.apple.syslog_rela
+0x00a692c5  [utf16-le]  delta.TotalSecond
+0x00a698c3  [utf16-le]  durationMillisecond
+0x00a6b5df  [utf16-le]  http://www.apple.com/DTDs/PropertyList-1.0.dt
+0x00a6b9df  [utf16-le]  https://albert.apple.com/deviceservices/drmHandshak
+0x00a6bbba  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/checkm8.ph
+0x00a6bfca  [utf16-le]  iOS Device Activator (MobileActivation-20 built on Jan 15 2012 at 19:07:28
+0x00a6c067  [utf16-le]  iOS Device Activator (MobileActivation-592.103.2
+0x00a6d6a2  [utf16-le]  millisecondsDela
+0x00a6d6cb  [utf16-le]  millisecondsTimeou
+0x00a6fece  [utf16-le]  secure_connection_erro
+0x00a70ab1  [utf16-le]  strict-transport-securit

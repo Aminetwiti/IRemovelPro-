@@ -1,0 +1,362 @@
+title: iRemoval PRO Installation - File Creation
+id: 8f4a1b3c-ire-0001
+status: experimental
+description: |
+  Detects the presence of iRemoval PRO bypass tool installation files.
+  iRemoval PRO is a commercial tool that bypasses Apple's iCloud Activation Lock.
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+  Reference: https://attack.mitre.org/techniques/T1561/
+references:
+  - https://bypassfrpfiles.com
+logsource:
+  category: file_event
+  product: windows
+detection:
+  selection_files:
+    TargetFilename|endswith:
+      - '\iRemoval PRO.exe'
+      - '\iremovalpro.dll'
+  selection_paths:
+    TargetFilename|contains:
+      - '\Bypassfrpfiles.com\'
+      - '\iRemoval PRO\'
+  condition: selection_files or selection_paths
+fields:
+  - TargetFilename
+  - User
+  - Image
+falsepositives:
+  - Legitimate installation in isolated test environment (uncommon)
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.impact
+  - attack.t1561
+  - attack.t1656
+
+---
+title: iRemoval PRO Process Execution
+id: 8f4a1b3c-ire-0002
+status: experimental
+description: |
+  Detects execution of iRemoval PRO main executable.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    Image|endswith:
+      - '\iRemoval PRO.exe'
+  selection_hash:
+    Hashes|contains:
+      - 'IMPHASH=N/A'  # managed assembly
+  condition: selection_img
+fields:
+  - Image
+  - CommandLine
+  - User
+  - ParentImage
+falsepositives:
+  - Unknown
+level: high
+tags:
+  - attack.execution
+  - attack.defense_evasion
+  - attack.impact
+
+---
+title: iRemoval PRO C2 Communication - s13.iremovalpro.com
+id: 8f4a1b3c-ire-0003
+status: experimental
+description: |
+  Detects DNS query to iRemoval PRO C2 server s13.iremovalpro.com.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: dns_query
+  product: zeek
+detection:
+  selection_query:
+    query|endswith:
+      - 's13.iremovalpro.com'
+      - 'iremovalpro.com'
+      - 'iremovalpro.co'
+  condition: selection_query
+fields:
+  - query
+  - answer
+  - src_ip
+  - dest_ip
+level: high
+tags:
+  - attack.command_and_control
+  - attack.t1071
+  - attack.t1573
+
+---
+title: iRemoval PRO TLS SNI to Activation Server
+id: 8f4a1b3c-ire-0004
+status: experimental
+description: |
+  Detects TLS connection with SNI pointing to iRemoval PRO server.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: tls
+  product: zeek
+detection:
+  selection_sni:
+    server_name|endswith:
+      - 's13.iremovalpro.com'
+      - 'iremovalpro.com'
+  condition: selection_sni
+fields:
+  - server_name
+  - src_ip
+  - dest_ip
+  - dest_port
+level: high
+tags:
+  - attack.command_and_control
+  - attack.t1573
+  - attack.t1071
+
+---
+title: iRemoval PRO HTTP Endpoint Activation Auth
+id: 8f4a1b3c-ire-0005
+status: experimental
+description: |
+  Detects HTTP request to iRemoval PRO activation endpoint /auth3.ph.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: http
+  product: zeek
+detection:
+  selection_uri:
+    uri|contains:
+      - '/iremovalActivation/auth3'
+      - '/iremovalActivation/iact8'
+      - '/iremovalActivation/checkm8'
+      - '/iremovalActivation/ars2'
+      - '/iremovalActivation/mf5'
+      - '/iremovalActivation/mf6'
+      - '/iremovalActivation/mf7'
+  selection_host:
+    host|endswith:
+      - 's13.iremovalpro.com'
+  condition: selection_uri and selection_host
+fields:
+  - uri
+  - host
+  - src_ip
+  - method
+level: high
+tags:
+  - attack.command_and_control
+  - attack.exfiltration
+  - attack.t1041
+  - attack.t1071
+
+---
+title: iRemoval PRO SSH Tunnel to iPhone (port 22)
+id: 8f4a1b3c-ire-0006
+status: experimental
+description: |
+  Detects SSH connections to port 22 (iPhone tunnel forwarding).
+  Note: This rule will fire for any SSH connection. Refine as needed.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: firewall
+detection:
+  selection_dst_port:
+    dst_port: 22
+  selection_process:
+    Image|endswith:
+      - '\iRemoval PRO.exe'
+      - '\iremovalpro.dll'
+  condition: selection_dst_port and selection_process
+fields:
+  - src_ip
+  - dest_ip
+  - dest_port
+  - Image
+level: medium
+tags:
+  - attack.command_and_control
+  - attack.t1090
+  - attack.t1573
+
+---
+title: iRemoval PRO ideviceproxy Process
+id: 8f4a1b3c-ire-0007
+status: experimental
+description: |
+  Detects ideviceproxy.exe execution with iRemoval PRO context.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    Image|endswith:
+      - '\ideviceproxy.exe'
+      - '\idevicepair.exe'
+  selection_cmdline:
+    CommandLine|contains:
+      - 'com.iremovalpro.bypass'
+      - 'com.panyolsoft.blackhound'
+  condition: selection_img and selection_cmdline
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+level: high
+tags:
+  - attack.execution
+  - attack.command_and_control
+  - attack.t1059
+
+---
+title: iRemoval PRO iPhone Lockdown Port 62078
+id: 8f4a1b3c-ire-0008
+status: experimental
+description: |
+  Detects network activity on iPhone lockdown port (62078).
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: firewall
+detection:
+  selection_dst_port:
+    dst_port: 62078
+  selection_process:
+    Image|endswith:
+      - '\iRemoval PRO.exe'
+      - '\iremovalpro.dll'
+      - '\ideviceproxy.exe'
+  condition: selection_dst_port and selection_process
+fields:
+  - src_ip
+  - dest_ip
+  - dest_port
+  - Image
+level: medium
+tags:
+  - attack.command_and_control
+  - attack.t1090
+
+---
+title: iRemoval PRO libimobiledevice Library Loaded
+id: 8f4a1b3c-ire-0009
+status: experimental
+description: |
+  Detects loading of libimobiledevice DLLs in suspicious process context.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: image_load
+  product: windows
+detection:
+  selection_dll:
+    ImageLoaded|endswith:
+      - '\libimobiledevice-1.0.dll'
+      - '\libusbmuxd-2.0.dll'
+      - '\libplist-2.0.dll'
+  selection_process:
+    Image|endswith:
+      - '\iRemoval PRO.exe'
+      - '\iremovalpro.dll'
+  condition: selection_dll and selection_process
+fields:
+  - ImageLoaded
+  - Image
+  - ProcessId
+level: high
+tags:
+  - attack.execution
+  - attack.t1129
+
+---
+title: iRemoval PRO iOS Bundle ID Registry Artifact
+id: 8f4a1b3c-ire-0010
+status: experimental
+description: |
+  Detects iOS bundle ID related to iRemoval PRO in registry or EDR telemetry.
+  For forensic use on compromised iPhones.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: process_creation
+  product: macos
+detection:
+  selection_bundle:
+    CommandLine|contains:
+      - 'com.iremovalpro.bypass'
+      - 'com.panyolsoft.blackhound'
+  condition: selection_bundle
+fields:
+  - CommandLine
+  - Image
+level: high
+tags:
+  - attack.persistence
+  - attack.t1547
+  - attack.execution
+
+---
+title: iRemoval PRO Anti-Debug Process Instrumentation
+id: 8f4a1b3c-ire-0011
+status: experimental
+description: |
+  Detects anti-debug API calls from iRemoval PRO process.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: api_call
+  product: windows
+detection:
+  selection_api:
+    Api:
+      - 'IsDebuggerPresent'
+      - 'NtQueryInformationProcess'
+  selection_process:
+    Image|endswith:
+      - '\iRemoval PRO.exe'
+      - '\iremovalpro.dll'
+  condition: selection_api and selection_process
+fields:
+  - Api
+  - Image
+  - ProcessId
+level: medium
+tags:
+  - attack.defense_evasion
+  - attack.t1622
+  - attack.t1497
+
+---
+title: iRemoval PRO iCloud Activation Bypass Success Message
+id: 8f4a1b3c-ire-0012
+status: experimental
+description: |
+  Detects the success message string in logs indicating successful bypass.
+  Author: Audit statique — 2026-06-22
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_string:
+    CommandLine|contains:
+      - 'iDevice Activated Succesfully'
+      - 'Activation Lock'
+      - 'BypassMeidSignal'
+      - 'iRemovalSignature'
+  selection_process:
+    Image|endswith:
+      - '\iRemoval PRO.exe'
+      - '\iremovalpro.dll'
+  condition: selection_string and selection_process
+fields:
+  - CommandLine
+  - Image
+level: high
+tags:
+  - attack.impact
+  - attack.t1656
+  - attack.t1561

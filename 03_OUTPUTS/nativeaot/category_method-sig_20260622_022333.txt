@@ -1,0 +1,34 @@
+# Category: method-sig
+# Source: IRemovalPro\iremovalpro.dll
+# Total: 30 strings
+
+0x0083d921  [ascii]  vThe requested combination of SslProtocols ({0}) is not valid for this platform because it skips intermediate versions.
+0x008416bd  [ascii]  <!ENTITY % TFrame "(void|above|below|hsides|lhs|rhs|vsides|box|border)">
+0x00841776  [ascii]    "align      (left|center|right|justify|char) #IMPLIED
+0x0084668c  [ascii]  <!ENTITY % TFrame "(void|above|below|hsides|lhs|rhs|vsides|box|border)">
+0x00846773  [ascii]    "align      (left|center|right|justify|char) #IMPLIED
+0x0084bb22  [ascii]  <!ENTITY % TFrame "(void|above|below|hsides|lhs|rhs|vsides|box|border)">
+0x0084bc09  [ascii]    "align      (left|center|right|justify|char) #IMPLIED
+0x00be3388  [ascii]  <select citizensclothingwatching<li id="specificcarryingsentence<center>contrastthinkingcatch(e)southernMichael merchantcarouselpadding:interior.split("lizationOctober ){returnimproved--&gt;
+0x00bf102e  [ascii]  depends on theUniversity of in contrast to placeholder="in the case ofinternational constitutionalstyle="border-: function() {Because of the-strict.dtd">
+0x00a156e0  [utf16-le]  (Internal)Expected an Exception or an IEnumerable<Exception
+0x00a1c6e8  [utf16-le]  A valid UTF32 value is between 0x000000 and 0x10ffff, inclusive, and should not include surrogate codepoint values (0x00d800 ~ 0x00dfff)
+0x00a252fa  [utf16-le]  Carriage return (#xD), line feed (#xA), and tab (#x9) characters are not allowed in xs:normalizedString
+0x00a283c8  [utf16-le]  Couldn't read node length byte(s)
+0x00a2f2f8  [utf16-le]  Found a high surrogate char without a following low surrogate at index: {0}. The input may not be in this encoding, or may not contain valid Unicode (UTF-16) characters
+0x00a2f452  [utf16-le]  Found a low surrogate char without a preceding high surrogate at index: {0}. The input may not be in this encoding, or may not contain valid Unicode (UTF-16) characters
+0x00a33c6c  [utf16-le]  Invalid URI: The Authority/Host cannot end with a backslash character ('\\')
+0x00a3437c  [utf16-le]  Invalid data type, BITSTRING(03) is expected, but was {0
+0x00a343f5  [utf16-le]  Invalid data type, INTEGER(02) is expected, but was {0
+0x00a344dd  [utf16-le]  Invalid data type, OCTETSTRING(04) is expected, but was {0
+0x00a34713  [utf16-le]  Invalid high surrogate character (0x{0}). A high surrogate character must have a value from range (0xD800 - 0xDBFF)
+0x00a3ab59  [utf16-le]  Must complete Convert() operation or call Encoder.Reset() before calling GetBytes() or GetByteCount(). Encoder '{0}' fallback '{1}'
+0x00a40997  [utf16-le]  Prefixes beginning with "xml" (regardless of whether the characters are uppercase, lowercase, or some combination thereof) are reserved for use by XML
+0x00a50f6f  [utf16-le]  The encoded length exceeds the maximum supported by this library (Int32.MaxValue)
+0x00a5205b  [utf16-le]  The given payload exceeds the maximum size of the QR code standard. The maximum size allowed for the choosen paramters (ECC level={0}, EncodingMode={1}) is {2} byte
+0x00a521ad  [utf16-le]  The given payload exceeds the maximum size of the QR code standard. The maximum size allowed for the choosen paramters (ECC level={0}, EncodingMode={1}, FixedVersion={2}) is {3} byte
+0x00a564a4  [utf16-le]  The requested length ({0}) is greater than the actual number of bytes read ({1})
+0x00a5a56c  [utf16-le]  The surrogate pair (0x{0}, 0x{1}) is invalid. A high surrogate character (0xD800 - 0xDBFF) must always be paired with a low surrogate character (0xDC00 - 0xDFFF)
+0x00a5c1bb  [utf16-le]  The value needs to be either -1 (signifying an infinite timeout), 0 or a positive integer
+0x00a5c277  [utf16-le]  The value needs to translate in milliseconds to -1 (signifying an infinite timeout), 0, or a positive integer less than or equal to the maximum allowed timer duration
+0x00a6cf59  [utf16-le]  line-feed (#xA) or tab (#x9) characters, leading or trailing spaces and sequences of one or more spaces (#x20) are not allowed in 'xs:token'

@@ -1,0 +1,137 @@
+# Category: bypass
+# Source: IRemovalPro\iremovalpro.dll
+# Total: 133 strings
+
+0x0076b11a  [ascii]  .MobileActivationService2Mobilebackup2ServiceIFPDZ
+0x0078b9ae  [ascii]  Driver.<BypassMeidSignal>d__516<CommonConnectDevice>d__107"MibTcpRowOwnerPid*<>c__DisplayClass73_0
+0x0078bacc  [ascii]  A12Eraser BypassMeidSignalg
+0x007931c0  [ascii]  :DisableNonKeyExchangeMessages.EnableActivatedMessages0EnableAndActivateMessage6DisableAndDeactivateMessageLCreateMessageTypeNotSupportedException
+0x00793302  [ascii]  Kv,_activatedMessagesById
+0x007b2daf  [ascii]  .InvalidActivationRecord
+0x007b2dc8  [ascii]  .MissingActivationRecord
+0x007b5469  [ascii]  82(WaitingForActivation
+0x007f6c49  [ascii]  &IsMatchInBypassList@
+0x007ff33b  [ascii]  GetWeakHandle
+0x0080ee76  [ascii]  .ActivatorCreateInstance@
+0x008110f8  [ascii]  2GetRuntimeTypeBypassCache
+0x00814cc5  [ascii]  &GetFieldBypassCctor&SetFieldBypassCctor@
+0x00814cfd  [ascii]  "UncheckedGetField"UncheckedSetField8UncheckedSetFieldBypassCctor&get_IsFieldInitOnly
+0x00828623  [ascii]  &GroupNumberFromNameBget_RegexReplacementWeakReference@
+0x0082b451  [ascii]  ExecuteAsAdmin*SecureClearAndCollect$iDevice_Deactivate
+0x0082b4a2  [ascii]  iDevice_LnchV2 iDevice_Activate iDevice_GetState*iDevice_EnableDevMode*Firewall_iDeviceProxy
+0x0082b7b7  [ascii]  6CreateActivationSessionInfo>CreateActivationInfoWithSession@
+0x0082b7ff  [ascii]  &ActivateWithSession$GetActivationState
+0x00833531  [ascii]  .ActivatorImplementation
+0x0085af30  [ascii]  MobileActivationDaemon
+0x0085af47  [ascii]  ActivationRecord
+0x0085b085  [ascii]  activation-record
+0x0085b0f3  [ascii]  /activation_records/activation_record.plist
+0x0085b11f  [ascii]  /activation_records/
+0x0085b1dd  [ascii]  validateActivationDataSignature:activationSignature:withError:
+0x0085b21c  [ascii]  handleActivationInfo:withCompletionBlock:
+0x0085b370  [ascii]  handleActivationInfoWithSession:activationSignature:completionBlock:
+0x008677ae  [ascii]  @_MSHookFunction
+0x008677c4  [ascii]  @_MSHookMessageEx
+0x00868423  [ascii]  _MSHookFunction
+0x00868433  [ascii]  _MSHookMessageEx
+0x008687de  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x0086884e  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x008688e2  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00868950  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x008689d8  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/
+0x00868a45  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/blackhound.x.1643379a.o
+0x00868b49  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00868bb9  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00868c49  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00868cb7  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00872f30  [ascii]  MobileActivationDaemon
+0x00872f47  [ascii]  ActivationRecord
+0x00873085  [ascii]  activation-record
+0x008730f3  [ascii]  /activation_records/activation_record.plist
+0x0087311f  [ascii]  /activation_records/
+0x008731dd  [ascii]  validateActivationDataSignature:activationSignature:withError:
+0x0087321c  [ascii]  handleActivationInfo:withCompletionBlock:
+0x00873370  [ascii]  handleActivationInfoWithSession:activationSignature:completionBlock:
+0x0087f815  [ascii]  @_MSHookFunction
+0x0087f827  [ascii]  @_MSHookMessageEx
+0x008802ff  [ascii]  _MSHookFunction
+0x0088030f  [ascii]  _MSHookMessageEx
+0x008806a9  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00880719  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x0088079e  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x0088080c  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00880894  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/
+0x00880902  [ascii]  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/blackhound.x.50c6260a.o
+0x00880a07  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00880a77  [ascii]  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x00880b07  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+0x00880b75  [ascii]  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+0x0089eb69  [ascii]  <key>com.apple.mobileactivationd.spi</key>
+0x0089ec5f  [ascii]  <key>com.apple.private.MobileActivation</key>
+0x0089ec98  [ascii]  <string>RequestActivationState</string>
+0x0089f50e  [ascii]  <key>com.apple.springboard.activateawayviewplugins</key>
+0x008c4d21  [ascii]  <key>com.apple.dmd.operation.clear-activation-lock-bypass-code</key>
+0x008c4e36  [ascii]  <key>com.apple.dmd.operation.fetch-activation-lock-bypass-code</key>
+0x008c50e3  [ascii]  <key>com.apple.dmd.operation.fetch-unlock-token</key>
+0x008c5ca3  [ascii]  <string>ActivationLock</string>
+0x008c5cc5  [ascii]  <string>ActivationRecord</string>
+0x008c5f51  [ascii]  <string>NULL/ActivationPrivateKey</string>
+0x008ea6f8  [ascii]  /System/Library/PrivateFrameworks/MobileActivation.framework/MobileActivation
+0x008fa918  [ascii]  <key>com.apple.mobileactivationd.spi</key>
+0x008fa94d  [ascii]  <key>com.apple.mobileactivationd.device-identifiers</key>
+0x008fad8d  [ascii]  <string>NULL/ActivationInfo</string>
+0x008fadb4  [ascii]  <string>NULL/ActivationPrivateKey</string>
+0x008fade1  [ascii]  <string>NULL/ActivationRegulatoryVariant</string>
+0x008fae15  [ascii]  <string>NULL/ActivationState</string>
+0x008faeac  [ascii]  <string>NULL/Deactivate</string>
+0x008faf6e  [ascii]  <string>NULL/GetActivationRecord</string>
+0x008fb226  [ascii]  <string>/private/var/logs/mobileactivationd_restore/</string>
+0x008fb2c6  [ascii]  <string>/Library/Logs/mobileactivationd/</string>
+0x008fb385  [ascii]  <string>com.apple.mobileactivationd</string>
+0x008fb49c  [ascii]  <string>systemgroup.com.apple.mobileactivationd</string>
+0x008fb62a  [ascii]  <string>mobileactivationd</string>
+0x009bcd3b  [ascii]  System.StartupHookProvider.IsSupported
+0x009bcfe4  [ascii]  System.Runtime.InteropServices.EnableCppCLIHostActivation
+0x009fcd20  [utf16-le]  Activatectivatedbookasseokassetdunsupporupportedsupporteted_wifiready_wiady_wifidone_wifone_wifiWireSharireSharkCharlesPlesProxyAcknowleowledged
+0x00a16e85  [utf16-le]  /c ideviceproxy lao abc ofq com.iremovalpro.bypass --strea
+0x00a1d20c  [utf16-le]  Activation Attributes are not supported
+0x00a1d263  [utf16-le]  ActivationStat
+0x00a23717  [utf16-le]  Cannot create uninitialized instances of types requiring managed activation
+0x00a26958  [utf16-le]  Contact your provider to register your Serial Number and bypass it instantly
+0x00a285bf  [utf16-le]  CreateActivationInfoReques
+0x00a28679  [utf16-le]  CreateTunnel1ActivationInfoReques
+0x00a29d6c  [utf16-le]  DeactivateReques
+0x00a2da51  [utf16-le]  Failed to activate your device! please erase it and try again..
+0x00a2dad8  [utf16-le]  Failed to activate your device! please try again or contact administrator..
+0x00a2fc1f  [utf16-le]  GetActivationStateReques
+0x00a30fb8  [utf16-le]  HandleActivationInfoWithSessionReques
+0x00a3fb49  [utf16-le]  Please click Jailbreak button on the left or try to reconnect the jailbroken device1
+0x00a3fbfa  [utf16-le]  Please click Jailbreak button on the left or try to reconnect the jailbroken device2
+0x00a5ce38  [utf16-le]  There was a problem activating to your device
+0x00a5ce9b  [utf16-le]  There was a problem activating your device
+0x00a5d025  [utf16-le]  There was a problem while activating your device
+0x00a5d08e  [utf16-le]  There was a problem while activating your device.
+0x00a5d526  [utf16-le]  This device is not supported for full bypass
+0x00a5d587  [utf16-le]  This device looks like not activation locked
+0x00a65118  [utf16-le]  Your device has been succesfully Activated! 
+0x00a65174  [utf16-le]  Remember, This is the fastest bypass on the market! OTA & Erase are not supported in this release.
+0x00a652b2  [utf16-le]  Your device has been succesfully Activated! 
+0x00a6530e  [utf16-le]  Remember, this is an exclusive A12+ Bypass service.
+0x00a653ee  [utf16-le]  Your device has been succesfully Activated! 
+0x00a6544a  [utf16-le]  Remember, this is an exclusive A12+ Full Bypass service with OTA feature, you can update but cannot restore!.
+0x00a65612  [utf16-le]  Your device is NOT supported for full signal bypass
+0x00a656c2  [utf16-le]  Your device is already activated
+0x00a65796  [utf16-le]  Your device is supported for A12+ bypass!.
+0x00a65848  [utf16-le]  Your device is supported for GSM/MEID bypass!.
+0x00a6652e  [utf16-le]  activation-inf
+0x00a683b2  [utf16-le]  com.apple.mobileactivation
+0x00a6bace  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/ars2.ph
+0x00a6bb43  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/auth3.ph
+0x00a6bbba  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/checkm8.ph
+0x00a6bc35  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/iact8.ph
+0x00a6bcac  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf5.ph
+0x00a6bd1f  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf6.ph
+0x00a6bd92  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf7.ph
+0x00a6bf85  [utf16-le]  iDevice Activated Succesfully 
+0x00a6bfca  [utf16-le]  iOS Device Activator (MobileActivation-20 built on Jan 15 2012 at 19:07:28
+0x00a6c067  [utf16-le]  iOS Device Activator (MobileActivation-592.103.2

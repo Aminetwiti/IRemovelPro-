@@ -1,0 +1,13 @@
+{
+  "udid": "OFFENSIVE -00000-B71E",
+  "ecid": "NOT-A-HEX-VALUE",
+  "ios_version": {
+    "nested": [
+      "object",
+      "instead",
+      "of",
+      "string"
+    ]
+  },
+  "OFFENSIVE _marker": "iRemovalOFFENSIVE Test"
+}

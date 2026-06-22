@@ -1,0 +1,524 @@
+# Category: dotnet-lib
+# Source: IRemovalPro\iremovalpro.dll
+# Total: 520 strings
+
+0x00742b1a  [ascii]  0Microsoft.Win32.Registry
+0x00742c26  [ascii]  8Microsoft.Win32.Registry.dllgs
+0x00742c5d  [ascii]  ,System.Private.CoreLib
+0x00742cb6  [ascii]  4System.Private.CoreLib.dllg
+0x00742dbb  [ascii]  System.Linq.dll
+0x00742dcb  [ascii]  Renci.SshNet
+0x00742e81  [ascii]   Renci.SshNet.dll$System.Net.Sockets
+0x00742edf  [ascii]  ,System.Net.Sockets.dll*System.Net.Primitives
+0x00742f49  [ascii]  2System.Net.Primitives.dll8System.Security.Cryptography
+0x00742fdd  [ascii]  @System.Security.Cryptography.dll<System.Text.RegularExpressions
+0x0074305a  [ascii]  DSystem.Text.RegularExpressions.dll$System.Private.Xml
+0x007430e7  [ascii]  ,System.Private.Xml.dll System.Threading
+0x00743149  [ascii]  (System.Threading.dll8SshNet.Security.Cryptography
+0x007431e0  [ascii]  @SshNet.Security.Cryptography.dll<System.Diagnostics.TraceSource
+0x0074325a  [ascii]  DSystem.Diagnostics.TraceSource.dll
+0x0074330a  [ascii]  RestSharp.dll&System.Net.Requests
+0x00743365  [ascii]  .System.Net.Requests.dll.System.Linq.Expressions
+0x007433cf  [ascii]  6System.Linq.Expressions.dll
+0x00743430  [ascii]  System.dll$System.Collections
+0x00743487  [ascii]  ,System.Collections.dll:System.Collections.Concurrent
+0x007434f9  [ascii]  BSystem.Collections.Concurrent.dll:System.Collections.NonGeneric
+0x00743573  [ascii]  BSystem.Collections.NonGeneric.dll<System.Collections.Specialized
+0x007435ee  [ascii]  DSystem.Collections.Specialized.dll@System.ComponentModel.Primitives
+0x0074366c  [ascii]  HSystem.ComponentModel.Primitives.dll*System.ComponentModel
+0x007436e1  [ascii]  2System.ComponentModel.dllJSystem.ComponentModel.EventBasedAsync
+0x0074375b  [ascii]  RSystem.ComponentModel.EventBasedAsync.dll$System.ObjectModel
+0x007437d2  [ascii]  ,System.ObjectModel.dllFSystem.ComponentModel.TypeConverter
+0x0074384a  [ascii]  NSystem.ComponentModel.TypeConverter.dll
+0x00743873  [ascii]  System.Console
+0x007438bb  [ascii]  $System.Console.dllFSystem.Diagnostics.DiagnosticSource
+0x0074392c  [ascii]  NSystem.Diagnostics.DiagnosticSource.dll4System.Diagnostics.Process
+0x007439af  [ascii]  <System.Diagnostics.Process.dll&System.Formats.Asn1
+0x00743a1c  [ascii]  .System.Formats.Asn1.dll*System.IO.Compression
+0x00743a84  [ascii]  2System.IO.Compression.dll8System.IO.Compression.Brotli
+0x00743af8  [ascii]  @System.IO.Compression.Brotli.dll
+0x00743b1a  [ascii]  System.Net.Http
+0x00743b6f  [ascii]  &System.Net.Http.dll$System.Private.Uri
+0x00743bd3  [ascii]  ,System.Private.Uri.dll2System.Net.NameResolution
+0x00743c3e  [ascii]  :System.Net.NameResolution.dll:System.Net.NetworkInformation
+0x00743cb4  [ascii]  BSystem.Net.NetworkInformation.dll
+0x00743cd7  [ascii]  System.Net.Quic
+0x00743d25  [ascii]  &System.Net.Quic.dll&System.Net.Security
+0x00743d95  [ascii]  .System.Net.Security.dll.System.Net.ServicePoint
+0x00743e01  [ascii]  6System.Net.ServicePoint.dll<System.Net.WebHeaderCollection
+0x00743e78  [ascii]  DSystem.Net.WebHeaderCollection.dllFSystem.Private.Reflection.Execution
+0x00743ef4  [ascii]  NSystem.Private.Reflection.Execution.dllBSystem.Private.StackTraceMetadata
+0x00743f70  [ascii]  JSystem.Private.StackTraceMetadata.dll2System.Private.TypeLoader
+0x00743fe5  [ascii]  :System.Private.TypeLoader.dll.System.Private.Xml.Linq
+0x00744057  [ascii]  6System.Private.Xml.Linq.dll.System.Runtime.Numerics
+0x007440d1  [ascii]  6System.Runtime.Numerics.dllg
+0x007440f7  [ascii]  NSystem.Runtime.Serialization.Primitives
+0x0074415b  [ascii]  VSystem.Runtime.Serialization.Primitives.dll,System.Security.Claims
+0x007441da  [ascii]  4System.Security.Claims.dllBSystem.Security.Principal.Windows
+0x00744259  [ascii]  JSystem.Security.Principal.Windows.dll2System.Threading.Channels
+0x007442d5  [ascii]  :System.Threading.Channels.dll,System.Web.HttpUtility
+0x00744346  [ascii]  4System.Web.HttpUtility.dll
+0x00744362  [ascii]  System.Xml.Linq
+0x007443ad  [ascii]  &System.Xml.Linq.dll
+0x0074567b  [ascii]  Renci.SshNet.Tests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100f9194e1eb66b7e2575aaee115ee1d27bc100920e7150e43992d6f668f9737de8b9c7ae892b62b8a36dd1d57929ff1541665d101...
+0x00745c06  [ascii]  \SshNet.Security.Cryptography for .NET Standard@Cryptographic functions for .NET8Copyright 
+0x00745d52  [ascii]  RestSharp.IntegrationTests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100fda57af14a288d46e3efea89617037585c4de57159cd536ca6dff792ea1d6addc665f2fccb4285413d9d44db5a1be87...
+0x00745eba  [ascii]  RestSharp.Tests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100fda57af14a288d46e3efea89617037585c4de57159cd536ca6dff792ea1d6addc665f2fccb4285413d9d44db5a1be87cb82686db20...
+0x0074603f  [ascii]  John Sheehan, Andrew Young, Alexey Zimarev and RestSharp community>Simple REST and HTTP API Client
+0x007462bf  [ascii]  System.Diagnostics.DiagnosticListener
+0x007462e6  [ascii]  System.Diagnostics.DiagnosticSource
+0x007463c5  [ascii]  System.Formats.Asn1.AsnReader
+0x007463e4  [ascii]  System.Formats.Asn1.AsnWriter
+0x007465c9  [ascii]  System.Runtime.Numerics.Tests, PublicKey=00240000048000009400000006020000002400005253413100040000010001004b86c4cb78549b34bab61a3b1800e23bfeb5b3ec390074041536a7e3cbd97f5f04cf0f857155a8928eaa29ebfd11...
+0x007467f5  [ascii]  System.Threading.Channel
+0x0074680f  [ascii]  System.Threading.Channel<T>
+0x0074c786  [ascii]  TargetvM:System.Security.Cryptography.CryptoConfigForwarder.#cctor
+0x0074ca42  [ascii]  M:System.Xml.Serialization.ReflectionXmlSerializationReader.#cctor
+0x0076e0be  [ascii]  System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089g
+0x00784072  [ascii]  RSystem.Configuration.ConfigurationManager>CodeArgumentReferenceExpression2CodeArrayCreateExpression4CodeArrayIndexerExpression&CodeAssignStatement0CodeAttachEventStatement*CodeAttributeArgument>Co...
+0x0078cd19  [ascii]  System.Runtime, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a,DeserializationTracker IObjectReferenceg
+0x0078fe1e  [ascii]  TSpanBSystem.Private.CoreLib.Generators
+0x00790c74  [ascii]  ^Renci.SshNet.IAuthenticationMethod.Authenticate@
+0x00791fc8  [ascii]  DRenci.SshNet.ISession.WaitOnHandle:Renci.SshNet.ISession.TryWait
+0x00792251  [ascii]  JRenci.SshNet.ISession.OnDisconnectingFOnUserAuthenticationRequestReceived@
+0x00792746  [ascii]  FinalizePRenci.SshNet.ISession.get_ConnectionInfodRenci.SshNet.ISession.get_MessageListenerCompletedTRenci.SshNet.ISession.CreateChannelSession\Renci.SshNet.ISession.CreateChannelDirectTcpipbRenci....
+0x00792f57  [ascii]  HRenci.SshNet.ISession.ConnectionInfo
+0x00792f80  [ascii]  \Renci.SshNet.ISession.MessageListenerCompleted
+0x00793e84  [ascii]  Renci.SshNet.IConnectionInfoInternal.UserAuthenticationBannerReceived
+0x00793eca  [ascii]  Renci.SshNet.IConnectionInfoInternal.CreateNoneAuthenticationMethod|Renci.SshNet.IConnectionInfoInternal.get_AuthenticationMethods
+0x007945c7  [ascii]  tRenci.SshNet.IConnectionInfoInternal.AuthenticationMethods
+0x00795521  [ascii]  NRenci.SshNet.IForwardedPort.add_ClosingTRenci.SshNet.IForwardedPort.remove_Closing
+0x00795675  [ascii]  FRenci.SshNet.IForwardedPort.Closing
+0x007a53d6  [ascii]  System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+0x007ab0d4  [ascii]  System.CodeDom"SafeProcessHandle
+0x007ab2d7  [ascii]  JSystem.Diagnostics.PerformanceCounter6System.Diagnostics.EventLog6System.Security.Permissions$ShellExecuteHelper
+0x007ab487  [ascii]  StopBits2System.Windows.Extensions
+0x007abb9b  [ascii]  System.Runtime+
+0x007abc25  [ascii]  System.ComponentModel.Design.ComponentDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aS
+0x007abcad  [ascii]  System.Windows.Forms.Design.ComponentDocumentDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+0x007abd35  [ascii]  System.ComponentModel.Design.IRootDesigner, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+0x007abdb1  [ascii]  System.ComponentModel.ComponentConverter, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+0x007ac336  [ascii]  System.Diagnostics.Design.ProcessDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+0x007ac3b3  [ascii]  System.Diagnostics.Design.ProcessModuleDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+0x007b2158  [ascii]  System.Numerics, Version=4.0.0.0, PublicKeyToken=b77a5c561934e089&EnumMemberAttribute
+0x007b370c  [ascii]  connectionEventfSystem.Resources.Tools.StronglyTypedResourceBuilder
+0x007b3eb3  [ascii]  System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+0x007be17b  [ascii]  BouncyCastle
+0x007c7e77  [ascii]  System.IO.Ports*AddressChangeListener<System.Threading.AccessControl
+0x007c7ef3  [ascii]  System.Diagnostics.Design.StringDictionaryCodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a9
+0x007c7f82  [ascii]  System.ComponentModel.Design.Serialization.CodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a designerTypeName(designerBaseTypeName
+0x007cef7b  [ascii]  MS.Internal.Xml.Linq.ComponentModel.XTypeDescriptionProvider`1[[System.Xml.Linq.XAttribute, System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],System.ComponentMode...
+0x007cf08f  [ascii]  MS.Internal.Xml.Linq.ComponentModel.XTypeDescriptionProvider`1[[System.Xml.Linq.XElement, System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],System.ComponentModel....
+0x007cf237  [ascii]  System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:<CombinedClaimsIterator>d__38
+0x007cf560  [ascii]  (System.Xml.XDocument$<RemoveDevice>b__0@
+0x007d0a06  [ascii]  4System.IDisposable.Dispose
+0x007d0a30  [ascii]  System.Collections.Generic.IEnumerator<Renci.SshNet.IAuthenticationMethod>.get_CurrentHSystem.Collections.IEnumerator.ResetTSystem.Collections.IEnumerator.get_Current
+0x007d0ad7  [ascii]  System.Collections.Generic.IEnumerable<Renci.SshNet.IAuthenticationMethod>.GetEnumerator@
+0x007d0b37  [ascii]  XSystem.Collections.IEnumerable.GetEnumerator@
+0x007d0c1d  [ascii]  System.Collections.Generic.IEnumerator<Renci.SshNet.IAuthenticationMethod>.Current@
+0x007d0c77  [ascii]  U;LSystem.Collections.IEnumerator.Current
+0x007d7a5b  [ascii]  PSystem.Text.RegularExpressions.Generator
+0x007df0f9  [ascii]  System.Collections.Generic.IComparer<System.Linq.Expressions.Interpreter.DebugInfo>.Compare@
+0x007eb83a  [ascii]  BSystem.Collections.IList.get_Item8System.Collections.IList.Add>System.Collections.IList.Remove
+0x007ebc08  [ascii]  RefreshVSystem.Collections.IEqualityComparer.Equals@
+0x007ebc4b  [ascii]  `System.Collections.IEqualityComparer.GetHashCode
+0x007ec637  [ascii]  System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.GetEnumerator
+0x007ec6b2  [ascii]  System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.String>>.get_Current@
+0x007ec733  [ascii]  System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.String>>.GetEnumerator@
+0x007f028d  [ascii]  System.Collections.Generic.IEnumerator<System.Linq.Expressions.Expression>.get_Current
+0x007f1382  [ascii]  get_ReturnType get_TailCallCorenSystem.Linq.Expressions.IParameterProvider.GetParameter@
+0x007f13e6  [ascii]  GetParameterzSystem.Linq.Expressions.IParameterProvider.get_ParameterCount$get_ParameterCount GetCompileMethod
+0x007f1aac  [ascii]  System.Collections.Generic.IEnumerator<System.Linq.Expressions.Interpreter.InterpretedFrameInfo>.get_Current@
+0x007f1b21  [ascii]  System.Collections.Generic.IEnumerable<System.Linq.Expressions.Interpreter.InterpretedFrameInfo>.GetEnumerator@
+0x007f4bda  [ascii]  System.Threading.Tasks.Sources.IValueTaskSource<System.Int32>.GetResult@
+0x007f4c2e  [ascii]  System.Threading.Tasks.Sources.IValueTaskSource<System.Int32>.GetStatus@
+0x007f4c82  [ascii]  System.Threading.Tasks.Sources.IValueTaskSource<System.Int32>.OnCompleted@
+0x007f53c1  [ascii]  R<ReadFrameAsync>g__ThrowPrematureEOF|61_0R<ReadFrameAsync>g__ThrowMissingFrame|61_1dSystem.Net.Http.IHttpStreamHeadersHandler.OnHeader@
+0x007f5458  [ascii]  ~System.Net.Http.IHttpStreamHeadersHandler.OnStaticIndexedHeader@
+0x007f54a9  [ascii]  System.Net.Http.IHttpStreamHeadersHandler.OnDynamicIndexedHeader@
+0x007f571e  [ascii]  SendDataAsync"CloseResponseBody>RegisterRequestBodyCancellationrSystem.Threading.Tasks.Sources.IValueTaskSource.GetStatusvSystem.Threading.Tasks.Sources.IValueTaskSource.OnCompletedrSystem.Threadin...
+0x007f7656  [ascii]  0TryGetParametersEndIndex.System.ICloneable.Clone
+0x007f8080  [ascii]  System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.Collections.Generic.IEnumerable<System.String>>>.get_Current@
+0x007f8c56  [ascii]  XSystem.Threading.IThreadPoolWorkItem.Execute"FromHandleAndFree
+0x007f93d0  [ascii]  GetCookiesCountHSystem.Collections.IComparer.Compare@
+0x007f946b  [ascii]  System.Collections.Generic.IEnumerable<System.Net.Cookie>.GetEnumerator@
+0x007f94bb  [ascii]  System.Collections.Generic.IEnumerator<System.Net.Cookie>.get_Current@
+0x007f9601  [ascii]  get_ScopeId8System.IFormattable.ToStringBSystem.ISpanFormattable.TryFormat@
+0x007fb572  [ascii]  6System.Net.ICloseEx.CloseEx
+0x007fc5d1  [ascii]  VSystem.Net.ISSPIInterface.CompleteAuthToken@
+0x007fc60d  [ascii]  VSystem.Net.ISSPIInterface.ApplyControlToken@
+0x007fe4b7  [ascii]  System.Threading.Tasks.Sources.IValueTaskSource<System.Net.Sockets.Socket>.GetResult@
+0x007ff674  [ascii]  :System.IConvertible.ToBoolean@
+0x007ff69e  [ascii]  4System.IConvertible.ToChar@
+0x007ff6c5  [ascii]  6System.IConvertible.ToSByte@
+0x007ff6ed  [ascii]  4System.IConvertible.ToByte@
+0x007ff714  [ascii]  6System.IConvertible.ToInt16@
+0x007ff73c  [ascii]  8System.IConvertible.ToUInt16@
+0x007ff765  [ascii]  6System.IConvertible.ToInt32@
+0x007ff78d  [ascii]  8System.IConvertible.ToUInt32@
+0x007ff7b6  [ascii]  6System.IConvertible.ToInt64@
+0x007ff7de  [ascii]  8System.IConvertible.ToUInt64@
+0x007ff807  [ascii]  8System.IConvertible.ToSingle@
+0x007ff830  [ascii]  8System.IConvertible.ToDouble@
+0x007fff02  [ascii]  System.Collections.Generic.IEnumerable<System.Char>.GetEnumerator@
+0x00800775  [ascii]  PSystem.Collections.ICollection.get_Count
+0x00801db9  [ascii]  8System.IComparable.CompareTo0FromUnixTimeMilliseconds
+0x00808ba6  [ascii]  0AllocateNativeOverlapped0GetNativeOverlappedStatefSystem.Threading.IDeferredDisposable.OnFinalRelease
+0x00808ea8  [ascii]  $SpinUntilCompletedNSystem.IAsyncResult.get_AsyncWaitHandle\System.IAsyncResult.get_CompletedSynchronously$get_CompletedEvent@
+0x0080e42a  [ascii]  \System.Reflection.IReflectableType.GetTypeInfo@
+0x008136be  [ascii]  System.Collections.Generic.IEnumerator<System.Globalization.CultureInfo>.get_Current@
+0x0081371e  [ascii]  &get_UserResourceSet6get_NeutralResourcesCulture get_MainAssemblyfSystem.Threading.Tasks.ITaskCompletionAction.Invoke
+0x00813794  [ascii]  System.Threading.Tasks.ITaskCompletionAction.get_InvokeMayRunArbitraryCode"UnsafeOnCompleted@
+0x00813853  [ascii]  System.Collections.Generic.IEnumerator<System.Runtime.Loader.LibraryNameVariation>.get_Current@
+0x008138ba  [ascii]  System.Collections.Generic.IEnumerable<System.Runtime.Loader.LibraryNameVariation>.GetEnumerator@
+0x008139b8  [ascii]  System.Runtime.CompilerServices.IStateMachineBoxAwareAwaiter.AwaitUnsafeOnCompleted@
+0x00813a8f  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.CustomAttributeData>.get_Current@
+0x00813af1  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData>.GetEnumerator@
+0x00813b55  [ascii]  System.Collections.Generic.IEnumerator<Internal.Metadata.NativeFormat.NamespaceDefinitionHandle>.get_Current@
+0x00813bca  [ascii]  System.Collections.Generic.IEnumerable<Internal.Metadata.NativeFormat.NamespaceDefinitionHandle>.GetEnumerator@
+0x00813c49  [ascii]  System.Collections.Generic.IEnumerator<Internal.Reflection.Core.QScopeDefinition>.get_Current@
+0x00813caf  [ascii]  System.Collections.Generic.IEnumerable<Internal.Reflection.Core.QScopeDefinition>.GetEnumerator@
+0x00813d64  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.ConstructorInfo>.get_Current
+0x00813dba  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.ConstructorInfo>.GetEnumerator@
+0x00813e1a  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.MethodInfo>.get_Current
+0x00813e6b  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.MethodInfo>.GetEnumerator@
+0x00813ede  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.Runtime.MethodInfos.RuntimeConstructorInfo>.get_Current@
+0x00813f57  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.Runtime.MethodInfos.RuntimeConstructorInfo>.GetEnumerator@
+0x00813fd2  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.Runtime.MethodInfos.RuntimeMethodInfo>.get_Current@
+0x00814046  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.Runtime.MethodInfos.RuntimeMethodInfo>.GetEnumerator@
+0x00814104  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.EventInfo>.get_Current@
+0x0081415c  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.EventInfo>.GetEnumerator@
+0x008141b6  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.FieldInfo>.get_Current@
+0x0081420e  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.FieldInfo>.GetEnumerator@
+0x00814267  [ascii]  ~System.Collections.Generic.IEnumerator<System.Type>.get_Current
+0x008142a8  [ascii]  System.Collections.Generic.IEnumerable<System.Type>.GetEnumerator@
+0x008142f2  [ascii]  System.Collections.Generic.IEnumerator<System.Reflection.PropertyInfo>.get_Current@
+0x0081434d  [ascii]  System.Collections.Generic.IEnumerable<System.Reflection.PropertyInfo>.GetEnumerator@
+0x00817eba  [ascii]  System.Collections.Generic.IEnumerator<Internal.TypeSystem.FieldDesc>.get_Current
+0x00817f0c  [ascii]  System.Collections.Generic.IEnumerable<Internal.TypeSystem.FieldDesc>.GetEnumerator@
+0x008180d8  [ascii]  System.Collections.Generic.IEnumerator<Internal.Runtime.TypeLoader.TypeLoaderEnvironment.GenericMethodEntry>.get_Current@
+0x00818159  [ascii]  System.Collections.Generic.IEnumerable<Internal.Runtime.TypeLoader.TypeLoaderEnvironment.GenericMethodEntry>.GetEnumerator@
+0x008181dc  [ascii]  System.Collections.Generic.IEnumerator<Internal.Runtime.TypeLoader.TypeLoaderEnvironment.GenericTypeEntry>.get_Current@
+0x0081825b  [ascii]  System.Collections.Generic.IEnumerable<Internal.Runtime.TypeLoader.TypeLoaderEnvironment.GenericTypeEntry>.GetEnumerator@
+0x0081a435  [ascii]  NSystem.Collections.IEnumerator.MoveNext@
+0x0081af95  [ascii]  `System.Xml.IXmlNamespaceResolver.LookupNamespaceZSystem.Xml.IXmlNamespaceResolver.LookupPrefix
+0x0081aff5  [ascii]  HasLineInfoZSystem.Xml.Schema.IXmlSchemaInfo.get_Validity@
+0x0081b036  [ascii]  \System.Xml.Schema.IXmlSchemaInfo.get_IsDefaultTSystem.Xml.Schema.IXmlSchemaInfo.get_IsNil^System.Xml.Schema.IXmlSchemaInfo.get_MemberType@
+0x0081b0c8  [ascii]  ^System.Xml.Schema.IXmlSchemaInfo.get_SchemaType@
+0x0081b100  [ascii]  dSystem.Xml.Schema.IXmlSchemaInfo.get_SchemaElement@
+0x0081b13b  [ascii]  hSystem.Xml.Schema.IXmlSchemaInfo.get_SchemaAttribute@
+0x0081ccd2  [ascii]  get_LinePosTSystem.Xml.IDtdParserAdapter.get_NameTabledSystem.Xml.IDtdParserAdapter.get_NamespaceResolver@
+0x0081cd43  [ascii]  PSystem.Xml.IDtdParserAdapter.get_BaseUriLSystem.Xml.IDtdParserAdapter.get_IsEof\System.Xml.IDtdParserAdapter.get_ParsingBufferhSystem.Xml.IDtdParserAdapter.get_ParsingBufferLength`System.Xml.IDtdP...
+0x0081d177  [ascii]  System.Xml.IDtdParserAdapterWithValidation.get_ValidationEventHandling@
+0x0081d1c5  [ascii]  `System.Xml.IDtdParserAdapterV1.get_NormalizationZSystem.Xml.IDtdParserAdapterV1.get_NamespaceslSystem.Xml.IDtdParserAdapterV1.get_V1CompatibilityModeTSystem.Xml.IDtdParserAdapter.ReadDataAsyncjSys...
+0x0081dbea  [ascii]  <System.Xml.IHasXmlNode.GetNode@
+0x0081ec4a  [ascii]  LSystem.Xml.IDtdParser.ParseInternalDtd@
+0x0081ec81  [ascii]  TSystem.Xml.IDtdParser.ParseFreeFloatingDtd@
+0x0081f183  [ascii]  VSystem.Xml.IDtdParser.ParseInternalDtdAsync@
+0x0081f1bf  [ascii]  ^System.Xml.IDtdParser.ParseFreeFloatingDtdAsync@
+0x0081fd19  [ascii]  AllowsNSystem.Xml.IDtdAttributeInfo.get_PrefixTSystem.Xml.IDtdAttributeInfo.get_LocalNameVSystem.Xml.IDtdAttributeInfo.get_LineNumberZSystem.Xml.IDtdAttributeInfo.get_LinePosition^System.Xml.IDtdAt...
+0x0081ffab  [ascii]  tSystem.Xml.IDtdAttributeListInfo.get_HasNonCDataAttributes`System.Xml.IDtdAttributeListInfo.LookupAttribute@
+0x00820027  [ascii]  pSystem.Xml.IDtdAttributeListInfo.LookupDefaultAttributes@
+0x00820094  [ascii]  DSystem.Xml.IDtdEntityInfo.get_NamePSystem.Xml.IDtdEntityInfo.get_IsExternaldSystem.Xml.IDtdEntityInfo.get_IsDeclaredInExternal\System.Xml.IDtdEntityInfo.get_IsUnparsedEntity^System.Xml.IDtdEntityI...
+0x008202cd  [ascii]  XSystem.Xml.IDtdInfo.get_HasDefaultAttributesZSystem.Xml.IDtdInfo.get_HasNonCDataAttributesNSystem.Xml.IDtdInfo.LookupAttributeList@
+0x00820360  [ascii]  @System.Xml.IDtdInfo.LookupEntity@
+0x0082038d  [ascii]  8System.Xml.IDtdInfo.get_NameRSystem.Xml.IDtdInfo.get_InternalDtdSubset@
+0x0082118e  [ascii]  System.Collections.Generic.IEnumerator<System.Xml.Linq.XElement>.get_Current@
+0x008211e3  [ascii]  System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement>.GetEnumerator@
+0x008213a5  [ascii]  ^System.IEquatable<System.Xml.Linq.XName>.Equals@
+0x00821488  [ascii]  AddAnnotation.AnnotationForSealedTypeFSystem.Xml.IXmlLineInfo.HasLineInfoLSystem.Xml.IXmlLineInfo.get_LineNumberPSystem.Xml.IXmlLineInfo.get_LinePosition
+0x00821d8a  [ascii]  System.Collections.Generic.IEnumerator<System.Security.Claims.Claim>.get_Current@
+0x00821de3  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Claims.Claim>.GetEnumerator@
+0x008268f6  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Cryptography.X509Certificates.X509Certificate2>.GetEnumerator@
+0x008269e1  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Cryptography.X509Certificates.X509ChainElement>.GetEnumerator@
+0x00826b6e  [ascii]  System.Collections.Generic.IEnumerable<System.Security.Cryptography.X509Certificates.X509Extension>.GetEnumerator@
+0x00827c57  [ascii]  System.Collections.Generic.ICollection<System.Security.Principal.IdentityReference>.get_IsReadOnly@
+0x00828084  [ascii]  System.Collections.Generic.IEnumerable<System.Text.RegularExpressions.Group>.GetEnumerator@
+0x0082810d  [ascii]  System.Collections.Generic.IList<System.Text.RegularExpressions.Group>.IndexOf@
+0x00828168  [ascii]  System.Collections.Generic.IList<System.Text.RegularExpressions.Group>.Insert@
+0x008281c6  [ascii]  System.Collections.Generic.IList<System.Text.RegularExpressions.Group>.RemoveAt
+0x00828216  [ascii]  System.Collections.Generic.IList<System.Text.RegularExpressions.Group>.get_Item
+0x00828266  [ascii]  System.Collections.Generic.ICollection<System.Text.RegularExpressions.Group>.Add@
+0x008282c3  [ascii]  System.Collections.Generic.ICollection<System.Text.RegularExpressions.Group>.Clear
+0x00828316  [ascii]  System.Collections.Generic.ICollection<System.Text.RegularExpressions.Group>.Contains@
+0x00828378  [ascii]  System.Collections.Generic.ICollection<System.Text.RegularExpressions.Group>.RemoveE
+0x008283cd  [ascii]  System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Text.RegularExpressions.Group>>.GetEnumerator@
+0x00828470  [ascii]  System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.String,System.Text.RegularExpressions.Group>>.get_Current@
+0x0082b90f  [ascii]  System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>.GetEnumerator@
+0x0082b9b5  [ascii]  NSystem.Collections.IDictionary.get_ItemNSystem.Collections.IDictionary.set_Item
+0x0082ba06  [ascii]  IsCompatibleKeyXSystem.Collections.IDictionary.GetEnumeratordSystem.Collections.IDictionaryEnumerator.get_Entry`System.Collections.IDictionaryEnumerator.get_KeydSystem.Collections.IDictionaryEnumer...
+0x0082bb53  [ascii]  AddWithResizenSystem.Collections.Generic.IEnumerable<T>.GetEnumerator
+0x0082bfd6  [ascii]  pSystem.Collections.Generic.ICollection<T>.get_IsReadOnly
+0x0082c010  [ascii]  System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<T1,T2>>.GetEnumerator@
+0x0082c206  [ascii]  (IsWriteAtomicPrivatevSystem.Collections.Generic.IEnumerator<TResult>.get_CurrentzSystem.Collections.Generic.IEnumerable<TResult>.GetEnumerator2WaitWithCancellationAsync@
+0x0082c2bb  [ascii]  VSystem.Threading.IAsyncLocal.OnValueChanged
+0x0082c3f4  [ascii]  hSystem.Runtime.CompilerServices.IStrongBox.get_ValuehSystem.Runtime.CompilerServices.IStrongBox.set_Value@
+0x0082c663  [ascii]  fSystem.Collections.Generic.ICollection<TSource>.AddjSystem.Collections.Generic.ICollection<TSource>.Clear`System.Collections.Generic.IList<TSource>.InsertlSystem.Collections.Generic.ICollection<TS...
+0x0082c785  [ascii]  hSystem.Collections.Generic.ICollection<TElement>.AddlSystem.Collections.Generic.ICollection<TElement>.ClearbSystem.Collections.Generic.IList<TElement>.InsertnSystem.Collections.Generic.ICollection...
+0x0082ce7f  [ascii]  System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult
+0x0082cecd  [ascii]  System.Linq.IIListProvider<System.Linq.IGrouping<TKey,TElement>>.ToArray@
+0x0082cf1e  [ascii]  System.Linq.IIListProvider<System.Linq.IGrouping<TKey,TElement>>.ToList@
+0x0082cf6e  [ascii]  System.Linq.IIListProvider<System.Linq.IGrouping<TKey,TElement>>.GetCount
+0x0082cff0  [ascii]  System.Collections.Generic.IEnumerator<System.Linq.IGrouping<TKey,TElement>>.get_Current@
+0x0082d064  [ascii]  tSystem.Collections.Generic.ICollection<TElement>.get_CountnSystem.Collections.Generic.ICollection<TElement>.CopyTo@
+0x0082d0e7  [ascii]  fSystem.Collections.Generic.IList<TElement>.get_Item@
+0x0082d127  [ascii]  xSystem.Collections.Generic.IEnumerator<TElement>.get_Current@
+0x0082d223  [ascii]  zSystem.Collections.Generic.ICollection<TValue>.get_IsReadOnlydSystem.Collections.Generic.ICollection<TValue>.AddjSystem.Collections.Generic.ICollection<TValue>.RemovehSystem.Collections.Generic.IC...
+0x0082d94d  [ascii]  System.Collections.Generic.IEnumerator<System.Text.RegularExpressions.Symbolic.SymbolicRegexNode<TSet>>.get_Current
+0x0082d9c1  [ascii]  System.Collections.Generic.IEnumerable<System.Text.RegularExpressions.Symbolic.SymbolicRegexNode<TSet>>.GetEnumerator@
+0x0082e003  [ascii]  vSystem.Collections.Generic.IEnumerator<TSource>.get_CurrentzSystem.Collections.Generic.IEnumerable<TSource>.GetEnumerator@
+0x0082e31e  [ascii]  CheckValuejSystem.Collections.Generic.IEnumerator<T>.get_Current@
+0x0082eb86  [ascii]  System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Remove@
+0x0082ec06  [ascii]  System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.CopyTo2ThrowKeyNotFoundException
+0x0082ec8f  [ascii]  nSystem.Collections.Generic.IDictionary<TKey,TValue>.Add
+0x0082ecc8  [ascii]  System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Add
+0x0082ed31  [ascii]  System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey,TValue>>.get_Current
+0x0082edbb  [ascii]  xSystem.Collections.Generic.IDictionary<TKey,TValue>.get_Keys|System.Collections.Generic.IDictionary<TKey,TValue>.get_Values@
+0x0082ee6c  [ascii]  GetValueLockedvSystem.Collections.Generic.ICollection<TKey>.get_IsReadOnly`System.Collections.Generic.ICollection<TKey>.AdddSystem.Collections.Generic.ICollection<TKey>.ClearfSystem.Collections.Gen...
+0x0082f000  [ascii]  VerifyIntegrityjSystem.Collections.Generic.IEnumerator<U>.get_CurrentnSystem.Collections.Generic.IEnumerable<U>.GetEnumerator@
+0x0083a909  [ascii]  lSystem.Resources.ResourceReader, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089#System.Resources.RuntimeResourceSet
+0x0083c661  [ascii]  6System.Net.Security is not supported on this platform.
+0x0084f39d  [ascii]  lSystem.Resources.ResourceReader, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089#System.Resources.RuntimeResourceSet
+0x00853ee3  [ascii]  /usr/lib/libSystem.B.dylib
+0x0086be93  [ascii]  /usr/lib/libSystem.B.dylib
+0x00881bd8  [ascii]  /usr/lib/libSystem.B.dylib
+0x008a467d  [ascii]  /usr/lib/libSystem.B.dylib
+0x008ea7f0  [ascii]  /usr/lib/libSystem.B.dylib
+0x008fb986  [ascii]  System.Net.Security, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aXFxResources.System.Net.Security.SR.resources
+0x008fba0d  [ascii]  System.Private.Xml, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51"xhtml1-strict.dtd
+0x008fba79  [ascii]  System.Private.Xml, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51.xhtml1-transitional.dtd
+0x008fbaed  [ascii]  System.Private.Xml, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51&xhtml1-frameset.dtd
+0x008fbb5d  [ascii]  System.Private.Xml, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+0x008fbbc5  [ascii]  System.Private.Xml, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+0x008fbc2f  [ascii]  System.Private.Xml, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51"xhtml-special.ent
+0x008fbc9c  [ascii]  System.Private.Xml, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51 xhtml-symbol.entk
+0x009254c3  [ascii]  ~System.Numerics.INumberBase<System.Int32>.TryConvertFromChecked
+0x00925521  [ascii]  System.Numerics.INumberBase<System.Int32>.TryConvertFromSaturatinge
+0x00925581  [ascii]  System.Numerics.INumberBase<System.Int32>.TryConvertFromTruncating
+0x009255e6  [ascii]  D(zSystem.Numerics.INumberBase<System.Int32>.TryConvertToChecked
+0x00925642  [ascii]  System.Numerics.INumberBase<System.Int32>.TryConvertToSaturating}
+0x0092569e  [ascii]  System.Numerics.INumberBase<System.Int32>.TryConvertToTruncating
+0x0092571e  [ascii]  L(Dl|System.Numerics.INumberBase<System.Byte>.TryConvertFromChecked
+0x00925764  [ascii]  System.Numerics.INumberBase<System.Byte>.TryConvertFromSaturating
+0x009257a8  [ascii]  System.Numerics.INumberBase<System.Byte>.TryConvertFromTruncating
+0x009257ee  [ascii]  LlD(xSystem.Numerics.INumberBase<System.Byte>.TryConvertToChecked
+0x00925831  [ascii]  ~System.Numerics.INumberBase<System.Byte>.TryConvertToSaturating
+0x00925873  [ascii]  ~System.Numerics.INumberBase<System.Byte>.TryConvertToTruncating
+0x00925910  [ascii]  System.Numerics.INumberBase<System.UInt32>.TryConvertFromChecked
+0x00925953  [ascii]  System.Numerics.INumberBase<System.UInt32>.TryConvertFromSaturating
+0x00925999  [ascii]  System.Numerics.INumberBase<System.UInt32>.TryConvertFromTruncating
+0x009259e3  [ascii]  D(|System.Numerics.INumberBase<System.UInt32>.TryConvertToChecked
+0x00925a27  [ascii]  System.Numerics.INumberBase<System.UInt32>.TryConvertToSaturating
+0x00925a6b  [ascii]  System.Numerics.INumberBase<System.UInt32>.TryConvertToTruncating
+0x00925e43  [ascii]  pSystem.Numerics.INumberBase<nuint>.TryConvertFromChecked
+0x00925e7e  [ascii]  vSystem.Numerics.INumberBase<nuint>.TryConvertFromSaturating
+0x00925ebc  [ascii]  vSystem.Numerics.INumberBase<nuint>.TryConvertFromTruncating
+0x00925f00  [ascii]  D(lSystem.Numerics.INumberBase<nuint>.TryConvertToChecked
+0x00925f3a  [ascii]  rSystem.Numerics.INumberBase<nuint>.TryConvertToSaturating
+0x00925f76  [ascii]  rSystem.Numerics.INumberBase<nuint>.TryConvertToTruncating)
+0x00926360  [ascii]  |System.Numerics.INumberBase<System.Char>.TryConvertFromChecked
+0x009263a2  [ascii]  System.Numerics.INumberBase<System.Char>.TryConvertFromSaturating
+0x009263e6  [ascii]  System.Numerics.INumberBase<System.Char>.TryConvertFromTruncating
+0x0092642f  [ascii]  D(xSystem.Numerics.INumberBase<System.Char>.TryConvertToChecked
+0x00926470  [ascii]  ~System.Numerics.INumberBase<System.Char>.TryConvertToSaturating
+0x009264b2  [ascii]  ~System.Numerics.INumberBase<System.Char>.TryConvertToTruncating
+0x00926539  [ascii]  ~System.Numerics.INumberBase<System.Int16>.TryConvertFromChecked
+0x0092657c  [ascii]  System.Numerics.INumberBase<System.Int16>.TryConvertFromSaturating
+0x009265c1  [ascii]  System.Numerics.INumberBase<System.Int16>.TryConvertFromTruncating
+0x0092660b  [ascii]  D(zSystem.Numerics.INumberBase<System.Int16>.TryConvertToChecked
+0x0092664e  [ascii]  System.Numerics.INumberBase<System.Int16>.TryConvertToSaturating
+0x00926691  [ascii]  System.Numerics.INumberBase<System.Int16>.TryConvertToTruncating
+0x00926719  [ascii]  System.Numerics.INumberBase<System.UInt64>.TryConvertFromChecked
+0x0092675c  [ascii]  System.Numerics.INumberBase<System.UInt64>.TryConvertFromSaturating
+0x009267a2  [ascii]  System.Numerics.INumberBase<System.UInt64>.TryConvertFromTruncating
+0x009267ed  [ascii]  D(|System.Numerics.INumberBase<System.UInt64>.TryConvertToChecked
+0x00926831  [ascii]  System.Numerics.INumberBase<System.UInt64>.TryConvertToSaturating
+0x00926875  [ascii]  System.Numerics.INumberBase<System.UInt64>.TryConvertToTruncating
+0x009268fe  [ascii]  System.Numerics.INumberBase<System.UInt16>.TryConvertFromChecked
+0x00926941  [ascii]  System.Numerics.INumberBase<System.UInt16>.TryConvertFromSaturating
+0x00926987  [ascii]  System.Numerics.INumberBase<System.UInt16>.TryConvertFromTruncating
+0x009269d2  [ascii]  D(|System.Numerics.INumberBase<System.UInt16>.TryConvertToChecked
+0x00926a16  [ascii]  System.Numerics.INumberBase<System.UInt16>.TryConvertToSaturating
+0x00926a5a  [ascii]  System.Numerics.INumberBase<System.UInt16>.TryConvertToTruncating
+0x00926ae2  [ascii]  ~System.Numerics.INumberBase<System.Int64>.TryConvertFromChecked
+0x00926b25  [ascii]  System.Numerics.INumberBase<System.Int64>.TryConvertFromSaturating
+0x00926b6a  [ascii]  System.Numerics.INumberBase<System.Int64>.TryConvertFromTruncating
+0x00926bb4  [ascii]  D(zSystem.Numerics.INumberBase<System.Int64>.TryConvertToChecked
+0x00926bf7  [ascii]  System.Numerics.INumberBase<System.Int64>.TryConvertToSaturating
+0x00926c3a  [ascii]  System.Numerics.INumberBase<System.Int64>.TryConvertToTruncating
+0x00928d69  [ascii]  @nSystem.Numerics.INumberBase<nint>.TryConvertFromChecked
+0x00928da3  [ascii]  tSystem.Numerics.INumberBase<nint>.TryConvertFromSaturating
+0x00928de0  [ascii]  tSystem.Numerics.INumberBase<nint>.TryConvertFromTruncating
+0x00928e22  [ascii]  @D(jSystem.Numerics.INumberBase<nint>.TryConvertToChecked
+0x00928e5c  [ascii]  pSystem.Numerics.INumberBase<nint>.TryConvertToSaturating!
+0x00928e97  [ascii]  pSystem.Numerics.INumberBase<nint>.TryConvertToTruncating5
+0x0092ae6c  [ascii]  System.Numerics.INumberBase<System.Numerics.BigInteger>.TryConvertFromChecked
+0x0092aebc  [ascii]  System.Numerics.INumberBase<System.Numerics.BigInteger>.TryConvertFromSaturating]
+0x0092af0f  [ascii]  System.Numerics.INumberBase<System.Numerics.BigInteger>.TryConvertFromTruncating
+0x0092af6a  [ascii]  System.Numerics.INumberBase<System.Numerics.BigInteger>.TryConvertToChecked
+0x0092afb8  [ascii]  System.Numerics.INumberBase<System.Numerics.BigInteger>.TryConvertToSaturatingm
+0x0092b009  [ascii]  System.Numerics.INumberBase<System.Numerics.BigInteger>.TryConvertToTruncating)
+0x0092d6c3  [ascii]  ~System.Numerics.INumberBase<System.SByte>.TryConvertFromChecked
+0x0092d706  [ascii]  System.Numerics.INumberBase<System.SByte>.TryConvertFromSaturating
+0x0092d74b  [ascii]  System.Numerics.INumberBase<System.SByte>.TryConvertFromTruncating
+0x0092d795  [ascii]  D(zSystem.Numerics.INumberBase<System.SByte>.TryConvertToChecked
+0x0092d7d8  [ascii]  System.Numerics.INumberBase<System.SByte>.TryConvertToSaturating
+0x0092d81b  [ascii]  System.Numerics.INumberBase<System.SByte>.TryConvertToTruncating
+0x0092d922  [ascii]  System.Numerics.INumberBase<System.Double>.TryConvertFromChecked
+0x0092d965  [ascii]  System.Numerics.INumberBase<System.Double>.TryConvertFromSaturating
+0x0092d9ab  [ascii]  System.Numerics.INumberBase<System.Double>.TryConvertFromTruncating
+0x0092d9f6  [ascii]  D(|System.Numerics.INumberBase<System.Double>.TryConvertToChecked
+0x0092da3a  [ascii]  System.Numerics.INumberBase<System.Double>.TryConvertToSaturating
+0x0092da7e  [ascii]  System.Numerics.INumberBase<System.Double>.TryConvertToTruncating
+0x0092e668  [ascii]  System.Numerics.INumberBase<System.Decimal>.TryConvertFromChecked
+0x0092e6ac  [ascii]  System.Numerics.INumberBase<System.Decimal>.TryConvertFromSaturating
+0x0092e6f3  [ascii]  System.Numerics.INumberBase<System.Decimal>.TryConvertFromTruncating
+0x0092e73f  [ascii]  D(~System.Numerics.INumberBase<System.Decimal>.TryConvertToChecked
+0x0092e784  [ascii]  System.Numerics.INumberBase<System.Decimal>.TryConvertToSaturating
+0x0092e7c9  [ascii]  System.Numerics.INumberBase<System.Decimal>.TryConvertToTruncating
+0x0092efc2  [ascii]  System.Linq.IOrderedEnumerable<TElement>.CreateOrderedEnumerable
+0x0092f080  [ascii]  System.Numerics.INumberBase<System.Single>.TryConvertFromChecked
+0x0092f0c3  [ascii]  System.Numerics.INumberBase<System.Single>.TryConvertFromSaturating
+0x0092f109  [ascii]  System.Numerics.INumberBase<System.Single>.TryConvertFromTruncating
+0x0092f154  [ascii]  D(|System.Numerics.INumberBase<System.Single>.TryConvertToChecked
+0x0092f198  [ascii]  System.Numerics.INumberBase<System.Single>.TryConvertToSaturating
+0x0092f1dc  [ascii]  System.Numerics.INumberBase<System.Single>.TryConvertToTruncating
+0x009bcc40  [ascii]  Microsoft.Extensions.DependencyInjection.VerifyOpenGenericServiceTrimmability
+0x009bcc8e  [ascii]  System.ComponentModel.TypeConverter.EnableUnsafeBinaryFormatterInDesigntimeLicenseContextSerialization
+0x009bccf5  [ascii]  System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization
+0x009bcd3b  [ascii]  System.StartupHookProvider.IsSupported
+0x009bcd62  [ascii]  System.Text.Encoding.EnableUnsafeUTF7Encoding
+0x009bcd90  [ascii]  System.Text.Json.JsonSerializer.IsReflectionEnabledByDefault
+0x009bcdcd  [ascii]  System.Threading.Thread.EnableAutoreleasePool
+0x009bcdfb  [ascii]  System.Threading.ThreadPool.UseWindowsThreadPool
+0x009bce2c  [ascii]  System.Linq.Expressions.CanEmitObjectArrayDelegate
+0x009bce72  [ascii]  System.Diagnostics.Tracing.EventSource.IsSupported
+0x009bcea5  [ascii]  System.Reflection.Metadata.MetadataUpdater.IsSupported
+0x009bcedc  [ascii]  System.Resources.ResourceManager.AllowCustomResourceTypes
+0x009bcf16  [ascii]  System.Runtime.CompilerServices.RuntimeFeature.IsDynamicCodeSupported
+0x009bcf5c  [ascii]  System.Runtime.InteropServices.BuiltInComInterop.IsSupported
+0x009bcf99  [ascii]  System.Runtime.InteropServices.EnableConsumingManagedCodeFromNativeHosting
+0x009bcfe4  [ascii]  System.Runtime.InteropServices.EnableCppCLIHostActivation
+0x009bd01e  [ascii]  System.Runtime.InteropServices.Marshalling.EnableGeneratedComInterfaceComImportInterop
+0x009bf888  [ascii]  System.Net.Quic
+0x00b9c9c6  [ascii]  Y@System.GC.HeapAffinitizeRanges
+0x00b9ca20  [ascii]  System.GC.Name
+0x00b9ca38  [ascii]  System.GC.Server
+0x00b9ca60  [ascii]  System.GC.Concurrent
+0x00b9caa8  [ascii]  System.GC.RetainVM
+0x00b9cae0  [ascii]  System.GC.NoAffinitize
+0x00b9cb40  [ascii]  System.GC.CpuGroup
+0x00b9cb68  [ascii]  System.GC.LargePages
+0x00b9cbe0  [ascii]  System.GC.HeapCount
+0x00b9cc08  [ascii]  System.GC.MaxHeapCount
+0x00b9cc90  [ascii]  System.GC.HeapAffinitizeMask
+0x00b9ccc8  [ascii]  System.GC.HighMemoryPercent
+0x00b9cd48  [ascii]  System.GC.HeapHardLimit
+0x00b9cd60  [ascii]  System.GC.HeapHardLimitPercent
+0x00b9cf08  [ascii]  System.GC.HeapHardLimitSOH
+0x00b9cf28  [ascii]  System.GC.HeapHardLimitLOH
+0x00b9cf48  [ascii]  System.GC.HeapHardLimitPOH
+0x00b9cf68  [ascii]  System.GC.HeapHardLimitSOHPercent
+0x00b9cf90  [ascii]  System.GC.HeapHardLimitLOHPercent
+0x00b9cfb8  [ascii]  System.GC.HeapHardLimitPOHPercent
+0x00b9d000  [ascii]  System.GC.ConserveMemory
+0x00b9d050  [ascii]  System.GC.DynamicAdaptationMode
+0x00ba0130  [ascii]  The resolved version "%s" from System.Globalization.AppLocalIcu switch has to be < %zu chars long.
+0x00ba01b0  [ascii]  The resolved suffix "%s" from System.Globalization.AppLocalIcu switch has to be < %zu chars long.
+0x00be2051  [ascii]  people.in one =windowfooter_a good reklamaothers,to this_cookiepanel">London,definescrushedbaptismcoastalstatus title" move tolost inbetter impliesrivalryservers SystemPerhapses and contendflowingl...
+0x00a150ab  [utf16-le]  '{0}' is not supported by System.Net.Quic
+0x00a1f0ad  [utf16-le]  An object that does not derive from System.Exception has been wrapped in a RuntimeWrappedException
+0x00a1f521  [utf16-le]  AppDomain data '{0}' contains the invalid value or object '{1}' for specifying a default matching timeout for System.Text.RegularExpressions.Regex
+0x00a1fb64  [utf16-le]  Argument type cannot be System.Void
+0x00a20341  [utf16-le]  Arrays of System.Void are not supported
+0x00a23841  [utf16-le]  Cannot dynamically create an instance of System.Void
+0x00a2a057  [utf16-le]  Default body must be supplied if case bodies are not System.Void
+0x00a2c85d  [utf16-le]  Exceptions must derive from the System.Exception clas
+0x00a338cf  [utf16-le]  Internal.Runtime.Augments.DynamicDelegateAugments, System.Private.CoreLi
+0x00a37242  [utf16-le]  Label type must be System.Void if an expression is not supplie
+0x00a372c7  [utf16-le]  Lambda type parameter must be derived from System.MulticastDelegat
+0x00a39edd  [utf16-le]  Microsoft.AspNetCore/Microsoft.AspNetCore.Hosting.BeginRequest@Activity1Start:-httpContext.Request.Method;httpContext.Request.Host;httpContext.Request.Path;httpContext.Request.QueryString
+0x00a3a055  [utf16-le]  Microsoft.AspNetCore/Microsoft.AspNetCore.Hosting.EndRequest@Activity1Stop:-httpContext.TraceIdentifier;httpContext.Response.StatusCod
+0x00a3a16b  [utf16-le]  Microsoft.EntityFrameworkCore/Microsoft.EntityFrameworkCore.BeforeExecuteCommand@Activity2Start:-Command.Connection.DataSource;Command.Connection.Database;Command.CommandText
+0x00a3a2c9  [utf16-le]  Microsoft.EntityFrameworkCore/Microsoft.EntityFrameworkCore.AfterExecuteCommand@Activity2Stop:
+0x00a3a38e  [utf16-le]  Microsoft.VisualStudio.Modeling.StoreNavigato
+0x00a3f155  [utf16-le]  PKCS12 (PFX) without a supplied password has exceeded maximum allowed iterations. See https://go.microsoft.com/fwlink/?linkid=2233907 for more information
+0x00a45b05  [utf16-le]  SSH-2.0-Renci.SshNet.SshClient.0.0.
+0x00a483f8  [utf16-le]  SshNet.Loggin
+0x00a49b0b  [utf16-le]  Switch.System.Globalization.EnforceJapaneseEraYearRange
+0x00a49b82  [utf16-le]  Switch.System.Globalization.EnforceLegacyJapaneseDateParsin
+0x00a49c01  [utf16-le]  Switch.System.Globalization.FormatJapaneseFirstYearAsANumbe
+0x00a49c80  [utf16-le]  Switch.System.Runtime.Serialization.SerializationGuar
+0x00a49cf3  [utf16-le]  Switch.System.Runtime.Serialization.SerializationGuard
+0x00a49d68  [utf16-le]  Switch.System.Xml.AllowDefaultResolve
+0x00a49dbb  [utf16-le]  Switch.System.Xml.DontThrowOnInvalidSurrogatePair
+0x00a49ffa  [utf16-le]  System.Buffers.ArrayPoolEventSourc
+0x00a4a047  [utf16-le]  System.ComponentModel.Design.IDesigner, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e08
+0x00a4a130  [utf16-le]  System.ComponentModel.TypeConverter, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3
+0x00a4a203  [utf16-le]  System.Diagnostics.DefaultActivityIdFormatIsHierarchia
+0x00a4a278  [utf16-le]  System.Diagnostics.Eventing.FrameworkEventSourc
+0x00a4a2df  [utf16-le]  System.Diagnostics.Metrics.Meter.IsSupporte
+0x00a4a33e  [utf16-le]  System.Formats.Asn1.AllowAnySizeOi
+0x00a4a38b  [utf16-le]  System.Globalization.AppLocalIc
+0x00a4a3d2  [utf16-le]  System.Globalization.Invarian
+0x00a4a415  [utf16-le]  System.Globalization.PredefinedCulturesOnl
+0x00a4a472  [utf16-le]  System.Globalization.UseNl
+0x00a4a4af  [utf16-le]  System.IO.Compression.UseStrictValidatio
+0x00a4a508  [utf16-le]  System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3
+0x00a4a5c3  [utf16-le]  System.MDArrayRan
+0x00a4a5ee  [utf16-le]  System.Memory
+0x00a4a611  [utf16-le]  System.Net.DisableIPv
+0x00a4a644  [utf16-le]  System.Net.Htt
+0x00a4a669  [utf16-le]  System.Net.Http.EnableActivityPropagatio
+0x00a4a6c2  [utf16-le]  System.Net.Http.Exceptio
+0x00a4a6fb  [utf16-le]  System.Net.Http.HttpRequestOu
+0x00a4a73e  [utf16-le]  System.Net.Http.HttpRequestOut.Star
+0x00a4a78d  [utf16-le]  System.Net.Http.HttpRequestOut.Sto
+0x00a4a7da  [utf16-le]  System.Net.Http.Reques
+0x00a4a80f  [utf16-le]  System.Net.Http.Respons
+0x00a4a846  [utf16-le]  System.Net.Http.SocketsHttpHandler.Http2Suppor
+0x00a4a8ab  [utf16-le]  System.Net.Http.UsePortInSp
+0x00a4a8ea  [utf16-le]  System.Net.NameResolutio
+0x00a4a923  [utf16-le]  System.Net.Quic is not supported on this platform: {0
+0x00a4a996  [utf16-le]  System.Net.SocketsHttpHandler.Http2FlowControl.DisableDynamicWindowSizin
+0x00a4aa2f  [utf16-le]  System.Net.SocketsHttpHandler.Http3Suppor
+0x00a4aa8a  [utf16-le]  System.Net.SocketsHttpHandler.MaxConnectionsPerServe
+0x00a4aafb  [utf16-le]  System.Net.SocketsHttpHandler.PendingConnectionTimeoutOnRequestCompletio
+0x00a4ab94  [utf16-le]  System.OutOfMemoryExceptio
+0x00a4abd1  [utf16-le]  System.Private.CoreLi
+0x00a4ac04  [utf16-le]  System.Private.CoreLib.resources couldn't be found!  Large parts of the BCL won't work
+0x00a4acb9  [utf16-le]  System.ReadOnlyMemory
+0x00a4acec  [utf16-le]  System.ReadOnlySpan
+0x00a4ad1b  [utf16-le]  System.Resources.ResourceReade
+0x00a4ad60  [utf16-le]  System.Resources.RuntimeResourceSe
+0x00a4adad  [utf16-le]  System.Resources.UseSystemResourceKey
+0x00a4ae00  [utf16-le]  System.Runtime.CompilerService
+0x00a4ae45  [utf16-le]  System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerializatio
+0x00a4aed6  [utf16-le]  System.Security.Cryptography.Pkcs12UnspecifiedPasswordIterationLimi
+0x00a4af65  [utf16-le]  System.Security.Cryptography.ThrowOnX509ChainBuildInternalErro
+0x00a4b008  [utf16-le]  System.Threading.Tasks.TplEventSourc
+0x00a4b059  [utf16-le]  System.Threading.ThreadPool.MaxThread
+0x00a4b0ac  [utf16-le]  System.Threading.ThreadPool.MinThread
+0x00a4b0ff  [utf16-le]  System.Threading.ThreadPool.ProcessorsPerIOPollerThrea
+0x00a4b174  [utf16-le]  System.Threading.ThreadPool.ThreadTimeoutM
+0x00a4b1d1  [utf16-le]  System.Threading.ThreadPool.UseWindowsThreadPoo
+0x00a4b238  [utf16-le]  System.Xml.XmlResolver.IsNetworkingEnabledByDefaul
+0x00a4b2a5  [utf16-le]  System.__Cano
+0x00a4b2c8  [utf16-le]  System.__UniversalCano
+0x00a4f5c4  [utf16-le]  The async operation did not return a System.Threading.Tasks.Task object
+0x00a5d0fa  [utf16-le]  There was a problem with the PKCS12 (PFX) without a supplied password. See https://go.microsoft.com/fwlink/?linkid=2233907 for more information
+0x00a5ec1c  [utf16-le]  Timeout can be only be set to 'System.Threading.Timeout.Infinite' or a value > 0
+0x00a5ecc5  [utf16-le]  Timeout can be only be set to 'System.Threading.Timeout.Infinite' or a value >= 0
+0x00a5ed70  [utf16-le]  Timeout can only be set to 'System.Threading.Timeout.Infinite' or a value > 0
+0x00a5fc22  [utf16-le]  Type passed in must be derived from System.Attribute or System.Attribute itself
+0x00a6ae48  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsi
+0x00a6aeed  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysi
+0x00a6af88  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegrou
+0x00a6b033  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsi
+0x00a6b0ba  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsi
+0x00a6b14f  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysi
+0x00a6b1da  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/rol
+0x00a6b259  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclai
+0x00a6b2f4  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegrou
+0x00a6b38f  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthorit
+0x00a6b42c  [utf16-le]  http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclai

@@ -1,0 +1,101 @@
+INFO  Using log config file: jar:file:/C:/tools/ghidra_10.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\amine\.ghidra\.ghidra_10.4_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\amine\.ghidra\.ghidra_10.4_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1137 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (SSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (ApplicationTrustManagerFactory)  
+INFO  HEADLESS Script Paths:
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Debug\Debugger-agent-frida\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\Python\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Debug\Debugger-agent-dbgmodel-traceloader\ghidra_scripts
+    C:\Users\amine\.agents\.agents\skills\ghidra-headless\scripts\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    C:\tools\ghidra_10.4_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Creating temporary project: C:\Temp\ghidra_projects\analyze_macho_8534d3_DYLIB_ARM64_ALL (HeadlessAnalyzer)  
+INFO  Creating project: C:\Temp\ghidra_projects\analyze_macho_8534d3_DYLIB_ARM64_ALL (DefaultProject)  
+INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  
+INFO       project: C:\Temp\ghidra_projects\analyze_macho_8534d3_DYLIB_ARM64_ALL (HeadlessAnalyzer)  
+INFO  IMPORTING: c:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\04_EXTRACTED\macho_8534d3_DYLIB_ARM64_ALL.bin (HeadlessAnalyzer)  
+WARN  Using unknown opinion: Mac OS X Mach-O, AARCH64:LE:64:v8A:default (LcsHintLoadSpecChooser)  
+INFO  Using Loader: Mac OS X Mach-O (AutoImporter)  
+INFO  Using Language/Compiler: AARCH64:LE:64:v8A:default (AutoImporter)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: c:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\04_EXTRACTED\macho_8534d3_DYLIB_ARM64_ALL.bin (HeadlessAnalyzer)  
+INFO  Packed database cache: C:\Users\amine\AppData\Local\Ghidra\packed-db-cache (PackedDatabaseCache)  
+INFO  Applied data type archive: mac_osx (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    AARCH64 ELF PLT Thunks                     0.000 secs
+    ASCII Strings                              0.380 secs
+    Apply Data Archives                        0.373 secs
+    Basic Constant Reference Analyzer          0.240 secs
+    CFStrings                                  0.026 secs
+    Call Convention ID                         0.000 secs
+    Call-Fixup Installer                       0.019 secs
+    Create Address Tables                      0.021 secs
+    Create Address Tables - One Time           0.015 secs
+    Create Function                            0.057 secs
+    Data Reference                             0.013 secs
+    Decompiler Switch Analysis                 0.004 secs
+    Demangler GNU                              0.033 secs
+    Disassemble                                0.075 secs
+    Disassemble Entry Points                   0.136 secs
+    Disassemble Entry Points - One Time        0.000 secs
+    Embedded Media                             0.014 secs
+    External Entry References                  0.000 secs
+    Function Start Search                      0.018 secs
+    Function Start Search After Code           0.002 secs
+    Function Start Search After Data           0.003 secs
+    Function Start Search delayed - One Time   0.006 secs
+    Mach-O Function Starts                     0.004 secs
+    Non-Returning Functions - Discovered       0.007 secs
+    Non-Returning Functions - Known            0.017 secs
+    Objective-C 2 Class                        0.021 secs
+    Objective-C 2 Decompiler Message           1.377 secs
+    Reference                                  0.009 secs
+    Shared Return Calls                        0.017 secs
+    Stack                                      0.241 secs
+    Subroutine References                      0.008 secs
+-----------------------------------------------------
+     Total Time   3 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: c:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\04_EXTRACTED\macho_8534d3_DYLIB_ARM64_ALL.bin (HeadlessAnalyzer)  
+INFO  SCRIPT: C:\Users\amine\.agents\.agents\skills\ghidra-headless\scripts\ghidra_scripts\ExportAll.java (HeadlessAnalyzer)  
+INFO  ExportAll.java> === Starting comprehensive export === (GhidraScript)  
+INFO  ExportAll.java> Output directory: . (GhidraScript)  
+INFO  ExportAll.java> Program: macho_8534d3_DYLIB_ARM64_ALL.bin (GhidraScript)  
+INFO  ExportAll.java> Architecture: AARCH64 (GhidraScript)  
+INFO  ExportAll.java>  (GhidraScript)  
+INFO  ExportAll.java> Exporting summary to: macho_8534d3_DYLIB_ARM64_ALL.bin_summary.txt (GhidraScript)  
+INFO  ExportAll.java> Exporting decompiled code to: macho_8534d3_DYLIB_ARM64_ALL.bin_decompiled.c (GhidraScript)  
+INFO  ExportAll.java>   Decompiled 10 functions (GhidraScript)  
+INFO  ExportAll.java> Exporting functions to: macho_8534d3_DYLIB_ARM64_ALL.bin_functions.json (GhidraScript)  
+INFO  ExportAll.java>   Exported 54 functions (GhidraScript)  
+INFO  ExportAll.java> Exporting strings to: macho_8534d3_DYLIB_ARM64_ALL.bin_strings.txt (GhidraScript)  
+INFO  ExportAll.java>   Exported 207 strings (GhidraScript)  
+INFO  ExportAll.java> Analyzing interesting patterns... (GhidraScript)  
+INFO  ExportAll.java>  (GhidraScript)  
+INFO  ExportAll.java> === Export complete === (GhidraScript)  
+INFO  ANALYZING changes made by post scripts: c:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\04_EXTRACTED\macho_8534d3_DYLIB_ARM64_ALL.bin (HeadlessAnalyzer)  
+INFO  REPORT: Post-analysis succeeded for file: c:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\04_EXTRACTED\macho_8534d3_DYLIB_ARM64_ALL.bin (HeadlessAnalyzer)  
+INFO  REPORT: Save succeeded for: /macho_8534d3_DYLIB_ARM64_ALL.bin (analyze_macho_8534d3_DYLIB_ARM64_ALL:/macho_8534d3_DYLIB_ARM64_ALL.bin) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  

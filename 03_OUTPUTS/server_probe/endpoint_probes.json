@@ -1,0 +1,441 @@
+[
+  {
+    "endpoint": "version33",
+    "url": "https://s13.iremovalpro.com/version33.txt",
+    "method": "GET",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "short_text:'7.2'",
+        "size": 3,
+        "elapsed_ms": 473,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/plain"
+        },
+        "body_preview": "7.2"
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "short_text:'7.2'",
+        "size": 3,
+        "elapsed_ms": 462,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/plain"
+        },
+        "body_preview": "7.2"
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "short_text:'7.2'",
+        "size": 3,
+        "elapsed_ms": 522,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/plain"
+        },
+        "body_preview": "7.2"
+      }
+    ]
+  },
+  {
+    "endpoint": "auth3",
+    "url": "https://s13.iremovalpro.com/iremovalActivation/auth3.php",
+    "method": "POST",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "base64:sAabrkk+jtiGptOhpuzxZA==",
+        "size": 24,
+        "elapsed_ms": 480,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "sAabrkk+jtiGptOhpuzxZA=="
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "base64:sAabrkk+jtiGptOhpuzxZA==",
+        "size": 24,
+        "elapsed_ms": 460,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "sAabrkk+jtiGptOhpuzxZA=="
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "base64:sAabrkk+jtiGptOhpuzxZA==",
+        "size": 24,
+        "elapsed_ms": 458,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "sAabrkk+jtiGptOhpuzxZA=="
+      }
+    ]
+  },
+  {
+    "endpoint": "checkm8",
+    "url": "https://s13.iremovalpro.com/iremovalActivation/checkm8.php",
+    "method": "POST",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 519,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Set-Cookie": "PHPSESSID=6960f6ca906898381a69733eb5ee56a2; path=/; secure; HttpOnly"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 494,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Set-Cookie": "PHPSESSID=d6dcd39605a9db03afeca2ef0ecfa677; path=/; secure; HttpOnly"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 507,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Set-Cookie": "PHPSESSID=869f89772756f724b6fb1fcf0eb35400; path=/; secure; HttpOnly"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      }
+    ]
+  },
+  {
+    "endpoint": "iact8",
+    "url": "https://s13.iremovalpro.com/iremovalActivation/iact8.php",
+    "method": "POST",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 531,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 556,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 501,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      }
+    ]
+  },
+  {
+    "endpoint": "ars2",
+    "url": "https://s13.iremovalpro.com/iremovalActivation/ars2.php",
+    "method": "POST",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 541,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 510,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 535,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      }
+    ]
+  },
+  {
+    "endpoint": "mf5",
+    "url": "https://s13.iremovalpro.com/iremovalActivation/mf5.php",
+    "method": "POST",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 522,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 513,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "base64:HL7EjM69vE+8R3m9GUCrFg==",
+        "size": 24,
+        "elapsed_ms": 738,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "HL7EjM69vE+8R3m9GUCrFg=="
+      }
+    ]
+  },
+  {
+    "endpoint": "mf6",
+    "url": "https://s13.iremovalpro.com/iremovalActivation/mf6.php",
+    "method": "POST",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 527,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 443,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 520,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      }
+    ]
+  },
+  {
+    "endpoint": "mf7",
+    "url": "https://s13.iremovalpro.com/iremovalActivation/mf7.php",
+    "method": "POST",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 508,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 523,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      },
+      {
+        "payload_label": "device_full",
+        "status": 200,
+        "response_type": "base64:koY+rla/7ol+LX8kepekEw==",
+        "size": 24,
+        "elapsed_ms": 528,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=UTF-8"
+        },
+        "body_preview": "koY+rla/7ol+LX8kepekEw=="
+      }
+    ]
+  },
+  {
+    "endpoint": "pub",
+    "url": "https://s13.iremovalpro.com/pub.php",
+    "method": "GET",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 404,
+        "response_type": "html",
+        "size": 389,
+        "elapsed_ms": 495,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=utf-8"
+        },
+        "body_preview": "<html>\r\n<head><title>404 Blocked</title></head>\r\n<body>\r\n<center><h1>404 Blocked</h1></center>\r\n<center><h4></h4></center>\r\n<center>s13.iremovalpro.com, 22/Jun/2026:03:44:19 +0300</center>\r\n<p></p>\r\n<center>IP: 196.179.27.44 (country code: TN)</center>\r\n<p></p>\r\n<center>UserId: 2c1bb3c4-a48c0d5f-95b"
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 404,
+        "response_type": "html",
+        "size": 389,
+        "elapsed_ms": 479,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=utf-8"
+        },
+        "body_preview": "<html>\r\n<head><title>404 Blocked</title></head>\r\n<body>\r\n<center><h1>404 Blocked</h1></center>\r\n<center><h4></h4></center>\r\n<center>s13.iremovalpro.com, 22/Jun/2026:03:44:20 +0300</center>\r\n<p></p>\r\n<center>IP: 196.179.27.44 (country code: TN)</center>\r\n<p></p>\r\n<center>UserId: 2c1bb3c4-a48c0d5f-95b"
+      },
+      {
+        "payload_label": "device_full",
+        "status": 404,
+        "response_type": "html",
+        "size": 389,
+        "elapsed_ms": 436,
+        "headers": {
+          "Server": "5.252.32.98",
+          "Content-Type": "text/html; charset=utf-8"
+        },
+        "body_preview": "<html>\r\n<head><title>404 Blocked</title></head>\r\n<body>\r\n<center><h1>404 Blocked</h1></center>\r\n<center><h4></h4></center>\r\n<center>s13.iremovalpro.com, 22/Jun/2026:03:44:21 +0300</center>\r\n<p></p>\r\n<center>IP: 196.179.27.44 (country code: TN)</center>\r\n<p></p>\r\n<center>UserId: 2c1bb3c4-a48c0d5f-95b"
+      }
+    ]
+  },
+  {
+    "endpoint": "albert_apple",
+    "url": "https://albert.apple.com/deviceservices/drmHandshake",
+    "method": "GET",
+    "tests": [
+      {
+        "payload_label": "empty",
+        "status": 404,
+        "response_type": "json",
+        "size": 76,
+        "elapsed_ms": 858,
+        "headers": {
+          "Server": "Apple",
+          "Content-Type": "application/json",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains",
+          "X-Frame-Options": "SAMEORIGIN"
+        },
+        "body_preview": "{\"error\":\"404 NOT_FOUND \\\"No static resource PhoenixHektor/drmHandshake.\\\"\"}"
+      },
+      {
+        "payload_label": "udid_only",
+        "status": 404,
+        "response_type": "json",
+        "size": 76,
+        "elapsed_ms": 668,
+        "headers": {
+          "Server": "Apple",
+          "Content-Type": "application/json",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains",
+          "X-Frame-Options": "SAMEORIGIN"
+        },
+        "body_preview": "{\"error\":\"404 NOT_FOUND \\\"No static resource PhoenixHektor/drmHandshake.\\\"\"}"
+      },
+      {
+        "payload_label": "device_full",
+        "status": 404,
+        "response_type": "json",
+        "size": 76,
+        "elapsed_ms": 686,
+        "headers": {
+          "Server": "Apple",
+          "Content-Type": "application/json",
+          "Strict-Transport-Security": "max-age=31536000; includeSubdomains",
+          "X-Frame-Options": "SAMEORIGIN"
+        },
+        "body_preview": "{\"error\":\"404 NOT_FOUND \\\"No static resource PhoenixHektor/drmHandshake.\\\"\"}"
+      }
+    ]
+  }
+]

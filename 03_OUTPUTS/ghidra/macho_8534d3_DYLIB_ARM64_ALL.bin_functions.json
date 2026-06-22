@@ -1,0 +1,380 @@
+[
+  {
+    "name": "_validPublic",
+    "address": "00005e74",
+    "signature": "undefined _validPublic()",
+    "external": false,
+    "calls": ["_objc_release", "___stack_chk_fail", "_objc_retainAutoreleasedReturnValue", "_objc_storeStrong", "_SecKeyCreateWithData", "_objc_msgSend", "_objc_alloc"]
+  },
+  {
+    "name": "_hex",
+    "address": "00005fd8",
+    "signature": "undefined _hex()",
+    "external": false,
+    "calls": ["_objc_release", "_objc_retainAutoreleasedReturnValue", "_objc_storeStrong", "_objc_msgSend", "_objc_retainAutorelease", "_objc_autoreleaseReturnValue"]
+  },
+  {
+    "name": "_logger",
+    "address": "00006164",
+    "signature": "undefined _logger()",
+    "external": false,
+    "calls": ["_objc_autoreleaseReturnValue", "_os_log_create"]
+  },
+  {
+    "name": "_replace_SecKeyRawVerify",
+    "address": "00006188",
+    "signature": "undefined _replace_SecKeyRawVerify()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_replace_SecTrustEvaluateWithError",
+    "address": "000061b4",
+    "signature": "undefined _replace_SecTrustEvaluateWithError()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_replace_SecKeyVerifySignature",
+    "address": "000061d8",
+    "signature": "undefined _replace_SecKeyVerifySignature()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "__logosLocalCtor_7d5e59f6",
+    "address": "00006208",
+    "signature": "undefined __logosLocalCtor_7d5e59f6()",
+    "external": false,
+    "calls": ["_replace_SecKeyVerifySignature", "___os_log_helper_16_0_0", "__logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$", "_logger", "__os_log_impl", "__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$", "_replace_SecTrustEvaluateWithError", "_objc_retainAutoreleasedReturnValue", "_objc_storeStrong", "_MSHookMessageEx", "_SecKeyVerifySignature", "_replace_SecKeyRawVerify", "_MSHookFunction", "_objc_getClass", "_os_log_type_enabled"]
+  },
+  {
+    "name": "__logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$",
+    "address": "00006394",
+    "signature": "undefined __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$()",
+    "external": false,
+    "calls": ["_objc_storeStrong"]
+  },
+  {
+    "name": "__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$",
+    "address": "00006414",
+    "signature": "undefined __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$()",
+    "external": false,
+    "calls": ["___os_log_helper_16_0_0", "_validPublic", "_objc_msgSend", "_objc_retainAutorelease", "_objc_retainAutoreleaseReturnValue", "_logger", "__os_log_impl", "_objc_release", "_CC_SHA256", "_CCCrypt", "___stack_chk_fail", "_objc_retainAutoreleasedReturnValue", "_hex", "_objc_storeStrong", "_exit", "_strlen", "_SecKeyVerifySignature", "_objc_retain", "_objc_alloc", "_objc_getClass"]
+  },
+  {
+    "name": "___os_log_helper_16_0_0",
+    "address": "000074ac",
+    "signature": "undefined ___os_log_helper_16_0_0()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_CCCrypt",
+    "address": "000074c8",
+    "signature": "CCCryptorStatus _CCCrypt(CCOperation op, CCAlgorithm alg, CCOptions options, void * key, size_t keyLength, void * iv, void * dataIn, size_t dataInLength, void * dataOut, size_t dataOutAvailable, size_t * dataOutMoved)",
+    "external": false,
+    "calls": ["_CCCrypt"]
+  },
+  {
+    "name": "_CC_SHA256",
+    "address": "000074d4",
+    "signature": "uchar * _CC_SHA256(void * data, CC_LONG len, uchar * md)",
+    "external": false,
+    "calls": ["_CC_SHA256"]
+  },
+  {
+    "name": "_MSHookFunction",
+    "address": "000074e0",
+    "signature": "undefined _MSHookFunction()",
+    "external": false,
+    "calls": ["_MSHookFunction"]
+  },
+  {
+    "name": "_MSHookMessageEx",
+    "address": "000074ec",
+    "signature": "undefined _MSHookMessageEx()",
+    "external": false,
+    "calls": ["_MSHookMessageEx"]
+  },
+  {
+    "name": "_SecKeyCreateWithData",
+    "address": "000074f8",
+    "signature": "undefined _SecKeyCreateWithData()",
+    "external": false,
+    "calls": ["_SecKeyCreateWithData"]
+  },
+  {
+    "name": "_SecKeyVerifySignature",
+    "address": "00007504",
+    "signature": "undefined _SecKeyVerifySignature()",
+    "external": false,
+    "calls": ["_SecKeyVerifySignature"]
+  },
+  {
+    "name": "___stack_chk_fail",
+    "address": "0000751c",
+    "signature": "undefined ___stack_chk_fail()",
+    "external": false,
+    "calls": ["___stack_chk_fail"]
+  },
+  {
+    "name": "__os_log_impl",
+    "address": "00007528",
+    "signature": "undefined __os_log_impl()",
+    "external": false,
+    "calls": ["__os_log_impl"]
+  },
+  {
+    "name": "_exit",
+    "address": "00007534",
+    "signature": "void _exit(int param_1)",
+    "external": false,
+    "calls": ["_exit"]
+  },
+  {
+    "name": "_objc_alloc",
+    "address": "00007540",
+    "signature": "undefined _objc_alloc()",
+    "external": false,
+    "calls": ["_objc_alloc"]
+  },
+  {
+    "name": "_objc_autoreleaseReturnValue",
+    "address": "0000754c",
+    "signature": "undefined _objc_autoreleaseReturnValue()",
+    "external": false,
+    "calls": ["_objc_autoreleaseReturnValue"]
+  },
+  {
+    "name": "_objc_getClass",
+    "address": "00007570",
+    "signature": "undefined _objc_getClass()",
+    "external": false,
+    "calls": ["_objc_getClass"]
+  },
+  {
+    "name": "_objc_msgSend",
+    "address": "0000757c",
+    "signature": "undefined _objc_msgSend()",
+    "external": false,
+    "calls": ["_objc_msgSend"]
+  },
+  {
+    "name": "_objc_release",
+    "address": "00007588",
+    "signature": "undefined _objc_release()",
+    "external": false,
+    "calls": ["_objc_release"]
+  },
+  {
+    "name": "_objc_retain",
+    "address": "00007594",
+    "signature": "undefined _objc_retain()",
+    "external": false,
+    "calls": ["_objc_retain"]
+  },
+  {
+    "name": "_objc_retainAutorelease",
+    "address": "000075a0",
+    "signature": "undefined _objc_retainAutorelease()",
+    "external": false,
+    "calls": ["_objc_retainAutorelease"]
+  },
+  {
+    "name": "_objc_retainAutoreleaseReturnValue",
+    "address": "000075ac",
+    "signature": "undefined _objc_retainAutoreleaseReturnValue()",
+    "external": false,
+    "calls": ["_objc_retainAutoreleaseReturnValue"]
+  },
+  {
+    "name": "_objc_retainAutoreleasedReturnValue",
+    "address": "000075b8",
+    "signature": "undefined _objc_retainAutoreleasedReturnValue()",
+    "external": false,
+    "calls": ["_objc_retainAutoreleasedReturnValue"]
+  },
+  {
+    "name": "_objc_storeStrong",
+    "address": "000075c4",
+    "signature": "undefined _objc_storeStrong()",
+    "external": false,
+    "calls": ["_objc_storeStrong"]
+  },
+  {
+    "name": "_os_log_create",
+    "address": "000075d0",
+    "signature": "undefined _os_log_create()",
+    "external": false,
+    "calls": ["_os_log_create"]
+  },
+  {
+    "name": "_os_log_type_enabled",
+    "address": "000075dc",
+    "signature": "undefined _os_log_type_enabled()",
+    "external": false,
+    "calls": ["_os_log_type_enabled"]
+  },
+  {
+    "name": "_strlen",
+    "address": "000075e8",
+    "signature": "size_t _strlen(char * param_1)",
+    "external": false,
+    "calls": ["_strlen"]
+  },
+  {
+    "name": "_CCCrypt",
+    "address": "00018000",
+    "signature": "CCCryptorStatus _CCCrypt(CCOperation op, CCAlgorithm alg, CCOptions options, void * key, size_t keyLength, void * iv, void * dataIn, size_t dataInLength, void * dataOut, size_t dataOutAvailable, size_t * dataOutMoved)",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_CC_SHA256",
+    "address": "00018008",
+    "signature": "uchar * _CC_SHA256(void * data, CC_LONG len, uchar * md)",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_MSHookFunction",
+    "address": "00018010",
+    "signature": "undefined _MSHookFunction()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_MSHookMessageEx",
+    "address": "00018018",
+    "signature": "undefined _MSHookMessageEx()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_SecKeyCreateWithData",
+    "address": "00018068",
+    "signature": "undefined _SecKeyCreateWithData()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_SecKeyVerifySignature",
+    "address": "00018078",
+    "signature": "undefined _SecKeyVerifySignature()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "___stack_chk_fail",
+    "address": "000180a0",
+    "signature": "undefined ___stack_chk_fail()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "__os_log_impl",
+    "address": "000180b0",
+    "signature": "undefined __os_log_impl()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_exit",
+    "address": "000180b8",
+    "signature": "void _exit(int param_1)",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_alloc",
+    "address": "000180e8",
+    "signature": "undefined _objc_alloc()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_autoreleaseReturnValue",
+    "address": "000180f0",
+    "signature": "undefined _objc_autoreleaseReturnValue()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_getClass",
+    "address": "00018108",
+    "signature": "undefined _objc_getClass()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_msgSend",
+    "address": "00018110",
+    "signature": "undefined _objc_msgSend()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_release",
+    "address": "00018118",
+    "signature": "undefined _objc_release()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_retain",
+    "address": "00018120",
+    "signature": "undefined _objc_retain()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_retainAutorelease",
+    "address": "00018128",
+    "signature": "undefined _objc_retainAutorelease()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_retainAutoreleaseReturnValue",
+    "address": "00018130",
+    "signature": "undefined _objc_retainAutoreleaseReturnValue()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_retainAutoreleasedReturnValue",
+    "address": "00018138",
+    "signature": "undefined _objc_retainAutoreleasedReturnValue()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_objc_storeStrong",
+    "address": "00018140",
+    "signature": "undefined _objc_storeStrong()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_os_log_create",
+    "address": "00018148",
+    "signature": "undefined _os_log_create()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_os_log_type_enabled",
+    "address": "00018150",
+    "signature": "undefined _os_log_type_enabled()",
+    "external": false,
+    "calls": []
+  },
+  {
+    "name": "_strlen",
+    "address": "00018158",
+    "signature": "size_t _strlen(char * param_1)",
+    "external": false,
+    "calls": []
+  }
+]

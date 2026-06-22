@@ -1,0 +1,136 @@
+{
+  "s13.iremovalpro.com": {
+    "dns": {
+      "host": "s13.iremovalpro.com",
+      "ips": [
+        "5.252.32.98"
+      ],
+      "cname": null
+    },
+    "tls": {
+      "host": "s13.iremovalpro.com",
+      "port": 443,
+      "tls_version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "http": {
+      "url": "https://s13.iremovalpro.com/",
+      "status": 200,
+      "headers": {
+        "Server": "5.252.32.98",
+        "Set-Cookie": "__js_p_=99,900,0,0,0; Path=/"
+      },
+      "cookies": [
+        {
+          "name": "__js_p_",
+          "value": "99,900,0,0,0"
+        }
+      ]
+    },
+    "timing": {
+      "host": "s13.iremovalpro.com",
+      "timings_ms": {
+        "/": 485,
+        "/version33.txt": 445,
+        "/favicon.ico": 420
+      }
+    }
+  },
+  "iremovalpro.com": {
+    "dns": {
+      "host": "iremovalpro.com",
+      "ips": [
+        "5.252.32.98"
+      ],
+      "cname": null
+    },
+    "tls": {
+      "host": "iremovalpro.com",
+      "port": 443,
+      "tls_version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "http": {
+      "url": "https://iremovalpro.com/",
+      "status": 200,
+      "headers": {
+        "Server": "5.252.32.98",
+        "Set-Cookie": "__js_p_=102,900,0,0,0; Path=/"
+      },
+      "cookies": [
+        {
+          "name": "__js_p_",
+          "value": "102,900,0,0,0"
+        }
+      ]
+    },
+    "timing": {
+      "host": "iremovalpro.com",
+      "timings_ms": {
+        "/": 508,
+        "/version33.txt": 532,
+        "/favicon.ico": 498
+      }
+    }
+  },
+  "iremovalpro.co": {
+    "dns": {
+      "host": "iremovalpro.co",
+      "ips": [],
+      "cname": null,
+      "error": "[Errno 11001] getaddrinfo failed"
+    },
+    "tls": {
+      "host": "iremovalpro.co",
+      "port": 443,
+      "error": "[Errno 11001] getaddrinfo failed"
+    },
+    "http": {
+      "url": "https://iremovalpro.co/",
+      "error": "HTTPSConnectionPool(host='iremovalpro.co', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='iremovalpro.co', port=443): Failed to resolve 'iremovalpro."
+    },
+    "timing": {
+      "host": "iremovalpro.co",
+      "timings_ms": {
+        "/": "error: HTTPSConnectionPool(host='iremovalpro.co', port=44",
+        "/version33.txt": "error: HTTPSConnectionPool(host='iremovalpro.co', port=44",
+        "/favicon.ico": "error: HTTPSConnectionPool(host='iremovalpro.co', port=44"
+      }
+    }
+  },
+  "albert.apple.com": {
+    "dns": {
+      "host": "albert.apple.com",
+      "ips": [
+        "17.32.214.169"
+      ],
+      "cname": null
+    },
+    "tls": {
+      "host": "albert.apple.com",
+      "port": 443,
+      "tls_version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "http": {
+      "url": "https://albert.apple.com/",
+      "status": 403,
+      "headers": {
+        "Server": "Apple",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block"
+      },
+      "cookies": []
+    },
+    "timing": {
+      "host": "albert.apple.com",
+      "timings_ms": {
+        "/": 666,
+        "/version33.txt": 652,
+        "/favicon.ico": 663
+      }
+    }
+  }
+}

@@ -1,0 +1,237 @@
+---
+title: iRemoval PRO — Architecture des composants
+---
+flowchart TB
+    subgraph PC["PC Windows"]
+        direction TB
+        EXE["iRemoval PRO.exe<br/>WPF .NET Framework 4.0<br/>x86 (PE32)"]
+        DLL["iremovalpro.dll<br/>.NET 8 NativeAOT<br/>x64 (PE32+)"]
+        TOOL["ref/toolkits/<br/>libimobiledevice<br/>idevicepair / ideviceproxy"]
+    end
+
+    subgraph iPhone["iPhone (iOS 12+)"]
+        direction TB
+        Tweak["blackhound.dylib<br/>Tweak Cydia Substrate<br/>(Theos, Objective-C)"]
+        Eraser["minaeraser12<br/>A12+ NAND eraser<br/>(minacriss)"]
+        Helper["com.iremovalpro.bypass<br/>App helper iOS"]
+        Daemon["MobileActivationDaemon<br/>DAEMON iOS HOOKÉ"]
+    end
+
+    subgraph Srv["Serveurs"]
+        C2["s13.iremovalpro.com<br/>9 endpoints .ph/.tx"]
+        Apple["albert.apple.com<br/>/drmHandshak<br/>(Apple officiel)"]
+    end
+
+    EXE -->|P/Invoke + .NET| DLL
+    DLL -->|shell-out| TOOL
+    TOOL -->|USB| iPhone
+    DLL -->|Cydia Substrate| Tweak
+    Tweak -->|hook| Daemon
+    DLL -->|SSH deploy| Eraser
+    Helper -->|via ideviceproxy| Daemon
+    DLL -->|HTTPS| C2
+    Daemon -->|legitimate endpoint| Apple
+    C2 -->|signed ticket| DLL
+    DLL -->|write plist| Daemon
+    Helper -->|DeviceCertificate| Apple
+
+    classDef malicious fill:#ffe6e6,stroke:#cc0000,color:#000
+    classDef official fill:#e6f3ff,stroke:#003366,color:#000
+    classDef iDevice fill:#fff0e6,stroke:#cc6600,color:#000
+
+    class Tweak,Eraser,Helper,Daemon malicious
+    class C2 official
+    class EXE,DLL,TOOL iDevice
+
+---
+
+---
+title: iRemoval PRO — Flux d'activation bypass (sequence)
+---
+sequenceDiagram
+    autonumber
+    actor U as User
+    participant PC as PC (iRemoval PRO)
+    participant SRV as s13.iremovalpro.com
+    participant iP as iPhone (iOS)
+    participant Apple as albert.apple.com
+
+    U->>PC: Brancher iPhone
+    PC->>iP: libusbmuxd (detect)
+    PC->>iP: idevicepair pair
+    PC->>iP: lockdown query (model, IMEI, ECID)
+    iP-->>PC: DeviceInfo
+
+    U->>PC: Click "Activate"
+    PC->>SRV: POST /auth3.ph
+    SRV-->>PC: token + ticket
+    PC->>SRV: POST /iact8.ph
+    SRV-->>PC: signed ActivationRecord
+
+    PC->>iP: SSH tunnel (port 22)
+    PC->>iP: Deploy blackhound.dylib
+    PC->>iP: Deploy minaeraser12
+    PC->>iP: Run Erase_V2 (NAND wipe)
+    PC->>iP: Reboot to Recovery
+
+    PC->>iP: iDevice_Activate<br/>(write activation_record.plist)
+    Note over iP: Hooked MobileActivationDaemon<br/>validateActivationDataSignature<br/>returns TRUE
+    iP->>Apple: POST /drmHandshak
+    Apple-->>iP: device cert + sig
+    Note over iP: Hooked handleActivationInfo<br/>returns Success
+    iP-->>PC: iDevice Activated Succesfully
+
+    PC->>iP: iDevice_RemoveProfiles (MDM)
+    PC->>iP: BypassMeidSignal (cellular)
+    PC-->>U: Display success
+
+---
+
+---
+title: iRemoval PRO — Diagramme de classes (Driver + iDevice)
+---
+classDiagram
+    class Driver {
+        +BypassMeidSignal() Task
+        +CommonConnectDevice() Task
+        +CheckIOS() bool
+        +Install() Task
+        +RestoreBackup() Task
+        +iDevice_Pair(udid)
+        +iDevice_Tnl(port)
+        +iDevice_Activate()
+        +iDevice_Deactivate()
+        +iDevice_LnchV2(bundle)
+        +iDevice_GetState() State
+        +iDevice_EnableDevMode()
+        +iDevice_Restart()
+        +iDevice_RemoveProfiles()
+        +Erase_V2()
+        +ExecuteAsAdmin()
+        +SecureClearAndCollect()
+        +Firewall_iDeviceProxy()
+    }
+
+    class iDevice {
+        -UDID: string
+        -SerialNumber: string
+        -IMEI: string
+        -IMEI2: string
+        -MEID: string
+        -ECID: ulong
+        +Pair() bool
+        +GetState() State
+        +Activate() bool
+    }
+
+    class iRemovalRecord {
+        +Record: byte[]
+        +Timestamp: DateTime
+    }
+
+    class iRemovalSignature {
+        +Signature: byte[]
+        +Validate(data) bool
+    }
+
+    class BypassMeidSignal {
+        -OriginalSignal: object
+        -BypassedSignal: object
+        +Bypass() bool
+        +Restore() bool
+    }
+
+    class Eraser {
+        -Model: string
+        -Type: string
+        +Erase_V2() bool
+    }
+
+    Driver --> iDevice : manages
+    Driver --> BypassMeidSignal : uses
+    Driver --> Eraser : uses
+    Driver --> iRemovalRecord : reads/writes
+    iRemovalRecord --> iRemovalSignature : signed by
+
+---
+
+---
+title: iRemoval PRO — Anti-debug techniques
+---
+flowchart LR
+    subgraph Input["Anti-Debug Triggers"]
+        D1[IsDebuggerPresent]
+        D2[NtQueryInformationProcess]
+        D3[CPUID - hypervisor bit]
+        D4[RDTSC - timing]
+        D5[PEB access]
+        D6[RegOpenKey - VM]
+    end
+
+    subgraph Check["Detection"]
+        C1{VM/HV?}
+        C2{Debugger?}
+        C3{Timing anomaly?}
+    end
+
+    subgraph Action["Action"]
+        A1[Continue]
+        A2[Quit or Hide]
+    end
+
+    D1 --> C2
+    D2 --> C2
+    D3 --> C1
+    D4 --> C3
+    D5 --> C2
+    D6 --> C1
+
+    C1 -- Yes --> A2
+    C2 -- Yes --> A2
+    C3 -- Yes --> A2
+    C1 -- No --> A1
+    C2 -- No --> A1
+    C3 -- No --> A1
+
+    style A2 fill:#ffe6e6,stroke:#cc0000
+
+---
+
+---
+title: iRemoval PRO — Topologie réseau C2
+---
+flowchart LR
+    subgraph Attacker["PC Client"]
+        APP["iRemoval PRO.exe<br/>+ iremovalpro.dll"]
+    end
+
+    subgraph Internet
+        C2[("s13.iremovalpro.com<br/>9 endpoints .ph")]
+        Pay[("iremovalpro.com/Payax0.ph")]
+        TG[("t.me/iremovalpro")]
+        Trust[("trustpilot.com/.../iremovalpro.co")]
+    end
+
+    subgraph Apple
+        Albert[("albert.apple.com<br/>/drmHandshak")]
+    end
+
+    subgraph IDS["Defense"]
+        Suricata[Suricata IDS]
+        YARA[YARA Scanner]
+        Sigma[Sigma Rules]
+    end
+
+    APP -->|HTTPS POST| C2
+    APP -->|PayPal| Pay
+    APP -->|TLS SNI albert| Albert
+    APP -->|Telegram check| TG
+    APP -->|Marketing| Trust
+
+    Suricata -.->|detect| C2
+    YARA -.->|detect| APP
+    Sigma -.->|detect| APP
+
+    style C2 fill:#ffe6e6,stroke:#cc0000
+    style APP fill:#fff0e6,stroke:#cc6600
+    style Albert fill:#e6f3ff,stroke:#003366

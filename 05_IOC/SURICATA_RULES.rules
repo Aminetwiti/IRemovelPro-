@@ -1,0 +1,70 @@
+# -------------------------------------------------------------------------------------
+# Suricata Rules — iRemoval PRO Premium Edition v5.2 Detection
+# Author: Audit statique — 2026-06-22
+# Purpose: Network IDS rules (Suricata/Snort) to detect iRemoval PRO C2 traffic
+#
+# Deployment:
+#   1. Copy rules to /etc/suricata/rules/
+#   2. Reference in suricata.yaml: rule-files:
+#      - /etc/suricata/rules/iRemovalPro.rules
+#   3. Reload: suricatasc -c ruleset-reload-rules
+# -------------------------------------------------------------------------------------
+
+# === Domain-based rules ===
+
+alert http any any -> any any (msg:"iRemoval PRO - Connection to activation server (s13.iremovalpro.com)"; flow:to_server,established; content:"s13.iremovalpro.com"; http_host; classtype:misc-activity; reference:url,bypassfrpfiles.com; metadata:tcp_session; sid:1000101; rev:1;)
+
+alert dns any any -> any any (msg:"iRemoval PRO - DNS query for s13.iremovalpro.com"; dns.query; content:"s13.iremovalpro.com"; nocase; classtype:misc-activity; sid:1000102; rev:1;)
+
+alert tls any any -> any any (msg:"iRemoval PRO - TLS SNI to s13.iremovalpro.com"; tls.sni; content:"s13.iremovalpro.com"; classtype:misc-activity; sid:1000103; rev:1;)
+
+alert dns any any -> any any (msg:"iRemoval PRO - DNS query for iremovalpro.com"; dns.query; content:"iremovalpro.com"; nocase; classtype:misc-activity; sid:1000104; rev:1;)
+
+alert tls any any -> any any (msg:"iRemoval PRO - TLS SNI to iremovalpro.com"; tls.sni; content:"iremovalpro.com"; classtype:misc-activity; sid:1000105; rev:1;)
+
+alert dns any any -> any any (msg:"iRemoval PRO - DNS query for iremovalpro.co"; dns.query; content:"iremovalpro.co"; nocase; classtype:misc-activity; sid:1000106; rev:1;)
+
+# === Endpoint patterns (URL) ===
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to activation/auth3 endpoint"; flow:to_server,established; http_uri; content:"/iremovalActivation/auth3"; classtype:misc-activity; sid:1000201; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to activation/checkm8 endpoint"; flow:to_server,established; http_uri; content:"/iremovalActivation/checkm8"; classtype:misc-activity; sid:1000202; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to activation/iact8 endpoint"; flow:to_server,established; http_uri; content:"/iremovalActivation/iact8"; classtype:misc-activity; sid:1000203; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to activation/ars2 endpoint"; flow:to_server,established; http_uri; content:"/iremovalActivation/ars2"; classtype:misc-activity; sid:1000204; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to activation/mf5 endpoint"; flow:to_server,established; http_uri; content:"/iremovalActivation/mf5"; classtype:misc-activity; sid:1000205; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to activation/mf6 endpoint"; flow:to_server,established; http_uri; content:"/iremovalActivation/mf6"; classtype:misc-activity; sid:1000206; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to activation/mf7 endpoint"; flow:to_server,established; http_uri; content:"/iremovalActivation/mf7"; classtype:misc-activity; sid:1000207; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to pub.ph endpoint"; flow:to_server,established; http_uri; content:"/pub.ph"; classtype:misc-activity; sid:1000208; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to version33 endpoint"; flow:to_server,established; http_uri; content:"/version33"; classtype:misc-activity; sid:1000209; rev:1;)
+
+alert http any any -> any any (msg:"iRemoval PRO - HTTP request to Payax0 payment endpoint"; flow:to_server,established; http_uri; content:"/Payax0"; classtype:misc-activity; sid:1000210; rev:1;)
+
+# === Apple drmHandshake endpoint (legitimate Apple endpoint, but used by iRemoval PRO) ===
+
+alert tls any any -> any any (msg:"iRemoval PRO - TLS SNI to albert.apple.com (drmHandshake)"; tls.sni; content:"albert.apple.com"; classtype:misc-activity; sid:1000301; rev:1;)
+
+# === User-Agent patterns (if known) ===
+
+# === IP-based rules (resolve s13.iremovalpro.com first) ===
+# Note: IPs change over time. Update periodically.
+
+# === SSH tunneling to iPhone (port 22 forwarded) ===
+# Unusual SSH activity from iRemoval PRO → SSH tunnel to jailbroken iPhone
+
+alert tcp any any -> any 22 (msg:"iRemoval PRO - SSH connection to port 22 (tunnel to iPhone)"; flow:to_server,established; classtype:misc-activity; sid:1000401; rev:1;)
+
+# === iPhone lockdown port (62078) traffic ===
+alert tcp any any -> any 62078 (msg:"iRemoval PRO - iPhone lockdown port 62078 traffic"; flow:to_server,established; classtype:misc-activity; sid:1000501; rev:1;)
+
+# === Telegram C2 (t.me/iremovalpro) ===
+alert tls any any -> any any (msg:"iRemoval PRO - Telegram SNI to t.me"; tls.sni; content:"t.me"; classtype:misc-activity; sid:1000601; rev:1;)
+
+# === Trustpilot link ===
+alert http any any -> any any (msg:"iRemoval PRO - Trustpilot review link (marketing)"; flow:to_server,established; http_uri; content:"trustpilot.com/review/iremovalpro"; classtype:misc-activity; sid:1000701; rev:1;)

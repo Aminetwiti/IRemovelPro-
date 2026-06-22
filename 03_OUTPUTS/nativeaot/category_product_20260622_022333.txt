@@ -1,0 +1,38 @@
+# Category: product
+# Source: IRemovalPro\iremovalpro.dll
+# Total: 34 strings
+
+0x0074443b  [ascii]  iremovalpro.dll
+0x0085af58  [ascii]  iRemovalRecord
+0x0085afc6  [ascii]  iRemovalSignature
+0x0085b4d2  [ascii]  T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]->
+0x00872f58  [ascii]  iRemovalRecord
+0x00872fc6  [ascii]  iRemovalSignature
+0x008734d2  [ascii]  T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]->
+0x008fbd08  [ascii]  iremovalpro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=nullTiremovalpro.Properties.Resources.resources
+0x009bf843  [ascii]  [iRemovalPRO^shit happening
+0x00d224d0  [ascii]  iremovalpro.dll
+0x00a16e85  [utf16-le]  /c ideviceproxy lao abc ofq com.iremovalpro.bypass --strea
+0x00a28252  [utf16-le]  Couldn't find iRemovalRa1n app! please re-download iRemoval PRO from official website
+0x00a3fcab  [utf16-le]  Please contact the administrator at support@iremovalpro.com for further assistance
+0x00a5d3d4  [utf16-le]  This app is deprecated ! Please download the new premium update from: iRemovalPRO.co
+0x00a5d485  [utf16-le]  This app is deprecated ! Please download the new update from: iRemovalPRO.co
+0x00a64207  [utf16-le]  X-iRemovalPRO-Versio
+0x00a6848e  [utf16-le]  com.iremovalpro.bypas
+0x00a6ba4e  [utf16-le]  https://iremovalpro.co
+0x00a6ba83  [utf16-le]  https://iremovalpro.com/Payax0.ph
+0x00a6bace  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/ars2.ph
+0x00a6bb43  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/auth3.ph
+0x00a6bbba  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/checkm8.ph
+0x00a6bc35  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/iact8.ph
+0x00a6bcac  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf5.ph
+0x00a6bd1f  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf6.ph
+0x00a6bd92  [utf16-le]  https://s13.iremovalpro.com/iremovalActivation/mf7.ph
+0x00a6be05  [utf16-le]  https://s13.iremovalpro.com/pub.ph
+0x00a6be52  [utf16-le]  https://s13.iremovalpro.com/version33.tx
+0x00a6bedc  [utf16-le]  https://www.trustpilot.com/review/iremovalpro.co
+0x00a6c128  [utf16-le]  iRemoval PRO Servers are currently under MAINTENANCE
+0x00a6c93d  [utf16-le]  iremovalpro.Properties.Resource
+0x00a6eb87  [utf16-le]  please join our Telegram channel for more informations (t.me/iremoval
+0x01dcedfc  [utf16-le]  iremovalpro.dll
+0x01dcee6c  [utf16-le]  iremovalpro.dll

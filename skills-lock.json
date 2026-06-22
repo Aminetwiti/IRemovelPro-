@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "binary-analysis": {
+      "source": "laurigates/claude-plugins",
+      "sourceType": "github",
+      "skillPath": "tools-plugin/skills/binary-analysis/SKILL.md",
+      "computedHash": "2b18109e3a9cbf8ed684caf31bf2a56f97ad0b8a75bcead36f08de230820e4ad"
+    },
+    "ctf-forensics": {
+      "source": "ljagiello/ctf-skills",
+      "sourceType": "github",
+      "skillPath": "ctf-forensics/SKILL.md",
+      "computedHash": "6133d3078691a7d56f3f2b76caf9b081d4f5296d93c0450a6958a610026be752"
+    },
+    "ctf-malware": {
+      "source": "ljagiello/ctf-skills",
+      "sourceType": "github",
+      "skillPath": "ctf-malware/SKILL.md",
+      "computedHash": "e48eb0efdceef4e088538286eb90de9577ea50c0ad08961d7a471ea06d86ac87"
+    },
+    "ghidra-headless": {
+      "source": "trailofbits/skills-curated",
+      "sourceType": "github",
+      "skillPath": "plugins/ghidra-headless/skills/ghidra-headless/SKILL.md",
+      "computedHash": "e896ac897a2d1426e4fb302cfc7e57d0c4ba4c5d78b52982836f16162b301beb"
+    },
+    "python-scripting": {
+      "source": "89jobrien/steve",
+      "sourceType": "github",
+      "skillPath": "steve/skills/python-scripting/SKILL.md",
+      "computedHash": "3268f03db7121e9dc098258c369cd79be34cae4137e25f4b2022f513132a0521"
+    },
+    "reverse-engineering": {
+      "source": "r00tedbrain-backup/skills",
+      "sourceType": "github",
+      "skillPath": "reverse-engineering/SKILL.md",
+      "computedHash": "61bcf8575973362bc6f7d171473382db4b1eb602f177ec461288b311b6e80999"
+    }
+  }
+}

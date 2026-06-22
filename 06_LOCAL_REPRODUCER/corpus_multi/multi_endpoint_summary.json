@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-06-22T13:39:23.915386+00:00",
+  "samples": 5,
+  "include_negatives": true,
+  "total_variants": 44,
+  "by_label": {
+    "positive": 35,
+    "negative_oversize": 3,
+    "negative_missing_field": 3,
+    "negative_type_mismatch": 3
+  },
+  "by_endpoint": {
+    "pub": 8,
+    "mf5": 5,
+    "mf6": 8,
+    "mf7": 5,
+    "license": 8,
+    "telemetry": 5,
+    "admin": 5
+  },
+  "endpoints_covered": [
+    "iact8",
+    "pub",
+    "mf5",
+    "mf6",
+    "mf7",
+    "license",
+    "telemetry",
+    "admin",
+    "version",
+    "blacklist",
+    "ping",
+    "metrics"
+  ],
+  "marker": "iRemovalOFFENSIVE Test"
+}
