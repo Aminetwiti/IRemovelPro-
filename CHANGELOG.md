@@ -15,8 +15,6 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Phase 5 : analyse dynamique (mitmproxy) — voir [ROADMAP.md](ROADMAP.md)
 - Phase 6 : sandbox comportemental
 - Phase 7 : extraction iOS components live
-- Axe #5 défensif : décompilation dylib iOS avec `ilspycmd`
-  (toolchain .NET 8 SDK requise, ~1-2 jours)
 
 ---
 
@@ -24,9 +22,32 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### 🛡️ Ajouté (extension défensive — Roadmap 5 axes)
 
-Clôture des 4 axes "defensive extension" de la roadmap. Axe #5
-(ilspycmd) reste différé pour cause de toolchain manquante. Lab
-status au vert : **7 suites / 96 checks / 64.67s**.
+Clôture des **5 axes "defensive extension"** de la roadmap. Lab
+status au vert : **7 suites / 96 checks / 59.31s**.
+
+#### Axe #5 — Décompilation binaire (ilspycmd)
+- `ilspycmd 8.2.0.7535` installé (global dotnet tool, .NET 7 hôte).
+- `iRemoval PRO.exe` (WPF .NET 4.7.2) décompilé : 191 fichiers .cs
+  dans `03_OUTPUTS/ilspy/iRemoval_PRO_exe/`.
+  - Architecture : shell WPF ConfuserEx-obfusqué (dispatcher
+    `C834A786._3CB74B1B(args, tokenID)`) → P/Invoke `Library.Action(N)`
+    (3 exports : `Action`, `SetCallbacks`, `SetWinInfo`) → `iremovalpro.dll`.
+  - 13 token IDs reconstitués (ctor=147754, search=132476, callback=9436,
+    Button_Click_5=12448 → checkrainButt, etc.).
+- `iremovalpro.dll` (.NET 8 NativeAOT, 31.26 MB) : non-décompilable par
+  ilspycmd (pas de `BSJB`, PE natif x64). Fallback extraction de strings :
+  60 183 ASCII + 5 980 UTF-16 dans `03_OUTPUTS/ilspy/iremovalpro_dll_strings_*.txt`.
+- **Findings majeurs** : Theos tweak `blackhound` (auteur
+  `josuealonsorodriguez`) hookant `MobileActivationDaemon` via Logos /
+  MSHook, plist keys `iRemovalRecord`+`iRemovalSignature`, primitives
+  `iDevice_Activate`/`Deactivate`/`BypassMeidSignal`/`A12Eraser`,
+  backend `s13.iremovalpro.com/iremovalActivation/{ars2,auth3,checkm8,iact8,mf5,mf6,mf7}.ph`,
+  bundle ID iOS `com.iremovalpro.bypass`, lib `ideviceproxy`.
+- **Confirmation** : tous les IoCs déjà bloqués par le Defender
+  (`iRemovalRecord`, `iRemovalSignature`, `com.iremovalpro.bypass`,
+  `BypassMeidSignal`) sont bien présents en clair dans les binaires.
+- Voir `01_REPORTS/AXE5_DECOMPILATION_FINDINGS.md` pour la synthèse
+  complète.
 
 #### Axe #1 — Test runner unifié
 - `06_LOCAL_REPRODUCER/run_all_suites.py` : orchestrateur sériant les

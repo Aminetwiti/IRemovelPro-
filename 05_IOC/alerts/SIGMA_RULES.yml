@@ -1,0 +1,220 @@
+title: Apple DRM Defender SIEM Alert - Critical (P1)
+id: 8f4a1b3c-ire-0015-p1
+status: experimental
+description: |
+  Detects a P1 (critical) alert emitted by the local Apple DRM defender
+  (see 06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py). A P1 alert is
+  raised when a request carries a public_key_modulus whose SHA-1 matches
+  the iRemoval PRO v5.2 bypass modulus (BY-MOD-001). This is the most
+  reliable indicator that a forged/relayed iActivation ticket was
+  presented. Page on-call immediately.
+
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+  Reference: BYPASS_CORE.md §16 step 9 (Apple's only visibility point).
+references:
+  - https://attack.mitre.org/techniques/T1562/
+logsource:
+  category: process_creation  # mock_server runs as a local process
+  product: linux  # the mock_server is Python on Linux/Windows
+detection:
+  selection_path:
+    Image|endswith:
+      - '/python3'
+      - '\python.exe'
+  selection_cmdline:
+    CommandLine|contains:
+      - 'iact_reproducer/mock_server.py'
+      - 'mock_server.py'
+  selection_alert:
+    CommandLine|contains:
+      - 'P1'
+      - 'defender_alerts'
+  condition: selection_path and selection_cmdline and selection_alert
+fields:
+  - Image
+  - CommandLine
+  - User
+  - alert.severity
+  - alert.check_id
+falsepositives:
+  - Lab self-tests that deliberately fire P1 alerts to verify the
+    pipeline (use a dedicated lab_marker tag in the alert log).
+level: critical
+tags:
+  - attack.defense_evasion
+  - attack.t1562
+  - car.iac-001  # iActivation bypass
+
+---
+title: Apple DRM Defender SIEM Alert - High (P2)
+id: 8f4a1b3c-ire-0015-p2
+status: experimental
+description: |
+  Detects a P2 (high) alert emitted by the local Apple DRM defender.
+  P2 alerts cover explicit bypass markers — BY-EXT-001 (BlackHound tweak
+  Bundle ID in plist) and BY-PLI-001 (forbidden plist keys such as
+  iRemovalRecord / iRemovalSignature). These are very high-confidence
+  indicators that should escalate within the SOC's standard high-sev
+  playbook (no need to page immediately, but should be triaged within
+  15 minutes).
+
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_path:
+    Image|endswith:
+      - '/python3'
+      - '\python.exe'
+  selection_cmdline:
+    CommandLine|contains:
+      - 'iact_reproducer/mock_server.py'
+      - 'mock_server.py'
+  selection_alert:
+    CommandLine|contains:
+      - 'P2'
+  condition: selection_path and selection_cmdline and selection_alert
+fields:
+  - Image
+  - CommandLine
+  - User
+  - alert.severity
+  - alert.check_id
+falsepositives:
+  - Lab self-tests marked with the lab_marker tag.
+level: high
+tags:
+  - attack.defense_evasion
+  - car.iac-001
+
+---
+title: Apple DRM Defender SIEM Alert - Medium (P3)
+id: 8f4a1b3c-ire-0015-p3
+status: experimental
+description: |
+  Detects a P3 (medium / informational) alert emitted by the local Apple
+  DRM defender. P3 alerts cover session/timing heuristics — BY-SES-001
+  through BY-SES-007 (anti-replay, sequence monotonicity, HWID binding,
+  pre-signed ticket detection, clock skew). These should be correlated
+  in the SIEM: a single P3 alert is rarely conclusive, but a burst of
+  P3 alerts from the same UDID/IP within a 5-minute window often
+  precedes a P1 or P2.
+
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_path:
+    Image|endswith:
+      - '/python3'
+      - '\python.exe'
+  selection_cmdline:
+    CommandLine|contains:
+      - 'iact_reproducer/mock_server.py'
+      - 'mock_server.py'
+  selection_alert:
+    CommandLine|contains:
+      - 'P3'
+  condition: selection_path and selection_cmdline and selection_alert
+fields:
+  - Image
+  - CommandLine
+  - User
+  - alert.severity
+  - alert.check_id
+falsepositives:
+  - Lab self-tests marked with the lab_marker tag.
+  - Clock skew on a single device (verify NTP sync before escalating).
+level: medium
+tags:
+  - attack.defense_evasion
+  - car.iac-001
+
+---
+title: iRemoval PRO Mock Server - Skipped Guard Detected
+id: 8f4a1b3c-ire-0016
+status: experimental
+description: |
+  Detects when the local mock server's `disabled_counters` increments —
+  i.e. an operator started the mock server with one or more `--disable-*`
+  CLI flags. In production-like captures this should NEVER happen: a
+  permissive middleware (e.g. `--disable-defender`) means the mock is
+  accepting forged tickets that the defender would otherwise catch.
+
+  Recommended action: alert on the FIRST increment of any
+  `iact_mock_skipped_guards_total` counter when running in non-lab
+  mode (lab_marker absent from the request log).
+
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_path:
+    Image|endswith:
+      - '/python3'
+      - '\python.exe'
+  selection_cmdline:
+    CommandLine|contains:
+      - 'iact_reproducer/mock_server.py'
+  selection_disable:
+    CommandLine|contains:
+      - '--disable-hmac'
+      - '--disable-rate-limit'
+      - '--disable-blacklist'
+      - '--disable-defender'
+  condition: selection_path and selection_cmdline and selection_disable
+fields:
+  - Image
+  - CommandLine
+  - User
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1562
+
+---
+title: iRemoval PRO Mock Server - server_proc_ms Anomaly
+id: 8f4a1b3c-ire-0017
+status: experimental
+description: |
+  Detects anomalous server processing times at /apple_drm_check.ph.
+  A pre-signed (replayed) ticket is typically validated in <5ms because
+  the defender does no real RSA work — it just verifies the SHA-1 of
+  the modulus against the blacklist. A sudden drop in the p50 of
+  `iact_mock_server_proc_ms_measured` to below 5ms while the request
+  rate is high is a strong indicator of a batch replay attack.
+
+  Recommended alert: rate(iact_mock_server_proc_ms_measured{quantile="0.5"}[5m]) < 5
+  AND rate(iact_mock_requests_total[5m]) > 10
+
+  Author: Audit statique — 2026-06-22
+  TLP: LEAKED
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  # Sigma does not natively support Prometheus queries, so this rule
+  # documents the SIEM-side PromQL that should be configured to alert.
+  # See 05_IOC/alerts/prometheus_alerts.yml for the matching
+  # Prometheus alert definition.
+  selection_any:
+    CommandLine|contains:
+      - 'iact_reproducer/mock_server.py'
+  condition: selection_any
+fields:
+  - alert.name
+  - alert.value
+falsepositives:
+  - Lab load tests with pre-computed signatures.
+level: medium
+tags:
+  - attack.defense_evasion
+  - car.iac-001
+  - prometheus_query_alert

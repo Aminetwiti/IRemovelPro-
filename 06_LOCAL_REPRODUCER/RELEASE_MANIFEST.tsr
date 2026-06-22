@@ -1,0 +1,26 @@
+iAct8 Lab release signature — v5.2-LAB-0.2
+Generated     : 2026-06-22T19:49:26Z
+Algorithm     : RSA-2048 + PKCS#1 v1.5 + SHA-256
+Pubkey SHA-256: e67aacc672195f159362e04bcd617a5d17a67d24de6adc329f0e1e14e77c4eec
+Pubkey SHA-1  : bb6e8b50b284be2e94c38f20335b2b0d6835d175
+Pubkey SHA-256 (first 16): e67aacc672195f15
+
+Manifest SHA-256: c312fc0e9795bc739980521a1088ee00c169b29d80007e420464c18da1aa235b
+Manifest size   : 1881 bytes
+Manifest path   : 06_LOCAL_REPRODUCER\RELEASE_MANIFEST.txt
+
+Signature (b64) : tRAfTDr9CzBpEQF87LGhrVV2NK13L5pqM1i3LDn1Cr6yvuVyYhn5vkQJcawwQ4en2RcJ79QhGqzSQyGCPvP2NXAg1+jDOlwWgqXy5Gy54+CQZr986OHiknkv6g06bJnEL93C3A/dMPVY+57zW2sVbrUk5kQslzKx5mUckCl0hudrlWTbW8iv2jh1pvPx2Lma70DLEhJpZWhCAJmlx9smvuEicmQIfTo/65aGqE2mtCEK72P26wb8oRWUurEMzeUsJFAswHisk/LJmCDRrUmulaCoWHPzWhkU9HWlgmQMXuEC8VwoUcliz3tSJO66JiXpfqq6UP6bCr71VnaCpVeM9g==
+Signature bytes : 256 bytes
+
+Verification (Python):
+    from cryptography.hazmat.primitives.asymmetric import padding, hashes
+    from cryptography.hazmat.primitives import serialization
+    pub = serialization.load_pem_public_key(open('RELEASE_MANIFEST.pub','rb').read())
+    pub.verify(base64.b64decode(open('RELEASE_MANIFEST.sig').read()),
+               open('RELEASE_MANIFEST.txt','rb').read(),
+               padding.PKCS1v15(), hashes.SHA256())
+    print('OK')
+
+Verification (cosign):
+    cosign verify-blob --key RELEASE_MANIFEST.pub \
+        --signature RELEASE_MANIFEST.sig RELEASE_MANIFEST.txt

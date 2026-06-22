@@ -187,11 +187,51 @@ class _State:
         # Counters so the JSONL can show how many forged tickets the
         # defender caught per check ID.
         self.defender_hits: Dict[str, int] = {
-            "BY-MOD-001": 0, "BY-PLI-001": 0, "BY-EXT-001": 0,
-            "BY-EXT-002": 0, "BY-EXT-003": 0, "BY-EXT-004": 0,
+            # Critical (P1) — known bypass public key.
+            "BY-MOD-001": 0,
+            # Plist key violations (P2).
+            "BY-PLI-001": 0,
+            # Extension / build marker hits (P2).
+            "BY-EXT-001": 0, "BY-EXT-002": 0, "BY-EXT-003": 0,
+            "BY-EXT-004": 0, "BY-EXT-005": 0,
+            # Apple DRM integrity checks (P2) — DeviceCheck / mTLS /
+            # cert-pinning / MDM-bypass.
+            "BY-G-001": 0, "BY-G-002": 0, "BY-G-003": 0, "BY-G-004": 0,
+            "BY-F-001": 0, "BY-F-002": 0,
+            # Session / sequence / timing heuristics (P3).
             "BY-SES-001": 0, "BY-SES-002": 0, "BY-SES-003": 0,
             "BY-SES-004": 0, "BY-SES-005": 0, "BY-SES-006": 0,
             "BY-SES-007": 0,
+            # Internal / structural checks (P3).
+            "BY-INT-001": 0, "BY-INT-002": 0, "BY-INT-003": 0,
+            "BY-INT-004": 0, "BY-INT-005": 0,
+            # Identity / IMEI checks (P3).
+            "BY-E-001": 0, "BY-E-002": 0,
+            # Filesystem / disk-image checks (P3).
+            "BY-D-001": 0, "BY-D-002": 0,
+        }
+        # ----------------------------------------------------------------- #
+        # Item 15 — Severity-tiered alert counters + recent-alert ring.
+        # Mapping (defensive lab policy, see
+        # 05_IOC/alerts/siem_alert_rules.yml for the rationale):
+        #   P1 = known-bypass public key (BY-MOD-001) — page immediately
+        #   P2 = explicit bypass markers (BY-EXT-001, BY-PLI-001)
+        #   P3 = everything else (session / timing / heuristic checks)
+        # ----------------------------------------------------------------- #
+        self.defender_alerts: Dict[str, int] = {"P1": 0, "P2": 0, "P3": 0}
+        self.alert_log: "deque" = deque(maxlen=100)  # last 100 alerts
+        # Static severity map. Anything not listed here falls back to P3.
+        self.CHECK_SEVERITY: Dict[str, str] = {
+            # P1 — known bypass public key (page immediately).
+            "BY-MOD-001": "P1",
+            # P2 — explicit bypass markers (DeviceCheck / mTLS / cert
+            # pinning / MDM bypass / forbidden plist keys).
+            "BY-PLI-001": "P2",
+            "BY-EXT-001": "P2",
+            "BY-G-001": "P2", "BY-G-002": "P2",
+            "BY-G-003": "P2", "BY-G-004": "P2",
+            "BY-F-001": "P2", "BY-F-002": "P2",
+            # Everything else falls back to P3 (session/timing/internal).
         }
         # ----------------------------------------------------------------- #
         # Item 14 — server-side processing time instrumentation
@@ -251,6 +291,41 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
     # ``--disable-*`` CLI flag. When disabled, the guard is short-circuited
     # AND the per-guard counter is incremented so detection engineers can
     # see in the JSONL log exactly which guard was skipped.
+    # ------------------------------------------------------------------ #
+    # Item 15 — Alert emitter (severity-tiered SIEM counter + ring).
+    # Called from both the middleware defender (``_run_defender``) and
+    # the explicit endpoint (``_handle_apple_drm_check``) so SIEM
+    # panels reflect every caught forgery regardless of which code
+    # path flagged it.
+    # ------------------------------------------------------------------ #
+    def _emit_alert(
+        self,
+        *,
+        check_id: str,
+        reason: str,
+        request_id: str,
+        udid: Optional[str] = None,
+        ip: Optional[str] = None,
+        source: str,
+    ) -> None:
+        severity = self.state.CHECK_SEVERITY.get(check_id, "P3")
+        with self.state.lock:
+            self.state.defender_alerts[severity] += 1
+            self.state.alert_log.append({
+                "ts": _dt.datetime.now(
+                    tz=_dt.timezone.utc
+                ).isoformat(),
+                "severity": severity,
+                "check_id": check_id,
+                "reason": reason,
+                "request_id": request_id,
+                "udid": udid,
+                "ip": ip or (self.client_address[0]
+                              if self.client_address else None),
+                "source": source,
+                "lab_marker": TEST_MARKER,
+            })
+
     def _check_middleware(self, body: bytes) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
         ip = self.client_address[0]
         udid = None
@@ -326,7 +401,19 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                     "— request body carried public_key_modulus"
                 )
             else:
-                denied = self._run_defender(payload)
+                # Item 15 — pass request_id/udid/source so emitted
+                # alerts carry forensic context. Middleware has no
+                # explicit request_id yet (it predates the per-handler
+                # one), so we synthesise one from the client_address.
+                _mid = _dt.datetime.now(tz=_dt.timezone.utc).strftime(
+                    "%Y%m%dT%H%M%S%f"
+                )
+                denied = self._run_defender(
+                    payload,
+                    request_id=f"mw-{_mid}",
+                    udid=udid,
+                    source="middleware:defender",
+                )
                 if denied is not None:
                     return denied
         return None
@@ -334,7 +421,14 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
     # ------------------------------------------------------------------ #
     # Defender helper (middleware variant)
     # ------------------------------------------------------------------ #
-    def _run_defender(self, payload: Dict[str, Any]) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
+    def _run_defender(
+        self,
+        payload: Dict[str, Any],
+        *,
+        request_id: Optional[str] = None,
+        udid: Optional[str] = None,
+        source: str = "middleware",
+    ) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
         """Validate ``payload`` as a tentative iActivation ticket.
 
         Returns ``None`` if the ticket is **legit** (no forgery detected),
@@ -348,6 +442,10 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
         still works for callers that prefer an explicit verdict.
         """
         import base64
+        # Item 14 — start the wall-clock here too so the SIEM sees
+        # forged tickets that were caught at the middleware layer.
+        import time as _t
+        _t0 = _t.monotonic()
         try:
             mod_bytes = base64.b64decode(
                 payload.get("public_key_modulus", "") or "", validate=True
@@ -383,10 +481,46 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                 "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
             }, {}
         with self.state.lock:
+            # Item 15 — for every defender reason, bump the per-check
+            # counter AND emit a severity-tiered alert (P1/P2/P3).
+            # We track which codes fired (rather than calling
+            # _emit_alert inside the nested loop) so the alert is
+            # emitted once per *reason* with the matched code prefix.
+            caught_codes: list = []
             for r in reasons:
                 for code in self.state.defender_hits:
                     if code in r:
                         self.state.defender_hits[code] += 1
+                        caught_codes.append((code, r))
+                        self._emit_alert(
+                            check_id=code,
+                            reason=r,
+                            request_id=request_id or "n/a",
+                            udid=udid,
+                            source=source,
+                        )
+            # ---------------------------------------------------------- #
+            # Item 14 — server_proc_ms instrumentation (middleware
+            # variant). Mirrors the recorder in
+            # ``_handle_apple_drm_check`` so forged tickets caught here
+            # also populate /metrics.ph. Without this, every blocked
+            # request would be invisible to the SIEM proc_ms panel.
+            # ---------------------------------------------------------- #
+            try:
+                import time as _t
+                _t1 = _t.monotonic()
+                measured_ms = (_t1 - _t0) * 1000.0
+                delta_ms = abs(measured_ms - server_proc_ms)
+                self.state.last_server_proc_ms = measured_ms
+                if measured_ms > self.state.max_server_proc_ms:
+                    self.state.max_server_proc_ms = measured_ms
+                self.state.proc_ms_samples.append(measured_ms)
+                self.state.proc_ms_client_claim_samples.append(
+                    server_proc_ms
+                )
+                self.state.proc_ms_delta_samples.append(delta_ms)
+            except Exception:  # noqa: BLE001
+                pass
         if ok:
             return None
         response = {
@@ -397,6 +531,12 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
             "defender_version": self.state.defender.VERSION,
             "policy_snapshot": self.state.defender.policy_snapshot(),
             "intercepted_by": "middleware:defender",
+            "proc_ms": {
+                "measured": round(measured_ms, 3),
+                "client_claim": round(server_proc_ms, 3),
+                "delta": round(delta_ms, 3),
+                "lab_marker": TEST_MARKER,
+            },
             "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
         }
         return 403, response, {}
@@ -472,6 +612,21 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                 },
             })
             return
+        if self.path == "/alerts.ph":
+            # Item 15 — JSON view of the last 100 SIEM alerts plus
+            # the cumulative severity-tiered counters. Used by SOC
+            # dashboards that prefer JSON over Prometheus scrape.
+            with self.state.lock:
+                payload_alerts = {
+                    "lab_marker": TEST_MARKER,
+                    "ts": _dt.datetime.now(
+                        tz=_dt.timezone.utc
+                    ).isoformat(),
+                    "counts": dict(self.state.defender_alerts),
+                    "recent": list(self.state.alert_log),
+                }
+            self._json(200, payload_alerts)
+            return
         if self.path == "/metrics.ph":
             # Prometheus-style scrape. Includes one counter per guard so
             # the SIEM can alert when a previously-seen guard flips to
@@ -505,6 +660,23 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                 body += (
                     f'iact_mock_defender_hits_total{{check="{code}"}} '
                     f'{hits}\n'
+                ).encode("utf-8")
+            # ---------------------------------------------------------- #
+            # Item 15 — severity-tiered alert counters (P1/P2/P3).
+            # The SIEM AlertManager rules in
+            # ``05_IOC/alerts/siem_alert_rules.yml`` consume these.
+            # ---------------------------------------------------------- #
+            body += (
+                f"# HELP iact_mock_defender_alerts_total Severity-tiered "
+                f"SIEM alert counters (P1=known-bypass pubkey, "
+                f"P2=explicit bypass marker, P3=session/timing) "
+                f"[{TEST_MARKER}]\n"
+                f"# TYPE iact_mock_defender_alerts_total counter\n"
+            ).encode("utf-8")
+            for sev in ("P1", "P2", "P3"):
+                body += (
+                    f'iact_mock_defender_alerts_total{{severity="{sev}"}} '
+                    f'{self.state.defender_alerts[sev]}\n'
                 ).encode("utf-8")
             # ---------------------------------------------------------- #
             # Item 14 — server_proc_ms summary (measured / client-claim
@@ -847,10 +1019,20 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
             self._record(request_id, body, None, response, "drm_error")
             return
         with self.state.lock:
+            # Item 15 — also emit a SIEM alert for every caught code
+            # (mirrors the middleware defender so both code paths feed
+            # the same severity-tiered alert counters and ring).
             for r in reasons:
                 for code in self.state.defender_hits:
                     if code in r:
                         self.state.defender_hits[code] += 1
+                        self._emit_alert(
+                            check_id=code,
+                            reason=r,
+                            request_id=request_id,
+                            udid=str(ticket.udid) or None,
+                            source="endpoint:apple_drm_check",
+                        )
             # ------------------------------------------------------------ #
             # Item 14 — record the measured / client-claim / delta
             # ------------------------------------------------------------ #
@@ -967,6 +1149,7 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                 "skipped_guards": dict(self.state.disabled_counters),
                 "defender_version": self.state.defender.VERSION,
                 "defender_hits": dict(self.state.defender_hits),
+                "defender_alerts": dict(self.state.defender_alerts),
             },
         }
         self.state.record(record)

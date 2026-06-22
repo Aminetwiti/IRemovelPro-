@@ -1,0 +1,5980 @@
+DES-
+-CBC
+OPEN
+NSSH
+none
+none
+bcry
+1.99
+P-25
+P-38
+P-52
+sess
+sion
+Host
+DELE
+OPTI
+IONS
+    
+true
+_Tot
+    
+idle
+\\?\
+2.5.
+.4.3
+2.5.
+.4.5
+2.5.
+.4.6
+2.5.
+.4.7
+2.5.
+.4.8
+Equa
+    
+head
+    
+true
+    
+fals
+true
+sha-
+-256
+    
+true
+    
+real
+nonc
+    
+opaq
+    
+opaq
+doma
+    
+real
+sha-
+-256
+true
+    
+time
+    
+eout
+gzip
+defl
+late
+    
+http
+    
+http
+    
+http
+    
+http
+    
+sock
+    
+sock
+ks4a
+    
+sock
+http
+http
+http
+p://
+    
+sock
+    
+sock
+ks4a
+    
+sock
+    
+http
+p://
+http
+priv
+vate
+max-
+-age
+publ
+    
+chun
+    
+nked
+clea
+clea
+    
+true
+http
+    
+ntlm
+    
+head
+    
+conn
+    
+nect
+QUIT
+SIZE
+MDTM
+PASV
+EPSV
+PASV
+NTLM
+    
+ntlm
+    
+true
+    
+true
+    
+fals
+    
+true
+    
+fals
+    
+true
+    
+true
+    
+fals
+    
+janu
+    
+uary
+    
+marc
+    
+apri
+    
+june
+    
+july
+    
+augu
+    
+octo
+    
+ober
+    
+sund
+    
+mond
+    
+tues
+    
+sday
+    
+frid
+dv-M
+dv-M
+zh-C
+zh-C
+zh-c
+zh-c
+zh-C
+zh-C
+zh-T
+fr-C
+-Han
+fr-C
+zh-T
+MMMM
+xn--
+    
+vers
+    
+sion
+    
+cult
+    
+ture
+    
+neut
+    
+tral
+    
+null
+    
+msil
+ia64
+amd6
+Valu
+xn--
+    
+http
+    
+http
+    
+http
+file
+uuid
+nntp
+ldap
+news
+    
+http
+    
+mail
+goph
+teln
+net.
+.tcp
+curr
+rent
+node
+text
+comm
+ment
+comm
+ment
+text
+node
+HTML
+HTML
+true
+fals
+fals
+true
+-INF
+-INF
+-INF
+-INF
+file
+file
+file
+file
+    
+html
+utf-
+ucs-
+utf-
+ucs-
+utf-
+ucs-
+utf-
+<?xm
+vers
+sion
+utf-
+utf-
+utf-
+utf-
+CDAT
+DOCT
+TYPE
+CDAT
+DOCT
+TYPE
+spac
+lang
+defa
+ault
+DOCT
+TYPE
+PUBL
+SYST
+[CDA
+ATA[
+CDAT
+DOCT
+TYPE
+CDAT
+DOCT
+TYPE
+DOCT
+TYPE
+<?xm
+utf-
+utf-
+vers
+sion
+utf-
+utf-
+PUBL
+SYST
+xmln
+lang
+spac
+xmln
+xmln
+defa
+ault
+xmln
+xmln
+xmln
+xmln
+spac
+lang
+defa
+ault
+xmln
+xmln
+xmln
+xmln
+xmln
+xmln
+xmln
+spac
+lang
+quot
+apos
+defa
+ault
+utf-
+xmln
+vers
+sion
+PUBL
+SYST
+defa
+ault
+apos
+quot
+spac
+defa
+ault
+lang
+spac
+PCDA
+UBLI
+YSTE
+UBLI
+YSTE
+spac
+spac
+defa
+ault
+lang
+PCDA
+DATA
+##an
+##ot
+ther
+##lo
+ocal
+defa
+ault
+defa
+ault
+defa
+ault
+xmln
+xmln
+xmln
+xmln
+xmln
+SHA2
+SHA5
+SHA3
+SHA1
+SHA2
+SHA5
+SHA3
+SHA1
+SHA2
+SHA3
+SHA5
+SHA1
+ECDH
+ECDS
+ECDH
+SHA1
+SHA2
+SHA3
+SHA5
+SHA1
+SHA2
+SHA3
+SHA5
+SHA1
+SHA2
+SHA3
+SHA5
+Resu
+Pair
+Netw
+work
+bpli
+true
+bpli
+Fail
+lure
+Watc
+Succ
+cess
+USBP
+Pcap
+    
+true
+    
+fals
+    
+true
+    
+fals
+read
+gest
+read
+Fidd
+dler
+S_IF
+FREG
+S_IF
+FDIR
+S_IF
+FLNK
+????
+%%%%
+Cryptography_Der_Invalid_Encoding
+SSPIInvalidHandleType
+SystemNetSecurity_PlatformNotSupported=
+net_MethodNotImplementedExceptionu
+net_allocate_ssl_context_failed
+net_alpn_config_failed
+net_alpn_failed
+net_android_ssl_api_level_unsupported
+net_auth_SSPI
+net_auth_alert
+net_auth_bad_client_creds
+net_auth_bad_client_creds_or_target_mismatch
+net_auth_client_server
+net_auth_context_expectation
+net_auth_context_expectation_remote
+net_auth_eof
+net_auth_ephemeral
+net_auth_message_not_encrypted
+net_auth_must_specify_extended_protection_scheme
+net_auth_noauth
+net_auth_reauth
+net_auth_supported_impl_levels
+net_auth_tls_alert
+net_conflicting_options
+net_context_buffer_too_small
+net_encryptionpolicy_notsupported
+net_frame_max_size
+net_frame_read_size
+net_frame_size
+net_generic_operation_failed
+net_gssapi_ntlm_missing_plugin
+net_gssapi_operation_failed
+net_gssapi_operation_failed_detailed
+net_gssapi_operation_failed_detailed_majoronly
+net_gssapi_operation_failed_majoronly
+net_invalid_enum
+net_io_connectionclosed
+net_io_decrypt
+net_io_encrypt
+net_io_eof
+net_io_header_id
+net_io_invalidendcall
+net_io_invalidnestedcall
+net_io_must_be_rw_stream
+net_io_out_range
+net_io_read
+net_io_readfailure
+net_io_write
+net_log_listener_cbt
+net_log_listener_no_cbt_disabled
+net_log_listener_no_cbt_http
+net_log_listener_no_cbt_trustedproxy
+net_log_listener_no_spn_cbt
+net_log_listener_no_spn_disabled
+net_log_listener_no_spn_kerberos
+net_log_listener_no_spn_whensupported
+net_log_listener_no_spns
+net_log_listener_spn
+net_log_listener_spn_failed
+net_log_listener_spn_failed_always
+net_log_listener_spn_failed_dump
+net_log_listener_spn_failed_empty
+net_log_listener_spn_passed
+net_log_open_store_failed
+net_log_operation_failed_with_error
+net_log_remote_cert_has_errors
+net_log_remote_cert_name_mismatch
+net_log_remote_cert_not_available
+net_nego_not_supported_empty_target_with_defaultcreds
+net_nego_protection_level_not_supported
+net_nego_server_not_supported
+net_noseek
+net_ntlm_not_possible_default_cred
+net_security_sslprotocol_contiguous
+net_security_sslprotocol_notsupported
+net_securitypackagesupport
+net_securityprotocolnotsupported
+net_ssl_app_protocol_invalid
+net_ssl_app_protocols_invalid
+net_ssl_certificate_exist
+net_ssl_check_private_key_failed
+net_ssl_ciphersuites_policy_not_supported
+net_ssl_decrypt_failed
+net_ssl_encrypt_failed
+net_ssl_encryptionpolicy_notsupported
+net_ssl_get_channel_binding_token_failed
+net_ssl_get_connection_info_failed
+net_ssl_handshake_failed_error
+net_ssl_invalid_certificate
+net_ssl_io_already_shutdown
+net_ssl_io_cert_chain_validation
+net_ssl_io_cert_custom_validation
+net_ssl_io_cert_validation
+net_ssl_io_frame
+net_ssl_io_no_server_cert
+net_ssl_io_renego
+net_ssl_read_bio_failed_error
+net_ssl_renegotiate_buffer
+net_ssl_renegotiate_data
+net_ssl_trust_collection
+net_ssl_trust_handshake
+net_ssl_trust_store
+net_ssl_use_cert_failed
+net_ssl_use_private_key_failed
+net_ssl_write_bio_failed_error
+security_ExtendedProtectionPolicy_NoEmptyServiceNameCollection
+security_ExtendedProtectionPolicy_UseDifferentConstructorForNever
+blackhound
+i12eraser
+i13eraser
+pub4.0
+ $%*+-./:
+!2CT
+AaBbCcDdEeFfGgHhIiJjKk
+LlMmNnOoPpQqRrSsTtUuVvWwXxYyZz
+ !"#$%&'(((()((*+,-./0
+6789:;<(=>?@ABC??D(EF?????GHIJK?(L?????MNO?PQ?RST?UV?WX??Y(Z([\\]^_`abcdefghijcdklmnopqdrsthuvcdwxyhz{|}~
+\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\
+\\\\
+((((
+777:::
+\\\\
+\\\\
+\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\
+\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\
+??????
+?????????????????????
+????
+???????
+\\\\\\\
+\\\t
+\\\\
+\\\\\\\\\\\\\\\\\\\
+????
+\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\
+\\\\\\
+\\\\
+\\\\
+\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\
+????????????
+\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\t
+\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+(((((((((((((((
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~
+$,4<DLT\dlt|
+t&%@?
+DES-EDE3EDE3-CBCEDE3-CFBAES-128--128-CBCAES-192--192-CBCAES-256--256-CBCSSH2 ENCNCRYPTED3des-cbcssh-ed25-ed25519aes256-cs256-cbct
+ECDSA_P2DSA_P256nistP256ECDSA_P3DSA_P384nistP384ECDSA_P5DSA_P521nistP521nistp256nistp384nistp5211.3.132.132.0.34132.0.35=
+secp256recp256r1secp384recp384r1secp521recp521r1direct-tct-tcpipforwardeed-tcpip       
+content- 
+      t-length
+ssh-useruserauthssh-connnnection
+2.5.4.97
+2.23.14040.1.2.21.3.14.34.3.2.2614.3.2.71.3.132.132.0.34132.0.352.5.4.102.5.4.112.5.29.1.5.29.14.5.29.152.5.29.3.5.29.35.5.29.17.5.29.192.5.29.2.5.29.2040.1.2.1!
+get_HasVHasValueget_Valuet_ValueGetHashCHashCodeToString;
+op_ImpliImplicitop_ExpliExplicit
+sha-256-
+    256-sess  
+    md5-sessauth-int
+        trailers
+        trailers
+https://
+     
+https://socks4:/    
+ocks4://socks5:/ocks5://     
+socks4a:   
+cks4a://1
+no-storemin-fresin-freshno-caches-maxagemax-stalax-staleno-transransformonly-if-f-cachedmust-revvalidateproxy-reo
+persist=
+http%2F1ttp%2F1.
+127.0.0.27.0.0.10:0:0:0::0:0:0:1
+        kerberosnegotiategotiate
+OPTS utftf8 on
+AUTH TLSTH TLS
+        kerberosKerberos2
+        februaryseptembeeptembernovemberdecember        wednesdaednesdaythursdaysaturdayG
+0123456723456789%
+        
+.NET TP P Worker
+xxxxxxxx
+        mscorlibI
+        publickeublickeykeytokenretargetrgetablecontentttenttypewindowsrsruntime
+localhosocalhostloopback
+    net.pipe
+utf-16BE   
+iso-1064
+46-ucs-2utf-16BEencodingstandaloandalone
+utf-16BEpreserve
+utf-16BEencodingstandaloandalone
+xml:langxml:spacml:space
+preserve<
+preserveW
+preserve
+encodingstandaloandalone2
+preserveK
+preserve7
+preserve
+preserveg
+1.3.132.132.0.34132.0.35
+SHA3-256SHA3-384SHA3-512
+SHA3-256SHA3-384SHA3-512=
+1.3.14.314.3.2.7PRIVATE VATE KEYPUBLIC KBLIC KEY
+PRIVATE VATE KEYPUBLIC KBLIC KEYEC PRIVA
+SHA3-256SHA3-384SHA3-512SHA3-256SHA3-384SHA3-512n
+RSA PRIVVATE KEYPRIVATE RSA PUBLBLIC KEYPUBLIC K/
+ECDSA_P2DSA_P256ECDSA_P3DSA_P384ECDSA_P5DSA_P521ECDH_P25CDH_P256ECDH_P38CDH_P384ECDH_P52CDH_P521[
+nistp256ecdsa_p2dsa_p256nistp384ecdsa_p3dsa_p384nistp521ecdsa_p5dsa_p521q
+nistp256nistp384nistp521ecdsa_p2dsa_p256ecdsa_p3dsa_p384ecdsa_p5dsa_p521ecdh_p25cdh_p256ecdh_p38cdh_p384ecdh_p52cdh_p521nistP192nistP224nistP256nistP384nistP521
+CSHAKE25SHAKE256SHA3-256SHA3-384SHA3-512CSHAKE12SHAKE128SHA3-256SHA3-384SHA3-512CSHAKE12SHAKE128CSHAKE25SHAKE256
+2.5.29.1.5.29.15nistP256nistP384nistP521
+2.5.29.1.5.29.10CERTIFICTIFICATE
+2.5.29.1.5.29.10.5.29.19.5.29.152.5.29.3.5.29.35.5.29.37.5.29.17.5.29.142.5.29.1.5.29.151
+0:A[_A[_`a{
+0:A[_A[_`a{
+0:A[_
+AttachedDetached
+AttachedDetachedC
+<true /><false /false />
+EUsbHubFubFiltermaintenantenance
+Activatectivatedbookasseokassetdunsupporupportedsupporteted_wifiready_wiady_wifidone_wifone_wifiWireSharireSharkCharlesPlesProxyAcknowleowledged
+CompleteComplete
+Complete
+        aaaaaaaa
+        
+                aaaaaaaa
+ !"#$%&'()*+,/:;<=>?@[\]^`{|}~
+0:A[_`a{
+0:A[_`a{
+0:A[_`a{
+ #$()*+.?[\^{
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}
+ !#$%'()*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxy
+#{0}
+ --->
+  Argument
+  Hardware Device:
+  Key Container Name:
+  Key Spec:
+  Key Store:
+  Protected:
+  Provider Name:
+  Provider type:
+  Removable:
+  Unique Key Container Name:
+ + 0
+ --->
+ ... 
+ Argument type '{0}' does not match the corresponding member type '{1}
+ ByRe
+ Comment:
+ Incorrect number of members for constructo
+ MaxToken
+ Name
+ PUBLIC
+ PUBLIC 
+ RPCID
+ SYSTEM
+ SYSTEM 
+ The member '{0}' is not declared on type '{1}' being create
+ This method may not be called when another {0} operation is pending
+ Version
+ at offset
+ but got
+ bytes)
+ content=
+ does not support bod
+ encoding
+ encoding=
+ failed to dispose:
+ failed with error code
+ failed with status:
+ for openssh key file is not supporte
+ found
+ in file:line:column
+ in the offset table
+ instead of
+ is not implemented ye
+ is not supporte
+ is not supported for openssh key fil
+ isn't a fil
+ min
+ pow =
+ rem =
+ returned
+ standalone
+ standalone=
+ status code
+ value is null
+ value=
+ version=
+ with length
+ xmlns
+ xmlns
+!#$%&'*+-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ^_`abcdefghijklmnopqrstuvwxyz|
+!#$&'()*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]_abcdefghijklmnopqrstuvwxyz
+!$&'()*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]_abcdefghijklmnopqrstuvwxyz
+!$&'()*+,-./0123456789:;=@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]_abcdefghijklmnopqrstuvwxyz
+!<BaseAddress>+0
+!x-sys-default-local
+Content-Type:
+" encoding=
+" standalone=
+", ..
+"; filename=
+"Can not start an Activity that was already started
+"Can not stop an Activity that was not started
+"EndTime is not UTC
+"OperationName must not be null or empty
+"{0}
+"{0}" is not valid protocol message
+##an
+##loca
+##othe
+##targetNamespac
+#cdata-sectio
+#commen
+#documen
+#document-fragmen
+#entit
+#significant-whitespac
+#tex
+#whitespac
+$%+,0:<?A[^_`{|}~
+$2a${0:00}
+$Domai
+$HttpOnl
+$Pat
+$Por
+$Unexpected index size: {readerState.IndexSize}
+$Versio
+$Version
+$Version=
+${0:00}
+${atime
+${cipherName
+${data
+${fieldName
+${fieldValue
+${filename
+${keyName
+${length
+${mtime
+${reasonPhrase
+${salt
+${statusCode
+% Privileged Tim
+% User Tim
+', Version:
+', expecting higher than 
+'Entity' and 'Notation' nodes cannot be cloned
+'EntityReference' nodes have no support for setting value
+'Transfer-Encoding: chunked' header can not be used when content object is not specified
+']]>' is not allowed in character data
+']]>' is not expected
+'handle' has already been bound to the thread pool, or was not opened for asynchronous I/O
+'min' may not be greater than 'max
+'overlapped' has already been freed
+'overlapped' was not allocated by this ThreadPoolBoundHandle instance
+'preAllocated' is already in use
+'{0}
+'{0}' cannot be greater than {1}
+'{0}' field specified was not found
+'{0}' from assembly '{1}' has too many dimensions
+'{0}' has an invalid qualified name
+'{0}' has an invalid token
+'{0}' in not supported remote endpoint type, expected IP or DNS endpoint.
+'{0}' is a duplicate attribute name
+'{0}' is a duplicate enumeration value
+'{0}' is a duplicate notation value
+'{0}' is an invalid XmlNodeType
+'{0}' is an invalid attribute type
+'{0}' is an invalid expanded name
+'{0}' is an invalid expression
+'{0}' is an invalid key pattern. It either contains a variable reference or 'key()' function
+'{0}' is an invalid language identifier
+'{0}' is an invalid name for a processing instruction
+'{0}' is an invalid name for processing instructions
+'{0}' is an invalid value for the 'encoding' attribute. The encoding cannot be switched after a call to ResetState
+'{0}' is an invalid xml:space value
+'{0}' is an undeclared prefix
+'{0}' is an unexpected token. Expecting whitespace
+'{0}' is an unexpected token. The expected token is '{1}' or '{2}'
+'{0}' is an unexpected token. The expected token is '{1}'
+'{0}' is an unqualified name and cannot contain the character ':'
+'{0}' is missing native code or metadata. This can happen for code that is not compatible with trimming or AOT. Inspect and fix trimming and AOT related warnings that were generated when the app was published. For more information see https://aka.ms/nativeaot-compatibilit
+'{0}' is missing native code. MethodInfo.MakeGenericMethod() is not compatible with AOT compilation. Inspect and fix AOT related warnings that were generated when the app was published. For more information see https://aka.ms/nativeaot-compatibilit
+'{0}' is missing structure marshalling data. This can happen for code that is not compatible with AOT. Inspect and fix AOT related warnings that were generated when the app was published. For more information see https://aka.ms/nativeaot-compatibilit
+'{0}' is not a known hash algorithm
+'{0}' is not a known key algorithm
+'{0}' is not a supported encoding name. For information on defining a custom encoding, see the documentation for the Encoding.RegisterProvider method
+'{0}' is not a supported handle type
+'{0}' is not a valid BinHex text sequence
+'{0}' is not a valid BinHex text sequence. The sequence must contain an even number of characters
+'{0}' is not a valid attribute for type '{1}'
+'{0}' is not supported by System.Net.Quic
+'{0}' must be non-negative
+'{0}' must be specified and contain at least one item to establish the connection
+'{0}' must be specified to open the connection
+'{0}' property specified was not found
+'{0}' without Message attribute
+'{0}'' should be within [0, {1}) range
+'{0}', hexadecimal value {1}, is an invalid attribute character
+'{0}', hexadecimal value {1}, is an invalid character
+'{0}', on '{1}' violates the constraint of type '{2}'
+'{0}': ResourceSet derived classes must provide a constructor that takes a String file name and a constructor that takes a Stream
+(# $
+($ #
+(?<fieldName>[^\[\]()<>@,;:\"/?={} \t]+):(?<fieldValue>.+)
+(Inner Exception #{0})
+(Internal)Expected an Exception or an IEnumerable<Exception
+(Parameter '{0}'
+(UTC)
+(\w+)=(\d+)-(\d+)
+(null
+(unknown error
+({0})nul
+({1}){0
+) faile
+) is not supported by QUIC. Minimal supported version is
+) { ... 
+)nul
+*+jso
+*+xm
++-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy
+, Content:
+, ContentType=WindowsRuntim
+, Culture
+, Headers
+, PublicKeyToken
+, ReasonPhrase: 
+, RequestUri: 
+, Retargetable=Ye
+, SSL TargetHost
+, Trailing Headers
+, Version
+, but couldn't find the corresponding device in the list. This event will be ignored
+, expected
+, {0
+, {0} = {1
+--- End of inner exception stack trace --
+--- End of stack trace from previous location --
+----
+-------------------------------28947758029299
+Content-Disposition: form-data; name=
+-------------------------------28947758029299--
+-----------------------------2894775802929
+-----BEGI
+-----BEGIN
+-----END
+--{0}{3}Content-Disposition: form-data; name="{1}"{3}{3}{2}{3
+--{0}{3}Content-Type: {4}{3}Content-Disposition: form-data; name="{1}"{3}{3}{2}{3
+-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxy
+-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz
+-//Apple Computer//DTD PLIST 1.0//E
+-/0;A[_`a{
+-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz
+-Infinit
+.NET Long Running Tas
+.NET Network Time
+.NET Process ST
+.NET TP Worke
+.ccto
+.cto
+.plis
+.resource
+.resources.dl
+/ tunnelled via Proxy
+/Books/asset.epu
+/Books/asset0.epu
+/Books/asset1.epu
+/C pnputil
+/Documents/pairing.recor
+/Downloads/693624907685127015
+/Downloads/693624907685127015
+/Downloads/693624907685127015
+/Downloads/693624907685127015
+/Downloads/downloads.28.sqlited
+/Downloads/downloads.28.sqlitedb-sh
+/Downloads/downloads.28.sqlitedb-wa
+/Info.plis
+/Manifest.d
+/Manifest.plis
+/PhotoData/AlbumsMetadata/iTunes.plis
+/PhotoData/AlbumsMetadata/iTunesMetadata.plis
+/Status.plis
+/\?#
+/c idevicepair pai
+/c ideviceproxy ad2 aw
+/c ideviceproxy lao abc ofq com.iremovalpro.bypass --strea
+/c pnputil -a
+/c pnputil -f -d
+/c pnputil -i -a
+/iTunes_Control/iTunes/IC-Info.sid
+/iTunes_Control/iTunes/IC-Info.sis
+/iTunes_Control/iTunes/iTunesMetadata.plis
+/iTunes_Control/iTunes/iTunesMetadata.plist.ex
+/iTunes_Control/iTunes/iTunesMetadata1.plis
+/iTunes_Control/iTunes/iTunesMetadata2.plis
+/iTunes_Control/iTunes/iTunesMetadata3.plis
+/iTunes_Control/iTunes/iTunesMetadata4.plis
+/iTunes_Control/iTunes/iTunesMetadata5.plis
+/index.htm
+/nc:hello/nc:capabilities/nc:capability[text()='urn:ietf:params:netconf:base:1.1'
+/nc:rpc/@message-i
+/netimobiledevice.ip
+/private/var/root/identity
+/private/var/root/identityd -
+/private/var/root/identityd -2
+/private/var/root/identityd -
+/private/var/root/payloa
+/ref/ira1n
+/ref/ira1n/iRa1n.ex
+/ref/toolkit
+/ref/toolkits/iproxy.ex
+0.0#
+0.9.2342.19200300.100.1.2
+0000
+00000
+000000
+000000000000000
+0000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000
+0000000
+0001020304050607080910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989
+0051953EB9618E1C9A1F929A21A0B68540EEA2DA725B99B315F3B8B489918EF109E156193951EC7E937B1652C0BD3BB1BF073573DF883D2C34F1EF451FD46B503F0
+0123456789ABCDE
+0123456789ABCDEFGHIJKLMNOPQRSTUVWXY
+0123456789abcde
+0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY
+01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA51868783BF2F966B7FCC0148F709A5D03BB5C9B8899C47AEBB6FB71E9138640
+01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+0400C6858E06B70404E9CD9E3ECB662395B4429C648139053FB521F828AF606B4D3DBAA14B5E77EFE75928FE1DC127A2FFA8DE3348B3C1856A429BF97E7E31C2E5BD66011839296A789A3BC0045C8A5FB42C7D1BD998F54449579B446817AFBD17273E662C97EE72995EF42640C550B9013FAD0761353C7086A272C24088BE94769FD1665
+046B17D1F2E12C4247F8BCE6E563A440F277037D812DEB33A0F4A13945D898C2964FE342E2FE1A7F9B8EE7EB4A7C0F9E162BCE33576B315ECECBB6406837BF51F
+04AA87CA22BE8B05378EB1C71EF320AD746E1D3B628BA79B9859F741E082542A385502F25DBF55296C3A545E3872760AB73617DE4A96262C6F5D9E98BF9292DC29F8F41DBD289A147CE9DA3113B5F0B8C00A60B1CE1D7E819D7A431D7C90EA0E5
+05/07/2018 423.36.0.
+05/19/2017 6.0.9999.6
+07452a1e12fe3a36519611b3932ae43cd2c64093981c047a788fa1939e424db
+0:A[_`a{
+0x{0:x2},
+1.0.0.
+1.2.156.11235.1.1.2.
+1.2.840.10040.4.
+1.2.840.10040.4.
+1.2.840.10045.1.
+1.2.840.10045.1.
+1.2.840.10045.1.2.3.
+1.2.840.10045.1.2.3.
+1.2.840.10045.2.
+1.2.840.10045.3.1.
+1.2.840.10045.3.1.
+1.2.840.10045.3.1.
+1.2.840.10045.3.1.
+1.2.840.10045.3.1.
+1.2.840.10045.3.1.
+1.2.840.10045.3.1.
+1.2.840.10045.4.
+1.2.840.10045.4.
+1.2.840.10045.4.3.
+1.2.840.10045.4.3.
+1.2.840.10045.4.3.
+1.2.840.10046.2.
+1.2.840.113549.1.1.
+1.2.840.113549.1.1.1
+1.2.840.113549.1.1.1
+1.2.840.113549.1.1.1
+1.2.840.113549.1.1.1
+1.2.840.113549.1.1.
+1.2.840.113549.1.1.
+1.2.840.113549.1.1.
+1.2.840.113549.1.1.
+1.2.840.113549.1.1.
+1.2.840.113549.1.1.
+1.2.840.113549.1.1.
+1.2.840.113549.1.12.1.
+1.2.840.113549.1.12.1.
+1.2.840.113549.1.12.1.
+1.2.840.113549.1.12.1.
+1.2.840.113549.1.12.10.1.
+1.2.840.113549.1.12.10.1.
+1.2.840.113549.1.12.10.1.
+1.2.840.113549.1.12.10.1.
+1.2.840.113549.1.12.10.1.
+1.2.840.113549.1.3.
+1.2.840.113549.1.5.1
+1.2.840.113549.1.5.1
+1.2.840.113549.1.5.1
+1.2.840.113549.1.5.1
+1.2.840.113549.1.5.
+1.2.840.113549.1.5.
+1.2.840.113549.1.7.
+1.2.840.113549.1.7.
+1.2.840.113549.1.7.
+1.2.840.113549.1.7.
+1.2.840.113549.1.9.
+1.2.840.113549.1.9.1
+1.2.840.113549.1.9.1
+1.2.840.113549.1.9.16.1.
+1.2.840.113549.1.9.16.2.1
+1.2.840.113549.1.9.16.2.1
+1.2.840.113549.1.9.16.2.4
+1.2.840.113549.1.9.16.3.
+1.2.840.113549.1.9.16.3.
+1.2.840.113549.1.9.16.3.
+1.2.840.113549.1.9.2
+1.2.840.113549.1.9.2
+1.2.840.113549.1.9.22.
+1.2.840.113549.1.9.
+1.2.840.113549.1.9.
+1.2.840.113549.1.9.
+1.2.840.113549.1.9.
+1.2.840.113549.1.9.
+1.2.840.113549.2.1
+1.2.840.113549.2.1
+1.2.840.113549.2.
+1.2.840.113549.2.
+1.2.840.113549.2.
+1.2.840.113549.2.
+1.2.840.113549.2.
+1.2.840.113549.3.
+1.2.840.113549.3.
+1.2.840.113549.3.
+1.3.132.0.1
+1.3.132.0.3
+1.3.132.0.3
+1.3.132.0.3
+1.3.132.0.3
+1.3.132.0.3
+1.3.132.0.3
+1.3.132.0.
+1.3.132.0.
+1.3.132.1.11.
+1.3.132.1.11.
+1.3.133.16.840.63.0.
+1.3.14.3.2.1
+1.3.14.3.2.1
+1.3.14.3.2.1
+1.3.14.3.2.1
+1.3.14.3.2.
+1.3.14.3.2.2
+1.3.14.3.2.2
+1.3.14.3.2.2
+1.3.14.3.2.2
+1.3.14.3.2.
+1.3.14.3.2.
+1.3.14.3.2.
+1.3.14.7.2.3.
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.1
+1.3.36.3.3.2.8.1.1.1
+1.3.36.3.3.2.8.1.1.1
+1.3.36.3.3.2.8.1.1.1
+1.3.36.3.3.2.8.1.1.1
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.
+1.3.36.3.3.2.8.1.1.
+1.3.6.1.4.1.311.17.
+1.3.6.1.4.1.311.17.3.2
+1.3.6.1.4.1.311.20.
+1.3.6.1.4.1.311.20.2.
+1.3.6.1.4.1.311.21.
+1.3.6.1.4.1.311.88.2.
+1.3.6.1.4.1.311.88.2.
+1.3.6.1.5.5.7.1.
+1.3.6.1.5.5.7.2.
+1.3.6.1.5.5.7.3.
+1.3.6.1.5.5.7.3.
+1.3.6.1.5.5.7.3.
+1.3.6.1.5.5.7.3.
+1.3.6.1.5.5.7.3.
+1.3.6.1.5.5.7.3.
+1.3.6.1.5.5.7.48.
+1.3.6.1.5.5.7.48.1.
+1.3.6.1.5.5.7.48.
+1.3.6.1.5.5.7.6.
+100-Continue may not be set using this property
+100-continu
+1010011011
+10101000001001
+111011000001000
+111110010010
+127.0.0.
+17.0.
+1; mode=bloc
+2.16.840.1.101.2.1.1.1
+2.16.840.1.101.2.1.1.2
+2.16.840.1.101.3.4.1.
+2.16.840.1.101.3.4.1.2
+2.16.840.1.101.3.4.1.2
+2.16.840.1.101.3.4.1.4
+2.16.840.1.101.3.4.1.4
+2.16.840.1.101.3.4.1.
+2.16.840.1.101.3.4.2.
+2.16.840.1.101.3.4.2.
+2.16.840.1.101.3.4.2.
+2.16.840.1.101.3.4.3.1
+2.16.840.1.101.3.4.3.1
+2.16.840.1.101.3.4.3.1
+2.16.840.1.101.3.4.3.1
+2.16.840.1.101.3.4.3.1
+2.16.840.1.101.3.4.3.1
+2.23.133.2.
+2.23.133.2.
+2.23.133.2.
+2.23.140.1.2.
+2.23.140.1.2.
+2.23.43.1.4.
+2.5.29.1
+2.5.29.1
+2.5.29.1
+2.5.29.1
+2.5.29.2
+2.5.29.3
+2.5.29.3
+2.5.29.3
+2.5.4.1
+2.5.4.1
+2.5.4.1
+2.5.4.1
+2.5.4.1
+2.5.4.1
+2.5.4.2
+2.5.4.2
+2.5.4.
+2.5.4.
+2.5.4.4
+2.5.4.4
+2.5.4.4
+2.5.4.
+2.5.4.
+2.5.4.
+2.5.4.
+2.5.4.
+2.5.4.9
+2222 4
+2223 4
+230 23
+25a207b9ddf346608ee976e58c74063
+3des-cb
+3uTool
+5AC635D8AA3A93E7B3EBBD55769886BC651D06B0CC53B0F63BCE3C3E27D2604
+5aa26a8d5212478da4596d0ddbefea3
+: ..
+: clea
+://prox
+:00000001
+:;A[_`a{
+:\/?
+:authorit
+:metho
+:pat
+:protoco
+:schem
+:statu
+; $Domain
+; $Path
+; $Por
+; Comment
+; CommentURL=
+; Discar
+; Domain
+; Flags
+; Max-Age
+; Path
+; PayloadLength
+; Port
+; Type
+; Version
+; boundary=-----------------------------2894775802929
+; charset
+; ma
+; persist=
+;/?:@&=+$,#[]!'()
+;/?:@&=+$,#[]!'()*%\
+;0;0
+;start
+<!DOCTYPE
+<![CDATA
+</integer></dict
+</plist
+<?xm
+<?xml
+<?xml version=
+<?xml version="1.0" encoding="UTF-8"?><hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><capabilities><capability>urn:ietf:params:netconf:base:1.0</capability></capabilities></hello
+<?xml version="1.0" encoding="UTF-8"?><rpc message-id="6666" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><close-session/></rpc
+<META http-equiv="Content-Type
+<[CDATA
+<dict><key>CF$UID</key><integer
+<empty
+<false /
+<false/
+<filename unknown
+<invariant
+<local
+<null
+<offset unknown
+<true /
+<true/
+<unknown
+<unknown>
+?\UNC
+@collation
+@loc
+A 32 bit processes cannot access modules of a 64 bit process
+A MemberInfo that matches '{0}' could not be found
+A QUIC protocol error was encountere
+A String must be provided for the filter criteria
+A Task's exception(s) were not observed either by Waiting on the Task or accessing its Exception property. As a result, the unobserved exception was rethrown by the finalizer thread
+A WaitHandle with system-wide name '{0}' cannot be created. A WaitHandle of a different type might have the same name
+A case-insensitive lookup for resource file "{0}" in assembly "{1}" found multiple entries. Remove the duplicates or specify the exact case
+A conditional section is not allowed in an internal subset
+A connection could not be established within the configured ConnectTimeout
+A constructed tag used a definite length encoding, which is invalid for CER data. The input may be encoded with BER or DER
+A datatype misalignment was detected in a load or store instruction
+A derived type '{0}' has reported an invalid value for the Uri port '{1}'
+A derived type '{0}' is responsible for parsing this Uri instance. The base implementation must not be used
+A different range specifier has already been added to this request
+A list data type must be derived from an atomic or union data type
+A node of type {0} cannot be added to content
+A null or disposed certificate was present in CustomTrustStore
+A null or zero length string does not represent a valid Type
+A parameter entity reference is not allowed in internal markup
+A prior operation on this collection was interrupted by an exception. Collection's state is no longer trusted
+A relative URI cannot be created because the 'uriString' parameter represents an absolute URI
+A schema error occurred
+A subtraction must be the last element in a character class
+A task may only be disposed if it is in a completion state (RanToCompletion, Faulted or Canceled)
+A task was canceled
+A type initializer threw an exception. To determine which type, inspect the InnerException's StackTrace property
+A valid UTF32 value is between 0x000000 and 0x10ffff, inclusive, and should not include surrogate codepoint values (0x00d800 ~ 0x00dfff)
+A valid high surrogate character is between 0xd800 and 0xdbff, inclusive
+A valid low surrogate character is between 0xdc00 and 0xdfff, inclusive
+A version negotiation error was encountered
+A335926AA319A27A1D00896A6773A4827ACDAC7
+ABCDEFGHIJKLMNOPQRSTUVWXY
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+
+AD AUTHORIT
+ALL_PROX
+APP_CONTEXT_BASE_DIRECTOR
+ASN1 corrupted data
+Accep
+Accept-Charse
+Accept-Encodin
+Accept-Languag
+Accept-Patc
+Accept-Range
+AcceptSocke
+Accepte
+Access Violation: Attempted to read or write protected memory. This is often an indication that other memory is corrupt. The application will be terminated since this platform does not support throwing an AccessViolationException
+Access to the path '{0}' is denied
+Access to the path is denied
+Access to the registry key '{0}' is denied
+Access-Control-Allow-Credential
+Access-Control-Allow-Header
+Access-Control-Allow-Method
+Access-Control-Allow-Origi
+Access-Control-Expose-Header
+Access-Control-Max-Ag
+Accessor indexes cannot be passed ByRef
+Accessor method should not have VarArgs
+Account name is too long
+Activat
+Activate
+Activation Attributes are not supported
+ActivationStat
+Actual value was {0}
+AddHijriDat
+AddOv
+Adding the specified count to the semaphore would cause it to exceed its maximum count
+Additional non-parsable characters are at the end of the string
+Addres
+Address type '{0}' is not supported
+AddressBoo
+Afc opcode
+After Root Level Attribut
+AgeLimi
+Algorithm '{0}' is not supported on this platform
+Algorithm Grou
+Algorithm Nam
+Algorithm:
+All case bodies and the default body must have the same type
+All test values must have the same type
+AllDeviceCapabilitie
+Allo
+AllowFileWrite
+AllowProcessCreatio
+AllowYouTub
+AllowYouTubePlugi
+Already Reporte
+Alt-Sv
+Alt-Use
+Alternation conditions cannot be comments
+Alternation conditions do not capture and cannot be named
+Ambiguity in binding of UnsafeAccessorAttribute
+Ambiguous implementation found
+Ambiguous match found for '{0} {1}'
+Ambiguous match found for '{0}'
+Ambiguous match found for assembly '{0}'
+Ambiguous match found
+An 'Attributes' collection can only contain 'Attribute' objects
+An Actor must not create a circular reference between itself (or one of its child Actors) and one of its parents
+An HTTP/2 connection could not be established because the server did not complete the HTTP/2 handshake
+An Int32 must be provided for the filter criteria
+An X509Extension with OID '{0}' has already been specified
+An XML comment cannot contain '--', and '-' cannot be the last character
+An XML error has occurred
+An XObject cannot be used as a value
+An action was attempted during deserialization that could lead to a security vulnerability. The action has been aborted. To allow the action, set the '{0}' AppContext switch to true
+An assertion in Chaos.Crypto failed
+An async read operation has already been started on the stream
+An asynchronous operation is already in progress
+An asynchronous socket operation is already in progress using this SocketAsyncEventArgs instance
+An attempt was made to move the position before the beginning of the stream
+An attempt was made to transition a task to a final state when it had already completed
+An attribute cannot be added to content
+An attribute of type ID must have a declared default of either #IMPLIED or #REQUIRED
+An attribute of type NOTATION must not be declared on an element declared EMPTY
+An element of innerExceptions was null
+An encrypted key was found, but no password was provided. Use ImportFromEncryptedPem to import this key
+An error has occurred while opening external DTD '{0}': {1
+An error has occurred while opening external entity '{0}': {1
+An error occurred trying to start process '{0}' with working directory '{1}'. {2
+An error occurred when adding a cookie to the container
+An error occurred when parsing the Cookie header for Uri '{0}'
+An error occurred while establishing a connection to the proxy tunnel
+An error occurred while parsing EntityName
+An error occurred while sending the request
+An established connection was aborted by the server
+An established connection was aborted by the software in your host machine
+An exception occurred while invoking the PlaintextStreamFilter
+An exception was not handled in an AsyncLocal<T> notification callback
+An exception was thrown by a TaskScheduler
+An integer value cannot be empty
+An internal error has occurred
+An internal error has occurred. {0
+An invalid IP address was specified
+An invalid Unicode character by IDN standards was specified in the host
+An invalid request URI was provided. Either the request URI must be an absolute URI or BaseAddress must be set
+An item with the same key has already been added
+An item with the same key has already been added. Key: {0
+An object that does not derive from System.Exception has been wrapped in a RuntimeWrappedException
+An undefined DateTimeStyles value is being used
+An undefined NumberStyles value is being used
+An undefined prefix is in use
+An unexpected state object was encountered. This is usually a sign of a bug in async method custom infrastructure, such as a custom awaiter or IValueTaskSource implementation
+An unknown chain building error occurred
+AndAls
+Another continuation was already registered
+AnyAtomicTyp
+AnyTyp
+AnyUr
+ApNonc
+AppDomain data '{0}' contains the invalid value or object '{1}' for specifying a default matching timeout for System.Text.RegularExpressions.Regex
+Append access can be requested only in write-only mode
+AppleInternalInstallCapabilit
+AppleMobileDeviceServic
+Application layer protocol negotiation error was encountered
+ApplicationIdentifie
+ApplicationTyp
+ApplyPlaintextFilterAsyn
+Apri
+Argument for array index must be of type Int3
+Argument must be an instance membe
+Argument must be arra
+Argument must be between {0} and {1}
+Argument must be boolea
+Argument must be either a FieldInfo, PropertyInfo or MethodInf
+Argument must be of type {0}
+Argument must be single-dimensional, zero-based array typ
+Argument must not have a value type
+Argument type cannot be System.Void
+Argument types do not matc
+ArgumentList may not contain null
+Arithmetic operation resulted in an overflow
+Array cannot be null
+Array may not be empty or null
+Array may not be empty
+Array of type '{0}' from assembly '{1}' cannot be created because base value type is too large
+Array was not a one-dimensional array
+Array was not a three-dimensional array
+Array was not a two-dimensional array
+Array.ConstrainedCopy will only work on array types that are provably compatible, without any form of boxing, unboxing, widening, or casting of each array element.  Change the array types (i.e., copy a Derived[] to a Base[]), or use a mitigation strategy in the CER for Array.Copy's less powerful reliability contract, such as cloning the array or throwing away the potentially corrupt destination array
+ArrayItemSetter
+ArrayItemSetter
+ArrayItemSetter
+ArrayLengt
+ArrayLength
+Arrays larger than 2GB are not supported
+Arrays of System.Void are not supported
+Arrays with non-zero lower bounds are not supported
+Assembly must be a runtime Assembly object
+Assig
+AssignLoca
+AssignLocalBo
+AssignLocalClosur
+Asyn
+AsyncFlowControl object must be used on the thread where it was created
+AsyncFlowControl objects can be used to restore flow only on a Context that had its flow suppressed
+Asynchronous operation is already in progress
+Asynchronous operations are not allowed on this socket. The underlying OS handle might have been already bound to an IO completion port
+At least one authentication method should be specified
+At least one element in the source array could not be cast down to the destination array type
+At least one element in the specified array was null
+At least one object must implement IComparable
+At this time only one public key in the openssh key is supported
+Atomic valu
+Attempt to access the method failed
+Attempt to access the type failed
+Attempt to read past the end of the SSH data stream
+Attempted to access a field that is not accessible by the caller
+Attempted to access a missing member
+Attempted to access a missing method
+Attempted to access a non-existing field
+Attempted to access a path that is not on the disk
+Attempted to access an element as a type incompatible with the array
+Attempted to add multiple callbacks to a delegate that does not support multicast
+Attempted to divide by zero
+Attempted to operate on an array with the incorrect number of dimensions
+Attempted to perform an unauthorized operation
+Attempted to read or write protected memory. This is often an indication that other memory is corrupt
+Attempted to read past the end of the stream
+Attempting to read beyond the end of the file
+AttrOnl
+Attribut
+Augus
+AuthRoo
+Authentication failed because the connection could not be reused
+Authentication failed because the platform does not support ephemeral keys
+Authentication failed because the remote party sent a TLS alert: '{0}'
+Authentication failed, see inner exception
+Authentication failed: {0}
+Authentication validation failed with error - {0}
+Authorizatio
+Availabl
+B3312FA7E23EE7E4988E056BE3F82D19181D9C6EFE8141120314088F5013875AC656398D8A2ED19D2A85C8EDD3EC2AE
+BLOC
+Bad Gatewa
+Bad Messag
+Bad Reques
+Bad character in radix 2 string:
+Bad character in radix 8 string:
+Bad number of round
+Bad packet length: {0}
+Bad salt Lengt
+Bad sequence of command
+Bad status:
+Base6
+Base64Binar
+BaseUri must be specified either as an argument of XmlReader.Create or on the XmlParserContext. If it is specified on both, it must be the same base URI
+BasebandBoardSnu
+BasebandCertI
+BasebandChipI
+BasebandFirmwareManifestDat
+BasebandFirmwareVersio
+BasebandKeyHashInformatio
+BasebandRegionSK
+BasebandSerialNumbe
+BasebandSkeyI
+Basi
+Binary format of the specified custom attribute was invalid
+BinaryReader encountered an invalid string length of {0} characters
+BindHandle for ThreadPool failed on this handle
+Bit address less than zer
+Bit position must not be negativ
+Blockin
+BluetoothAddres
+Boolea
+Both accessors must be static
+Branc
+BranchFals
+BranchTru
+BrotliDecode
+BrotliEncode
+BrotliStream.BaseStream returned more bytes than requested in Read
+Brows
+Buffer and BufferList properties cannot both be non-null
+BufferLis
+Buffering more than {0} bytes is not supported
+BuildVersio
+BundleI
+ByRefNe
+Bypas
+Byte array too small for requested offset and lengt
+C(?<mode>\d{4}) (?<length>\d+) (?<filename>.+
+C0644 {0} {1}
+C49D360886E704936A6678E1139D26B7819F7E9
+C:\ProgramData\Apple\Lockdow
+C:\ProgramData\Apple\Lockdown
+CANCE
+CDAT
+CDATA
+CDat
+CERTIFICAT
+CFA6LPA
+CH/A and DEMO versions are not supported
+CLR IsEphemera
+CMS3DESwra
+CMSRC2wra
+CNG provider unexpectedly terminated encryption or decryption prematurely
+COMPRESSION_ERRO
+CONNEC
+CONNECT request must contain Host header
+CONNECT {0}:{1} HTTP/1.0
+CONNECT_ERRO
+CPUArchitectur
+CRLF character pair is not allowed in FtpWebRequest inputs
+CSPParameters cannot be nul
+Cache-Contro
+Call
+Can not access a closed Decoder
+Can not access a closed Encoder
+Can not perform Read operations on a BrotliStream constructed with CompressionMode.Compress
+Can not perform Write operations on a BrotliStream constructed with CompressionMode.Decompress
+Can only unbox from an object or interface type to a value type
+Can't compile a NewExpression with a constructor declared on an abstract clas
+Can't create and/or connect to Usbmux socke
+Can't find serializer for content type {0
+Can't open data connectio
+Cannot access a closed SFTP session
+Cannot access a closed Stream
+Cannot access a closed file
+Cannot access a closed registry key
+Cannot access a closed resource set
+Cannot access a closed stream
+Cannot access a disposed object
+Cannot access member
+Cannot auto initialize members of value type through property '{0}', use assignment instea
+Cannot be called on value < 
+Cannot be empty or contain only whitespace
+Cannot be less than one
+Cannot be less than zero
+Cannot be used to terminate a process tree containing the calling process
+Cannot bind to the reserved namespace
+Cannot bind to the target method because its signature is not compatible with that of the delegate type
+Cannot block a call on this socket while an earlier asynchronous call is in progress
+Cannot build uri when url segment parameter(s)
+Cannot call Set on a null contex
+Cannot create '{0}' because a file or directory with the same name already exists
+Cannot create a byref of a byref: {0
+Cannot create a node without an owner document
+Cannot create a pointer to a byref: {0
+Cannot create a type for which Type.ContainsGenericParameters is true
+Cannot create an 'EntityReference' node with a name starting with '#'
+Cannot create an abstract class
+Cannot create an instance of an interface
+Cannot create an instance of {0} as it is an open type
+Cannot create an instance of {0} because Type.ContainsGenericParameters is true
+Cannot create an instance of {0} because it is an abstract class
+Cannot create arrays of ByRef-like values
+Cannot create arrays of open type
+Cannot create boxed ByRef-like values
+Cannot create uninitialized instances of types requiring managed activation
+Cannot determine the frame size or a corrupted frame was received
+Cannot dynamically create an instance of System.Void
+Cannot enable message '{0}'. Message type {1} is already enabled for '{2}'
+Cannot extract a Unicode scalar value from the specified index in the input
+Cannot find a matching quote character for the character '{0}'
+Cannot have '?>' inside an XML processing instruction
+Cannot have ']]>' inside an XML CDATA block
+Cannot have multiple DTDs
+Cannot import a null node
+Cannot import nodes of type '{0}'
+Cannot include class \{0} in character range
+Cannot insert a node or any ancestor of that node as a child of itself
+Cannot insert the node in the specified location
+Cannot instantiate a generic type on a ByRef-like type
+Cannot jump to ambiguous label '{0}'
+Cannot jump to non-local label '{0}' with a value. Only jumps to labels defined in outer blocks can pass values
+Cannot jump to undefined label '{0}'
+Cannot load Category Help data because an invalid index '{0}' was read from the registry
+Cannot load Counter Name data because an invalid index '{0}' was read from the registry
+Cannot load Performance Counter data because an unexpected registry key value type was read from '{0}'
+Cannot load assembly '{0}'. No metadata found for this assembly
+Cannot load assembly '{0}'. The assembly exists but its version {1} is lower than the requested version {2}
+Cannot marshal: Encountered unmappable character
+Cannot mix synchronous and asynchronous operation on process stream
+Cannot open an invalid handle
+Cannot pop the requested tag as it is not currently in progress
+Cannot process request because the process ({0}) has exited
+Cannot process request because the process has exited
+Cannot re-call BeginGetRequestStream/BeginGetResponse while a previous call is still in progress
+Cannot read from a closed TextReader
+Cannot redefine label '{0}' in an inner block
+Cannot remove the specified item because it was not found in the specified Collection
+Cannot resolve '{0}'
+Cannot resolve entity reference '{0}' because the DTD has been ignored. To enable DTD processing set the DtdProcessing property on XmlReaderSettings to Parse and pass the settings into XmlReader.Create method
+Cannot resolve entity reference '{0}'
+Cannot resolve external DTD subset - public ID = '{0}', system ID = '{1}'
+Cannot restore context flow when it is not suppressed
+Cannot send a content-body with this verb-type
+Cannot set a constant field
+Cannot set a value on node type '{0}'
+Cannot set initonly static field after its owning type is initialized
+Cannot set null or blank methods on request
+Cannot set the 'InnerXml' for the current node because it is either read-only or cannot have children
+Cannot set the namespace if Namespaces is 'false'
+Cannot start process because a file name has not been provided
+Cannot use a prefix with an empty namespace
+Cannot write XML declaration. WriteStartDocument method has already written it
+Cannot write XML declaration. XML declaration can be only at the beginning of the document
+Cannot write more bytes to the buffer than the configured maximum buffer size: {0}
+Cannot write to a closed TextWriter
+Canonical types cannot be allocate
+Canonical types do not have EEType
+Capabilities:0
+Capacit
+Capacity exceeds maximum capacity
+Capture number cannot be zero
+Carriage return (#xD), line feed (#xA), and tab (#x9) characters are not allowed in xs:normalizedString
+CarrierBundleInfoArra
+CarrierInstallCapabilit
+ChainingMod
+ChainingModeCB
+ChainingModeCF
+ChainingModeEC
+ChangeType operation is not supported
+Channel is already open
+Channel type '{0}' is not supported
+Channel was closed
+CharUnknownLo
+CharlesProx
+CheckCharacter
+CheckForShutdow
+CheckedConver
+Checking.
+ChipI
+Chunked encoding must be set via the SendChunked property
+Cipher method '{0}' is not supported
+CipherSuitePolicy must specify at least one cipher supported by QUIC
+CipherSuitesPolic
+Class cannot have two properties marked with SerializeAs(Content = true) attribute
+Client encryption algorithm not foun
+Client not connected
+ClientAuthenticationOption
+ClientOption
+ClientVersionStrin
+Close this window and register your device through our official representatives
+Close this window and register your device with our official representatives
+Close
+Coalesce used with type that cannot be nul
+CoalescingBranc
+Codepage -
+Collection is read-only
+Collection must not be empty
+Collection was modified after the enumerator was instantiated
+Collection was modified; enumeration operation may not execute
+Collection was of a fixed size
+Combining FileMode: {0} with FileAccess: {1} is invalid
+Combining {0}: {1} with {2}: {3} is invalid
+Comman
+Command '{0}' has timed out
+Command not implemente
+CommandText property is empty
+Commen
+CommentUR
+Common Language Runtime detected an invalid program
+Common Language Runtime detected an invalid program. The body of method '{0}' is invalid
+CompareInfo -
+CompareOption.Ordinal cannot be used with other options
+CompassCalibratio
+Compil
+Compression algorithm not foun
+Conditional alternation is missing a closing parenthesis after the group number {0}
+Conditional alternation refers to an undefined group number {0}
+Conditional sections must specify the keyword 'IGNORE' or 'INCLUDE'
+ConfigurationLoadCredential faile
+ConfigurationOpen faile
+Conflic
+ConformanceLeve
+Congratulations! Your device FMI has been succesfully turned OFF!.
+Connec
+ConnectCallback completing asynchronously for a synchronous request
+ConnectToTcpHostAsyn
+Connectio
+Connection aborted by peer ({0})
+Connection closed; transfer aborte
+Connection failed to establish within {0:F0} milliseconds
+Connection terminated by the client
+Connection timed out waiting for a response from the peer
+Connection was closed by the server
+ConnectionOpen faile
+ConnectionStart faile
+ConnectionTyp
+Constructed
+Constructor on type '{0}' not found
+Contact administrators.
+Contact your provider to register your Serial Number and bypass it instantly
+Conten
+Content-Dispositio
+Content-Encodin
+Content-Languag
+Content-Lengt
+Content-Locatio
+Content-MD
+Content-Rang
+Content-Security-Polic
+Content-Typ
+Continu
+Control Panel\Internationa
+Control cannot enter a try block
+Control cannot enter an expression--only statements can be jumped into
+Control cannot leave a filter test
+Control cannot leave a finally block
+Conversion buffer overflow
+Conversion is not supported for arithmetic types without operator overloading
+Convert
+ConvertChecked
+ConvertToUnderlyin
+Cooki
+Cookie format error
+Cookie
+Coordinated Universal Tim
+CopyAl
+Correlation-Contex
+Corrupt .resources file.  The specified data length '{0}' is not a valid position in the stream
+Corrupt .resources file.  The specified type doesn't match the available data in the stream
+Corrupt .resources file. A resource name extends past the end of the stream
+Corrupt .resources file. Invalid offset '{0}' into data section
+Corrupt .resources file. Invalid offset '{0}' into name section
+Corrupt .resources file. Resource name extends past the end of the file
+Corrupt .resources file. String for name index '{0}' extends past the end of the file
+Corrupt .resources file. String length must be non-negative
+Corrupt .resources file. The resource name for name index {0} extends past the end of the stream
+Corrupt .resources file. Unable to read resources from this file because of invalid header information. Try regenerating the .resources file
+Corrupted data - negative length foun
+Could not determine the order of year, month, and date from '{0}'
+Could not find a brace, or the length between the previous token and the brace was zero (i.e., '0x,'etc.)
+Could not find a comma, or the length between the previous token and the comma was zero (i.e., '0x,'etc.)
+Could not find a part of the path '{0}'
+Could not find a part of the path
+Could not find any recognizable digits
+Could not find file '{0}'
+Could not find the ending brace
+Could not find the resource "{0}" among the resources {2} embedded in the assembly "{1}", nor among the resources in any satellite assemblies for the specified culture. Perhaps the resources were embedded with an incorrect name
+Could not load the file '{0}'
+Could not load the specified file
+Could not load type '{0}' from assembly '{1}' because generic types cannot have explicit layout
+Could not load type '{0}' from assembly '{1}' because it contains an object field at offset '{2}' that is incorrectly aligned or overlapped by a non-object field
+Could not load type '{0}' from assembly '{1}' because the format is invalid
+Could not load type '{0}' from assembly '{1}'
+Could not resolve assembly '{0}'
+Could not resolve nested type '{0}' in type "{1}'
+Could not resolve type '{0}' in assembly '{1}'
+Could not resolve type '{0}'
+Could not use a TLS version required by Quic. TLS 1.3 may have been disabled in the registry
+Couldn't connect to port
+Couldn't connect to remote machine
+Couldn't find iRemovalRa1n app! please re-download iRemoval PRO from official website
+and make sure to disable anitivirus
+Couldn't get process information from performance counter
+Couldn't read node length byte(s)
+Couldn't read node length byte
+Couldn't read node tag byte
+Coun
+Count cannot be less than -1
+Count must be positive and count must refer to a location within the string/array/collection
+Counter
+CreateActivationInfoReques
+CreateArchiv
+CreateDelegat
+CreateObjectArrayDelegat
+CreateTunnel1ActivationInfoReques
+CreateTunnel1SessionInfoReques
+Create
+CreditManage
+CrlSig
+CryptoApi ECDiffieHellman keys are not supported
+CryptoApi ECDsa keys are not supported
+Culture is not supported
+Current Version: 7.2 Latest Version:
+Current Windows version 
+Current module queried in wrong enumerator stat
+CurrentLis
+Custom trust certificates were provided while in System trust mode
+D(?<mode>\d{4}) (?<length>\d+) (?<filename>.+
+D0755 0 {0}
+D09E8800291CB85396CC6717393284AAA0DA64B
+DELET
+DER length is '{0}' and cannot be more than 4 bytes
+DLContentsOfDirector
+DLFileErrorCod
+DLFileErrorStrin
+DLFileModificationDat
+DLFileSiz
+DLFileTyp
+DLFileTypeRegula
+DLMessageCopyIte
+DLMessageCreateDirector
+DLMessageDeviceRead
+DLMessageDisconnec
+DLMessageDownloadFile
+DLMessageGetFreeDiskSpac
+DLMessageMoveFile
+DLMessageMoveItem
+DLMessageProcessMessag
+DLMessagePurgeDiskSpac
+DLMessageRemoveFile
+DLMessageRemoveItem
+DLMessageStatusRespons
+DLMessageUploadFile
+DLMessageVersionExchang
+DLMessageVersionExchange has unexpected forma
+DLVersionsO
+DNS Name:
+DOCTYP
+DONE
+DOTNET_SYSTEM_BUFFERS_SHAREDARRAYPOOL_MAXARRAYSPERPARTITIO
+DOTNET_SYSTEM_BUFFERS_SHAREDARRAYPOOL_MAXPARTITIONCOUN
+DOTNET_SYSTEM_DIAGNOSTICS_DEFAULTACTIVITYIDFORMATISHIERARCHIA
+DOTNET_SYSTEM_GLOBALIZATION_APPLOCALIC
+DOTNET_SYSTEM_GLOBALIZATION_INVARIAN
+DOTNET_SYSTEM_GLOBALIZATION_PREDEFINED_CULTURES_ONL
+DOTNET_SYSTEM_GLOBALIZATION_USENL
+DOTNET_SYSTEM_NET_DISABLEIPV
+DOTNET_SYSTEM_NET_HTTP_ENABLEACTIVITYPROPAGATIO
+DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_FLOWCONTROL_MAXSTREAMWINDOWSIZ
+DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_FLOWCONTROL_STREAMWINDOWSCALETHRESHOLDMULTIPLIE
+DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP2FLOWCONTROL_DISABLEDYNAMICWINDOWSIZIN
+DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP2SUPPOR
+DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP3SUPPOR
+DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_MAXCONNECTIONSPERSERVE
+DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_PENDINGCONNECTIONTIMEOUTONREQUESTCOMPLETIO
+DOTNET_SYSTEM_NET_HTTP_USEPORTINSP
+DOTNET_SYSTEM_NET_SOCKETS_INLINE_COMPLETION
+DOTNET_SYSTEM_NET_SOCKETS_THREAD_COUN
+DOTNET_ThreadPool_ThreadTimeoutM
+DOTNET_ThreadPool_UseWindowsThreadPoo
+DTD is not allowed in XML fragments
+DTD is prohibited in this XML document
+DTD must be defined before the document root element
+DTPlatformVersio
+Dashes are in the wrong position for GUID parsing
+Data at the root level is invalid
+Data longer than {0} is not supported
+DataEnciphermen
+Date < 32Bi
+Date > 64Bi
+DateTim
+DateTime pattern '{0}' appears more than once with different values
+Day must be between 1 and {0} for month {1}
+DeactivateReques
+Decembe
+Decima
+Decimal can only round to between 0 and 28 digits of precision
+Decimal constructor requires an array or span of four valid decimal bytes
+DecipherOnl
+Declaring type:
+Decoded string is not a valid IDN name
+Decoder ran into invalid data
+Decompression algorithm not foun
+Decremen
+Decrement
+Defaul
+Default body must be supplied if case bodies are not System.Void
+Default credentials are not supported on an FTP request
+Default credentials cannot be supplied for the {0} authentication scheme
+DefaultCloseErrorCod
+DefaultStreamErrorCod
+DefaultValu
+DefaultValue
+Delegate to an instance method cannot have null 'this'
+Delegates must be of the same type
+Derived classes must provide an implementation
+Descriptio
+Destination array is not long enough to copy all the items in the collection. Check array index and length
+Destination array is not long enough to copy all the required data. Check array length and offset
+Destination array was not long enough. Check the destination index, length, and the array's lower bounds
+Destination is too short
+Devic
+Device link didn't return ready state (DLMessageDeviceReady
+Device link error:
+DeviceCertificat
+DeviceClas
+DeviceColo
+DeviceEnclosureColo
+DeviceI
+DeviceLis
+DeviceNam
+DevicePublicKe
+DiagDat
+Diagnostics.DisableMetadataStackTraceResolutio
+Didn't receive DLMessageVersionExchange from devic
+DieI
+Diges
+DigitalSignatur
+DisabledByDefaul
+Disallowe
+Discar
+DiskUsag
+Displa
+Division by zero erro
+Dll was not found
+DoBin
+Doctyp
+Documen
+Document cannot have multiple document elements
+Document does not have a root element
+Domai
+Domain name is too long
+Doubl
+DtdProcessin
+Duplicate attribute
+Duplicate objects in argument
+Duratio
+Dynamic invocation of delegate constructors is not supported on this runtime
+Dynamic table size update received after beginning of header block
+Dynamic table size update to {0} bytes exceeds limit of {1} bytes
+DynamicInterfaceCastableImplementationAttribut
+EC PRIVATE KE
+ECCCurveNam
+ECCFULLPRIVATEBLO
+ECCFULLPUBLICBLO
+ECCPRIVATEBLO
+ECCPUBLICBLO
+ECCParameter
+ECDHC public key has wrong domain parameter
+ECDH_P25
+ECDH_P38
+ECDH_P52
+ECDH_STD_SHA1_KD
+ECDH_STD_SHA256_KD
+ECDH_STD_SHA384_KD
+ECDS
+ECDSA_P25
+ECDSA_P38
+ECDSA_P52
+ENCRYPTED PRIVATE KE
+ENHANCE_YOUR_CAL
+ENTITIE
+ENTIT
+ERRO
+Early Hint
+EffectiveKeyLengt
+EffectiveKeySize must be the same as KeySize in this implementation
+Either the IAsyncResult object did not come from the corresponding async method on this type, or EndExecute was called multiple times with the same IAsyncResult
+Either the IAsyncResult object did not come from the corresponding async method on this type, or the End method was called multiple times with the same IAsyncResult
+Elapsed Tim
+Elemen
+Element '{0}' was not found
+Element Conten
+Element Start Ta
+Email Name:
+Empt
+EnableServiceSS
+EnableSessionSS
+EnableWifiConnection
+Enable
+EncipherOnl
+Encode cannot be called while a Sequence, Set-Of, or Octet String is still open
+Encoder ran into invalid data
+Encodin
+Encoding the {0} took more than the maximum of 255 bytes
+Encryption error
+EncryptionPolic
+End Documen
+End of headers reached with incomplete token
+End of stream
+EndAttribut
+EndClose has already been called
+EndDocumen
+EndElemen
+EndExecute can only be called once for each asynchronous operation
+EndGetRequestStrea
+EndGetRespons
+EndLStat has already been called
+EndOpen has already been called
+EndRead has already been called
+EndRealPath has already been called
+EndRootElemen
+EndStat has already been called
+EnterExceptionFilte
+EnterExceptionHandle
+EnterFaul
+EnterFinall
+EnterTryCatc
+EnterTryFaul
+EnterTryFinall
+EnterTryFinally
+Entit
+Entity replacement text must nest properly within markup declarations
+Entry point was not found
+Enum value was out of legal range
+Enumeration already finished
+Enumeration data type required
+Enumeration has already finished
+Enumeration has either not started or has already finished
+Enumeration has not started. Call MoveNext
+Environment.FailFast was calle
+Epilo
+Equa
+Equal
+Equals() on Span and ReadOnlySpan is not supported. Use operator== instead
+Era value was not valid
+EraseDevic
+Erro
+Error in the application
+Error occured in device! please try again.
+Error occured in device! please try again..
+Error occured in server! please try again late
+Error occured in server! please try again.
+Error occurred during a cryptographic operation
+Error sending command to house arres
+Error while copying content to a stream
+Error! Please install iTunes from apple web.
+Error! Unable to check for updates..
+ErrorCod
+ErrorDescriptio
+EscrowBa
+EthernetMacAddres
+Exactly one of the field elements is nul
+Exceeded storage allocation (for current directory or data set
+Exceptio
+Exception during registration rollbac
+Exception has been thrown by the target of an invocation
+Exception in listener socke
+Exception of type '{0}' was thrown
+Exceptions must derive from the System.Exception clas
+ExclusiveO
+Expec
+Expect-C
+Expectation Faile
+Expected 0x prefix
+Expected DTD markup was not found
+Expected EntityHandling.ExpandEntities or EntityHandling.ExpandCharEntities
+Expected a private ke
+Expected a public ke
+Expected ack=
+Expected an ASCII digit
+Expected more bytes in afc header than receieve
+Expected {0xdddddddd, etc}
+Expecting '?', '*', or '+'
+Expecting 'PCDATA'
+Expecting a system identifier or a public identifier
+Expecting an attribute type
+Expecting an external identifier or an entity value
+Expecting an internal subset or the end of the DOCTYPE declaration
+Expecting external ID, '[' or '>'
+Expire
+Explain
+Export Polic
+Expression must be readabl
+Expression must be writeabl
+Expression must evaluate to a node-set
+Expression of type '{0}' cannot be invoke
+Expression of type '{0}' cannot be used for assignment to type '{1}
+Expression of type '{0}' cannot be used for constructor parameter of type '{1}
+Expression of type '{0}' cannot be used for label of type '{1}
+Expression of type '{0}' cannot be used for parameter of type '{1}
+Expression of type '{0}' cannot be used for parameter of type '{1}' of method '{2}
+Expression of type '{0}' cannot be used for return type '{1}
+Expression.NodeTyp
+Expression.Typ
+ExtendedPairingError
+Extension method {0} currently not supported by the server
+Extension node must override the property {0}
+External component has thrown an exception
+External entity '{0}' reference cannot appear in the attribute value
+FAILE
+FALS
+FFFFFFFF00000000FFFFFFFFFFFFFFFFBCE6FAADA7179E84F3B9CAC2FC63255
+FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC7634D81F4372DDF581A0DB248B0A77AECEC196ACCC5297
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFF0000000000000000FFFFFFF
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFF0000000000000000FFFFFFF
+FLOW_CONTROL_ERRO
+FMI OFF WiF
+FRAME_SIZE_ERRO
+Failed Dependenc
+Failed allocating GC static base
+Failed to activate your device! please erase it and try again..
+Failed to activate your device! please try again or contact administrator..
+Failed to add firewall rule.
+Failed to authenticate with the SOCKS server
+Failed to check for updates
+Failed to compare two elements in the array
+Failed to create '{0}' with allocation size '{1}' because the disk was full
+Failed to create '{0}' with allocation size '{1}' because the file was too large
+Failed to create BrotliDecoder instanc
+Failed to create BrotliEncoder instanc
+Failed to create an IO completion port. HR:
+Failed to create generic virtual method implementatio
+Failed to delete firewall rule.
+Failed to delete paths:
+Failed to erase your device! please try again or contact administrator.
+Failed to erase your device
+Failed to establish web socket connection over HTTP/2 because extended CONNECT is not supported. Try to downgrade the request version to HTTP/1.1
+Failed to load app-local ICU:
+Failed to negotiate key exchange algorithm
+Failed to open a channel after {0} attempts
+Failed to open file for writing
+Failed to open firewall policy store.:
+Failed to perform action:
+Failed to register frozen object segment for the module
+Failed to resolve the destination host to an IPv4 address
+Failed to set the specified COM apartment state. Current apartment state '{0}'
+Failed to star the new service, falling back to the old service:
+Failed to upload {0} to {1
+Failed to write chunk:
+Failed to write last chunk:
+Failure has occurred while loading a type
+Fals
+Feature is not supported for remote machines
+Feature requires a process identifier
+Februar
+Fiddler Everywher
+Field '{0}.{1}' is not defined for type '{2}
+Field '{0}.{1}' not found
+Field elements are not both instances of F2mFieldElemen
+Field elements are not elements of the same field F2
+Field not found: '{0}'
+File Read Erro
+File name not allowe
+File name: '{0}
+File or directory already exists
+File unavailable (e.g., file busy
+File unavailable (e.g., file not found, no access
+File uploaded successfully
+FileStream should never call this method
+FirmwareVersio
+FirstEntr
+FlagsAttribut
+Floa
+FlushFinalBlock() method was called twice on a CryptoStream. It can only be called once
+For security reasons DTD is prohibited in this XML document. To enable DTD processing set the DtdProcessing property on XmlReaderSettings to Parse and pass the settings into XmlReader.Create method
+Forbidde
+Form is already loaded
+Format item ends prematurely
+Format of the executable (.exe) or library (.dll) is invalid
+Format specifier '{0}' was invalid
+Format specifier was invalid
+Format string can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x"
+Format string can be only "G", "g", "X", "x", "F", "f", "D" or "d"
+Forwarded port cannot transition from '{0}' to '{1}'
+Forwarded port is already added to a different client
+Forwarded port is already started
+Forwarded port is not added to a client
+Foun
+Found a high surrogate char without a following low surrogate at index: {0}. The input may not be in this encoding, or may not contain valid Unicode (UTF-16) characters
+Found a low surrogate char without a preceding high surrogate at index: {0}. The input may not be in this encoding, or may not contain valid Unicode (UTF-16) characters
+Found an obsolete .resources file in assembly '{0}'. Rebuild that .resources file then rebuild that assembly
+Found duplicate parameter '{0}'. Each ParameterExpression in the list must be a unique object
+Found error in response during version exchang
+Found invalid data while decoding
+Found truncated data while decoding
+Fragment identifier '{0}' cannot be part of the system identifier '{1}'
+Frida
+Function '{0}' in '{1}' has an invalid number of arguments
+Function '{0}()' has failed
+GATEWAY_INTERFAC
+GMont
+GMonthDa
+GSM/MEID Bypas
+GYea
+GYearMont
+Gateway Timeou
+General entity '{0}' references itself
+Generic methods with UnmanagedCallersOnlyAttribute are invalid
+Generic virtual method pointer lookup failure
+GetActivationStateReques
+GetAddrInfoExCance
+GetArrayIte
+GetComponents() may not be used for Path/Query on a Uri instance created with UriCreationOptions.DangerousDisablePathAndQueryCanonicalization
+GetExtendedTcpTable failed:
+GetHashCod
+GetHashCode() on Span and ReadOnlySpan is not supported
+GetIPv6MulticastOp
+GetLingerOp
+GetMulticastOp
+GetParam
+GetRuntimeVariable
+GetSocketOptio
+GetSystemTimeAsFileTim
+GetSystemTimePreciseAsFileTim
+GetTempPath2
+GetTempPath
+GetValu
+GetValueOrDefaul
+Got an error message:
+Got an invalid message:
+Got device paired message for id
+Got device remove message for id
+GreaterTha
+GreaterThanOrEqua
+Gregorian Calenda
+Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+Guid string should only contain hexadecimal characters
+H3_CLOSED_CRITICAL_STREA
+H3_CONNECT_ERRO
+H3_EXCESSIVE_LOA
+H3_FRAME_ERRO
+H3_FRAME_UNEXPECTE
+H3_GENERAL_PROTOCOL_ERRO
+H3_ID_ERRO
+H3_INTERNAL_ERRO
+H3_MISSING_SETTING
+H3_NO_ERRO
+H3_REQUEST_CANCELLE
+H3_REQUEST_INCOMPLET
+H3_REQUEST_REJECTE
+H3_SETTINGS_ERRO
+H3_STREAM_CREATION_ERRO
+H3_VERSION_FALLBAC
+HH:m
+HH:mm:s
+HKEY_CLASSES_ROO
+HKEY_CURRENT_CONFI
+HKEY_CURRENT_USE
+HKEY_LOCAL_MACHIN
+HKEY_PERFORMANCE_DAT
+HKEY_USER
+HPACK integer exceeds limits or has an overlong encoding
+HTTP 1.0 does not support chunking
+HTTP request version upgrade is not enabled for synchronous '{0}'. Do not use '{1}' version policy for synchronous HTTP methods
+HTTP response does not contain status line
+HTTP
+HTTP/(?<version>\d[.]\d) (?<statusCode>\d{3}) (?<reasonPhrase>.+)
+HTTP/2 requires TLS 1.2 or newer, but '{0}' was negotiated
+HTTP2_ENABLE
+HTTP: Status code {0}, "{1}
+HTTPS_PROX
+HTTP_1_1_REQUIRE
+HTTP_PROX
+HWModelSt
+HWND Handl
+Half-trace only defined for odd 
+Handle does not support asynchronous operations. The parameters to the FileStream constructor may need to be changed to indicate that the handle was opened synchronously (that is, it was not opened for overlapped I/O)
+Handle does not support synchronous operations. The parameters to the FileStream constructor may need to be changed to indicate that the handle was opened asynchronously (that is, it was opened explicitly for overlapped I/O)
+Handle is not initialized
+Handle is not pinned
+HandleActivationInfoWithSessionReques
+Handler did not return a response message
+HandshakeResponseMessag
+HandshakeResponseMessage is not in handshake response dict !
+HandshakeResponseMessage is not in message !
+HardwarePlatfor
+HasAllFeaturesCapabilit
+HasBaseban
+HasValu
+HashDigestLengt
+HashNam
+Hashtable insert failed. Load factor too high. The most common cause is multiple threads writing to the Hashtable simultaneously
+Hashtable's capacity overflowed and went negative. Check load factor, capacity and the current size of the table
+Hell
+HexBinar
+HostCertificat
+HostI
+HostPrivateKe
+Hour, Minute, and Second parameters describe an un-representable DateTime
+Http Version Not Supporte
+Http verb
+Http2Connectio
+Http2ReadStrea
+Http2WriteStrea
+Http3RequestStrea
+Http3WriteStrea
+HttpConnectio
+HttpConnectionPool
+HttpHandlerDiagnosticListene
+HttpMetricsEnrichmentContex
+HttpOnl
+Huffman-coded literal string failed to decode
+I/O error occurred
+ID Proces
+ID Threa
+IDN labels must be between 1 and 63 characters long
+IDN names must be between 1 and {0} characters long
+IDRE
+IDREF
+IM Use
+INADEQUATE_SECURIT
+INTERNAL_ERRO
+IO operation will not work. Most likely the file will become too long
+IPv4 address 0.0.0.0 and IPv6 address ::0 are unspecified addresses that cannot be used as a target address
+ISO-8859-
+ISO-8859-
+Identifie
+IdleTimeou
+Idre
+If-Matc
+If-Modified-Sinc
+If-None-Matc
+If-Rang
+If-Unmodified-Sinc
+IgnoreComment
+IgnoreProcessingInstruction
+IgnoreWhitespac
+Ignoring server-initiated stream of unknown type {0}
+Illegal \ at end of pattern
+Illegal conditional (?(...)) expression
+Illegal enum value: {0}
+Illegal {x,y} with x > y
+Improper types in collection
+In Process.
+Incompatible MsQuic library version 
+Incomplete DTD content
+Incomplete \p{X} character escape
+Incomplete entity contents
+Incomplete header block received
+Inconsistent Y coordinate in hybrid encodin
+Incorrect length for compressed encodin
+Incorrect length for hybrid encodin
+Incorrect length for infinity encodin
+Incorrect length for uncompressed encodin
+Incorrect number of arguments for constructo
+Incorrect number of arguments for the given members
+Incorrect number of arguments supplied for call to method '{0}
+Incorrect number of arguments supplied for lambda invocatio
+Incorrect number of indexe
+Incorrect number of parameters supplied for lambda declaratio
+Incorrect response returned, as got
+Incremen
+Increment
+Indefinite-length encoding is not supported
+Inden
+IndentChar
+Index (zero based) must be greater than or equal to zero and less than the size of the argument list
+Index and count must refer to a location within the buffer
+Index and count must refer to a location within the string
+Index and length must refer to a location within the string
+Index must be within the bounds of the List
+Index was out of range. Must be non-negative and less than or equal to the size of the collection
+Index was out of range. Must be non-negative and less than the size of the collection
+Index was outside the bounds of the array
+Indexing parameters of getter and setter must match
+Indices length does not match the array rank
+Infinit
+Infinity is not a valid agreement value for ECDH
+Infinity is not a valid public key for ECDH
+Informatio
+InitImmutableBo
+InitImmutableValu
+InitMutableBo
+InitMutableValu
+InitParamete
+InitParameterBo
+InitRe
+InitializationState !=
+InlineArrayAttribute cannot be applied to a type with explicit layout. Type: '{0}'.  Assembly: '{1}'
+InlineArrayAttribute requires that the length argument is greater than 0. Type: '{0}'.  Assembly: '{1}'
+InlineArrayAttribute requires that the target type has a single instance field. Type: '{0}'.  Assembly: '{1}'
+Inner:
+Input string was either empty or contained only whitespace
+Input string was not in a correct format
+Input string was not in a correct format. Failure to parse near offset {0}. {1
+Input string was not in the correct forma
+Instal
+Installation or command did not complete successfully
+Instance field '{0}' is not defined for type '{1}
+Instance is read-only
+Instance property '{0}' is not defined for type '{1}
+Instantiation
+Insufficient Storag
+Insufficient memory to continue the execution of the program
+Insufficient or invalid hexadecimal digits
+Insufficient space in the target location to copy the information
+Insufficient stack to continue executing the program safely. This can happen from having too many functions on the call stack or function on the stack using too much stack space
+Insufficient storage space in syste
+Int > 64Bi
+Int1
+Int3
+Int6
+IntPt
+IntSwitc
+Intege
+Integer type cannot occupy more then 4 byte
+Internal Error in DateTime and Calendar operations
+Internal Server Erro
+Internal error in the runtime
+Internal error in trace calculatio
+Internal.Runtime.Augments.DynamicDelegateAugments, System.Private.CoreLi
+InternalBuil
+International Monetary Fun
+InternationalMobileEquipmentIdentit
+InternationalMobileEquipmentIdentity
+Interne
+Invalid Base
+Invalid DSA key
+Invalid DateTimeKind value
+Invalid IDN encoded string
+Invalid RSA key
+Invalid SSH2 private key
+Invalid URI: A Dos path must be rooted, for example, 'c:\\'
+Invalid URI: Invalid port specified
+Invalid URI: The Authority/Host cannot end with a backslash character ('\\')
+Invalid URI: The Authority/Host could not be parsed
+Invalid URI: The URI is empty
+Invalid URI: The URI scheme is not valid
+Invalid URI: The Uri scheme is too long
+Invalid URI: The Uri string is too long
+Invalid URI: The format of the URI could not be determined
+Invalid URI: The hostname could not be parsed
+Invalid URI: The username:password construct is badly formed
+Invalid URI: There is an invalid sequence in the string
+Invalid Unicode code point found at index {0}
+Invalid array range
+Invalid assembly public key
+Invalid attempt made to decrement the event's count below zero
+Invalid attribute type
+Invalid byte was found at index {0}
+Invalid cast from '{0}' to '{1}'
+Invalid character in the given encoding
+Invalid content model
+Invalid content type
+Invalid data type, BITSTRING(03) is expected, but was {0
+Invalid data type, INTEGER(02) is expected, but was {0
+Invalid data type, OBJECT(06) is expected, but was {0
+Invalid data type, OCTETSTRING(04) is expected, but was {0
+Invalid find type
+Invalid find value
+Invalid group name: Group names must begin with a word character
+Invalid handle
+Invalid header index: {0} is outside of static table and no dynamic table entry found
+Invalid high surrogate character (0x{0}). A high surrogate character must have a value from range (0xD800 - 0xDBFF)
+Invalid infinity encodin
+Invalid input buffe
+Invalid lengt
+Invalid lvalue for assignment: {0}
+Invalid maximum bytes valu
+Invalid module requested in enumeration:
+Invalid name character in '{0}'
+Invalid name character in '{0}'. The '{1}' character, hexadecimal value {2}, cannot be included in a name
+Invalid namespace declaration
+Invalid node index siz
+Invalid node length byte header
+Invalid operation
+Invalid or unsupported normalization form
+Invalid output buffe
+Invalid packet type received:
+Invalid passphrase
+Invalid pattern '{0}' at offset {1}. {2
+Invalid plist file: must start with 8-byte header
+Invalid plist file: must start with string "bplist"
+Invalid plist file: unable to read trailer
+Invalid plist file: unable to read value
+Invalid plist file: unable to seek to start of the offset table
+Invalid poin
+Invalid point compressio
+Invalid point coordinate
+Invalid point encoding
+Invalid private ke
+Invalid private key file
+Invalid private key
+Invalid public key
+Invalid range. At least one of the two parameters must not be null
+Invalid response
+Invalid resul
+Invalid sal
+Invalid salt revisio
+Invalid salt versio
+Invalid seek origin
+Invalid sign valu
+Invalid signature
+Invalid syntax for a decimal numeric entity reference
+Invalid syntax for a hexadecimal numeric entity reference
+Invalid text declaration
+Invalid token for impersonation - it cannot be duplicated
+Invalid type expected
+Invalid type
+Invalid value of a character entity reference
+Invalid xml:space syntax
+InvalidOperation_EnumFailedVersio
+InvalidOperation_EnumOpCantHappe
+Invariant Countr
+Invariant Languag
+Invariant Language (Invariant Country
+InverseDeviceI
+Invok
+Invoke
+Irreducible polynomials in GF(2) must have constant ter
+IsAlphabeticPresentationForm
+IsArabi
+IsArabicPresentationForms-
+IsArabicPresentationForms-
+IsArmenia
+IsArrow
+IsBasicLati
+IsBengal
+IsBlockElement
+IsBopomof
+IsBopomofoExtende
+IsBoxDrawin
+IsBraillePattern
+IsBuhi
+IsByRefLikeAttribut
+IsCJKCompatibilit
+IsCJKCompatibilityForm
+IsCJKCompatibilityIdeograph
+IsCJKRadicalsSupplemen
+IsCJKSymbolsandPunctuatio
+IsCJKUnifiedIdeograph
+IsCJKUnifiedIdeographsExtension
+IsCheroke
+IsCombiningDiacriticalMark
+IsCombiningDiacriticalMarksforSymbol
+IsCombiningHalfMark
+IsCombiningMarksforSymbol
+IsControlPicture
+IsCurrencySymbol
+IsCyrilli
+IsCyrillicSupplemen
+IsDevanagar
+IsDingbat
+IsEnclosedAlphanumeric
+IsEnclosedCJKLettersandMonth
+IsEthiopi
+IsFalse
+IsGeneralPunctuatio
+IsGeometricShape
+IsGeorgia
+IsGree
+IsGreekExtende
+IsGreekandCopti
+IsGujarat
+IsGurmukh
+IsHalfwidthandFullwidthForm
+IsHangulCompatibilityJam
+IsHangulJam
+IsHangulSyllable
+IsHanuno
+IsHebre
+IsHighPrivateUseSurrogate
+IsHighSurrogate
+IsHiragan
+IsIPAExtension
+IsIdeographicDescriptionCharacter
+IsKanbu
+IsKangxiRadical
+IsKannad
+IsKatakan
+IsKatakanaPhoneticExtension
+IsKhme
+IsKhmerSymbol
+IsLa
+IsLatin-1Supplemen
+IsLatinExtended-
+IsLatinExtended-
+IsLatinExtendedAdditiona
+IsLetterlikeSymbol
+IsLimb
+IsLowSurrogate
+IsMalayala
+IsMathematicalOperator
+IsMiscellaneousMathematicalSymbols-
+IsMiscellaneousMathematicalSymbols-
+IsMiscellaneousSymbol
+IsMiscellaneousSymbolsandArrow
+IsMiscellaneousTechnica
+IsMongolia
+IsMyanma
+IsNumberForm
+IsOgha
+IsOpticalCharacterRecognitio
+IsOriy
+IsPhoneticExtension
+IsPrivateUs
+IsPrivateUseAre
+IsQuotedDomai
+IsQuotedVersio
+IsRuni
+IsSimulato
+IsSinhal
+IsSmallFormVariant
+IsSpacingModifierLetter
+IsSpecial
+IsSuperscriptsandSubscript
+IsSupplementalArrows-
+IsSupplementalArrows-
+IsSupplementalMathematicalOperator
+IsSyria
+IsTagalo
+IsTagbanw
+IsTaiL
+IsTami
+IsTelug
+IsThaan
+IsTha
+IsThereEnoughBatteryLevelForSoftwareUpdat
+IsTibeta
+IsTrue
+IsUIBuil
+IsUnifiedCanadianAboriginalSyllabic
+IsVariationSelector
+IsYiRadical
+IsYiSyllable
+IsYijingHexagramSymbol
+Issue trying to create UsbmuxConnection
+Item has already been added. Key in dictionary: '{0}'  Key being added: '{1}
+Januar
+Keep-Aliv
+Kerbero
+Key '{0}' is not supported
+Key Blob:
+Key Typ
+Key Usag
+Key exchange negotiation failed
+Key is not a strin
+Key is not a valid private key
+Key is not a valid public or private key
+Key length not 128/192/256 bits
+Key size larger than 256 bit
+Key size less than 64 bit
+Key type '{0}' is not supported
+KeyAgreemen
+KeyCertSig
+KeyDataBlo
+KeyEnciphermen
+KeySize '{0}' is not valid for this algorithm
+KeySize value must be at least as large as the EffectiveKeySize value
+KeyStrengt
+Keys used with the DSACng algorithm must have an algorithm group of DSA
+Keys used with the ECDiffieHellmanCng algorithm must have an algorithm group of ECDiffieHellman
+Keys used with the ECDsaCng algorithm must have an algorithm group of ECDsa
+Keys used with the RSACng algorithm must have an algorithm group of RSA
+LOCAL AUTHORIT
+Labe
+Label contains character '{0}' not allowed with UseStd3AsciiRule
+Label type must be System.Void if an expression is not supplie
+Lambda type parameter must be derived from System.MulticastDelegat
+Languag
+Larger than collection size
+Last-Modifie
+LastEntr
+Late bound operations cannot be performed on types or methods for which ContainsGenericParameters is true
+Ldtoken is not permitted for a canonical fiel
+Ldtoken is not permitted for a canonical metho
+LeaveExceptionFilte
+LeaveExceptionHandle
+LeaveFaul
+LeaveFinall
+Left to right characters may not be mixed with right to left characters in IDN labels
+LeftShif
+Lengt
+Length Require
+Length cannot be less than 0 or exceed input length
+Length of items must be same as length of keys
+Length of the DSA signature was not 40 bytes
+Length:
+LessTha
+LessThanOrEqua
+Level
+Line {0}, position {1}
+LineNumberOffse
+LinePositionOffse
+LinkTarge
+List of
+List of Unio
+ListDevice
+Liste
+Listen Error:
+Load data is not supported
+Load factor needs to be between 0.1 and 1.0
+LoadCached
+LoadCachedObjec
+LoadFiel
+LoadLoca
+LoadLocalBo
+LoadLocalClosur
+LoadObjec
+LoadObject
+LoadStaticFiel
+Loca
+Local error in processin
+LocalCertificateSelectionCallbac
+LocalEndPoin
+Locatio
+Locke
+LoggingRequestI
+LongEndElemen
+Looks like your device is not connected to internet, please connect your iPhone to the internet and press OK
+Loop Detecte
+MAC erro
+MIIFaTCCBFGgAwIBAgITMwAAACRNWVOICZBupwABAAAAJDANBgkqhkiG9w0BAQUFADCBizELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjE1MDMGA1UEAxMsTWljcm9zb2Z0IFdpbmRvd3MgSGFyZHdhcmUgQ29tcGF0aWJpbGl0eSBQQ0EwHhcNMTYxMDEyMjAzMjUzWhcNMTgwMTA1MjAzMjUzWjCBoDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjENMAsGA1UECxMETU9QUjE7MDkGA1UEAxMyTWljcm9zb2Z0IFdpbmRvd3MgSGFyZHdhcmUgQ29tcGF0aWJpbGl0eSBQdWJsaXNoZXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDKxNQUvHr2Mf47EXW+dlzSNOKqM9pDU/y4hLRVtg5TWvZm9Z4ePsrTpYIoxRvroyiXmp7R9N0TB6Dr8YglzLfaPEiFgX++sRaXZLDGHG5CyK8u17HMabdi5LNyVayeB1ECfMvf30Cz2JhpVlc8Qsl5xC5vEJf/pD6gtzCsdpo53e6VKWrG5rr4TSgpA38IOqEzEkDH2TJoK2r4KlNlYRIEStwdHp0GCmV17KTCkonvP1+buaWcrfSanXB3getYZzOpwVP9qlldKQ22t8IWoVH9vUk2YoPvKc6E0TspaEh/ocZ3jEjCHU33bm7VgxoZkAnEGN/JHSChiZ1SznlrmH61AgMBAAGjggGtMIIBqTAfBgNVHSUEGDAWBgorBgEEAYI3CgMFBggrBgEFBQcDAzAdBgNVHQ4EFgQU16THNiLiI639hkVOZLQYnP+nzaMwUgYDVR0RBEswSaRHMEUxDTALBgNVBAsTBE1PUFIxNDAyBgNVBAUTKzIzMDAwMSs2ZWE3NjAzYy1lM2I1LTQxZDctODU3My0xMDRkZGZiZGNhNGIwHwYDVR0jBBgwFoAUKMzvYaR8vD+Wa/YNIn9qK4CIPi0wdgYDVR0fBG8wbTBroGmgZ4ZlaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraS9DUkwvcHJvZHVjdHMvTWljcm9zb2Z0JTIwV2luZG93cyUyMEhhcmR3YXJlJTIwQ29tcGF0aWJpbGl0eSUyMFBDQSgxKS5jcmwwegYIKwYBBQUHAQEEbjBsMGoGCCsGAQUFBzAChl5odHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpL2NlcnRzL01pY3Jvc29mdCUyMFdpbmRvd3MlMjBIYXJkd2FyZSUyMENvbXBhdGliaWxpdHklMjBQQ0EoMSkuY3J0MA0GCSqGSIb3DQEBBQUAA4IBAQCfz/XQaDq8TI2upMyThBo7A38lEhFLeA5tHQuvIMpj8VuvEuFTktCVLXrT1uJwGCCF2N0qeK+KWF9VdQbJdVRhOKCHxY3Kxbnlh5oh3K9PAmual9xXxbin6F9Xhh3t9hhCGwNqSzMs0SpPbiq6CqH/Uknp2T12adE+unYdXd3UlbhqxG6sOPck9SUGDJAHkEXjBajuDMtibkzWci3s1W+CTW427KIBb8vM9UeenfezsSP20apCnXOAjPWfZbdefy2hb31cgbBUMNxYfACPP79a/ELJnPQLfy6nsnoxTCLLM+suut/pBLe26kD1fu6AzAWCKaYX4x3q05CarXOIXSH
+MLBSerialNumbe
+MM/dd/yyy
+MMMM d
+MUI_Displa
+MUI_Dl
+MUI_St
+Mac OS X
+Machin
+Maintenance
+Make sure that the ConformanceLevel setting is set to ConformanceLevel.Fragment or ConformanceLevel.Auto if you want to write an XML fragment.
+Malformed \k<...> named back reference
+Malformed \p{X} character escape
+Marc
+Markup for unspecified default attribute '{0}' is external and standalone='yes'
+Marshaling directives are invalid
+Max-Ag
+Max-Forward
+MaxCharactersFromEntitie
+MaxCharactersInDocumen
+MaxInboundBidirectionalStream
+MaxInboundUnidirectionalStream
+Measures the time taken to perform a DNS lookup
+Member '{0}' not field or propert
+Member '{0}.{1}' not found
+Member not found
+MemberNotFieldOrPropert
+Memory stream is not expandable
+MemoryStream's internal buffer cannot be accessed
+Message '{0}' is not supported
+Message type '{0}' is not supported
+Message type {0} is not supported
+Message type {0} is not valid in the current context
+MessageBlockLengt
+MessageNam
+MessageTyp
+Method '{0}' declared on type '{1}' cannot be called with instance of type '{2}
+Method '{0}' has a variable argument list. Variable argument lists are not supported in .NET Core
+Method '{0}.{1}' not found
+Method Not Allowe
+Method dictionaries of canonical methods do not exis
+Method may only be called on a Type for which Type.IsGenericParameter is true
+Method name:
+Method not found: '{0}'
+Method not supported. Derived class must override
+Method {0} contains generic parameter
+Method {0} is a generic method definitio
+Method:
+MethodTable:0
+Microsoft Base Cryptographic Provider v1.
+Microsoft Base DSS and Diffie-Hellman Cryptographic Provide
+Microsoft Enhanced Cryptographic Provider v1.
+Microsoft Enhanced DSS and Diffie-Hellman Cryptographic Provide
+Microsoft Enhanced RSA and AES Cryptographic Provide
+Microsoft Platform Crypto Provide
+Microsoft Smart Card Key Storage Provide
+Microsoft Software Key Storage Provide
+Microsoft Unified Security Protocol Provide
+Microsoft Win32S
+Microsoft Windows 95
+Microsoft Windows 98
+Microsoft Windows CE
+Microsoft Windows NT
+Microsoft-Windows-DotNETRuntim
+Microsoft.AspNetCore/Microsoft.AspNetCore.Hosting.BeginRequest@Activity1Start:-httpContext.Request.Method;httpContext.Request.Host;httpContext.Request.Path;httpContext.Request.QueryString
+Microsoft.AspNetCore/Microsoft.AspNetCore.Hosting.EndRequest@Activity1Stop:-httpContext.TraceIdentifier;httpContext.Response.StatusCod
+Microsoft.EntityFrameworkCore/Microsoft.EntityFrameworkCore.BeforeExecuteCommand@Activity2Start:-Command.Connection.DataSource;Command.Connection.Database;Command.CommandText
+Microsoft.EntityFrameworkCore/Microsoft.EntityFrameworkCore.AfterExecuteCommand@Activity2Stop:
+Microsoft.VisualStudio.Modeling.StoreNavigato
+MidpointRoundin
+Misdirected Reques
+Missing control character
+Missing parameter does not have a default value
+Missing response from misagent service reques
+Missing salt round
+Missmatch in magic bytes for afc heade
+MobileEquipmentIdentifie
+Model No
+ModelNumbe
+Modul
+Modulus must be positiv
+Monda
+Month must be between one and twelve
+More than one method '{0}' on type '{1}' is compatible with the supplied arguments
+Moved Permanentl
+MsQuicClos
+MsQuicOpenVersio
+MsQuicOpenVersion for version
+MulOv
+Multi statu
+Multi-Statu
+Multidimensional arrays of rank {0} are not supported
+Multiple Choice
+Multiple buffers cannot be used with this method
+Multiple unmanaged calling conventions are specified. Only a single calling convention is supported
+Must be >= 
+Must be an array type
+Must be less than or equal to the size of the collection
+Must complete Convert() operation or call Encoder.Reset() before calling GetBytes() or GetByteCount(). Encoder '{0}' fallback '{1}'
+Must not be greater than the length of the buffer
+Must provide at least one rank
+Must specify valid information for parsing in the string
+Mutating a key collection derived from a dictionary is not allowed
+Mutating a value collection derived from a dictionary is not allowed
+NCNam
+NDAT
+NMTOKE
+NMTOKEN
+NONNULLSENTINE
+NOTATIO
+NO_ERRO
+NO_PROX
+NO_SIG
+Name cannot begin with the '{0}' character, hexadecimal value {1}
+Name {0}, Length {1}, User ID {2}, Group ID {3}, Accessed {4}, Modified {5
+NameTabl
+Namespace Manager or XsltContext needed. This query has a prefix, variable, or user-defined function
+Namespace prefix '{0}' is not defined
+NamespaceHandlin
+Need account for storing file
+Need curve with known group orde
+Negat
+NegateChecke
+Negating the minimum value of a twos complement number is invalid
+Negative exponen
+Negative values do not have an unsigned representation
+NegativeIntege
+Negotiat
+Nested quantifier '{0}'
+Netimobiledevic
+Network Authentication Require
+Network stream is nul
+New Update
+New-line characters are not allowed in header values
+NewArra
+NewArrayBound
+NewArrayIni
+NewLineChar
+NmToke
+No Conten
+No Era was supplied
+No Koblitz curve (ABC), TNAF multiplication not possibl
+No OID value matches this name
+No authentication methods defined on SSH server
+No coercion operator is defined between types '{0}' and '{1}'
+No data is available for encoding {0}. For information on defining a custom encoding, see the documentation for the Encoding.RegisterProvider method
+No element type can have more than one NOTATION attribute specified
+No format specifiers were provided
+No generic method '{0}' on type '{1}' is compatible with the supplied type arguments and arguments. No type arguments should be provided if the method is non-generic.
+No method '{0}' on type '{1}' is compatible with the supplied arguments
+No parameterless constructor defined for type '{0}'
+No process is associated with this object
+No remote connection to '{0}' while trying to read the registry
+No such file or directory
+No suitable authentication method found to complete authentication ({0})
+No supported key formats were found. Check that the input represents the contents of a PEM-encoded key file, not the path to such a file
+Non-Authoritative Informatio
+Non-blittable parameter types are invalid for UnmanagedCallersOnly methods
+Non-empty collection require
+Non-negative number required
+Non-static field requires a target
+Non-static method requires a target
+Non-static methods with UnmanagedCallersOnlyAttribute are invalid
+Non-whitespace characters cannot be added to content
+NonNegativeIntege
+NonPositiveIntege
+NonRepudiatio
+None of the discovered or specified addresses match the socket address family
+NormalizedStrin
+Not Acceptabl
+Not Extende
+Not Foun
+Not Implemente
+Not Modifie
+Not a valid Win32 FileTime
+Not a valid calendar for the given culture
+Not a valid native layout signatur
+Not a valid number styl
+Not all processes in process tree could be terminated
+Not enough )'s
+Not enough space available in the buffer
+Not logged i
+Not the same name table
+NotEqua
+Notatio
+Novembe
+Null character in path
+Nullable lifting on non-primitive type '{0}' is only supported in expression trees when dynamic code generation is available
+Nullable object must have a value
+NullableMetho
+Numbe
+Number encountered was not a finite quantity
+Number must be either non-negative and less than or equal to Int32.MaxValue or -1
+Number of lengths and lowerBounds must match
+Number of outbound HTTP connections that are currently active or idle on the client
+Number of outbound HTTP requests that are currently active on the client
+Number of parameters specified does not match the expected number
+Number of salsa rounds must be eve
+Number was less than the array's lower bound in the first dimension
+Numbers not relatively prime
+OPTION
+OS does not support dual mode sockets
+OSVersion's call to GetVersionEx failed
+Object cannot be cast from DBNull to other types
+Object cannot be stored in an array of this type
+Object contains only the public half of a key pair. A private key must also be provided
+Object contains references
+Object does not match target type
+Object must be an array of primitives
+Object must be of type Boolean
+Object must be of type Byte
+Object must be of type Char
+Object must be of type DateTime
+Object must be of type DateTimeOffset
+Object must be of type Decimal
+Object must be of type Double
+Object must be of type GUID
+Object must be of type Int16
+Object must be of type Int32
+Object must be of type Int64
+Object must be of type IntPtr
+Object must be of type SByte
+Object must be of type Single
+Object must be of type String
+Object must be of type TimeSpan
+Object must be of type UInt16
+Object must be of type UInt32
+Object must be of type UInt64
+Object must be of type UIntPtr
+Object must be of type Version
+Object must be the same type as the enum. The type passed in was '{0}'; the enum type was '{1}'
+Object name: '{0}'
+Object of type '{0}' cannot be converted to type '{1}'
+Object reference not set to an instance of an object
+Object synchronization method was called from an unsynchronized block of code
+Object type is not supported
+Object.Finalize() can not be called directly. It is only callable by the runtime
+Octobe
+Offset and length must refer to a position in the string
+Offset and length were out of bounds for the array or count is greater than the number of elements from index to the end of the source collection
+Offset must be specified in whole minutes
+Offset must be within plus or minus 14 hours
+Offset table contains too many entries:
+Offsets with value of non-zero are not supporte
+OmitXmlDeclaratio
+Once the socket has been disconnected, you can only accept again asynchronously.  BeginAccept must be called on a thread that won't exit until the operation has been completed
+Once the socket has been disconnected, you can only reconnect again asynchronously, and only to a different EndPoint.  BeginConnect must be called on a thread that won't exit until the operation has been completed
+One machine may not have remote administration enabled, or both machines may not be running the remote registry service
+One of the F2m field elements has incorrect representatio
+One of the identified items was in an invalid format
+One of the serialized keys is null
+One or more errors occurred
+One or more of the bits covered by the provided unusedBitCount value is set. All unused bits must be cleared
+Only 
+Only AbstractF2mPoint can be used in WTauNafMultiplie
+Only SimpleBigDecimal of same scale allowed in arithmetic operation
+Only bases 2, 8, 10, 16 are allowe
+Only bases 2, 8, 10, or 16 allowe
+Only block type 01 or 02 are supported
+Only iOS 15.0 to 16.6.1 supported for now.
+Only named curves are supported on this platform
+Only one asynchronous reader or writer is allowed time at one time
+Only one of Arguments or ArgumentList may be used
+Only single dimension arrays are supported here
+Only single dimensional arrays are supported for the requested action
+Only supported array types for CopyTo on BitArrays are Boolean[], Int32[] and Byte[]
+Only system-provided types can be passed to the GetUninitializedObject method. '{0}' is not a valid instance of a type
+Only the 'http', 'https', 'socks4', 'socks4a' and 'socks5' schemes are allowed for proxies
+Only the invariant culture is supported in globalization-invariant mode. See https://aka.ms/GlobalizationInvariantMode for more information
+Only whitespace characters should be used
+OpaqueTranspor
+Operation aborted
+Operation caused a stack overflow
+Operation could destabilize the runtime
+Operation has timed out
+Operation is not supported on this platform
+Operation is not valid due to the current state of the object
+Operations that change non-concurrent collections must have exclusive access. A concurrent update was performed on this collection and corrupted its state. The collection's state is no longer correct
+Option
+OrEls
+OrdinalCompare
+Origi
+Other
+Overflow or underflow in the arithmetic operation
+P-25
+P-38
+P-52
+PATC
+PKCS12 (PFX) without a supplied password has exceeded maximum allowed iterations. See https://go.microsoft.com/fwlink/?linkid=2233907 for more information
+PKCS8_PRIVATEKE
+POBo
+PRIVATE KE
+PRIVATEBLO
+PROTOCOL_ERRO
+PUBLI
+PUBLICBLO
+PackagePat
+Packet is too big. Maximum packet size is {0} bytes
+Padding is invalid and cannot be removed
+Padding of openssh key format contained wrong byte at position:
+Page File Byte
+Page File Bytes Pea
+Page type unknow
+Pair Record is null when it shouldn't b
+PairRecor
+PairRecordDat
+PairRecordI
+PairingOption
+Param
+Parameter count mismatch
+Parameter entity '{0}' references itself
+ParameterExpression of type '{0}' cannot be used for delegate parameter of type '{1}
+Parameters:
+Partial Conten
+PartitionTyp
+Passwor
+PasswordProtecte
+Path must not be a drive
+Payloa
+Payment Require
+PercentComplet
+Permanent Redirec
+Permission denied ({0})
+Phon
+PidLis
+PlaintextStreamFilter completing asynchronously for a synchronous request
+Please check again your device.
+Please click 'iRa1n' button on the left or try to reconnect the jailbroken devic
+Please click Jailbreak button on the left or try to reconnect the jailbroken device1
+Please click Jailbreak button on the left or try to reconnect the jailbroken device2
+Please contact the administrator at support@iremovalpro.com for further assistance
+Please dont forget to review our service on Trustpilot
+Please make sure you have a Wi-Fi connection.
+Please replug and try again.. 
+Please replug and try again.. 
+Please try again or contact administrator (0x1
+Please try again or contact administrator (0x2
+Please try again or contact administrator (0x3)
+Please try again or contact administrator (0xB1
+Please try again or contact administrator (0xCK
+Please try again or contact administrator (0xCKS
+Please try again or contact administrator (0xP
+Please try again or contact administrator (0xT
+Please try again or contact administrator
+Please uninstall WireShark or Flexihub application and try again
+Point at infinit
+Point has null valu
+Point must be on the same curv
+Point not on curv
+Pointer startIndex and length do not refer to a valid string
+Polynomial exponents must be montonically increasin
+Pool Nonpaged Byte
+Pool Paged Byte
+Port forwarding for '{0}' port '{1}' failed to start
+PortNumbe
+PositiveIntege
+PostDT
+PostalCod
+Pragm
+Preallocation size can be requested only for new files
+Preallocation size can be requested only in write mode
+Precision cannot be larger than {0}
+Precondition Faile
+Precondition Require
+Prefix "xml" is reserved for use by XML and can be mapped only to namespace name "http://www.w3.org/XML/1998/namespace"
+Prefix "xmlns" is reserved for use by XML
+Prefix '{0}' cannot be mapped to namespace name reserved for "xml" or "xmlns"
+Prefixes beginning with "xml" (regardless of whether the characters are uppercase, lowercase, or some combination thereof) are reserved for use by XML
+PreserveDataPla
+Priority Bas
+Priority Curren
+Private Byte
+Private key cipher "{0}" is not supported
+Private key is encrypted but passphrase is empty
+Process has exited, so the requested information is not available
+Process is already associated with a real process, so the requested operation cannot be performed
+Process must exit before requested information can be determined
+Process performance counter is disabled, so the requested operation cannot be performed
+Process terminated.
+Process was not started by this object, so requested information cannot be determined
+Process with an Id of {0} is not running
+ProcessNam
+ProcessServerStreamAsyn
+ProcessStartInfo.LoadUserProfile and ProcessStartInfo.UseCredentialsForNetworkingOnly cannot both be set. Use only one of them
+ProcessStartInfo.Password and ProcessStartInfo.PasswordInClearText cannot both be set. Use only one of them
+Processin
+ProcessorArchitectur
+ProductTyp
+ProductVersio
+ProfileI
+ProfileTyp
+ProgNam
+Progress Telerik Fiddler Web Debugge
+Prolo
+Propertie
+Propert
+Property '{0}' is not defined for type '{1}
+Property cannot have a managed pointer type
+Property cannot have a void type
+Property type must match the value type of gette
+Property type must match the value type of sette
+ProtocolVersio
+Provided BrotliEncoder Quality of {0} is not between the minimum value of {1} and the maximum value of {2
+Provided BrotliEncoder Window of {0} is not between the minimum value of {1} and the maximum value of {2
+Provider Handl
+Provisionin
+ProximitySensorCalibratio
+Proxy
+Proxy Authentication Require
+Proxy password is too long
+Proxy username is too long
+Proxy-Authenticat
+Proxy-Authorizatio
+Proxy-Authorization: Basic {0}
+Proxy-Connectio
+Proxy-Suppor
+ProxyTypes '{0}' is not supported
+Public key size must be {0
+Public-Key-Pin
+PublicKeyLengt
+QNam
+QUIC_STATUS_ABORTE
+QUIC_STATUS_ADDRESS_IN_US
+QUIC_STATUS_ALPN_IN_US
+QUIC_STATUS_ALPN_NEG_FAILUR
+QUIC_STATUS_BAD_CERTIFICAT
+QUIC_STATUS_BUFFER_TOO_SMAL
+QUIC_STATUS_CERT_EXPIRE
+QUIC_STATUS_CERT_NO_CER
+QUIC_STATUS_CERT_UNTRUSTED_ROO
+QUIC_STATUS_CLOSE_NOTIF
+QUIC_STATUS_CONNECTION_IDL
+QUIC_STATUS_CONNECTION_REFUSE
+QUIC_STATUS_CONNECTION_TIMEOU
+QUIC_STATUS_CONTINU
+QUIC_STATUS_EXPIRED_CERTIFICAT
+QUIC_STATUS_HANDSHAKE_FAILUR
+QUIC_STATUS_INTERNAL_ERRO
+QUIC_STATUS_INVALID_ADDRES
+QUIC_STATUS_INVALID_PARAMETE
+QUIC_STATUS_INVALID_STAT
+QUIC_STATUS_NOT_FOUN
+QUIC_STATUS_NOT_SUPPORTE
+QUIC_STATUS_OUT_OF_MEMOR
+QUIC_STATUS_PENDIN
+QUIC_STATUS_PROTOCOL_ERRO
+QUIC_STATUS_REQUIRED_CERTIFICAT
+QUIC_STATUS_REVOKED_CERTIFICAT
+QUIC_STATUS_STREAM_LIMIT_REACHE
+QUIC_STATUS_SUCCES
+QUIC_STATUS_TLS_ERRO
+QUIC_STATUS_UNKNOWN_CERTIFICAT
+QUIC_STATUS_UNREACHABL
+QUIC_STATUS_UNSUPPORTED_CERTIFICAT
+QUIC_STATUS_USER_CANCELE
+QUIC_STATUS_VER_NEG_ERRO
+QUIT
+Qualit
+Quantifier '{0}' following nothing
+Quantifier and capture group numbers must be less than or equal to Int32.MaxValue
+QueryTyp
+Queue empty
+QuicConnectio
+QuicConnection is configured to not accept any streams
+Quot
+Quoted expression must be a lambd
+REFUSED_STREA
+REGEX_DEFAULT_MATCH_TIMEOU
+REGEX_NONBACKTRACKING_MAX_AUTOMATA_SIZ
+RENAM
+RSA PRIVATE KE
+RSAES_OAE
+RSAFULLPRIVATEBLO
+RSAPRIVATEBLO
+RSAPUBLICBLO
+RSASSA-PS
+RSA_KEY
+Rang
+Range of random number does not contain at least one possibility
+RawDat
+Reached authentication attempt limit for method ({0})
+Read not supported
+Read out of boundaries
+ReadBUI
+ReadContentAsStrin
+ReadPairRecor
+Reading from the compression stream is not supported
+Reading has been aborted on the stream
+Reading is not allowed on stream
+Read
+Real < 32Bi
+Real > 64Bi
+Received an HTTP/2 pseudo-header as a trailing header
+Received an invalid chunk extension: '{0}'
+Received an invalid chunk terminator: '{0}'
+Received an invalid header line: '{0}'
+Received an invalid header name: '{0}'
+Received an invalid status code: '{0}'
+Received an invalid status line: '{0}'
+Received an unexpected EOF or 0 bytes from the transport stream
+Received chunk header length could not be parsed: '{0}'
+Received data not balanced, unable to parse to dictionar
+Received non-plist type
+Received status phrase could not be decoded with iso-8859-1: '{0}'
+Recursive fallback not allowed for bytes {0}
+Recursive fallback not allowed for character \\u{0:X4}
+Reference equality is not defined for the types '{0}' and '{1}'
+Reference to undeclared entity '{0}'
+Reference to undeclared parameter entity '{0}'
+Reference to undefined group name '{0}'
+Reference to undefined group number {0}
+Reference to unparsed entity '{0}'
+Refere
+Referrer-Polic
+Refres
+RegexNodeKin
+RegexOptions.NonBacktracking is not supported in conjunction with expressions containing: '{0}'
+RegionCod
+RegionInf
+RegionalBehaviorAl
+RegionalBehaviorChinaBric
+RegionalBehaviorGoogleMai
+RegionalBehaviorNTS
+RegionalBehaviorNoVOI
+RegionalBehaviorNoWiF
+RegionalBehaviorShutterClic
+RegionalBehaviorVolumeLimi
+RegistrationOpen faile
+Registry HKEY was out of the legal range
+Registry key names should not be greater than 255 characters
+RegistryKey.GetValue does not support values with more than Int32.MaxValue bytes
+RegulatoryModelNumbe
+Relative URIs are not supported
+ReleaseTyp
+RemoteCertificateValidationCallbac
+RemoteEndPoin
+Remov
+RemoveItemsNotRestore
+Reply tag mismatch expected
+Reques
+Request '{0}' is not supported
+Request Entity Too Larg
+Request Header Fields Too Larg
+Request HttpVersion 0.X is not supported.  Use 1.0 or above
+Request Timeou
+Request cannot be saved
+Request headers must contain only ASCII characters
+Request resource doesn't contain a valid scheme for an empty client base UR
+Request-I
+Request-Uri Too Lon
+RequestSuccessfu
+RequestTaskStatu
+RequestTyp
+Requested Range Not Satisfiabl
+Requested registry access is not allowed
+Requested value '{0}' was not found
+Requesting HTTP version {0} with version policy {1} while server offers only version fallback
+Requesting HTTP version {0} with version policy {1} while unable to establish HTTP/{2} connection
+RequiredBatteryLevelForSoftwareUpdat
+Requires count >= 
+Requires offset + count <= data.Lengt
+Reset Conten
+Resource '{0}' was not a String - call GetObject instead
+Resource was of type '{0}' instead of String - call GetObject instead
+ResourceReader is closed
+Respons
+Response of type '{0}' is not expected
+Response status code does not indicate success: {0} ({1})
+Response status code does not indicate success: {0}
+RestSharp
+Restar
+Restor
+RestoreDontCopyBacku
+RestorePreserveSetting
+RestoreShouldReboo
+RestoreSystemFile
+Resul
+Result cannot be called on a failed Match
+Result too larg
+Rethrow statement is valid only inside a Catch block
+Retr
+Retry-Afte
+ReturnAttribute
+Rewriting child expression from type '{0}' to type '{1}' is not allowed, because it would change the meaning of the operation. If this is intentional, override '{2}' and change it to allow this rewrite
+Rewritten expression calls operator method '{0}', but the original node had no operator method. If this is intentional, override '{1}' and change it to allow this rewrite
+RightShif
+Root Level Attribute Valu
+Root Level Base64 Attribute Valu
+Root Level Special Attribute Valu
+Root element is missing
+RootCertificat
+RootPrivateKe
+RunSynchronously may not be called on a continuation task
+RunSynchronously may not be called on a task not bound to a delegate, such as the task returned from an asynchronous method
+RunSynchronously may not be called on a task that has already completed
+RunSynchronously may not be called on a task that was already started
+Runtime internal erro
+SAMEORIGI
+SBAllowSensitiveU
+SBCanForceDebuggingInf
+SByt
+SDIOManufacturerTupl
+SDIOProductInf
+SERIALNUMBE
+SETTINGS_ENABLE_CONNECT_PROTOCO
+SETTINGS_TIMEOU
+SFTP Message : {0
+SHA-25
+SHA25
+SHA3-25
+SHA3-38
+SHA3-51
+SHA38
+SHA51
+SIDs with revision other than '1' are not supported
+SIMLock / Chimeara devices are not supported.
+SIMTrayStatu
+SOCKS Version '{0}' is not supported
+SOCKS server did not return a suitable authentication method
+SOCKS server failed to connect to the destination
+SOCKS server requested username & password authentication
+SOCKS server returned an unknown address type
+SOCKS version {0} is not supported
+SOCKS4 does not support IPv6 addresses
+SOCKS4 only supports IPv4. No such address found for '{0}'
+SOCKS4: Client is not running identd or not reachable from the server
+SOCKS4: Client's identd could not confirm the user ID string in the request
+SOCKS4: Connection rejected
+SOCKS4: Not valid response
+SOCKS4: Null is expected
+SOCKS5: 0 byte is expected
+SOCKS5: 0 is expected for reserved byte
+SOCKS5: Address type '{0}' is not supported
+SOCKS5: Address type not supported
+SOCKS5: Command not supported or protocol error
+SOCKS5: Connection not allowed by ruleset
+SOCKS5: Connection refused by destination host
+SOCKS5: General failure
+SOCKS5: Host unreachable
+SOCKS5: IP address '{0}' is not supported
+SOCKS5: Network unreachable
+SOCKS5: No acceptable authentication methods were offered
+SOCKS5: Not valid response
+SOCKS5: Server authentication version is not valid
+SOCKS5: TTL expired
+SOCKS5: Username/Password authentication failed
+SOCKS5: Version 5 is expected
+SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zone
+SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
+SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\UT
+SSH connection established successfully
+SSH-2.0-Renci.SshNet.SshClient.0.0.
+SSH_FXP_EXTENDED operation is not supported in {0} version that server operates in
+SSH_FXP_READLINK operation is not supported in {0} version that server operates in
+SSH_FXP_RENAME operation is not supported in {0} version that server operates in
+SSH_FXP_SYMLINK operation is not supported in {0} version that server operates in
+SSH_MSG_CHANNEL_CLOS
+SSH_MSG_CHANNEL_DAT
+SSH_MSG_CHANNEL_EO
+SSH_MSG_CHANNEL_EXTENDED_DAT
+SSH_MSG_CHANNEL_FAILUR
+SSH_MSG_CHANNEL_OPE
+SSH_MSG_CHANNEL_OPEN_CONFIRMATIO
+SSH_MSG_CHANNEL_OPEN_FAILUR
+SSH_MSG_CHANNEL_REQUES
+SSH_MSG_CHANNEL_SUCCES
+SSH_MSG_CHANNEL_WINDOW_ADJUS
+SSH_MSG_DEBU
+SSH_MSG_DISCONNEC
+SSH_MSG_GLOBAL_REQUES
+SSH_MSG_IGNOR
+SSH_MSG_KEXDH_REPL
+SSH_MSG_KEXINI
+SSH_MSG_KEX_DH_GEX_GROU
+SSH_MSG_KEX_DH_GEX_REPL
+SSH_MSG_KEX_ECDH_REPL
+SSH_MSG_NEWKEY
+SSH_MSG_REQUEST_FAILUR
+SSH_MSG_REQUEST_SUCCES
+SSH_MSG_SERVICE_ACCEP
+SSH_MSG_UNIMPLEMENTE
+SSH_MSG_USERAUTH_BANNE
+SSH_MSG_USERAUTH_FAILUR
+SSH_MSG_USERAUTH_INFO_REQUES
+SSH_MSG_USERAUTH_INFO_RESPONS
+SSH_MSG_USERAUTH_PASSWD_CHANGERE
+SSH_MSG_USERAUTH_PK_O
+SSH_MSG_USERAUTH_SUCCES
+SSL authentication faile
+STREAM_CLOSE
+STREE
+SYSLIB000
+SYSTE
+SYSTEM\CurrentControlSet\Control\Class\{36fc9e60-c465-11cf-8056-444553540000
+SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Clien
+SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Serve
+SafeHandle cannot be null
+Satellite contract version attribute on the assembly '{0}' specifies an invalid version: {1}
+Saturda
+SavePairRecor
+ScreenDimension
+SeDebugPrivileg
+Sec-WebSocket-Accep
+Sec-WebSocket-Extension
+Sec-WebSocket-Ke
+Sec-WebSocket-Protoco
+Sec-WebSocket-Versio
+Second path fragment must not be a drive or UNC name
+Secur
+Secure copy execution request was rejected by the server. Please consult the server logs
+Security error
+See Othe
+Seek is not supported
+Seek operation failed
+Seek operation is not supported
+Seek operation not supported
+SelectApplicationProtoco
+Sent {0} request content bytes, but Content-Length promised {1}
+Septembe
+Sequence contains more than one matching elemen
+Sequence contains no element
+Sequence contains no matching elemen
+SerialNumbe
+Serialization error
+Serve
+Server HMAC algorithm not foun
+Server SFTP version {0} is not supported
+Server capabilities received are not well formed XM
+Server decryption algorithm not foun
+Server version '{0}' is not supported
+Server-Timin
+ServerCertificateSelectionCallbac
+Servic
+Service Unavailabl
+Service name '{0}' is not supported
+Service not available, closing control connection
+Session is not connected
+Session operation has timed ou
+Session-Based-Authenticatio
+Set XmlReaderSettings.Async to true if you want to use Async Methods
+Set XmlWriterSettings.Async to true if you want to use Async Methods
+Set-Cooki
+Set-Cookie
+SetArrayIte
+SetParam
+SetSocketOptio
+SetValu
+Setter must have parameters
+Setter should have void type
+Setting the hashname after it's already been set is not supported on this platform
+Shell is not started
+Shell is started
+ShellStrea
+Shor
+Shutdow
+Shutdown by transport
+Signature size must be {0
+SigningFus
+Simple Name:
+Singl
+SizeLimi
+Slee
+Socket read operation has timed out after {0:F0} milliseconds
+SoftwareBehavio
+SoftwareBundleVersio
+Some or all identity references could not be translated
+Something went wrong while checking your device
+Something wrong?
+Source array type cannot be assigned to destination array type
+Source array was not long enough. Check the source index, length, and the array's lower bounds
+Source directory not found: {0
+Source string was not long enough. Check sourceIndex and count
+SourceIdentifie
+Span may not be empty
+Special Attribut
+Specified OLE variant was invalid
+Specified argument was out of the range of valid values
+Specified cast is not valid
+Specified cipher mode is not valid for this algorithm
+Specified file length was too large for the file system
+Specified filter criteria was invalid
+Specified initialization vector (IV) does not match the block size for this algorithm
+Specified key is a known semi-weak key for '{0}' and cannot be used
+Specified key is a known weak key for '{0}' and cannot be used
+Specified key is not a valid size for this algorithm
+Specified method is not supported
+Specified padding mode is not valid for this algorithm
+Specified time is not supported in this calendar. It should be between {0} (Gregorian date) and {1} (Gregorian date), inclusive
+Specified type is not supporte
+Specified value '{0}' has invalid HTTP Header characters
+Specified value cannot be greater than {0}
+Specified value cannot be less than {0}
+Specified value has invalid CRLF characters
+Specified value has invalid Control characters
+SshNet.Loggin
+SshNetSwitc
+SslApplicationProtoco
+SslStrea
+Stack empty
+StandAlone is 'yes' and the value of the attribute '{0}' contains a definition in an external document that changes on normalization
+Standalone document declaration must have a value of 'no' because an external entity '{0}' is referenced
+StandardError has not been redirected
+StandardErrorEncoding is only supported when standard error is redirected
+StandardInputEncoding is only supported when standard input is redirected
+StandardOut has not been redirected or the process hasn't started yet
+StandardOutputEncoding is only supported when standard output is redirected
+Star
+Start Addres
+Start index cannot be less than 0 or greater than input length
+Start may not be called on a continuation task
+Start may not be called on a promise-style task
+Start may not be called on a task that has completed
+Start may not be called on a task that was already started
+Start offset cannot be negativ
+StartAttribut
+StartDocumen
+StartElemen
+StartServic
+StartSessio
+StartTim
+Starte
+Startin
+Static field requires null instance, non-static field requires non-null instance
+Static method requires null instance, non-static method requires non-null instance
+Static property requires null instance, non-static property requires non-null instance
+Statu
+Status Error response:
+Status cod
+StatusCode:
+Stoppe
+Stoppin
+StoreFiel
+StoreLoca
+StoreLocalBo
+StoreStaticFiel
+Stream aborted by peer ({0})
+Stream does not support reading
+Stream does not support seeking
+Stream does not support writing
+Stream has been closed
+Stream is not a valid resource file
+Stream length must be non-negative and less than 2^31 - 1 - origin
+Stream was not readable
+Stream was not writable
+Stream was too long
+StreamId
+StreamOpen faile
+StreamReceivedSetEnabled faile
+StreamShutdown faile
+Strict-Transport-Securit
+Strin
+String '{0}' was not recognized as a valid Boolean
+String '{0}' was not recognized as a valid DateTime because the day of week was incorrect
+String '{0}' was not recognized as a valid DateTime
+String cannot contain a minus sign if the base is not 10
+String cannot have zero length
+String contains invalid Unicode code points
+String length exceeded supported range
+String must be exactly one character long
+String reference not set to an instance of a String
+StringSwitc
+Strings longer than {0} is not supported
+SubOv
+Subsystem '{0}' could not be executed
+Sunda
+Supplied parameter is not an XML paramete
+Support for UTF-7 is disabled. See {0} for more information
+Supporte
+SupportedDeviceFamilie
+SupportedKeyboard
+SupportedProtocolVersion
+Switch value of type '{0}' cannot be used for the comparison method parameter of type '{1}
+Switch.System.Globalization.EnforceJapaneseEraYearRange
+Switch.System.Globalization.EnforceLegacyJapaneseDateParsin
+Switch.System.Globalization.FormatJapaneseFirstYearAsANumbe
+Switch.System.Runtime.Serialization.SerializationGuar
+Switch.System.Runtime.Serialization.SerializationGuard
+Switch.System.Xml.AllowDefaultResolve
+Switch.System.Xml.DontThrowOnInvalidSurrogatePair
+Switching Protocol
+Syntax error in parameters or argument
+Syntax error, command unrecognize
+Syntax for an XML declaration is invalid
+SysCf
+Syste
+System does not support '{0}' encoding
+System error
+System
+System.Buffers.ArrayPoolEventSourc
+System.ComponentModel.Design.IDesigner, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e08
+System.ComponentModel.TypeConverter, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3
+System.Diagnostics.DefaultActivityIdFormatIsHierarchia
+System.Diagnostics.Eventing.FrameworkEventSourc
+System.Diagnostics.Metrics.Meter.IsSupporte
+System.Formats.Asn1.AllowAnySizeOi
+System.Globalization.AppLocalIc
+System.Globalization.Invarian
+System.Globalization.PredefinedCulturesOnl
+System.Globalization.UseNl
+System.IO.Compression.UseStrictValidatio
+System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3
+System.MDArrayRan
+System.Memory
+System.Net.DisableIPv
+System.Net.Htt
+System.Net.Http.EnableActivityPropagatio
+System.Net.Http.Exceptio
+System.Net.Http.HttpRequestOu
+System.Net.Http.HttpRequestOut.Star
+System.Net.Http.HttpRequestOut.Sto
+System.Net.Http.Reques
+System.Net.Http.Respons
+System.Net.Http.SocketsHttpHandler.Http2Suppor
+System.Net.Http.UsePortInSp
+System.Net.NameResolutio
+System.Net.Quic is not supported on this platform: {0
+System.Net.SocketsHttpHandler.Http2FlowControl.DisableDynamicWindowSizin
+System.Net.SocketsHttpHandler.Http3Suppor
+System.Net.SocketsHttpHandler.MaxConnectionsPerServe
+System.Net.SocketsHttpHandler.PendingConnectionTimeoutOnRequestCompletio
+System.OutOfMemoryExceptio
+System.Private.CoreLi
+System.Private.CoreLib.resources couldn't be found!  Large parts of the BCL won't work
+System.ReadOnlyMemory
+System.ReadOnlySpan
+System.Resources.ResourceReade
+System.Resources.RuntimeResourceSe
+System.Resources.UseSystemResourceKey
+System.Runtime.CompilerService
+System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerializatio
+System.Security.Cryptography.Pkcs12UnspecifiedPasswordIterationLimi
+System.Security.Cryptography.ThrowOnX509ChainBuildInternalErro
+System.Span
+System.Threading.Tasks.TplEventSourc
+System.Threading.ThreadPool.MaxThread
+System.Threading.ThreadPool.MinThread
+System.Threading.ThreadPool.ProcessorsPerIOPollerThrea
+System.Threading.ThreadPool.ThreadTimeoutM
+System.Threading.ThreadPool.UseWindowsThreadPoo
+System.Xml.XmlResolver.IsNetworkingEnabledByDefaul
+System.__Cano
+System.__UniversalCano
+SystemBUI
+System\CurrentControlSet\Control\Nls\Calendars\Japanese\Era
+T(?<mtime>\d+) 0 (?<atime>\d+) 
+TDelegat
+TKey is a reference type and item.Key is null
+TPMManufacture
+TPMMode
+TPMVersio
+TRAC
+Tags with TagClass Universal must have the appropriate TagValue value for the data type being read or written
+Tap 'Allow' if a popup is displayed on the device then click OK
+Target type:
+TargetIdentifie
+Task<TResult>.ConfigureAwait does not support ConfigureAwaitOptions.SuppressThrowing. To suppress throwing, instead cast the Task<TResult> to its base class Task and await that with SuppressThrowing
+Template is missin
+Temporary Redirec
+Test value of type '{0}' cannot be used for the comparison method parameter of type '{1}
+TestSwitch.LocalAppContext.DisableCachin
+TextInfo -
+The 'Attribute' node cannot be inserted because it is already an attribute of another element
+The 'G' format combined with a precision is not supported
+The 'InnerText' of a 'Document' node is read-only and cannot be set
+The 'InnerText' of an 'Entity' node is read-only and cannot be set
+The 'current()' function cannot be used in a pattern
+The 'xmlns' attribute is bound to the reserved namespace 'http://www.w3.org/2000/xmlns/'
+The '{0}' character, hexadecimal value {1}, cannot be included in a name
+The '{0}' element already exists in the content model
+The '{0}' element has already been declared
+The '{0}' notation is not declared
+The '{0}' option was already set in the SslStream constructor
+The '{0}' property is read only and cannot be set
+The '{0}' scheme is not supported
+The '{0}' start tag on line {1} position {2} does not match the end tag of '{3}'
+The '{0}' value for the 'dateTimeOption' parameter is not an allowed value for the 'XmlDateTimeSerializationMode' enumeration
+The '{0}'='{1}' part of the cookie is invalid
+The ANSI string passed in could not be converted from the default ANSI code page to Unicode
+The ASN.1 value is invalid
+The AddressFamily {0} is not valid for the {1} end point
+The AdjustmentRule array cannot contain null elements
+The BrotliEncoder {0} can not be changed at current encoder state
+The Buffer space specified by the Count property is insufficient for the AcceptAsync method
+The CNG key handle being opened was detected to be ephemeral, but the EphemeralKey open option was not specified
+The CancellationTokenSource has been disposed
+The DTD has already been written out
+The DateStart property must come before the DateEnd property
+The DateTime represented by the string '{0}' is not supported in calendar '{1}'
+The DateTime represented by the string '{0}' is out of range
+The DateTimeStyles value 'NoCurrentDateDefault' is not allowed when parsing DateTimeOffset
+The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together
+The Day parameter must be in the range 1 through 31
+The DayOfWeek enumeration must be in the range 0 through 6
+The DaylightTransitionStart property must not equal the DaylightTransitionEnd property
+The Enum type should contain one and only one instance field
+The Enumeration constraint failed
+The FractionDigits constraint failed
+The From or To parameter cannot be less than 0
+The From parameter cannot be greater than To
+The HTTP headers length exceeded the set limit of {0} bytes
+The HTTP request headers length exceeded the server limit of {0} bytes
+The HTTP response headers length exceeded the set limit of {0} bytes
+The HTTP/1.1 response chunk was too large
+The HTTP/2 server closed the connection. HTTP/2 error code '{0}' (0x{1})
+The HTTP/2 server reset the stream. HTTP/2 error code '{0}' (0x{1})
+The HTTP/2 server sent invalid data on the connection. HTTP/2 error code '{0}' (0x{1})
+The HTTP/3 server attempted to reference a dynamic table index that does not exist
+The HTTP/3 server closed the connection. HTTP/3 error code '{0}' (0x{1})
+The HTTP/3 server reset the stream. HTTP/3 error code '{0}' (0x{1})
+The HTTP/3 server sent invalid data on the connection. HTTP/3 error code '{0}' (0x{1})
+The IAsyncResult object was not returned from the corresponding asynchronous method on this class
+The KDF for algorithm '{0}' requires a char-based password input
+The Keys for this Hashtable are missing
+The LinkedList node already belongs to a LinkedList
+The LinkedList node does not belong to current LinkedList
+The MaxExclusive constraint failed
+The MaxInclusive constraint failed
+The MinExclusive constraint failed
+The MinInclusive constraint failed
+The Month parameter must be in the range 1 through 12
+The NeutralResourcesLanguageAttribute on the assembly "{0}" specifies an invalid culture name: "{1}"
+The NeutralResourcesLanguageAttribute specifies an invalid or unrecognized ultimate resource fallback location: "{0}"
+The OID value cannot be changed from its current value
+The OID value is invalid
+The OID value was invalid
+The Pattern constraint failed
+The Process object must have the UseShellExecute property set to false in order to redirect IO streams
+The Process object must have the UseShellExecute property set to false in order to start a process as a user
+The Process object must have the UseShellExecute property set to false in order to use environment variables
+The QName '{0}' cannot be represented as a String.  A prefix for namespace '{1}' cannot be found
+The Regex engine has timed out while trying to match a pattern to an input string. This can occur for many reasons, including very large inputs or excessive backtracking caused by nested quantifiers, back-references and other factors
+The ResourceReader class does not know how to read this version of .resources files. Expected version: {0}  This file: {1
+The SSL connection could not be established, see inner exception
+The ServicePointManager does not support proxies with the {0} scheme
+The String '{0}' cannot be represented as an XmlQualifiedName.  A namespace for prefix '{1}' cannot be found
+The SyncRoot property may not be used for the synchronization of concurrent collections
+The TimeSpan parameter cannot be specified more precisely than whole minutes
+The TimeSpan parameter must be within plus or minus 14.0 hours
+The Timer was already closed using an incompatible Dispose method
+The TotalDigits constraint failed
+The TryExecuteTaskInline call to the underlying scheduler succeeded, but the task body was not invoked
+The URI prefix is not recognized
+The UTC Offset for Utc DateTime instances must be 0
+The UTC Offset of the local dateTime parameter does not match the offset argument
+The UTC representation of the date '{0}' falls outside the year range 1-9999
+The UTC time represented when the offset is applied must be between year 0 and 10,000
+The UnmanagedMemoryStream capacity would wrap around the high end of the address space
+The WaitHandle cannot be signaled because it would exceed its maximum count
+The Week parameter must be in the range 1 through 5
+The Writer is closed or in error state
+The Writer is closed
+The X509 certificate store has not been opened
+The XPath query '{0}' is not supported
+The XmlReader cannot resolve entity references
+The XmlReader should not be on a node of type {0}
+The XmlReader state should be EndOfFile after this operation
+The XmlReader state should be Interactive
+The actual length is greater than the MaxLength value
+The actual length is less than the MinLength value
+The actual length is not equal to the specified length
+The added or subtracted value results in an un-representable DateTime
+The algorithm identified by '{0}' is unknown, not valid for the requested usage, or was not handled
+The alignment must be a power of two
+The amount of time requests spent on a queue waiting for an available connection
+The application protocol list is invalid
+The application protocol value is invalid
+The archive entry was compressed using an unsupported compression method
+The argument cannot be converted to a string
+The argument to function '{0}' in '{1}' cannot be converted to a node-set
+The array starting from the specified index is not long enough to read a value of the specified type
+The arrays' lower bounds must be identical
+The async operation did not return a System.Threading.Tasks.Task object
+The asynchronous operation has not completed
+The attribute local name cannot be empty
+The attribute of type ID is already declared on the '{0}' element
+The attribute value cannot be empty
+The binary data must result in a DateTime with ticks between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks
+The binary operator {0} is not defined for the types '{1}' and '{2}'
+The binary plist version
+The body of this instance method was removed by the AOT compiler. This can happen if the owning type was not seen as allocated by the AOT compiler
+The body of this method was removed by the AOT compiler because it's not callable
+The buffer is not associated with this pool and may not be returned to it
+The builder was not properly initialized
+The calling thread already holds the lock
+The calling thread does not hold the lock
+The certificate already has an associated private key
+The certificate contents do not contain a PEM with a CERTIFICATE label, or the content is malformed
+The certificate key algorithm is not supported
+The chain context handle is invalid
+The channel has been closed
+The channel has not been opened, or the open has not yet been confirmed
+The channel is closed
+The character set provided in ContentType is invalid. Cannot read content as string using an invalid character set
+The checkints differed, the openssh key was not correctly decoded
+The cipher mode specified requires that an initialization vector (IV) be used
+The client is already connected
+The collection is read-only
+The concurrencyLevel argument must be positive, or -1 to indicate a default level
+The connection timed out from inactivity
+The connection was closed by the server: {0} ({1})
+The constructor should not be stati
+The content's stream has already been retrieved via async ReadAsStreamAsync and cannot be subsequently accessed synchronously
+The conversion could not be completed because the supplied DateTime did not have the Kind property set correctly.  For example, when the Kind property is DateTimeKind.Local, the source time zone must be TimeZoneInfo.Local
+The current node cannot contain other nodes, so the node to be removed is not its child
+The current node cannot contain other nodes
+The current platform does not support the specified feedback size
+The current thread attempted to reacquire a mutex that has reached its maximum acquire count
+The data connection was made from an address that is different than the address to which the FTP connection was made
+The decryption operation failed, see inner exception
+The default value of '{0}' attribute is invalid according to its datatype
+The destination buffer overlaps the source buffer
+The document to be loaded could not be found
+The duration of outbound HTTP requests
+The duration of successfully established outbound HTTP connections
+The elements of the AdjustmentRule array must be in chronological order and must not overlap
+The empty string '' is not a valid local name
+The empty string '' is not a valid name
+The encoded PEM size is too large to represent as a signed 32-bit integer
+The encoded length exceeds the maximum supported by this library (Int32.MaxValue)
+The encoded length exceeds the number of bytes remaining in the input buffer
+The encoded length is not valid under the requested encoding rules, the value may be valid under the BER encoding
+The encoded object identifier (OID) exceeds the limits supported by this library. Supported OIDs are limited to 64 arcs and each subidentifier is limited to a 128-bit value
+The encoded set is not sorted as required by the current encoding rules. The value may be valid under the BER encoding, or you can ignore the sort validation by specifying skipSortValidation=true
+The encoded value is not valid under the selected encoding, but it may be valid under the BER encoding
+The encoded value is not valid under the selected encoding, but it may be valid under the BER or CER encoding
+The encoded value is not valid under the selected encoding, but it may be valid under the BER or DER encoding
+The encoded value uses a constructed encoding, which is invalid for '{0}' values
+The encoded value uses a primitive encoding, which is invalid for '{0}' values
+The encryption operation failed, see inner exception
+The event is already signaled and cannot be incremented
+The exceptions collection included at least one null element
+The exceptions collection was empty
+The expression type '{0}' is not supporte
+The file '{0}' already exists
+The file is too long. This operation is currently limited to supporting files less than 2 gigabytes in size
+The first 9 bits of the integer value all have the same value. Ensure the input is in big-endian byte order and that all redundant leading bytes have been removed
+The format of the HTTP method is invalid
+The format of value '{0}' is invalid
+The function '{0}()' is undefined
+The given assembly name was invalid
+The given culture name '{0}' cannot be used to locate a resource file. Resource filenames must consist of only letters, numbers, hyphens or underscores
+The given key '{0}' was not present in the dictionary
+The given key was not present in the dictionary
+The given payload exceeds the maximum size of the QR code standard. The maximum size allowed for the choosen paramters (ECC level={0}, EncodingMode={1}) is {2} byte
+The given payload exceeds the maximum size of the QR code standard. The maximum size allowed for the choosen paramters (ECC level={0}, EncodingMode={1}, FixedVersion={2}) is {3} byte
+The handle is invalid
+The handshake failed due to an unexpected packet format
+The hash algorithm name cannot be null or empty
+The hex string is invalid because it has an odd lengt
+The increment operation would cause the CurrentCount to overflow
+The index being passed in is out of range
+The index is equal to or greater than the length of the array, or the number of elements in the dictionary is greater than the available space from index to the end of the destination array
+The initialCount argument must be non-negative and less than or equal to the maximumCount
+The input contains multiple keys, but only one key can be imported
+The input data is not a complete block
+The input document has exceeded a limit set by {0}
+The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters
+The input string '{0}' was not in a correct format
+The input to WriteEncodedValue must represent a single encoded value with no trailing data
+The issuer certificate does not have a Basic Constraints extension
+The issuer certificate does not have an appropriate value for the Basic Constraints extension
+The issuer certificate public key algorithm ({0}) does not match the value for this certificate request ({1}), use the X509SignatureGenerator overload
+The issuer certificate uses an RSA key but no RSASignaturePadding was provided to a constructor. If one cannot be provided, use the X509SignatureGenerator overload
+The issuer certificate's Key Usage extension is present but does not contain the KeyCertSign flag
+The key already existed in the dictionary
+The key contents do not contain a PEM, the content is malformed, or the key does not match the certificate
+The key was of an incorrect type for this dictionary
+The last expected value has been read, but the reader still has pending data. This value may be from a newer schema, or is corrupt
+The lazily-initialized type does not have a public, parameterless constructor
+The length cannot be greater than the capacity
+The length of the buffer must be less than the maximum UIntPtr value for your platform
+The local name for elements or attributes cannot be null or an empty string
+The lower bound of target array must be zero
+The maximumCount argument must be a positive number. If a maximum is not required, use the constructor without a maxCount parameter
+The method '{0}.{1}' is not a property accesso
+The method cannot be called twice on the same instance
+The method cannot be called with an invalid or closed SafeHandle
+The method or operation is not implemented
+The mode argument specifies an invalid value
+The named node is from a different document context
+The namespace declaration attribute has an incorrect 'namespaceURI': '{0}'
+The node to be inserted is from a different document context
+The node to be removed is not a child of this node
+The notation '{0}' has already been declared
+The number of WaitHandles must be less than or equal to 64
+The number of WaitHandles on a STA thread must be less than or equal to 63
+The number of elements is greater than the available space from arrayIndex to the end of the destination array
+The number of generic arguments provided doesn't equal the arity of the generic type definition
+The number of specified IP addresses has to be greater than 0
+The number of sub-authorities must not exceed {0}
+The object is not an array with the same number of elements as the array to compare it to
+The object was disposed while operations were in progress
+The operands for operator '{0}' do not match the parameters of method '{1}'
+The operation cannot be performed when TimeProvider.LocalTimeZone is null
+The operation cannot be performed when TimeProvider.TimestampFrequency is zero or negative
+The operation has timed out
+The operation is not allowed on a non-blocking Socket
+The operation is not allowed on non-connected sockets
+The operation is not allowed on non-stream oriented sockets
+The operation was canceled
+The output byte buffer is too small to contain the encoded data, encoding '{0}' fallback '{1}'
+The output byte buffer is too small to contain the encoded data, encoding codepage '{0}' and fallback '{1}'
+The output char buffer is too small to contain the decoded characters, encoding '{0}' fallback '{1}'
+The output char buffer is too small to contain the decoded characters, encoding codepage '{0}' and fallback '{1}'
+The parameter '{0}' cannot be an empty string
+The parameter entity replacement text must nest properly within markup declarations
+The parameter must be a BigInteger
+The parameter should be an X509Extension
+The parameter {0} must not be of type DnsEndPoint
+The path '{0}' is of an invalid length for use with domain sockets on this platform.  The length must be between 1 and {1} characters, inclusive
+The path '{0}' is too long, or a component of the specified path is too long
+The path cannot be a zero-length string
+The path is a zero-length string
+The path is empty
+The prefix 'xml' is bound to the namespace name 'http://www.w3.org/XML/1998/namespace'. Other prefixes must not be bound to this namespace name, and it must not be declared as the default namespace
+The prefix 'xmlns' is bound to the namespace name 'http://www.w3.org/2000/xmlns/'. It must not be declared. Other prefixes must not be bound to this namespace name, and it must not be declared as the default namespace
+The prefix '{0}' cannot be bound to the empty namespace name
+The prefix '{0}' cannot be redefined from '{1}' to '{2}' within the same start element tag
+The private key section must be a multiple of the block size (8
+The process cannot access the file '{0}' because it is being used by another process
+The process cannot access the file because it is being used by another process
+The program executed an instruction that was thought to be unreachable
+The property '{0}' has no 'get' accesso
+The property '{0}' has no 'get' or 'set' accessor
+The provided PFX data contains no certificates
+The provided RSAPrivateKey value has version '{0}', but version '{1}' is the maximum supported
+The provided data does not represent a valid tag
+The provided data is tagged with '{0}' class value '{1}', but it should have been '{2}' class value '{3}'
+The provided hash value is not the expected size for the specified hash algorithm
+The provided issuer certificate does not have an associated private key
+The provided key does not match the public key algorithm for this certificate
+The provided key does not match the public key for this certificate
+The provided notBefore value is later than the notAfter value
+The proxy tunnel request to proxy '{0}' failed with status code '{1}'.
+The pseudo-terminal request was not accepted by the server. Consult the server log for more information
+The read operation failed, see inner exception
+The reason phrase must not contain new-line characters
+The releaseCount argument must be greater than zero
+The remote certificate is invalid according to the validation procedure: {0
+The remote certificate is invalid because of errors in the certificate chain: {0
+The remote certificate was rejected by the provided RemoteCertificateValidationCallback
+The remote name could not be resolve
+The remote party requested renegotiation when AllowRenegotiation was set to false
+The remote server returned an error: ({0}) {1}
+The remote server returned an error: {0}
+The request message was already sent. Cannot send the same request message multiple times
+The request to start a shell was not accepted by the server. Consult the server log for more information
+The request was aborted
+The request was aborted: The request cache-only policy does not allow a network request and the response is not found in cache
+The request was aborted: The request was canceled
+The request was aborted: {0}
+The request was canceled due to the configured HttpClient.Timeout of {0} seconds elapsing
+The requested URI is invalid for this FTP command
+The requested key container was not found
+The requested length ({0}) is greater than the actual number of bytes read ({1})
+The requested notAfter value ({0}) is later than issuerCertificate.NotAfter ({1})
+The requested notBefore value ({0}) is earlier than issuerCertificate.NotBefore ({1})
+The requested security package is not supported
+The requested security protocol is not supported
+The response contained more than one status code
+The response ended prematurely while waiting for the next frame from the server
+The response ended prematurely, with at least {0} additional bytes expected
+The response ended prematurely
+The response string '{0}' has invalid format
+The result of the operation was already consumed and may not be used again
+The return type of overload method for operator '{0}' does not match the parameter type of conversion method '{1}'
+The root element is missing
+The rpc message id does not match the rpc-reply message id
+The runtime requires an exception for a case that this class library does not understand
+The satellite assembly named "{1}" for fallback culture "{0}" either could not be found or could not be loaded. This is generally a setup problem. Please consider reinstalling or repairing the application
+The second character surrogate pair is not in the input buffer to be written
+The server failed the passive mode request with status response ({0})
+The server is unable to process the request using the current HTTP version and indicates the request should be retried on an older HTTP version
+The server mode SSL must use a certificate with the associated private key
+The server refused the connection
+The server response contains a null character at position 0x{0:X8}:{1}{1}{2}{1}{1}A server must not send a null character before the Protocol Version Exchange is complete.{1}{1}More information is available here:{1}https://tools.ietf.org/html/rfc4253#section-4.
+The server response does not contain an SSH identification string.{0}The connection to the remote server was closed before any data was received.{0}{0}More information on the Protocol Version Exchange is available here:{0}https://tools.ietf.org/html/rfc4253#section-4.
+The server response does not contain an SSH identification string:{0}{0}{1}{0}{0}More information on the Protocol Version Exchange is available here:{0}https://tools.ietf.org/html/rfc4253#section-4.
+The server returned a status code outside the valid range of 100-599
+The server returned an invalid or unrecognized response
+The server returned the filename ({0}) which is not valid
+The server shut down the connection
+The session is already connected
+The session is not open
+The signature format '{0}' is unknown
+The size of the identifier authority must not exceed 6 bytes
+The size of {0} is too long. It cannot be longer than {1} characters
+The source argument contains duplicate keys
+The specified Characteristic2 curve parameters are not valid. Polynomial, A, B, G.X, G.Y, and Order are required. A, B, G.X, G.Y must be the same length, and the same length as Q.X, Q.Y and D if those are specified. Cofactor is required. Seed and Hash are optional. Other parameters are not allowed
+The specified DSA parameters are not valid; J (if present) must be shorter than P
+The specified DSA parameters are not valid; P, G and Y must be the same length (the key size)
+The specified DSA parameters are not valid; P, Q, G and Y are all required
+The specified DSA parameters are not valid; Q and X (if present) must be the same length
+The specified DSA parameters are not valid; Q must be 20 bytes long for keys shorter than 1024 bits
+The specified DSA parameters are not valid; Q's length must be one of 20, 32 or 64 bytes
+The specified DSA parameters are not valid; Seed, if present, must be 20 bytes long for keys shorter than 1024 bits
+The specified ID parameter '{0}' is not supported
+The specified Oid ({0}) is not valid. The Oid.FriendlyName or Oid.Value property must be set
+The specified PaddingMode is not supported
+The specified RSA parameters are not valid. Exponent and Modulus are required. If D is present, it must have the same length as Modulus. If D is present, P, Q, DP, DQ, and InverseQ are required and must have half the length of Modulus, rounded up, otherwise they must be omitted
+The specified RegistryView value is invalid
+The specified TaskContinuationOptions combined LongRunning and ExecuteSynchronously.  Synchronous continuations should not be long running
+The specified TaskContinuationOptions excluded all continuation kinds
+The specified Type must not be a generic type
+The specified arrays must have the same number of dimensions
+The specified cryptographic service provider (CSP) does not support this key algorithm: {0}
+The specified curve '{0}' or its parameters are not valid for this platform
+The specified executable is not a valid application for this OS platform
+The specified feedback size '{0}' for CipherMode '{1}' is not supported
+The specified file name or path is too long, or a component of the specified path is too long
+The specified key parameters are not valid. Q.X and Q.Y, or D, must be specified. Q.X, Q.Y must be the same length. If D is specified it must be the same length as Q.X and Q.Y if also specified for named curves or the same length as Order for explicit curves
+The specified label is not valid
+The specified named curve parameters are not valid. Only the Oid parameter must be set
+The specified node cannot be inserted as the valid child of this node, because the specified node is the wrong type
+The specified object must not be an instance of a generic type
+The specified pattern with RegexOptions.NonBacktracking could result in an automata as large as '{0}' nodes, which is larger than the configured limit of '{1}'
+The specified prime curve parameters are not valid. Prime, A, B, G.X, G.Y and Order are required and must be the same length, and the same length as Q.X, Q.Y and D if those are specified. Cofactor is required. Seed and Hash are optional. Other parameters are not allowed
+The specified registry key does not exist
+The specified structure must be blittable or have layout information
+The specified value is not a valid 'Host' header string
+The specified value is not a valid Host header string
+The specified value is not a valid quoted string
+The specified value is not valid in the '{0}' enumeration
+The specified value is not valid
+The status response ({0}) is not expected in response to '{1}' command
+The stream does not support reading
+The stream does not support writing
+The stream has to be read/write
+The stream is currently in use by a previous operation on the stream
+The stream state of the underlying compression routine is inconsistent
+The stream was already consumed. It cannot be read again
+The string '{0}' is not a valid {1} value
+The string '{0}' was not recognized as a valid DateTime. There is an unknown word starting at index '{1}'
+The string comparison type passed in is currently not supported
+The string for whitespace contains an invalid character
+The string must be null-terminated
+The string was being parsed as an unsigned number and could not have a negative sign
+The structure must not be a value class
+The sum of offset and count is greater than the buffer length
+The sum of the BaseUtcOffset and DaylightDelta properties must within plus or minus 14.0 hours
+The supplied DateTime includes a TimeOfDay setting.   This is not supported
+The supplied DateTime must have the Kind property set to DateTimeKind.Unspecified or DateTimeKind.Utc
+The supplied DateTime must have the Kind property set to DateTimeKind.Unspecified
+The supplied DateTime must have the Year, Month, and Day properties set to 1.  The time cannot be specified more precisely than whole milliseconds
+The supplied DateTime represents an invalid time.  For example, when the clock is adjusted forward, any time in the period that is skipped is invalid
+The supplied string is not a valid HTTP token
+The supplied {0} is an invalid size for the {1} end point
+The surrogate pair (0x{0}, 0x{1}) is invalid. A high surrogate character (0xD800 - 0xDBFF) must always be paired with a low surrogate character (0xDC00 - 0xDFFF)
+The surrogate pair is invalid. Missing a low surrogate character
+The synchronous method is not supported by '{0}' for HTTP/2 or higher. Either use an asynchronous method or downgrade the request version to HTTP/1.1 or lower
+The target method returned a null reference
+The targetType parameter must be of IdentityReference type
+The task has been disposed
+The tasks argument contains no tasks
+The tasks argument included a null value
+The tasks array included at least one null element
+The thread was created with a ThreadStart delegate that does not accept a parameter
+The time zone offset of string '{0}' must be within plus or minus 14 hours
+The timeout must be a value between -1 and Int32.MaxValue, inclusive
+The timeout must represent a value between -1 and Int32.MaxValue, inclusive
+The tookLock argument must be set to false before calling this method
+The total number of bytes extracted cannot exceed UInt32.MaxValue * hash length
+The type '{0}' cannot be found in assembly '{1}'
+The type '{0}' cannot be found
+The type '{0}' may not be used as a type argument
+The type '{0}' may not be used as an array element type
+The type '{0}' was created by a custom ReflectionContext and cannot be used here
+The type initializer for '{0}' threw an exception
+The type or method has {1} generic parameter(s), but {0} generic argument(s) were provided. A generic argument must be provided for each generic parameter
+The type used in TypeAs Expression must be of reference or nullable type, {0} is neithe
+The unary operator {0} is not defined for the type '{1}'
+The underlying array is null
+The underlying compression routine could not be loaded correctly
+The underlying compression routine could not reserve sufficient memory
+The underlying compression routine received incorrect initialization parameters
+The underlying compression routine returned an unexpected error code
+The underlying connection was closed: An unexpected error occurred on a receiv
+The underlying connection was closed: The server committed a protocol violatio
+The user-defined equality method '{0}' must return a boolean value
+The user-defined operator method '{1}' for operator '{0}' must have associated boolean True and False operators
+The user-defined operator method '{1}' for operator '{0}' must have identical parameter and return types
+The user-defined operator method '{1}' for operator '{0}' must return the same type as its parameter or a derived type
+The user-supplied ConnectCallback returned null
+The user-supplied PlaintextStreamFilter returned null
+The value "{0}" is not of type "{1}" and cannot be used in this generic collection
+The value '{0}' is invalid according to its data type
+The value '{0}' is invalid according to its schema type '{1}' - {2
+The value '{0}' is not of type '{1}' and cannot be used in this collection
+The value '{0}' is not valid for this usage of the type {1}
+The value '{0}' passed for the UriKind parameter is invalid
+The value cannot be an empty string or composed entirely of whitespace
+The value cannot be an empty string
+The value cannot be negative
+The value for the 'maxOccurs' attribute must be xsd:nonNegativeInteger or 'unbounded'
+The value for the 'minOccurs' attribute must be xsd:nonNegativeInteger
+The value is too large to be represented by this format specifier
+The value needs to be either -1 (signifying an infinite timeout), 0 or a positive integer
+The value needs to translate in milliseconds to -1 (signifying an infinite timeout), 0, or a positive integer less than or equal to the maximum allowed timer duration
+The value of 'nameType' is invalid
+The value of argument '{0}' ({1}) is invalid for Enum type '{2}'
+The value passed in must be an enum base or an underlying type for an enum, such as an Int32
+The value size of the cookie is '{0}'. This exceeds the configured maximum size, which is '{1}'
+The value was of an incorrect type for this dictionary
+The variable '{0}' is undefined
+The version of the underlying compression routine does not match expected version
+The wait completed due to an abandoned mutex
+The work factor must be between 4 and 31 (inclusive
+The write operation failed, see inner exception
+The xpath query is too complex
+The {0} method is not supported on node type {1}. If you want to read typed content of an element, use the ReadElementContentAs method
+The {0} object was not returned from the corresponding asynchronous method on this class
+There are multiple root elements
+There are too many threads currently waiting on the event. A maximum of {0} waiting threads are supported
+There is an unclosed conditional section
+There is an unclosed literal string
+There is no Unicode byte order mark. Cannot switch to Unicode
+There is no such thing as radix one notatio
+There must be at least a partial date with a year present in the input string '{0}'
+There was a problem activating to your device
+There was a problem activating your device
+There was a problem connecting to your device
+There was a problem connecting to your device5
+There was a problem connecting to your device6
+There was a problem while activating your device
+There was a problem while activating your device.
+There was a problem with the PKCS12 (PFX) without a supplied password. See https://go.microsoft.com/fwlink/?linkid=2233907 for more information
+There was no XML start tag open
+This .resources file should not be read with this reader. The resource reader type is "{0}"
+This BackgroundWorker is currently busy and cannot run multiple tasks concurrently
+This app is deprecated ! Please download the new premium update from: iRemovalPRO.co
+This app is deprecated ! Please download the new update from: iRemovalPRO.co
+This device is not supported for full bypass
+This device looks like not activation locked
+This document already has a 'DocumentElement' node
+This document already has a 'DocumentType' node
+This document already has an 'XmlDeclaration' node
+This iOS Version is not supported ye
+This instance has already started one or more requests. Properties can only be modified before sending the first request
+This is an invalid object. Only objects returned from Compile() can be passed as input
+This is an unclosed string
+This method cannot be used since no signing key was provided via a constructor, use an overload accepting an X509SignatureGenerator instead
+This method is not implemented by this class
+This method is not supported on signature types
+This method is not supported
+This method may not be called when another {0} operation is pending
+This node is read-only. It cannot be modified
+This object cannot be invoked because no code was generated for it: '{0}'
+This openssh key does not contain the 'openssh-key-v1' format magic heade
+This operation cannot be performed after the request has been submitted
+This operation has already had OperationCompleted called on it and further calls are illegal
+This operation is invalid on overlapping buffers
+This operation is not supported for a relative URI
+This operation is not supported for an UnmanagedMemoryStream created from a SafeBuffer
+This operation is not supported on SortedList nested types because they require modifying the original SortedList
+This operation is not supported
+This operation is only allowed using a successfully authenticated context
+This operation is only valid on generic types
+This operation was corrupted by external code
+This operation would create an incorrectly structured document
+This property cannot be set after writing has started
+This property is not implemented by this class
+This property is not supported by this class
+This protocol version is not supported
+This stream does not support seek operations
+This type of node does not do it's own reading, refer to the binary reader
+This type of node does not do it's own writing, refer to the binary writer
+Thread Stat
+Thread Wait Reaso
+Thread failed to start
+Thread has not been started
+Thread is dead; priority cannot be accessed
+Thread is dead; state cannot be accessed
+Thread is running or terminated; it cannot restart
+Thread tracking is disabled
+Thread was in an invalid state for the operation being executed
+Thread was interrupted from a waiting state
+Thro
+Thursda
+Ticks must be between DateTime.MinValue.Ticks and DateTime.MaxValue.Ticks
+Time value was out of era range
+TimeSpa
+TimeSpan does not accept floating point Not-a-Number values
+TimeSpan overflowed because the duration is too long
+Timeou
+Timeout can be only be set to 'System.Threading.Timeout.Infinite' or a value > 0
+Timeout can be only be set to 'System.Threading.Timeout.Infinite' or a value >= 0
+Timeout can only be set to 'System.Threading.Timeout.Infinite' or a value > 0
+Timeout waiting for message from servic
+Timeouts are not supported on this stream
+Timestam
+ToStrin
+Toke
+Token cannot be zero
+Token {0} in state {1} would result in an invalid XML document
+Too Many Request
+Too many )'s
+Too many bytes in what should have been a 7-bit encoded integer
+Too many bytes. The resulting number of chars is larger than what can be returned as an int
+Too many characters. The resulting number of bytes is larger than what can be returned as an int
+Too many outstanding Win32ThreadPoolNativeOverlapped instance
+Too many | in (?()|)
+Too much dat
+TopLeve
+Traile
+Transfer-Encodin
+TransferEncoding requires the SendChunked property to be set to true
+TransformBlock may only process bytes in block sized increments
+TripleDE
+TrustedPeopl
+TrustedPublishe
+Trying to send disconnect from disposed servic
+Tuesda
+Type '{0}' cannot be marshaled as an unmanaged structure; no meaningful size or offset can be computed
+Type '{0}' is not a valid message type
+Type '{0}' returned by IDynamicInterfaceCastable does not have the attribute '{1}'
+Type '{0}' returned by IDynamicInterfaceCastable does not implement the requested interface '{1}'
+Type '{0}' returned by IDynamicInterfaceCastable is not an interface
+Type cannot be null
+Type had been unloaded
+Type initializer was not callable
+Type is not supported
+Type must be a Pointer
+Type must be a runtime Type object
+Type must be a type provided by the runtime
+Type must derive from Delegate
+Type must not be ByRe
+Type must not be a pointer typ
+Type names passed to Assembly.GetType() must not specify an assembly
+Type of argument is not compatible with the generic comparer
+Type passed in must be derived from System.Attribute or System.Attribute itself
+Type provided must be an Enum
+Type {0} contains generic parameter
+Type {0} is a generic type definitio
+Type:
+TypeA
+TypeAs
+TypeEqual
+TypeHandles are not supported for types that return true for ContainsGenericParameters
+TypeI
+TypeIs
+TypeLoaderLock not hel
+T{0} 0 {1} 0
+UI Polic
+UInt > 64Bi
+UInt1
+UInt3
+UInt6
+UNKNOWN
+UPDAT
+UPN Name:
+UPPERFILTER
+US-ASCI
+UTF-1
+UTF-
+Unable seek backward to overwrite data that previously existed in a file opened in Append mode
+Unable to compute call information for a canonical interfac
+Unable to compute call information for a canonical type/method
+Unable to compute static field locations for a canonical type
+Unable to connect to the remote serve
+Unable to create compare
+Unable to enumerate the process modules
+Unable to expand length of this stream beyond its capacity
+Unable to find an entry point named '{0}' in native library '{1}'
+Unable to find an entry point named '{0}' in native library
+Unable to find manifest resource
+Unable to find the specified file
+Unable to impersonate user
+Unable to load DLL '{0}' or one of its dependencies: {1
+Unable to load MsQuic library version 
+Unable to read beyond the end of the stream
+Unable to read data from the transport connection: {0}
+Unable to retrieve the specified information about the process or thread.  It may have exited or may be privileged
+Unable to set thread priority
+Unable to sort because the IComparer.Compare() method returns inconsistent results. Either a value does not compare equal to itself, or one value repeatedly compared to another value yields different results. IComparer: '{0}'
+Unable to translate Unicode character \\u{0:X4} at index {1} to specified code page
+Unable to translate bytes {0} at index {1} from specified code page to Unicode
+Unable to truncate data that previously existed in a file opened in Append mode
+Unable to write content to request stream; content would exceed Content-Length
+Unable to write data to the transport connection: {0}
+UnamedLabe
+Unauthorize
+Unavailable For Legal Reason
+Unbo
+Unbox
+UncheckedConver
+Under proces
+Uneligible
+Unexpected 
+Unexpected Curve Name:
+Unexpected DTD declaration
+Unexpected OID:
+Unexpected QPACK table reference for Status code: index
+Unexpected SOCKS protocol version. Required {0}, got {1}
+Unexpected XML declaration. The XML declaration must be the first node in the document, and no whitespace characters are allowed to appear before it
+Unexpected XmlNodeType: '{0}'
+Unexpected closing brace without a corresponding opening brace
+Unexpected end of file has occurred
+Unexpected end of file has occurred. The following elements are not closed: {0
+Unexpected end of file while parsing {0} has occurred
+Unexpected end tag
+Unexpected length:
+Unexpected message type
+Unexpected message type received expected
+Unexpected offset int size:
+Unexpected result
+Unexpected value:
+UnexpectedDER: wanted constructed tag (0xa0-0xbf), got: {0:X
+Unexpectedly reached end of file
+Unhandled Exception:
+Unhandled binary: {0
+Unhandled exception: a managed exception was not handled before reaching unmanaged cod
+Unhandled exception: an unmanaged exception was thrown out of a managed-to-native transitio
+Unhandled unary: {0
+Unicod
+Unicode (Big-Endian
+Unicode (UTF-32 Big-Endian
+Unicode (UTF-32
+Unicode (UTF-7
+Unicode (UTF-8
+Uninitialized Strings cannot be created
+Uninstal
+Unio
+UniqueChipI
+UniqueDeviceI
+Unix
+Unjailbroke
+Unknow
+Unknown (0
+Unknown connection type:
+Unknown enum type
+Unknown error "{0}"
+Unknown error (0
+Unknown error
+Unknown node - XML tag 
+Unknown node - binary tag
+Unknown padding mode used
+Unknown property '{0}'
+Unknown reason
+Unmanaged memory stream position was beyond the capacity of the stream
+UnnamedLabel
+Unprocessable Entit
+Unrecognized Guid format
+Unrecognized control character
+Unrecognized escape sequence \{0}
+Unrecognized grouping construct
+Unregistere
+UnsignedByt
+UnsignedIn
+UnsignedLon
+UnsignedShor
+Unspecified error: 
+Unsuppored protocol version foun
+Unsupporte
+Unsupported Media Typ
+Unterminated (?#...) comment
+Unterminated [] set
+Unused bit count must be 0 when the bit string is empty
+Unused bit count must be between 0 and 7, inclusive
+Unxepected message type received:
+Upgrad
+Upgrade Require
+Upgrade-Insecure-Request
+UriComponents.SerializationInfoString must not be combined with other UriComponents
+UriParser's base InitializeAndValidate may only be called once on a single Uri instance and only from an override of InitializeAndValidate
+Usbmux is connected, cannot issue control packet
+Usbmuxd returned unsupported version:
+Use Contex
+Use Prox
+Use of ResourceManager for custom types is disabled. Set the MSBuild Property CustomResourceTypesSupport to true in order to enable it
+Use the Blocking property to change the status of the Socket
+UseShellExecute is not supported on this platform
+User configured callback failed
+User-Agen
+User-defined operator method '{0}' must be static
+User-defined operator method '{0}' must not be void
+UserAssignedDeviceNam
+UserNam
+Username is not specified
+Valid values are between {0} and {1}, inclusive
+ValidatePai
+Valu
+Value '{0}' was either too large or too small for {1}
+Value cannot be null
+Value does not fall within the expected range
+Value is not created
+Value of flags is invalid
+Value to add was out of range
+Value too large or too small
+Value too large or too small. exp
+Value was either too large or too small for a Decimal
+Value was either too large or too small for a UInt16
+Value was either too large or too small for a UInt32
+Value was either too large or too small for a UInt64
+Value was either too large or too small for a character
+Value was either too large or too small for a signed byte
+Value was either too large or too small for an Int16
+Value was either too large or too small for an Int32
+Value was either too large or too small for an Int64
+Value was either too large or too small for an unsigned byte
+Value was invalid
+ValueFactory attempted to access the Value property of this instance
+ValueFactory returned null
+ValueTaskSourceAsTas
+ValueTypeCop
+Vararg calling convention not supported
+Variable '{0}' uses unsupported type '{1}'. Reference types are not supported for variables
+Variant Also Negotiate
+VendContaine
+VendDocument
+Versio
+Version mismatch detected received
+Version number '{0}' is invalid
+Version string portion was too short or too long
+Virtual Byte
+Virtual Bytes Pea
+VisitBinar
+VisitBloc
+VisitLambd
+VisitSwitc
+VisitUnar
+WARNIN
+WWW-Authenticat
+WaitAll for multiple handles on a STA thread is not supported
+WaitAny return value '{0}' is not implemented
+Waithandle array may not be empty
+Waiting for user pairing dialog..
+Warnin
+Warning unauthorised access excpetion when trying to access itunes plis
+We aren't scavenging HTTP3 connections ye
+Wednesda
+Western European (ISO
+When called from '{0}', rewriting a node of type '{1}' must return a non-null value of the same type. Alternatively, override '{2}' and change it to not visit children of this type
+Whitespac
+Whitespace not allowed before '?', '*', or '+'
+WiFiAddres
+WiFiMACAddres
+WifiAddres
+Windo
+WireShar
+WirelessBoardSnu
+With AllowHexSpecifier only AllowLeadingWhite and AllowTrailingWhite are permitted
+With the AllowHexSpecifier or AllowBinarySpecifier bit set in the enum bit field, the only other valid bits that can be combined into the enum value must be AllowLeadingWhite and AllowTrailingWhite
+Working Se
+Working Set Pea
+Write not supported
+Write operations are not allowed after the channel was shutdown
+WriteStartDocument cannot be called on writers created with ConformanceLevel.Fragment
+WriteStartDocument needs to be the first call
+Writing has been aborted on the stream
+Writing is not allowed on stream
+Writing to the compression stream is not supported
+Wrong XML version information. The XML must match production "VersionNum ::= '1.' [0-9]+"
+Wrong value for the XML declaration standalone attribute of '{0}'
+X-AspNet-Versio
+X-Cach
+X-Content-Duratio
+X-Content-Type-Option
+X-Frame-Option
+X-MSEdge-Re
+X-Powered-B
+X-Request-I
+X-UA-Compatibl
+X-XSS-Protectio
+X-iRemovalPRO-Versio
+X21Addres
+X509RevocationMod
+Xbox
+Xml type 'List of {0}' does not support Clr type '{1}'
+Xml type 'List of {0}' does not support a conversion from Clr type '{1}' to Clr type '{2}'
+Xml type '{0}' cannot convert from Clr type '{1}' unless the destination type is String or XmlAtomicValue
+Xml type '{0}' cannot convert to Clr type '{1}' unless the source value is a String or an XmlAtomicValue
+Xml type '{0}' does not support Clr type '{1}'
+Xml type '{0}' does not support a conversion from Clr type '{1}' to Clr type '{2}'
+XmlNodeType {0} is not supported for partial content parsing
+XmlReaderSettings.XmlNameTable must be the same name table as in XmlParserContext.NameTable or XmlParserContext.NamespaceManager.NameTable, or it must be null
+XmlResolve
+XmlWriterSettings.{0} can contain only valid XML text content characters when XmlWriterSettings.CheckCharacters is true. {1
+XmlWriterSettings.{0} can contain only valid XML whitespace characters when XmlWriterSettings.CheckCharacters and XmlWriterSettings.NewLineOnAttributes are true
+XsltContext is needed for this query because of an unknown function
+Year must be between 1 and 9999
+Year, Month, and Day parameters describe an un-representable DateTime
+Years value must be between +/-10000
+You can set a result only onc
+You may not perform this operation after calling the Listen method
+You must call Initialize on this object instance before using it
+You must call the Bind method before performing this operation
+You must call the Listen method before performing this operation
+Your Device iOS version is NOT supported! this tool only support iOS 17.0.1 till 18.5 and 18.6 (beta, beta2, beta3) and 26.0 (beta, beta2, beta3)
+restore your Device to one of those iOS versions and try again!
+Your device has been erased successfully
+Your device has been succesfully Activated! 
+Remember, This is the fastest bypass on the market! OTA & Erase are not supported in this release.
+Please don't forget to review our service on Trustpilot
+Your device has been succesfully Activated! 
+Remember, this is an exclusive A12+ Bypass service.
+Please don't forget to review our service on Trustpilot
+Your device has been succesfully Activated! 
+Remember, this is an exclusive A12+ Full Bypass service with OTA feature, you can update but cannot restore!.
+Please don't forget to review our service on Trustpilot
+Your device has been temporarily blocked in our system
+Your device is NOT supported for full signal bypass
+Your device is NOT supported
+Your device is already activated
+Your device is protected, please enter your passcode and try agai
+Your device is supported for A12+ bypass!.
+Your device is supported for FMI OFF!.
+Your device is supported for GSM/MEID bypass!.
+Your device is under process for FMI OFF!.
+Your device model is not supported! Only A12
+Zero length BigIntege
+[CHINA MODEL DETECTED] Please tap on 'WLAN & CELLULAR' if prompted on your device screen and make sure internet is connected then press OK
+[Extensions
+[Issuer
+[Not After
+[Not Before
+[Private Key
+[Public Key
+[Serial Number
+[Signature Algorithm
+[Subject
+[Thumbprint
+[Version
+[x-y] range in reverse order
+[{0}({1}{2})
+\+\w+
+\/?@#:[
+\Dynamic DS
+\[]+*&
+\\?\UNC
+\n##\
+\n#(?<length>\d+)\
+\ref\ira1n\bin\driver\usb
+]]>]]
+^([a-zA-Z]{1,8})(-[a-zA-Z0-9]{1,8})*
+^-+ *BEGIN (?<keyName>\w+( \w+)*) PRIVATE KEY *-+\r?\n((Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: (?<cipherName>[A-Z0-9-]+),(?<salt>[A-F0-9]+)\r?\n\r?\n)|(Comment: "?[^\r\n]*"?\r?\n))?(?<data>([a-zA-Z0-9/+=]{1,80}\r?\n)+)-+ *END \k<keyName> PRIVATE KEY *-
+^SSH-(?<protoversion>[^-]+)-(?<softwareversion>.+?)([ ](?<comments>.+))?
+^\*\+\w+
+_OTHE
+__Cano
+__InternalRegexIgnoreCase_
+__UniversalCano
+___EmptyParameterString__
+_connectionWindo
+_grou
+_prim
+_sourc
+_xml
+_xml
+_xml
+_xml
+abcdefghijklmnopqrstuvwxy
+absoluteUr
+accep
+accept-charse
+accept-encodin
+accept-languag
+accept-range
+acces
+access-control-allow-origi
+access-control-request-header
+access-control-request-metho
+accountNam
+actio
+activat
+activation-inf
+activ
+addres
+addressFamil
+address_family_not_supporte
+addresse
+aes12
+aes128-cb
+aes128-ct
+aes128wra
+aes19
+aes192-cb
+aes192-ct
+aes192wra
+aes25
+aes256-cb
+aes256-ct
+aes256wra
+agen
+algorith
+algorithmGrou
+allo
+alpin
+ancesto
+ancestor-or-sel
+annotatio
+anonymou
+anonymous
+ansi_x3.4-1968ansi_x3.4-1986asciicp367cp819csasciicsisolatin1csunicode11utf7ibm367ibm819iso-10646-ucs-2iso-8859-1iso-ir-100iso-ir-6iso646-usiso8859-1iso_646.irv:1991iso_8859-1iso_8859-1:1987l1latin1ucs-2unicodeunicode-1-1-utf-7unicode-1-1-utf-8unicode-2-0-utf-7unicode-2-0-utf-8unicodefffeusus-asciiutf-16utf-16beutf-16leutf-32utf-32beutf-32leutf-7utf-8x-unicode-1-1-utf-7x-unicode-1-1-utf-8x-unicode-2-0-utf-7x-unicode-2-0-utf-
+anyAtomicTyp
+anyO
+anySimpleTyp
+anyTyp
+anyUR
+ap. J.-C
+application/dns-messag
+application/grp
+application/javascrip
+application/jso
+application/json; charset=utf-
+application/octet-strea
+application/pd
+application/x-www-form-urlencode
+application/xm
+application/zi
+applicationProtocol
+ar-D
+ar-I
+ar-S
+arcfou
+arcfour12
+arcfour25
+argumentTyp
+argument
+arra
+arrayInde
+asci
+asnEncodedDat
+assembl
+assemblyFullNam
+assemblyNam
+assemblyRe
+assemblynam
+asyncResul
+atomic subexpressions (?> pattern
+attachmen
+attribut
+attributeTyp
+attribute
+auth-in
+authTyp
+authenticat
+authenticationMethod
+authorizatio
+authorize
+b5367df1cbac11cf95ca00805f48a19
+b5367df2cbac11cf95ca00805f48a19
+backreference (\ number
+baggag
+balancing group (?<name1-name2>subexpression) or (?'name1-name2' subexpression
+base64Binar
+baseNam
+baseUr
+baseUr
+baseUtcOffse
+basi
+bc_fixed_poin
+bc_validit
+bc_wna
+bc_wtna
+beginMetho
+bigIn
+bin.base6
+bin.he
+binaryFor
+binarySal
+binaryTyp
+bitLength < 
+blowfish-cb
+boolea
+boundHos
+boundHostAddres
+boundPor
+boundar
+boxe
+brainpoolP160r
+brainpoolP160t
+brainpoolP192r
+brainpoolP192t
+brainpoolP224r
+brainpoolP224t
+brainpoolP256r
+brainpoolP256t
+brainpoolP320r
+brainpoolP320t
+brainpoolP384r
+brainpoolP384t
+brainpoolP512r
+brainpoolP512t
+brea
+buffe
+bufferSiz
+buffer
+buil
+byteCoun
+byteInde
+byte
+bytes=0
+bytesUnknow
+cache-contro
+cachedValu
+callBac
+callbac
+cancel-tcpip-forwar
+cancellationToke
+cannot assign from the reduced node type to the original node typ
+cannot be 
+cannot be negativ
+capacit
+capacity was less than the current size
+captured group conditional (?( name ) yes-pattern | no-pattern ) or (?( number ) yes-pattern| no-pattern 
+case
+case
+cast128-cb
+catch 
+ceilin
+cellular-dat
+certificat
+certificate
+charCoun
+charInde
+charSet length less than radi
+charUnknownHig
+charUnknownLo
+characterSe
+characteristi
+char
+charse
+checkrainBut
+chil
+chmod +x /private/var/root/identity
+choice
+chunkLengt
+chunke
+ciphe
+cipher name
+cipherDat
+cipherInf
+clea
+clientAlgorithm
+clientOption
+clos
+cmd.ex
+cnonc
+codePag
+codePoin
+codepag
+collation
+collectio
+collectionSelecto
+com.apple.af
+com.apple.afc.shim.remot
+com.apple.amfi.lockdow
+com.apple.iosdiagnostics.rela
+com.apple.misagen
+com.apple.mobile.MCInstal
+com.apple.mobile.diagnostics_rela
+com.apple.mobile.house_arres
+com.apple.mobile.house_arrest.shim.remot
+com.apple.mobile.installation_prox
+com.apple.mobile.installation_proxy.shim.remot
+com.apple.mobile.lockdow
+com.apple.mobile.wireless_lockdow
+com.apple.mobileactivation
+com.apple.mobilebackup
+com.apple.os_trace_rela
+com.apple.syslog_rela
+com.iremovalpro.bypas
+comman
+commandTex
+commen
+comment
+comparabl
+compareInf
+compare
+compariso
+comparisonTyp
+component
+compres
+compressionLeve
+conca
+concurrencyLeve
+conem
+configuration_limit_exceede
+connectionInf
+connection_erro
+constructo
+constructor.DeclaringTyp
+contain
+contains-cellular-radi
+conten
+content-dispositio
+content-encodin
+content-languag
+content-lengt
+content-locatio
+content-rang
+content-typ
+content
+contiguous matches (\G
+continuatio
+continuationActio
+continuationFunctio
+continuationOption
+continu
+conversio
+converte
+cooki
+cookie.Domai
+cookieHeade
+coun
+count({0}) > mMaxBufferLength({1}
+createValueCallbac
+creationOption
+cscrip
+cspParameter
+cultur
+cultureNam
+curv
+curve25519-sha25
+curve25519-sha256@libssh.or
+d MMM yy H:m:
+d MMM yy H:m:s 'GMT
+d MMM yy H:m:s 'UTC
+d MMM yyyy H:m:
+d MMM yyyy H:m:s 'GMT
+d MMM yyyy H:m:s 'UTC
+d MMM yyyy H:m:s zz
+data.Arra
+dataLengt
+dateDat
+dateEn
+dateStar
+dateTim
+dateTime.t
+dateTimeOptio
+dayOfWee
+dayTimeDuratio
+daylightDelt
+daylightTransitionEn
+dayofwee
+ddd MMM d H:m:s yyy
+ddd, d MMM yy H:m:
+ddd, d MMM yy H:m:s 'GMT
+ddd, d MMM yy H:m:s 'UTC
+ddd, d MMM yyyy H:m:
+ddd, d MMM yyyy H:m:s 'GMT
+ddd, d MMM yyyy H:m:s 'UTC
+ddd, d MMM yyyy H:m:s zz
+ddd, dd MMM yyyy HH':'mm':'ss 'GMT
+dddd, d'-'MMM'-'yy H:m:
+dddd, d'-'MMM'-'yy H:m:s 'GMT
+dddd, d'-'MMM'-'yy H:m:s 'UTC
+dddd, d'-'MMM'-'yy H:m:s zz
+dddd, dd MMMM yyy
+decima
+decimal
+default
+defaultBod
+defaultValu
+deflat
+deflateInit2
+dela
+delegateTyp
+delegatingTyp
+delta.TotalSecond
+descendan
+descendant-or-sel
+designerTypeNam
+destDi
+destFileNam
+destinatio
+destinationArra
+destinationInde
+destinationPat
+destinationTimeZon
+destinationTyp
+dictionar
+diffie-hellman-group-exchange-sha
+diffie-hellman-group-exchange-sha25
+diffie-hellman-group1-sha
+diffie-hellman-group14-sha
+diffie-hellman-group14-sha25
+diffie-hellman-group16-sha51
+digi
+direct-tcpi
+director
+directoryInf
+directoryNam
+distinguishedNam
+diviso
+dl-modp{sign{dsa-nist-sha1},dh{plain}
+dnQualifie
+dns.lookup.duratio
+dns.question.nam
+docTypeNam
+domainNam
+doubl
+down2?
+dsaSHA
+dstEncodin
+dstOffse
+dueTim
+duratio
+durationMillisecond
+dwKeySiz
+early-dat
+ebcdi
+ec192wap
+ecdh-sha2-nistp25
+ecdh-sha2-nistp38
+ecdh-sha2-nistp52
+ecdsa-sha2-nistp25
+ecdsa-sha2-nistp38
+ecdsa-sha2-nistp52
+ecdsa-sha2-nistp{0
+elemen
+elementSelecto
+elementTyp
+elementVisito
+elements.Length != 1
+en-U
+encode
+encodin
+encrypted-data-partitio
+encryptionPolic
+endFunctio
+endInde
+endIndex cannot be greater than startIndex
+endMetho
+entitie
+entit
+entityTa
+entries must be null or on this curv
+enumClas
+enumTyp
+enumerabl
+enumeratio
+eow@openssh.co
+eras
+erro
+error.typ
+evaluato
+even value of 
+exceptio
+exceptionObjec
+exception
+exit-signa
+exit-statu
+exp must be >= 
+expandedNam
+expandedPrivateKey.Arra
+expandedPrivateKey.Coun
+expec
+expected tag 0 in DER privkey, got: {0
+expected tag 1 in DER privkey, got: {0
+expectedTa
+expire
+exponen
+exponent
+expressio
+expression
+extended_connect_not_supporte
+extensio
+fa-I
+fals
+fiel
+fieldCoun
+fieldNam
+file
+file:/
+fileInf
+fileNam
+fileTim
+filenam
+findValu
+firs
+fixed-point comb doesn't support scalars larger than the curve orde
+fixed.14.
+flag
+floa
+float.ieee.754.3
+float.ieee.754.6
+floo
+followin
+following-siblin
+forma
+format '{0}' not implemente
+format
+forwarde
+forwarded-tcpi
+frameworkNam
+friendlyNam
+fstatvfs@openssh.co
+fullNam
+functio
+gMont
+gMonthDa
+gYea
+gYearMont
+generatio
+generato
+genericParameterCoun
+genericTypeDefinitio
+get, post, option
+get_HasValu
+get_Valu
+ghidr
+git-bas
+gophe
+green-te
+gregorianYea
+grou
+groupSizeCoun
+grpc-encodin
+grpc-messag
+grpc-statu
+gzip, deflat
+gzip, deflate, b
+h (Cofactor) must be 2 or 
+h:mm t
+handl
+handleTyp
+handle
+hardlink@openssh.co
+hashAlgorith
+hashProvide
+he-I
+hexBinar
+hh:mm t
+highSurrogat
+hmac-md
+hmac-md5-9
+hmac-ripemd16
+hmac-ripemd160@openssh.co
+hmac-sha
+hmac-sha1-9
+hmac-sha2-25
+hmac-sha2-256-9
+hmac-sha2-51
+hmac-sha2-512-9
+hostAddres
+hostNam
+hostNameOrAddres
+host_not_foun
+hostbase
+hour
+http.client.active_request
+http.client.connection.duratio
+http.client.open_connection
+http.client.request.duratio
+http.client.request.time_in_queu
+http.connection.stat
+http.request.metho
+http.response.status_cod
+http/1.
+http/1.
+http
+http:/
+http://127.0.0.1:4915
+http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsi
+http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysi
+http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegrou
+http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsi
+http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsi
+http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysi
+http://schemas.microsoft.com/ws/2008/06/identity/claims/rol
+http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclai
+http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegrou
+http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthorit
+http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclai
+http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysi
+http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nam
+http://u
+http://www.apple.com/DTDs/PropertyList-1.0.dt
+http://www.w3.org/2000/xmlns
+http://www.w3.org/2001/XMLSchem
+http://www.w3.org/2001/XMLSchema#boolea
+http://www.w3.org/2001/XMLSchema#integer6
+http://www.w3.org/2001/XMLSchema#strin
+http://www.w3.org/2001/XMLSchema#uinteger6
+http://www.w3.org/2001/XMLSchema-instanc
+http://www.w3.org/2003/11/xpath-datatype
+http://www.w3.org/XML/1998/namespac
+http_protocol_erro
+http
+https
+https:/
+https://aka.ms/dotnet-warnings/{0
+https://albert.apple.com/deviceservices/drmHandshak
+https://iremovalpro.co
+https://iremovalpro.com/Payax0.ph
+https://s13.iremovalpro.com/iremovalActivation/ars2.ph
+https://s13.iremovalpro.com/iremovalActivation/auth3.ph
+https://s13.iremovalpro.com/iremovalActivation/checkm8.ph
+https://s13.iremovalpro.com/iremovalActivation/iact8.ph
+https://s13.iremovalpro.com/iremovalActivation/mf5.ph
+https://s13.iremovalpro.com/iremovalActivation/mf6.ph
+https://s13.iremovalpro.com/iremovalActivation/mf7.ph
+https://s13.iremovalpro.com/pub.ph
+https://s13.iremovalpro.com/version33.tx
+https://t.me/iremova
+https://www.trustpilot.com/review/iremovalpro.co
+hype
+iDevice Activated Succesfully 
+iOS Device Activator (MobileActivation-20 built on Jan 15 2012 at 19:07:28
+iOS Device Activator (MobileActivation-592.103.2
+iOS No
+iPhon
+iPod2,
+iRemoval PR
+iRemoval PRO Servers are currently under MAINTENANCE
+iTune
+icui
+icuu
+idDat
+identifierAuthorit
+identifier
+identit
+ideviceprox
+ideviceproxy.ex
+idre
+idref
+if-matc
+if-modified-sinc
+if-modn{sign{rsa-pkcs1-sha1},encrypt{rsa-pkcs1v2-oaep}
+if-none-matc
+if-rang
+if-unmodified-sinc
+ifFals
+ifTru
+ifinde
+image/gi
+image/jpe
+image/pn
+implementation returned current curv
+in closur
+inArra
+inCredential
+indentLeve
+inde
+index
+index
+index
+index
+index
+indexe
+indexe
+indice
+inflateInit2
+inflate
+initialCapacit
+initialCoun
+inlin
+inne
+innerException
+innerKeySelecto
+innerStrea
+inpu
+input buffer too shor
+inputBuffe
+inputCoun
+inputCount must be {0}
+inputOffse
+instanc
+intege
+invalid F2m field valu
+invalid characters encountered in Hex dat
+invalid range specifie
+invalid_respons
+ipStrin
+iphoneImag
+iprox
+iremovalpr
+iremovalpro.Properties.Resource
+issue?
+issuerCertificat
+issuerNam
+iteration
+ja-J
+k1 must be > 
+k2 must be > k
+k2 must be larger than 
+k2 must be smaller than k
+k3 must be 0 if k2 == 
+k3 must be > k
+kLibUSBMuxVersio
+keep-aliv
+keepalive@openssh.co
+kernel32.dl
+key must be a multiple of 4 byte
+keyBlo
+keyFile
+keyHandleOpenOption
+keyNam
+keySelecto
+keySiz
+keyStorageFlag
+keyValu
+keyboard-interactiv
+ko-K
+labe
+labelLengt
+lambda0 and lambda1 do not have same scal
+languag
+last-modifie
+lengt
+length < 
+length
+length
+length
+length
+leve
+libraryNam
+libusb
+line-feed (#xA) or tab (#x9) characters, leading or trailing spaces and sequences of one or more spaces (#x20) are not allowed in 'xs:token'
+linkPat
+loadFacto
+local-nam
+localE
+localNam
+localhos
+locatio
+logRound
+logdata.LiveData.tracev
+logoImag
+lowSurrogat
+lowerBound
+m_safeCertContex
+machineNam
+mailt
+majo
+manage
+mapping
+matc
+matchTimeou
+matchTyp
+max-ag
+max-age=
+max-age=259200
+max-age=3153600
+max-age=31536000; includesubdomain
+max-age=31536000; includesubdomains; preloa
+max-age=60480
+max-forward
+max-stal
+maxBufferSiz
+maxCapacit
+maxCoun
+maxValu
+maxValue cannot be less than minValu
+maximumByte
+mcin
+md2RS
+md4RS
+md5RS
+membe
+member
+messag
+message.Arra
+messageNam
+mete
+meterFactor
+metho
+methodNam
+millisecon
+millisecond
+millisecondsDela
+millisecondsTimeou
+min-fres
+minValu
+minimumByte
+minimumLengt
+mino
+minute
+mobaxter
+mode
+mont
+month
+mosaicKMandUpdSi
+mosaicUpdatedSi
+msquic.dl
+mu must be 1 or -
+multipart/form-dat
+multipart/form-data; boundary=-----------------------------2894775802929
+must be in the range [2, 16
+must be in the range [2, 8
+must be non-null and on this curv
+must be reducible nod
+must have bitlength < 2^1
+must-revalidat
+nameActio
+nameTabl
+name_resolution_erro
+namespac
+namespace-ur
+namespaceNam
+namespaceUR
+nanosecond
+negative lookahead (?! pattern) or negative lookbehind (?<! pattern
+negativeIntege
+net.pip
+net.tc
+net_io_eo
+net_ssl_renegotiate_dat
+netcon
+network.peer.addres
+network.protocol.versio
+neutra
+new {0}[{1}] {{
+newAddres
+newPat
+newSiz
+nistP19
+nistP22
+nistP25
+nistP38
+nistP52
+nistp25
+nistp38
+nistp52
+nmtoke
+nmtoken
+no-cach
+no-referre
+no-referrer-when-downgrad
+no-stor
+no-transfor
+no_recover
+node cannot reduce to itself or nul
+node
+non zero final carr
+nonNegativeIntege
+nonPositiveIntege
+nonc
+normalizationFor
+normalize-spac
+normalizedStrin
+nosnif
+not a projective coordinate syste
+not valid for affine coordinate
+not-green-te
+notAfte
+notBefor
+notatio
+nsmg
+ntIdentit
+nullableTyp
+numByte
+numbe
+offse
+offset or count is negative
+offset
+offset
+offsetI
+offsetOu
+oid.Valu
+oidFriendlyNam
+oidValu
+oldPat
+oldValu
+only-if-cache
+op_Additio
+op_BitwiseAn
+op_BitwiseO
+op_Decremen
+op_Divisio
+op_Equalit
+op_ExclusiveO
+op_Exponen
+op_Exponentiatio
+op_Fals
+op_GreaterTha
+op_GreaterThanOrEqua
+op_Incremen
+op_Inequalit
+op_LeftShif
+op_LessTha
+op_LessThanOrEqua
+op_LogicalNo
+op_Modulu
+op_Multipl
+op_OnesComplemen
+op_RightShif
+op_Subtractio
+op_Tru
+op_UnaryNegatio
+op_UnaryPlu
+opaqu
+openssh key type:
+openssh-key-v
+option
+origi
+origin-when-cross-origi
+othe
+outArra
+oute
+outerKeySelecto
+outpu
+output buffer too shor
+output.Arra
+output.Count must be 6
+outputBuffe
+outputOffse
+overlappe
+ownedMemor
+pCertContex
+pHandl
+paddin
+parameter
+paren
+parentHandl
+partialSuccessLimi
+passwor
+path
+path
+path
+patter
+payloa
+perio
+platfor
+please allow 24 hours for the order to be completed
+please join our Telegram channel for more informations (t.me/iremoval
+please make sure the device has internet connection
+please retry again
+please try again next time.
+please try again or contact administrator (0xR
+plis
+plugImag
+poin
+point and scalar arrays should be non-null, and of equal, non-zero, lengt
+point not in normal for
+pointe
+point
+polic
+positio
+positive lookahead (?= pattern) or positive lookbehind (?<= pattern
+positiveIntege
+posix-rename@openssh.co
+power must be >= 
+powershel
+preAllocate
+preallocationSiz
+precedin
+preceding-siblin
+precisio
+predicat
+prefetc
+prefi
+privat
+privateKe
+privateKey.Arra
+privateKey.Count != 3
+privateKey.Count != 6
+privateKey.Count must be 3
+privateKey.Length must be 3
+privateKeySee
+privateKeySeed.Arra
+privateKeySeed.Coun
+privateParamete
+processing-instructio
+produc
+progres
+propert
+propertyNam
+protoco
+protocolNam
+protocolVersio
+protoversio
+provide
+proxy-authenticat
+proxy-authorizatio
+proxy-revalidat
+proxyHos
+proxyPor
+proxy_tunnel_erro
+pty-re
+pub4.
+pubi
+publi
+public, max-age=3153600
+publicKe
+publicKey.Arra
+publicKey.Coun
+publicKey.Count != 3
+publicKey.Lengt
+publicParamete
+publicke
+purpos
+pytho
+qrImag
+qualit
+radi
+rando
+rang
+rangeSpecifie
+rawDat
+reade
+real
+receivedB
+reducible nodes must override Expression.Reduce(
+refere
+refres
+releaseCoun
+remoteE
+repeatCoun
+replacemen
+reques
+requestUr
+requiredLengt
+resourceSourc
+respons
+response_ende
+resul
+resultSelecto
+retry-afte
+retur
+revisio
+rgbI
+rgbKe
+righ
+rm -rf /private/var/root/identity
+rm -rf /private/var/root/payloa
+roun
+ruleSe
+runa
+s-maxag
+s_doneWritingSentine
+safeHandleTyp
+saltByte
+same-origi
+sameorigi
+scal
+scale may not be negativ
+scanTex
+schedule
+schem
+scopei
+scp -f {0
+scp -pf {0
+scp -prf {0
+scp -r -p -d -t {0
+scp -t -d {0
+script-src 'none'; object-src 'none'; base-uri 'none
+searchOptio
+searchPatter
+searchTarge
+secP160k
+secP160r
+secP160r
+secP192k
+secP224k
+secP256k
+secP256r
+secP384r
+secP521r
+secon
+second
+secure_connection_erro
+selecto
+serialNumbe
+serve
+server.addres
+server.por
+serverAlgorithm
+servic
+serviceFactor
+sessio
+set-cooki
+sha1DS
+sha1ECDS
+sha1RS
+sha25
+sha256ECDS
+sha256RS
+sha38
+sha384ECDS
+sha384RS
+sha51
+sha512ECDS
+sha512RS
+shaRS
+shar
+sharedKey.Arra
+sharedKey.Count != 3
+shel
+shor
+si is defined for Koblitz curves onl
+signa
+signalCoun
+signatur
+signature.Arra
+signature.Coun
+signature.Lengt
+signatureForma
+signaturePaddin
+sizeInBits must be non-negativ
+soOkldMEiydMk5dQokhXk+w5SBepQBt
+socke
+socketAddres
+socketFactor
+socks
+socks4
+socks
+softwareVersio
+softwareversio
+sourc
+sourceAccount
+sourceArra
+sourceBytesToCop
+sourceInde
+sourcePat
+sourceSid
+sourceTimeZon
+spac
+specifiedECDS
+spinCoun
+srcEncodin
+srcOffse
+ssh-connectio
+ssh-ds
+ssh-ed2551
+ssh-rs
+ssh-useraut
+sslClientAuthenticationOption
+st_birthtim
+st_block
+st_ifm
+st_mtim
+st_nlin
+st_siz
+stackTrac
+stal
+standalon
+standard length exceede
+star
+startInde
+startIndex cannot be larger than length of string
+startInf
+starta
+starts-wit
+stat
+stateMachin
+statusCod
+statvfs@openssh.co
+storeLocatio
+storeNam
+strInpu
+strea
+strengt
+strength must be a positive valu
+strict-origi
+strict-origin-when-cross-origi
+strict-transport-securit
+strin
+string-lengt
+string
+string
+stringToEscap
+stringToUnescap
+structur
+structureTyp
+styl
+style
+subAuthorities.Lengt
+subjectKeyIdentifie
+subjectNam
+subse
+substrin
+substring-afte
+substring-befor
+subsyste
+subsystemNam
+succes
+suffi
+supported_wif
+switch
+switchNam
+switchValu
+symbo
+sysi
+tabl
+tagClas
+tagValu
+targe
+targetTyp
+task
+task
+task
+tcpip-forwar
+telne
+temp
+temp
+tempAr
+tempOb
+tempValu
+test conditional (?( test-pattern ) yes-pattern | no-pattern 
+testValue
+text/cs
+text/cs
+text/htm
+text/html; charset=UTF-
+text/html; charset=utf-
+text/javascrip
+text/jso
+text/plai
+text/plain; charset=utf-
+text/plain;charset=utf-
+text/x-jso
+text/xm
+th-T
+thir
+throw
+tick
+time.t
+timeOfDa
+timeProvide
+timeou
+timing-allow-origi
+toExclusiv
+toke
+topImag
+totalWidt
+traceparen
+tracestat
+trailer
+transfer-encodin
+transfor
+transformName
+translat
+try_agai
+twoDigitYearMa
+twofish-cb
+twofish128-cb
+twofish192-cb
+twofish256-cb
+typeArgument
+typeNam
+typeName
+typeof
+typeof({0}
+type
+ucs-
+ucs-4 (Bigendian
+ucs-4 (order 2143
+ucs-4 (order 3412
+unaryTyp
+unbound variable:
+unicod
+universalTagNumbe
+unknow
+unknown coordinate syste
+unrecognised algorithm:
+unsafe-ur
+unsignedByt
+unsignedIn
+unsignedLon
+unsignedShor
+unsupported coordinate syste
+untypedAn
+untypedAtomi
+unusedBitCoun
+uriForma
+uriPrefi
+uriStrin
+url.schem
+urn:ietf:params:xml:ns:netconf:base:1.
+urn:schemas-microsoft-com:datatype
+usbaapl64.in
+user-agen
+user_authentication_erro
+userhas
+usernam
+username
+ustrin
+utf-16utf-16BEutf-32utf-32BEus-asciiiso-8859-1utf-7utf-
+utf-
+utf-8'
+utf3
+utf8 o
+valu
+value invalid in F2m field elemen
+value invalid in Fp field elemen
+value
+valueCoun
+valueFactor
+value
+variabl
+variable
+versio
+version
+version=
+version_negotiation_erro
+vsmacro
+waitHandl
+waitHandle
+waitHandles
+waitObjec
+wi-f
+widt
+windo
+window-chang
+workFacto
+wpdmt
+writ
+write
+ws2_32.dl
+wtls
+www-authenticat
+x-forwarded-fo
+x.Arra
+x.Count must equal y.Coun
+x.Length must equal y.Lengt
+x11-re
+x962P192v
+x962P192v
+x962P239v
+x962P239v
+x962P239v
+x962P256v
+xOffse
+xOffset + length > x.Lengt
+xOffset < 
+xdt:anyAtomicTyp
+xml:lan
+xmlTyp
+xmln
+xmlns
+xmlns=
+xon-xof
+y.Arra
+yOffse
+yOffset + length > y.Lengt
+yOffset < 
+yearMonthDuratio
+year
+yyyy MMM
+yyyy'-'MM'-'dd HH':'mm':'ss'Z
+yyyy'-'MM'-'dd'T'HH':'mm':'s
+yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffff
+yyyy'-'MM'-'dd'T'HH':'mm':'ss
+yyyy'-'MM'-'ddTHH':'mm':'ss zz
+yyyy-MM-d
+yyyy-MM-dd\THH:mm:ss.FFFFFFF\
+yyyy-MM-dd\THH:mm:ss
+yyyy-MM-dd\THH:mm:ss\
+zh-CH
+zh-CH
+zh-Han
+zh-Han
+zh-T
+zlib@openssh.or
+{ ... }
+{0:X8
+{0} ('{1}') must be a non-negative and non-zero value
+{0} ('{1}') must be a non-negative value
+{0} ('{1}') must be equal to '{2}'
+{0} ('{1}') must be greater than '{2}'
+{0} ('{1}') must be greater than or equal to '{2}'
+{0} ('{1}') must be less than '{2}'
+{0} ('{1}') must be less than or equal to '{2}'
+{0} (0x{0:x4}
+{0} : #{1
+{0} = {1
+{0} Line {1}, position {2}
+{0} can only be called once for each asynchronous operation
+{0} is an invalid culture identifier
+{0} is an invalid handle
+{0} is not a GenericMethodDefinition. MakeGenericMethod may only be called on a method for which MethodBase.IsGenericMethodDefinition is true
+{0} is not a GenericTypeDefinition. MakeGenericType may only be called on a type for which Type.IsGenericTypeDefinition is true
+{0} is not a supported code page
+{0} mode can be requested only when combined with write-only access
+{0}.{1
+{0}/{1
+{0}: The socket must not be bound or connected
+{0}:{1
+{0}={1
+{0}{1
+{0}{1}{2
+{CC5E8FDC-ECEE-4C3F-B78A-4C026134DBEC
+{connection
+{request
+{{ b = {0}, a = {1} }
+{{ c = {0}, s = {1} }
+{{ p = {0}, indexAttribute = {1} }
+{{ version = {0}, capacity = {1} }
+\[]+*&
+@ADEPQTU
+./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678
+kernel32
+Tkernel32.dll
+DOTNET_
+SeLockMemoryPrivilege
+vvvv
+VVVV
+!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~
+nicu.dll
+icuuc.dll
+icuin.dll
+MMMMd
+yMMMM
+#%*-/24:>EGNUZ\chmrwz|
+*?80;@
+cejl
+#+3;CScs
+!1Aa
+api-ms-win-core-fibers-l1-1-1
+api-ms-win-core-synch-l1-2-0
+api-ms-
+mscoree.dll
+         (((((                  H
+         h((((                  H
+                                 H
+(null)
+\REGISTRY\MACHINE\SOFTWARE\Classes
+Wow6432Node
+\Registry\Machine\Software\Classes\
+\REGISTRY\USER
+ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~
+P`p0
+P`p0
+@2Y2
+P4X4
+ 6|6
+GAqA
+ GyG
+ H&H
+0HeH
+ MWM
+0VlV
+PW~W
+@]E]
+P]W]
+PaQa
+@bnb
+VS_VERSION_INFO
+VarFileInfo
+Translation
+StringFileInfo
+000004b0
+CompanyName
+iremovalpro
+FileDescription
+iremovalpro
+FileVersion
+1.0.0.0
+InternalName
+iremovalpro.dll
+LegalCopyright
+OriginalFilename
+iremovalpro.dll
+ProductName
+iremovalpro
+ProductVersion
+1.0.0
+Assembly Version
+1.0.0.0

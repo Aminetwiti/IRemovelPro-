@@ -176,7 +176,7 @@ Le format exact ne peut être lu dans le binaire car les clés sont injectées p
 ```powershell
 # Avec le script frida_trace.py, surcharget :
 # - HttpClient.Send (System.Net.Http.dll)
-# - BCryptEncrypt (bcrypt.dll)  
+# - BCryptEncrypt (bcrypt.dll)
 # Capture les données en clair avant chiffrement
 ```
 

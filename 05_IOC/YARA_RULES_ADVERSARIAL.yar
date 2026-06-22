@@ -33,7 +33,7 @@ rule IActEnvelope_Offensive_Lab
 
     strings:
         // IActEnvelope JSON shape: udid + b64 + sig + alg + nonce + ts + key_fingerprint + lab_marker
-        $alg = "\"alg\":\"RSA-PKCS1v1.5-SHA256\"" ascii
+        $alg = "RSA-PKCS1v1.5-SHA256" ascii
         $b64 = "\"b64\":\"" ascii
         $sig = "\"sig\":\"" ascii
         $nonce = "\"nonce\":\"" ascii
@@ -43,8 +43,7 @@ rule IActEnvelope_Offensive_Lab
     condition:
         // All six wire-format fields must be present in a single JSON object
         filesize < 16KB
-        and $alg and $b64 and $sig and $nonce and $ts and $udid
-        and #b64 == 1 and #sig == 1
+        and all of them
 }
 
 
@@ -53,7 +52,7 @@ rule AttackerKeypair_Offensive_Lab
     meta:
         author = "audit-statique"
         date = "2026-06-22"
-        description = "Fresh attacker-controlled RSA-2048 PEM keypair generated during §22 case 2/3/7"
+        description = "Fresh attacker-controlled RSA-2048 PEM private key generated during §22 case 2/3/7 (matches content, not filename)"
         severity = "high"
         category = "iCloud-bypass-forgery-infrastructure"
         tlp = "LEAKED"
@@ -61,15 +60,18 @@ rule AttackerKeypair_Offensive_Lab
         reference = "BYPASS_CORE.md §23.3"
 
     strings:
-        $pem_header = "-----BEGIN " ascii
-        $rsa_oid = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA" ascii
-        // The offensive-lab test names attacker keys with timestamp prefix
-        $lab_naming = "attacker_" ascii
+        $pem_priv = "-----BEGIN PRIVATE KEY-----" ascii
+        $pem_rsa = "-----BEGIN RSA PRIVATE KEY-----" ascii
+        // PKCS#8 RSA-2048 always contains the rsaEncryption OID whose
+        // base64 encoding is "BgkqhkiG9w0BAQ" (the first 12 chars of the
+        // 16-byte OID-tagged sequence). This is content-stable across
+        // key regenerations of any RSA-2k/4k key.
+        $rsa_oid_b64 = "BgkqhkiG9w0BAQ" ascii
 
     condition:
         filesize < 4KB
-        and $pem_header and $rsa_oid
-        and $lab_naming
+        and ($pem_priv or $pem_rsa)
+        and $rsa_oid_b64
 }
 
 
@@ -86,7 +88,7 @@ rule Offensive_Lab_Marker_In_Envelope
         reference = "BYPASS_CORE.md §23.3"
 
     strings:
-        $lab_marker = "\"lab_marker\":\"iRemovalOFFENSIVE Test\"" ascii
+        $lab_marker = "iRemovalOFFENSIVE Test" ascii
 
     condition:
         filesize < 16KB
@@ -99,7 +101,7 @@ rule Zeroed_Signature_Offensive_Lab
     meta:
         author = "audit-statique"
         date = "2026-06-22"
-        description = "All-zero 256-byte RSA-2048 signature (test_adversarial.py case 5)"
+        description = "All-zero 256-byte RSA-2048 signature (test_adversarial.py case 5). Detected via sentinel marker file dropped by test_detection.py"
         severity = "medium"
         category = "iCloud-bypass-forgery-infrastructure"
         tlp = "LEAKED"
@@ -107,14 +109,9 @@ rule Zeroed_Signature_Offensive_Lab
         reference = "BYPASS_CORE.md §23.3"
 
     strings:
-        // 32 bytes of 0x00 followed by 32 more — pattern is just a marker for
-        // "this file is mostly zeros", not the actual sig (YARA can't easily
-        // count runs of 0x00 across the whole file). The real check is in
-        // test_detection.py which uses Python to detect the exact 256-zero sig.
         $marker = "ZEROED_SIG_OFFENSIVE_LAB" ascii
 
     condition:
-        // Marker file dropped by test_detection.py for case 5
         $marker
 }
 
@@ -124,7 +121,7 @@ rule Unknown_Pubkey_Offensive_Lab
     meta:
         author = "audit-statique"
         date = "2026-06-22"
-        description = "Alien RSA-2048 public key generated during §22 case 7 cross-verify test"
+        description = "Alien RSA-2048 public key generated during §22 case 7 cross-verify test (matches content: PUBLIC KEY header + RSA-2048 OID)"
         severity = "medium"
         category = "iCloud-bypass-forgery-infrastructure"
         tlp = "LEAKED"
@@ -132,14 +129,14 @@ rule Unknown_Pubkey_Offensive_Lab
         reference = "BYPASS_CORE.md §23.3"
 
     strings:
-        $pem_header = "-----BEGIN PUBLIC KEY-----" ascii
-        $rsa_oid = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA" ascii
-        $lab_naming = "alien_" ascii
+        $pem_pub = "-----BEGIN PUBLIC KEY-----" ascii
+        // SubjectPublicKeyInfo RSA-2048 OID prefix
+        $spki_rsa = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA" ascii
 
     condition:
         filesize < 2KB
-        and $pem_header and $rsa_oid
-        and $lab_naming
+        and $pem_pub
+        and $spki_rsa
 }
 
 

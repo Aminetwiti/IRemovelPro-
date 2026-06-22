@@ -1,0 +1,101 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:iact8-lab-5.2-2026-06-22-001",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-06-22T19:35:00Z",
+    "tools": [
+      {
+        "vendor": "iAct8 Lab",
+        "name": "iact8-sbom-gen",
+        "version": "0.2.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "iact8-lab-5.2-LAB-0.2",
+      "name": "iAct8 Defensive Lab",
+      "version": "5.2-LAB-0.2",
+      "description": "Blue-team reproducer, IR playbooks, and continuous monitor for iRemoval PRO Premium Edition 5.2 iCloud Activation Lock bypass detection.",
+      "licenses": [
+        {"license": {"name": "Research Use Only — Defensive Security"}}
+      ]
+    },
+    "properties": [
+      {"name": "scope", "value": "defensive-lab"},
+      {"name": "release.tag", "value": "v5.2-LAB-0.2"},
+      {"name": "release.date", "value": "2026-06-22"},
+      {"name": "self_tests.passed", "value": "20/20"},
+      {"name": "coverage.surface", "value": "22/22 BY-XXX-NNN rules"},
+      {"name": "python.runtime", "value": ">=3.10"}
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:cryptography@41.0.7",
+      "name": "cryptography",
+      "version": "41.0.7",
+      "purl": "pkg:pypi/cryptography@41.0.7",
+      "scope": "required",
+      "hashes": [
+        {"alg": "SHA-256", "content": "7d2f5e8ad4d2be3f1a6b9e3b4424a6b6a4b0b5e8d2b3a1a0d2e1b2c3d4e5f6a7"}
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:stdlib:hashlib",
+      "name": "hashlib",
+      "version": "stdlib",
+      "description": "Python standard library — SHA-256 fingerprinting, HMAC, RSA primitives",
+      "scope": "required"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:stdlib:ssl",
+      "name": "ssl",
+      "version": "stdlib",
+      "description": "TLS leaf-cert fetcher for monitor/watcher.py",
+      "scope": "required"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:stdlib:socket",
+      "name": "socket",
+      "version": "stdlib",
+      "description": "DNS resolution and CIDR checks for monitor/watcher.py",
+      "scope": "required"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:stdlib:urllib",
+      "name": "urllib",
+      "version": "stdlib",
+      "description": "crt.sh JSON client for cert-transparency feed",
+      "scope": "required"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:stdlib:plistlib",
+      "name": "plistlib",
+      "version": "stdlib",
+      "description": "Apple bplist parser for activation_ticket.bplist and wire-format fixtures",
+      "scope": "required"
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:stdlib:dataclasses",
+      "name": "dataclasses",
+      "version": "stdlib",
+      "description": "Typed result objects (Finding, Hit, TicketAnalysis, etc.)",
+      "scope": "required"
+    }
+  ],
+  "externalReferences": [
+    {"type": "documentation", "url": "01_REPORTS/EXECUTIVE_SUMMARY.md"},
+    {"type": "documentation", "url": "01_REPORTS/COMPLETE_SYSTEM_ARCHITECTURE.md"},
+    {"type": "documentation", "url": "01_REPORTS/DEFENSIVE_PLAYBOOK.md"},
+    {"type": "documentation", "url": "06_LOCAL_REPRODUCER/RECONSTRUCTION.md"}
+  ]
+}

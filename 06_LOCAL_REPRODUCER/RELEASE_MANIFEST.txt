@@ -1,0 +1,21 @@
+# iAct8 Lab release manifest - v5.2-LAB-0.2
+# Format: each row is <sha256>  <size>  <path>
+# Use `cosign sign-blob --key cosign.key RELEASE_MANIFEST.txt` to sign.
+
+fcc5df5d5c95a6435b60f9010babb8004fe59db3bb0fd35be1f090fe6c609cf7        3346  06_LOCAL_REPRODUCER/RELEASE_SBOM.cdx.json
+264927233754e978ccf9e4d76cf2cc79ff9e1bb1255cc9ec769c644fcc4c9429        4348  06_LOCAL_REPRODUCER/RELEASE_NOTES_v5.2-LAB-0.2.md
+a4d2ab2468a3337183c4ceddab5d03e8fe77e7b6b4facbb24b4e73c2c306b40b       16448  06_LOCAL_REPRODUCER/iact_reproducer/e2e.py
+bd12775b6300f48e3e8b7a871d13771dc9339324f81ad5cda1799cc5cbefa2f6       32262  06_LOCAL_REPRODUCER/iact_reproducer/dashboard.py
+3ab9cbc23642cac302e9d5b84d19407be0d311675562776bbd2918b7863b84e2       18293  06_LOCAL_REPRODUCER/iact_reproducer/report_export.py
+4db34c88abfd65d830d30cab9f298d4e96fbfff3196c9b9329abea2a6007cafe        7212  06_LOCAL_REPRODUCER/ir_playbook/splunk_queries.spl
+8d39b3d32e95c348cc1d9d875fbf7197f482a6ecedb64904d030d00d7c96dd59       12826  06_LOCAL_REPRODUCER/ir_playbook/suricata_tester.py
+c76024df752e31aecf89c40d4f3a9c9085d943266b199e0a93803a378781319f       11171  06_LOCAL_REPRODUCER/ir_playbook/ticket_analyser.py
+274d2fab487d899f23a927fecb551a983c0bf73f8035db45a18e46cece3cbcb5       19195  06_LOCAL_REPRODUCER/monitor/watcher.py
+35333dbd7c8b402a0649ec6aff752f5286a0f8f9e9d73fc6f042eef95734ea83       25378  05_IOC/YARA_RULES.yar
+f54434eda225a6638c89566286715b78801d57f7e4c2607eb75a5e001283fb8b        5688  05_IOC/YARA_RULES_ADVERSARIAL.yar
+efb3461693b36cc00949a4867f2299da418c2e193f913ae4ca55d6ea338fa3b8       18259  05_IOC/SIGMA_RULES.yml
+5d249c0658738f03673c7c689c651e0d03354b2e5f40496ebe14b9fc3d0b6015        5302  05_IOC/SURICATA_RULES.rules
+b1497e4cd164863272c804329e889cfa8122656065456606a1b218db68d05b1a       12977  05_IOC/ioc_catalog.md
+
+# total artefacts: 14/14
+# tag: v5.2-LAB-0.2

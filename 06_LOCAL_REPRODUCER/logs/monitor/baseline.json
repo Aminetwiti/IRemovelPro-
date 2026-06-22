@@ -1,0 +1,102 @@
+[
+  {
+    "kind": "dns",
+    "host": "albert.apple.com",
+    "payload": {
+      "ips": [
+        "17.32.214.169"
+      ],
+      "asn": [
+        "AS714-Apple"
+      ]
+    },
+    "alerts": [],
+    "ts": "2026-06-22T19:34:22Z"
+  },
+  {
+    "kind": "dns",
+    "host": "deviceenrollment.apple.com",
+    "payload": {
+      "ips": [
+        "17.156.129.65"
+      ],
+      "asn": [
+        "AS714-Apple"
+      ]
+    },
+    "alerts": [],
+    "ts": "2026-06-22T19:34:22Z"
+  },
+  {
+    "kind": "dns",
+    "host": "albert.icloud.com",
+    "payload": {
+      "ips": [],
+      "asn": []
+    },
+    "alerts": [
+      "DNS_FAIL: no resolution"
+    ],
+    "ts": "2026-06-22T19:34:22Z"
+  },
+  {
+    "kind": "dns",
+    "host": "ppq.apple.com",
+    "payload": {
+      "ips": [
+        "17.33.202.170",
+        "17.33.200.235",
+        "17.33.201.70"
+      ],
+      "asn": [
+        "AS714-Apple",
+        "AS714-Apple",
+        "AS714-Apple"
+      ]
+    },
+    "alerts": [],
+    "ts": "2026-06-22T19:34:22Z"
+  },
+  {
+    "kind": "dns",
+    "host": "s13.iremovalpro.com",
+    "payload": {
+      "ips": [
+        "5.252.32.98"
+      ],
+      "asn": [
+        null
+      ]
+    },
+    "alerts": [
+      "KNOWN_C2: iRemoval PRO infra"
+    ],
+    "ts": "2026-06-22T19:34:22Z"
+  },
+  {
+    "kind": "dns",
+    "host": "api.bypassfrpfiles.com",
+    "payload": {
+      "ips": [],
+      "asn": []
+    },
+    "alerts": [
+      "DNS_FAIL: no resolution"
+    ],
+    "ts": "2026-06-22T19:34:23Z"
+  },
+  {
+    "kind": "dns",
+    "host": "ocsp.apple.com",
+    "payload": {
+      "ips": [
+        "17.253.113.201"
+      ],
+      "asn": [
+        "AS714-Apple"
+      ]
+    },
+    "alerts": [],
+    "ts": "2026-06-22T19:34:23Z"
+  }
+]
