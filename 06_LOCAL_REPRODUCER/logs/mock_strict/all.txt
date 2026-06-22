@@ -1,0 +1,29 @@
+﻿python : 2026-06-22 16:30:36,185 | INFO    | iact_hmac_auth | Added HMAC 
+secret key_id=default len=32
+    + CategoryInfo          : NotSpecified: (2026-06-22 16:3...=default len=32 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-06-22 16:30:36,185 | INFO    | iact_hmac_auth | Loaded HMAC secret from 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\logs\hmac_secret.json key_id=default
+2026-06-22 16:30:36,208 | INFO    | iact_mock_server | iAct8 mock server 
+listening on http://127.0.0.1:18766
+2026-06-22 16:30:36,208 | INFO    | iact_mock_server | Log file        : 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\06_LOCAL_REPRODUCER\logs\mock_strict\mock_server_requests.jsonl
+2026-06-22 16:30:36,208 | INFO    | iact_mock_server | Blacklist file  : 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\06_LOCAL_REPRODUCER\logs\mock_strict\blacklist.json
+2026-06-22 16:30:36,208 | INFO    | iact_mock_server | HMAC secret     : 
+logs/hmac_secret.json
+2026-06-22 16:30:36,208 | INFO    | iact_mock_server | Rate limits     : 
+per_ip=100 per_udid=10 / 60s
+2026-06-22 16:30:36,208 | INFO    | iact_mock_server | Lab permissif mode: 
+none (all v1.2/v1.3/v1.4 guards active)
+2026-06-22 16:30:36,208 | INFO    | iact_mock_server | Lab marker      : 
+'iRemovalLabTest'
+2026-06-22 16:30:36,315 | WARNING | iact_hmac_auth | Auth refused: 
+missing_headers (X-Signature, X-Timestamp and X-Nonce are required)
+2026-06-22 16:30:36,316 | INFO    | iact_mock_server | 127.0.0.1 - - "POST 
+/iremovalActivation/iact8.php HTTP/1.1" 401 -

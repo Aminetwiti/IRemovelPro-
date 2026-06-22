@@ -122,6 +122,40 @@ The mock logs every request to
 `06_LOCAL_REPRODUCER\logs\mock\mock_server_requests.jsonl` and returns a
 refusal response with the OFFENSIVE  marker.
 
+#### C.1) Lab permissif mode (v1.2/v1.3/v1.4 individually disable-able)
+
+The middleware chain in the lab matches the real iRemoval backend, but
+each guard can be turned off **independently** so that traffic capture,
+YARA regression and detection-engineering can run without first
+computing a valid HMAC, exhausting the rate budget, or scrubbing every
+test UDID out of the blacklist:
+
+| Flag (CLI)                       | Guard skipped           | Backend version |
+|----------------------------------|-------------------------|-----------------|
+| `--disable-hmac`                 | HMAC-SHA256 challenge   | v1.2            |
+| `--disable-rate-limit`           | Sliding-window limiter  | v1.3            |
+| `--disable-blacklist`            | On-disk blacklist lookup| v1.4            |
+
+The flags are additive — you can combine them to make the lab fully
+permissive (`--disable-hmac --disable-rate-limit --disable-blacklist`),
+or keep only one guard active for a targeted regression test. The
+active/inactive state is logged at startup AND every skip is counted
+in `mock_server_requests.jsonl` so detection engineers can tell from a
+capture alone whether the lab was permissive.
+
+```powershell
+# Fully permissive lab — every request reaches the endpoint handler
+python 06_LOCAL_REPRODUCER\iact_reproducer\mock_server.py ^
+    --port 8765 ^
+    --disable-hmac --disable-rate-limit --disable-blacklist
+
+# Only blacklist guard active — useful to validate rejection of a
+# blacklisted UDID without having to sign every request
+python 06_LOCAL_REPRODUCER\iact_reproducer\mock_server.py ^
+    --port 8765 ^
+    --disable-hmac --disable-rate-limit
+```
+
 ### D) Verify a previously produced envelope
 
 ```powershell

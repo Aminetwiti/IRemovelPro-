@@ -1,0 +1,147 @@
+name: CI — iRemoval PRO Audit
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  lint:
+    name: Lint Python
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yara-python ruff mypy
+
+      - name: Ruff lint
+        run: ruff check 02_SCRIPTS/ 06_LOCAL_REPRODUCER/
+
+      - name: Type check (best-effort)
+        continue-on-error: true
+        run: mypy 02_SCRIPTS/ 06_LOCAL_REPRODUCER/ --ignore-missing-imports
+
+  test-reproducer:
+    name: Test reproducer
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yara-python
+
+      - name: Run self_test
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          cd 06_LOCAL_REPRODUCER
+          python iact_reproducer/self_test.py
+
+      - name: Run e2e mock server test
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          cd 06_LOCAL_REPRODUCER
+          python logs/e2e_test_v1_2.py
+
+  yara-validation:
+    name: Validate YARA rules
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install yara-python
+        run: |
+          python -m pip install --upgrade pip
+          pip install yara-python
+
+      - name: Compile YARA rules
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python -c "import yara; yara.compile(filepaths=['05_IOC/YARA_RULES.yar', '05_IOC/YARA_RULES_WIRE.yar']); print('YARA: all rules compile OK')"
+
+  ioc-validation:
+    name: Validate IoC catalog
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check IoC file sizes
+        run: |
+          python -c "
+          import os
+          files = [
+              '05_IOC/YARA_RULES.yar',
+              '05_IOC/YARA_RULES_WIRE.yar',
+              '05_IOC/SURICATA_RULES.rules',
+              '05_IOC/SIGMA_RULES.yml',
+              '05_IOC/ioc_catalog.md',
+          ]
+          for f in files:
+              assert os.path.exists(f), f'Missing: {f}'
+              assert os.path.getsize(f) > 100, f'Too small: {f}'
+              print(f'OK: {f} ({os.path.getsize(f)} bytes)')
+          "
+
+  reports-check:
+    name: Check reports exist
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify all reports
+        run: |
+          python -c "
+          import os
+          required = [
+              '01_REPORTS/INDEX.md',
+              '01_REPORTS/EXECUTIVE_SUMMARY.md',
+              '01_REPORTS/CONSOLIDATED_AUDIT.md',
+              '01_REPORTS/CRYPTO_CRITICAL_ANALYSIS.md',
+              '01_REPORTS/APPLE_CERT_CHAIN.md',
+              '01_REPORTS/CRYPTO_KEY_DERIVATION.md',
+              '01_REPORTS/DEFENSIVE_PLAYBOOK.md',
+              '01_REPORTS/BYPASS_CORE.md',
+              '01_REPORTS/COMPLETE_SYSTEM_ARCHITECTURE.md',
+              '01_REPORTS/APPLE_DRMHANDSHAK_FLOW.md',
+              '01_REPORTS/ENDPOINT_IACT8.md',
+              'CAPSTONE_REPORT.md',
+              'SECURITY.md',
+              'SECURITY_ADVISORY.md',
+          ]
+          missing = [r for r in required if not os.path.exists(r)]
+          if missing:
+              print('MISSING:', missing)
+              exit(1)
+          print(f'All {len(required)} reports present')
+          "

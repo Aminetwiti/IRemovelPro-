@@ -1,336 +1,83 @@
-# =============================================================
-# .gitignore — iRemoval PRO Reverse-Engineering Research Project
-# =============================================================
-# This project is a defensive security / RE analysis corpus.
-# It contains extracted binaries, certificates, generated keys,
-# runtime traces, and tool outputs.  Only SOURCE files,
-# documentation, and small text artifacts should be tracked.
-#
-# See GITIGNORE_NOTES.md for the rationale of each block.
-# =============================================================
-
-# -------------------------------------------------
-# 0. Always ignore
-# -------------------------------------------------
-.DS_Store
-Thumbs.db
-desktop.ini
-$RECYCLE.BIN/
-ehthumbs.db
-ehthumbs_vista.db
-*.lnk
-*.url
-*~
-
-# -------------------------------------------------
-# 1. Secrets & credentials (NEVER commit)
-# -------------------------------------------------
-# Private keys, PEM, DER, PFX/P12 keystores, SSH keys
-*.pem
-*.key
-*.der
-*.p12
-*.pfx
-*.cer
-*.crt
-*.csr
-*.jks
-*.keystore
-secrets/
-.env
-.env.*
-*.env
-
-# Local reproducers: generated keys, captured HMAC secrets
-06_LOCAL_REPRODUCER/keys/
-06_LOCAL_REPRODUCER/.keys/
-06_LOCAL_REPRODUCER/secrets/
-
-# Apple certificate corpus (extracted, even public CAs should
-# not be redistributed in this context)
-04_EXTRACTED/apple_certs/
-04_EXTRACTED/*.der
-04_EXTRACTED/*.pem
-04_EXTRACTED/blackhound_rsa_pubkey.pem
-
-# -------------------------------------------------
-# 2. Binaries & copyrighted material
-# -------------------------------------------------
-# Native binaries (Mach-O, PE, ELF, FAT), firmware, packages
-*.bin
-*.exe
-*.dll
-*.lib
-*.so
-*.so.*
-*.dylib
-*.macho
-*.app
-*.deb
-*.rpm
-*.apk
-*.ipa
-*.ipsw
-*.img
-*.rom
-*.fw
-*.pcap
-*.pcapng
-*.cap
-*.dmp
-*.core
-*.minidump
-
-# iRemoval PRO / toolkits originals (copyrighted vendor binaries)
-IRemovalPro/iRemoval PRO.exe
-IRemovalPro/iremovalpro.dll
-IRemovalPro/iremovalpro.exe
-IRemovalPro/ref/toolkits/
-
-# Extracted Mach-O blobs (large, copyrighted)
-04_EXTRACTED/*.bin
-04_EXTRACTED/fat_*
-04_EXTRACTED/macho_*
-
-# Extracted PE / DLL dumps
-__analysis/extracted/*.dll
-__analysis/extracted/*.exe
-__analysis/extracted/*.bin
-__analysis/extracted/*.zip
-__analysis/extracted/*.7z
-
-# Local reproducers binary cache
-06_LOCAL_REPRODUCER/corpus/**/*.bin
-06_LOCAL_REPRODUCER/corpus/**/*.dll
-06_LOCAL_REPRODUCER/corpus/**/*.exe
-
-# -------------------------------------------------
-# 3. Generated / derived artifacts
-# -------------------------------------------------
-# Ghidra project outputs (huge, regenerable)
-*.gpr
-*.rep
-*.gdf
-*.gdt
-*.sqlite
-*.ldb
-*.cdb
-03_OUTPUTS/ghidra/
-03_OUTPUTS/ghidra_*/
-03_OUTPUTS/ghidra_blackhound/
-03_OUTPUTS/ghidra_test/
-03_OUTPUTS/nativeaot/
-
-# Frida runtime dumps
-*.frida
-__analysis/*.frida
-__analysis/frida_*
-
-# IDA / Binary Ninja databases
-*.idb
-*.i64
-*.bndb
-*.til
-
-# Decompiled C / assembly (regenerable, huge)
-03_OUTPUTS/*_decompiled.c
-03_OUTPUTS/*_functions.json
-03_OUTPUTS/*_strings.txt
-03_OUTPUTS/*_summary.txt
-03_OUTPUTS/*_interesting.txt
-03_OUTPUTS/*_asm.txt
-03_OUTPUTS/*_asm.s
-03_OUTPUTS/*_asm/
-
-# NativeAOT unpack output (regenerable)
-03_OUTPUTS/nativeaot/
-
-# MITM proxy captures
-06_LOCAL_REPRODUCER/requests/
-06_LOCAL_REPRODUCER/responses/
-06_LOCAL_REPRODUCER/captures/
-
-# Corpus binary blobs (regenerable via corpus_generator.py)
-06_LOCAL_REPRODUCER/corpus/**/*.bin
-06_LOCAL_REPRODUCER/corpus/**/*.bplist
-06_LOCAL_REPRODUCER/corpus/**/*.plist
-06_LOCAL_REPRODUCER/corpus/**/*.sig
-
-# Big intermediate JSON (regenerable)
-03_OUTPUTS/extracted/
-
-# Local reproducers large logs
-06_LOCAL_REPRODUCER/logs/*.log
-06_LOCAL_REPRODUCER/logs/*.jsonl
-06_LOCAL_REPRODUCER/dashboard_*.html
-
-# Server probe outputs (regenerable)
-03_OUTPUTS/server_probe/
-__analysis/server_*.json
-
-# -------------------------------------------------
-# 4. Build / runtime artifacts
-# -------------------------------------------------
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-build/
-develop-eggs/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual environments
-venv/
 .venv/
+venv/
 env/
-ENV/
-.python-version
-.python-cache/
-
-# Tooling caches
-.mypy_cache/
-.ruff_cache/
+.eggs/
+*.egg-info/
+*.egg
 .pytest_cache/
 .coverage
-.coverage.*
 htmlcov/
-.tox/
-.cache/
-.pyright/
-.pylint.d/
+.mypy_cache/
+.ruff_cache/
 
-# Node (if used for tools)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-store/
-
-# Go (if used)
-*.test
-*.out
-
-# PHP (IremoveClone backend)
-vendor/
-composer.lock
-.phpunit.result.cache
-.phpunit.cache/
-
-# -------------------------------------------------
-# 5. Logs & temporary files
-# -------------------------------------------------
+# Logs
 *.log
-*.log.*
-*.tmp
-*.temp
-*.bak
+logs/*.tmp
+
+# Generated outputs (rebuilt by reproducer)
+06_LOCAL_REPRODUCER/responses/
+06_LOCAL_REPRODUCER/keys/*.pem
+!06_LOCAL_REPRODUCER/keys/.gitkeep
+06_LOCAL_REPRODUCER/keys/blacklist_e2e.json
+06_LOCAL_REPRODUCER/logs/hmac_secret.json
+06_LOCAL_REPRODUCER/logs/blacklist_*.json
+06_LOCAL_REPRODUCER/logs/e2e/
+06_LOCAL_REPRODUCER/dashboard_*.html
+06_LOCAL_REPRODUCER/yara_report*.json
+06_LOCAL_REPRODUCER/yara_report*.csv
+06_LOCAL_REPRODUCER/yara_validation*.json
+06_LOCAL_REPRODUCER/yara_validation*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
 *.swp
 *.swo
-*.orig
-*.rej
-*.patch
-*.pid
-*.seed
-*.pid.lock
-
-# OS temp / editor
-*.sublime-project
-*.sublime-workspace
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-!.vscode/tasks.json
-.idea/
-*.iml
-*.iws
-*.ipr
-.history/
-.fleet/
-.cursor/
-
-# Vim / Emacs
-.vscode-test/
-.*.swp
 *~
-\#*\#
-.\#*
 
-# -------------------------------------------------
-# 6. Excluded text outputs (huge / regenerable only)
-# -------------------------------------------------
-# Most 03_OUTPUTS/*.txt reports ARE tracked — they are
-# analysis findings.  Only the heaviest regenerable raw
-# dumps are excluded.
-03_OUTPUTS/strings_all_long.txt
-03_OUTPUTS/strings_all.txt
-03_OUTPUTS/ios_binary_strings.txt
-03_OUTPUTS/string_table.txt
-03_OUTPUTS/dll_strings_analysis.txt
+# Build
+build/
+dist/
+target/
+*.exe
+*.dll
+*.dylib
+*.so
 
-# Ghidra text outputs (regenerable)
-03_OUTPUTS/ghidra_macho_*/run.log
-03_OUTPUTS/ghidra/*.log
-03_OUTPUTS/ghidra_macho_*/
-03_OUTPUTS/ghidra_blackhound/
-03_OUTPUTS/ghidra_test/
+# Large binaries (extracted)
+*.bin
+04_EXTRACTED/macho_*.bin
+04_EXTRACTED/fat_*.bin
+04_EXTRACTED/apple_certs/cert_*.der
 
-# Local reproducers large JSON dump
-06_LOCAL_REPRODUCER/logs/yara_validation_*.json
-06_LOCAL_REPRODUCER/logs/yara_report.json
+# Sensitive
+*.pem
+!04_EXTRACTED/blackhound_rsa_pubkey.pem  # The bypass pubkey IS the IoC
+.env
+*.key
+*.p12
 
-# -------------------------------------------------
-# 7. Sensitive IOCs (defer for now; can be flipped later)
-# -------------------------------------------------
-# Keep these OFF the index until vetted
-05_IOC/private/
-
-# -------------------------------------------------
-# 8. Windows-specific
-# -------------------------------------------------
-[Tt]humbs.db
-*.stackdump
-[Dd]esktop.ini
-$RECYCLE.BIN/
-
-# PowerShell transcripts
-*.transcript.txt
-psreadline/
-
-# -------------------------------------------------
-# 9. Misc / project-specific
-# -------------------------------------------------
-# Generated documents that re-generate
-06_LOCAL_REPRODUCER/dashboard_*.html
-
-# Dumped memory / heap snapshots
-*.hprof
-*.heap
-*.phps
-
-# Lockfiles for transient tools
-.flake8
-.molecule/
-
-# Test artifacts
-.coverage
-coverage.xml
-*.cover
+# Caches
 .cache/
-.pytest_cache/
-.pyright/
+.pyre/
 .mypy_cache/
-.ruff_cache/
+.nox/
+.coverage
+.tox/
+
+# Generated
+*~
+*.bak
+*.swp
+*.tmp

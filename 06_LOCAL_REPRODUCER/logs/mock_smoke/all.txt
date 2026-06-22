@@ -1,0 +1,30 @@
+﻿python : 2026-06-22 16:28:35,972 | INFO    | iact_hmac_auth | Added HMAC 
+secret key_id=default len=32
+    + CategoryInfo          : NotSpecified: (2026-06-22 16:2...=default len=32 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-06-22 16:28:35,973 | INFO    | iact_hmac_auth | Generated fresh HMAC 
+secret key_id=default saved to 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\logs\hmac_secret.json
+2026-06-22 16:28:35,999 | INFO    | iact_mock_server | iAct8 mock server 
+listening on http://127.0.0.1:18765
+2026-06-22 16:28:35,999 | INFO    | iact_mock_server | Log file        : 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\06_LOCAL_REPRODUCER\logs\mock_smoke\mock_server_requests.jsonl
+2026-06-22 16:28:35,999 | INFO    | iact_mock_server | Blacklist file  : 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\06_LOCAL_REPRODUCER\logs\mock_smoke\blacklist.json
+2026-06-22 16:28:36,000 | INFO    | iact_mock_server | HMAC secret     : 
+logs/hmac_secret.json
+2026-06-22 16:28:36,000 | INFO    | iact_mock_server | Rate limits     : 
+per_ip=1000000 per_udid=1000000 / 60s
+2026-06-22 16:28:36,000 | WARNING | iact_mock_server | Lab permissif mode: 
+middleware GUARDS DISABLED = ['blacklist', 'hmac', 'rate_limit']
+2026-06-22 16:28:36,000 | INFO    | iact_mock_server | Lab marker      : 
+'iRemovalLabTest'
+2026-06-22 16:29:20,956 | INFO    | iact_mock_server | 127.0.0.1 - - "POST 
+/iremovalActivation/iact8.php HTTP/1.1" 200 -
+2026-06-22 16:29:20,987 | INFO    | iact_mock_server | 127.0.0.1 - - "GET 
+/health HTTP/1.1" 200 -

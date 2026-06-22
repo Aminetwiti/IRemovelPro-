@@ -2,6 +2,29 @@
 
 > **Projet d'audit statique** — analyse complète d'un outil de bypass iCloud Activation Lock
 
+![Status](https://img.shields.io/badge/status-final--release-blue)
+![Version](https://img.shields.io/badge/version-1.1.0-green)
+![TLP](https://img.shields.io/badge/TLP-AMBER-orange)
+![Reports](https://img.shields.io/badge/reports-18-blueviolet)
+![IoC](https://img.shields.io/badge/IoC-60+-red)
+![YARA](https://img.shields.io/badge/YARA-18%20rules-success)
+![License](https://img.shields.io/badge/license-research--only-yellow)
+
+## 🚨 Quick Reference
+
+> **Le bypass est confirmé.** Clé RSA-1024 hardcodée dans `blackhound.dylib` permet de signer des tickets d'activation forgés. Cert Apple Developer légitime (`weidong li`, team `UR3K3ZV28R`) trouvé dans la DLL. 5 contre-mesures documentées.
+
+| Action immédiate | Référence |
+|---|---|
+| 🛑 Révoquer team Apple `UR3K3ZV28R` | [SA-2026-002](SECURITY_ADVISORY.md#sa-2026-002) |
+| 🛡️ Bloquer C2 `s13.iremovalpro.com` | [DEFENSIVE_PLAYBOOK §5](01_REPORTS/DEFENSIVE_PLAYBOOK.md#5-contre-mesure--4--détection-réseau) |
+| 🔑 Allowlist modulus RSA serveur Apple | [DEFENSIVE_PLAYBOOK §2](01_REPORTS/DEFENSIVE_PLAYBOOK.md#2-contre-mesure-1--allowlist-de-modulus-rsa-côté-apple) |
+| 🚨 Hook amfid iOS 19+ | [DEFENSIVE_PLAYBOOK §4](01_REPORTS/DEFENSIVE_PLAYBOOK.md#4-contre-mesure-3--hook-ios-amfid-pour-bloquer-seckeyverifysignature-non-apple) |
+
+📄 **Vue exécutive** : [`CAPSTONE_REPORT.md`](CAPSTONE_REPORT.md) (18 KB)
+📜 **Advisories** : [`SECURITY_ADVISORY.md`](SECURITY_ADVISORY.md) (5 SA, CVSS max 9.8)
+🛡️ **Contre-mesures** : [`DEFENSIVE_PLAYBOOK.md`](01_REPORTS/DEFENSIVE_PLAYBOOK.md) (20 KB)
+
 ## 📋 Vue d'ensemble
 
 | Champ | Valeur |

@@ -1,7 +1,7 @@
 # EDR Detection Queries — iRemoval PRO Premium Edition v5.2
 
 > Specific detection queries for popular EDR/SIEM platforms
-> 
+>
 > Author: Audit statique — 2026-06-22
 > TLP: LEAKED
 > Purpose: OFFENSIVE  detection for SOC analysts

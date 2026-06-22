@@ -1,0 +1,2 @@
+# Cette dossier contient les cles RSA-2048 generees par le reproducer
+# Les cles individuelles (*.pem) sont dans .gitignore car regenerees a chaque run
