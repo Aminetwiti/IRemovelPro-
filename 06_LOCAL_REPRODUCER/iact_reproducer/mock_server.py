@@ -308,23 +308,28 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
         ip: Optional[str] = None,
         source: str,
     ) -> None:
+        # NOTE: this method is ALWAYS called from within a ``self.state.lock``
+        # block (see ``_run_defender`` middleware path and
+        # ``_handle_apple_drm_check`` endpoint path). Re-entering the lock
+        # here would deadlock against the regular ``threading.Lock`` we use
+        # to serialise defender counters. The caller is responsible for
+        # holding the lock for the duration of the alert emit.
         severity = self.state.CHECK_SEVERITY.get(check_id, "P3")
-        with self.state.lock:
-            self.state.defender_alerts[severity] += 1
-            self.state.alert_log.append({
-                "ts": _dt.datetime.now(
-                    tz=_dt.timezone.utc
-                ).isoformat(),
-                "severity": severity,
-                "check_id": check_id,
-                "reason": reason,
-                "request_id": request_id,
-                "udid": udid,
-                "ip": ip or (self.client_address[0]
-                              if self.client_address else None),
-                "source": source,
-                "lab_marker": TEST_MARKER,
-            })
+        self.state.defender_alerts[severity] += 1
+        self.state.alert_log.append({
+            "ts": _dt.datetime.now(
+                tz=_dt.timezone.utc
+            ).isoformat(),
+            "severity": severity,
+            "check_id": check_id,
+            "reason": reason,
+            "request_id": request_id,
+            "udid": udid,
+            "ip": ip or (self.client_address[0]
+                          if self.client_address else None),
+            "source": source,
+            "lab_marker": TEST_MARKER,
+        })
 
     def _check_middleware(self, body: bytes) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
         ip = self.client_address[0]

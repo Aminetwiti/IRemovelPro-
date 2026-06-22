@@ -1,0 +1,7 @@
+﻿========================================================================
+º23 DETECTION ENGINEERING ù YARA + SIGMA ù root: C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\06_LOCAL_REPRODUCER\detection_tests\20260622T195823Z
+========================================================================
+  YARA rules loaded: 6 rules compiled OK
+
+#   expected   observed   label
+------------------------------------------------------------------------

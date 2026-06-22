@@ -1,0 +1,21 @@
+iAct8 Defensive Lab v5.2-LAB-0.2
+
+Self-tests  : 20/20 PASS
+Coverage    : 22/22 rules exercised
+Phases      : C (reporting) / D (IR playbooks) / E (continuous monitor) / F (release)
+
+Deliverables
+- C: Chart.js dashboard, SARIF 2.1.0, PDF export, Stage 4 E2E
+- D: Splunk SPL, Suricata offline tester, activation_ticket.bplist analyser
+- E: DNS/TLS/CT continuous watcher (stdlib only)
+- F: CycloneDX SBOM, signed RELEASE_MANIFEST, RELEASE_NOTES
+
+Fingerprints (SHA-256)
+- SBOM              : see RELEASE_SBOM.cdx.json
+- RELEASE_MANIFEST  : see RELEASE_MANIFEST.txt
+- RELEASE signature : see RELEASE_MANIFEST.sig  (RSA-2048 PKCS#1 v1.5)
+- public key        : see RELEASE_MANIFEST.pub
+- verification help : see RELEASE_MANIFEST.tsr + release/verify_manifest.py
+
+Verify locally:
+  py 06_LOCAL_REPRODUCER/release/verify_manifest.py

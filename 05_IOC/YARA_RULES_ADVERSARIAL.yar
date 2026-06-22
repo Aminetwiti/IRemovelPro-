@@ -32,13 +32,15 @@ rule IActEnvelope_Offensive_Lab
         reference = "BYPASS_CORE.md §23.3"
 
     strings:
-        // IActEnvelope JSON shape: udid + b64 + sig + alg + nonce + ts + key_fingerprint + lab_marker
-        $alg = "RSA-PKCS1v1.5-SHA256" ascii
-        $b64 = "\"b64\":\"" ascii
-        $sig = "\"sig\":\"" ascii
-        $nonce = "\"nonce\":\"" ascii
-        $ts = "\"ts\":\"20" ascii
-        $udid = "\"udid\":\"" ascii
+        // IActEnvelope JSON shape: udid + b64 + sig + alg + nonce + ts + key_fingerprint + lab_marker.
+        // All wire-format field names must be present in a single JSON object.
+        // Tolerates optional whitespace after the colon (json.dumps default vs compact).
+        $alg   = "RSA-PKCS1v1.5-SHA256" ascii
+        $b64   = /"b64":\s*"/ ascii
+        $sig   = /"sig":\s*"/ ascii
+        $nonce = /"nonce":\s*"/ ascii
+        $ts    = /"ts":\s*"20/ ascii
+        $udid  = /"udid":\s*"/ ascii
 
     condition:
         // All six wire-format fields must be present in a single JSON object

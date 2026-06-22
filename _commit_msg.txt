@@ -1,0 +1,6 @@
+release: v5.2-LAB-0.2 - Phase C/D/E delivery
+
+- C: Chart.js dashboard, SARIF 2.1.0, PDF export, Stage 4 E2E
+- D: Splunk SPL, Suricata offline tester, activation_ticket.bplist analyser
+- E: DNS/TLS/Cert-Transparency continuous watcher (stdlib only)
+- F: CycloneDX SBOM, signed RELEASE_MANIFEST, RELEASE_NOTES
