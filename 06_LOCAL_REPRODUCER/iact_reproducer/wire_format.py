@@ -58,7 +58,7 @@ class IActEnvelope:
     nonce: str              # base64(16-byte nonce)
     ts: str = field(default_factory=lambda: _dt.datetime.now(tz=_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     key_fingerprint: Optional[str] = None
-    OFFENSIVE _marker: str = TEST_MARKER
+    lab_marker: str = TEST_MARKER
 
     # ------------------------------------------------------------------ #
     # Serialisation helpers

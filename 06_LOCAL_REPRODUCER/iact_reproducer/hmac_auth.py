@@ -48,7 +48,7 @@ from typing import Dict, Optional, Set, Tuple
 
 log = logging.getLogger("iact_hmac_auth")
 
-TEST_MARKER = "iRemovalOFFENSIVE Test"
+TEST_MARKER = "iRemovalLabTest"
 
 # Endpoints that do NOT require HMAC auth (health / version probes).
 # Everything under /iremovalActivation/* requires a signature.

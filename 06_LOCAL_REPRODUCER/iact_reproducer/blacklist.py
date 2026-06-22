@@ -27,7 +27,7 @@ The module deliberately pre-populates a few entries that are obvious
 test fixtures so the lab is interesting from the first request:
 
   * ``"00000000-0000000000000000"`` (canonical "all-zero" UDID)
-  * a fake serial that starts with ``OFFENSIVE -BLACKLISTED``
+  * a fake serial that starts with ``LAB-BLACKLISTED``
   * a fake IMEI ending in ``0001``
 """
 
@@ -46,12 +46,12 @@ TEST_MARKER = "iRemovalDefensiveTest"
 
 # Pre-populated fixtures (DEFENSIVE-only)
 _SEED_UDIDS: List[str] = [
-    "DEFENSIVE-BLACKLISTED-0001",
-    "DEFENSIVE-BLACKLISTED-0002",
+    "LAB-BLACKLISTED-0001",
+    "LAB-BLACKLISTED-0002",
     "00000000-0000000000000000",
 ]
 _SEED_SERIALS: List[str] = [
-    "DEFENSIVE-BLACKLISTED-SN-A1B2C3",
+    "LAB-BLACKLISTED-SN-A1B2C3",
 ]
 _SEED_IMEIS: List[str] = [
     "358000000000001",

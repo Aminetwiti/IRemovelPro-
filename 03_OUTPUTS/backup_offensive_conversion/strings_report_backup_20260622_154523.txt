@@ -1,0 +1,490 @@
+STRING EXTRACTION REPORT: c:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\iremovalpro.dll
+Total size: 31,264,768 bytes
+ASCII strings (>=6): 60,183
+UTF-16LE strings (>=6): 5,114
+================================================================================
+
+
+--- URLs/Endpoints (58 matches) ---
+  RepositoryUrlBhttps://github.com/dotnet/runtime
+  SYSLIB0050Dhttps://aka.ms/dotnet-warnings/{0}
+    xmlns       %URI;          #FIXED 'http://www.w3.org/1999/xhtml'
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  http://crl.apple.com/root.crl0
+  https://www.apple.com/appleca/0
+  #http://ocsp.apple.com/ocsp03-wwdr190
+  *http://www.apple.com/certificateauthority/0
+    conversionabout the </p></div>integrated" lang="enPortuguesesubstituteindividualimpossiblemultimediaalmost allpx solid #apart fromsubject toin Englishcriticizedexcept forguidelinesoriginallyremarkab...
+  sByTagName(.jpg" alt="1px solid #.gif" alt="transparentinformationapplication" onclick="establishedadvertising.png" alt="environmentperformanceappropriate&amp;mdash;immediately</strong></rather thante...
+  <div id="illustratedengineeringterritoriesauthoritiesdistributed6" height="sans-serif;capable of disappearedinteractivelooking forit would beAfghanistanwas createdMath.floor(surroundingcan also beobse...
+  nconformidadline-height:font-family:" : "http://applicationslink" href="specifically//<![CDATA[
+  such as the influence ofa particularsrc='http://navigation" half of the substantial &nbsp;</div>advantage ofdiscovery offundamental metropolitanthe opposite" xml:lang="deliberatelyalign=centerevolutio...
+  <li class="instrumentalSoviet Unionacknowledgedwhich can bename for theattention toattempts to developmentsIn fact, the<li class="aimplicationssuitable formuch of the colonizationpresidentialcancelBub...
+  <were createdmore generalinformation used for theindependent the Imperialcomponent ofto the northinclude the Constructionside of the would not befor instanceinvention ofmore complexcollectivelybackgro...
+  said to havein the firstwhile othershypotheticalphilosopherspower of thecontained inperformed byinability towere writtenspan style="input name="the questionintended forrejection ofimplies thatinvented...
+  <link rel=" src='http://interested inconventional " alt="" /></are generallyhas also beenmost popular correspondingcredited withtyle="border:</a></span></.gif" width="<iframe src="table class="inline-...
+  <div class="more commonlyorganisationsfunctionalitywas completed &amp;mdash; participationthe characteran additionalappears to befact that thean example ofsignificantlyonmouseover="because they async ...
+  (function() {recommendationform action="/transformationreconstruction.style.display According to hidden" name="along with thedocument.body.approximately Communicationspost" action="meaning &quot;--<![...
+  <table class="accompanied byaccount of the<script src="/nature of the the people in in addition tos); js.id = id" width="100%"regarding the Roman Catholican independentfollowing the .gif" width="1the ...
+  <div iwas consideredpercent of the" /></a></div>collection of descended fromsection of theaccept-charsetto be confusedmember of the padding-right:translation ofinterpretation href='http://whether or n...
+  environmental to prevent thehave been usedespecially forunderstand theis essentiallywere the firstis the largesthave been made" src="http://interpreted assecond half ofcrolling="no" is composed ofII, ...
+  overflow:hidden;img src="http://addEventListenerresponsible for s.js"></script>
+  robots" content="<div id="footer">the United States<img src="http://.jpg|right|thumb|.js"></script>
+  <derived from the <img src='http://according to the 
+  style="font-size:script language="Arial, Helvetica,</a><span class="</script><script political partiestd></tr></table><href="http://www.interpretation ofrel="stylesheet" document.write('<charset="utf-...
+  <img src="http://s;text-align:centerfont-weight: bold; According to the difference between" frameborder="0" " style="position:link href="http://html4/loose.dtd">
+  <&nbsp;&nbsp;&nbsp;"><a href="http://style="float:left;concerned with the=http%3A%2F%2Fwww.in popular culturetype="text/css" />it is possible to Harvard Universitytylesheet" href="/the main characterO...
+  keywords" content="w3.org/1999/xhtml"><a target="_blank" text/html; charset=" target="_blank"><table cellpadding="autocomplete="off" text-align: center;to last version by background-color: #" href="ht...
+  <script language="//EN" "http://www.wencodeURIComponent(" href="javascript:<div class="contentdocument.write('<scposition: absolute;script src="http:// style="margin-top:.min.js"></script>
+  </html>distinction between/" target="_blank"><link href="http://encoding="utf-8"?>
+  w.addEventListener?action="http://www.icon" href="http:// style="background:type="text/css" />
+  <script  style="font-size:1></span><span id=gbLibrary of Congress<img src="http://imEnglish translationAcademy of Sciencesdiv style="display:construction of the.getElementById(id)in conjunction withEl...
+   type="text" name=">Privacy Policy</a>administered by theenableSingleRequeststyle=&quot;margin:</div></div></div><><img src="http://i style=&quot;float:referred to as the total population ofin Washing...
+  <script under the influencecontribution to theOfficial website ofheadquarters of thecentered around theimplications of thehave been developedFederal Republic ofbecame increasinglycontinuation of theNo...
+  <script type="t<a href='http://www.hortcut icon" href="</div>
+  <div cduring his lifetime,corresponding to thetype="image/x-icon" an increasing numberdiplomatic relationsare often consideredmeta charset="utf-8" <input type="text" examples include the"><img src="ht...
+  html; charset=UTF-8" setTimeout(function()display:inline-block;<input type="submit" type = 'text/javascri<img src="http://www." "http://www.w3.org/shortcut icon" href="" autocomplete="off" </a></div><...
+  <li class="css" type="text/css" <form action="http://xt/css" href="http://link rel="alternate" 
+  <script type="text/ onclick="javascript:(new Date).getTime()}height="1" width="1" People's Republic of  <a href="http://www.text-decoration:underthe beginning of the </div>
+  <script src="http://option><option value=often referred to as /option>
+  <a href="http://www</a><a href="http://w
+  <html <meta charset="utf-8">:url" content="http://.css" rel="stylesheet"style type="text/css">type="text/css" href="w3.org/1999/xhtml" xmltype="text/javascript" method="get" action="link rel="styleshe...
+  <a href="http://www.css" rel="stylesheet" </div></div><div classlanguage="javascript">aria-hidden="true">
+  <li><a href="http://ator" aria-hidden="tru> <a href="http://www.language="javascript" /option>
+  <!DOCTYPE html PUBLIC "nt-Type" content="text/<meta http-equiv="Conteransitional//EN" "http:<html xmlns="http://www-//W3C//DTD XHTML 1.0 TDTD/xhtml1-transitional//www.w3.org/TR/xhtml1/pe = 'text/javas...
+  <html xmlns="http-//W3C//DTD HTML 4.01 TentsByTagName('script')input type="hidden" nam<script type="text/javas" style="display:none;">document.getElementById(=document.createElement(' type='text/javas...
+   style="display:none;"><<li><a href="http://www. type='text/javascript'>
+
+--- iOS/Apple (239 matches) ---
+  Usbmuxd
+  Backup
+  activation-record
+  *Apple Development: weidong li (PBNGZQ8G6L)
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <key>com.apple.BTServer.allowQuickRSSIRead</key>
+  <key>com.apple.BTServer.allowRestrictedServices</key>
+  <key>com.apple.BTServer.appleMfgDataAdvertising</key>
+  <key>com.apple.BTServer.appleMfgDataScanner</key>
+  <key>com.apple.BTServer.le.att</key>
+  <key>com.apple.BTServer.programmaticPairing</key>
+  <key>com.apple.CommCenter.fine-grained</key>
+  <key>com.apple.SystemConfiguration.SCDynamicStore-write-access</key>
+  <key>com.apple.SystemConfiguration.SCPreferences-write-access</key>
+  <string>com.apple.AutoWake.xml</string>
+  <key>com.apple.accounts.appleaccount.fullaccess</key>
+  <key>com.apple.authkit.client.private</key>
+  <key>com.apple.bluetooth.system</key>
+  <key>com.apple.icloud.FindMyDevice.FindMyDeviceBTDiscoveryXPCService.access</key>
+  <key>com.apple.icloud.FindMyDevice.FindMyDeviceHelperXPCService.access</key>
+  <key>com.apple.icloud.FindMyDevice.FindMyDeviceIdentityXPCService.access</key>
+  <key>com.apple.icloud.FindMyDevice.FindMyDeviceUserNotificationsXPCService.access</key>
+  <key>com.apple.icloud.findmydeviced.access</key>
+  <key>com.apple.icloud.ifccd</key>
+  <key>com.apple.itunesstored.private</key>
+  <key>com.apple.keystore.absinthe</key>
+  <key>com.apple.keystore.device</key>
+  <key>com.apple.keystore.sik.access</key>
+  <key>com.apple.localnotification.schedulingproxy</key>
+  <key>com.apple.locationd.authorizeapplications</key>
+  <key>com.apple.locationd.effective_bundle</key>
+  <key>com.apple.locationd.emergency_enabler</key>
+  <key>com.apple.locationd.status</key>
+  <key>com.apple.managedconfiguration.profiled-access</key>
+  <key>com.apple.mobileactivationd.spi</key>
+  <key>com.apple.mobilemail.mailservices</key>
+  <key>com.apple.nano.nanoregistry</key>
+  <key>com.apple.nfcd.hwmanager</key>
+  <key>com.apple.nfcd.seshat</key>
+  <key>com.apple.private.MobileActivation</key>
+  <key>com.apple.private.MobileGestalt.AllowedProtectedKeys</key>
+  <key>com.apple.private.bmk.allow</key>
+  <key>com.apple.private.externalaccessory.showallaccessories</key>
+  <key>com.apple.private.ids.messaging</key>
+  <string>com.apple.private.alloy.findmydeviced.aoverc</string>
+  <string>com.apple.private.alloy.findmydeviced.watch</string>
+  <key>com.apple.private.ids.messaging.high-priority</key>
+  <key>com.apple.private.iokit.assertonbattery</key>
+  <key>com.apple.private.system-keychain</key>
+  <key>com.apple.security.exception.mach-lookup.global-name</key>
+  <string>com.apple.nanoprefsync</string>
+  <string>com.apple.icloud.ifccd</string>
+  <string>com.apple.FileCoordination</string>
+  <string>com.apple.assistant.settings</string>
+  <string>com.apple.nfcd.hwmanager</string>
+  <string>com.apple.icloud.findmydeviced</string>
+  <string>com.apple.server.bluetooth.le.att.xpc</string>
+  <string>com.apple.server.bluetooth.le.pipe.xpc</string>
+  <string>com.apple.server.bluetooth</string>
+  <string>com.apple.SharingServices</string>
+  <string>com.apple.wirelessproxd</string>
+  <string>com.apple.iap2d.xpc</string>
+  <string>com.apple.iaptransportd.ExternalAccessory.distributednotification.server</string>
+  <string>com.apple.iap2d.ExternalAccessory.distributednotification.server</string>
+  <string>com.apple.iapd.xpc</string>
+  <string>com.apple.ExternalAccessory.distributednotification.server</string>
+  <string>com.apple.bluetooth.CoreBluetooth</string>
+  <key>com.apple.security.exception.shared-preference.read-write</key>
+  <string>com.apple.nanoprefsyncd</string>
+  <key>com.apple.security.system-groups</key>
+  <string>systemgroup.com.apple.icloud.ifccd</string>
+  <string>systemgroup.com.apple.bluetooth</string>
+  <string>systemgroup.com.apple.pisco.suinfo</string>
+  <string>systemgroup.com.apple.sharedpclogging</string>
+  <string>systemgroup.com.apple.icloud.findmydevice.managed</string>
+  <key>com.apple.springboard.activateawayviewplugins</key>
+  <key>com.apple.springboard.launchapplications</key>
+  <key>com.apple.springboard.opensensitiveurl</key>
+  <key>com.apple.springboard.wipedevice</key>
+  <key>com.apple.wifi.manager-access</key>
+  <string>apple</string>
+  <string>com.apple.identities</string>
+  Apple Inc.1&0$
+  Apple Certification Authority1
+  Apple Root CA0
+  Apple Inc.1,0*
+  #Apple Worldwide Developer Relations1D0B
+  ;Apple Worldwide Developer Relations Certification Authority0
+  http://crl.apple.com/root.crl0
+  https://www.apple.com/appleca/0
+  *Apple Development: weidong li (PBNGZQ8G6L)1
+  #http://ocsp.apple.com/ocsp03-wwdr190
+  *http://www.apple.com/certificateauthority/0
+  ;Apple Worldwide Developer Relations Certification Authority
+  <key>com.apple.appletv.pbs.osupdate-service-access</key>
+  <key>com.apple.dmd-access</key>
+  <key>com.apple.dmd.operation.clear-activation-lock-bypass-code</key>
+  <key>com.apple.dmd.operation.clear-device-passcode</key>
+  <key>com.apple.dmd.operation.clear-restrictions-password</key>
+  <key>com.apple.dmd.operation.erase-device</key>
+  <key>com.apple.dmd.operation.fetch-activation-lock-bypass-code</key>
+  ... (truncated, +138 more)
+
+--- Crypto/Security (9 matches) ---
+  BCrypt
+  HMAC$KeyedHashAlgorithm
+  SHA256
+  SHA384
+  SHA512
+  signature
+  NCrypt
+  Protocol error: A received message contains a valid signature but it was not encrypted as required by the effective Protection Level.
+  BCrypt.dll
+
+--- Network/Protocol (123 matches) ---
+  HTTP/1.0H
+  HTTP/1.1H
+  System.Net.Http
+  &System.Net.Http.dll$System.Private.Uri
+  John Sheehan, Andrew Young, Alexey Zimarev and RestSharp community>Simple REST and HTTP API Client
+  Connect(CreateChannelSession@
+  "<Connect>b__169_0
+  4v@<IsAuthenticated>k__BackingField*<Host>k__BackingField*<Port>k__BackingField4<ProxyType>k__BackingField4<ProxyHost>k__BackingField4<ProxyPort>k__BackingField<<ProxyUsername>k__BackingField<<ProxyPa...
+  Socket
+  Listen
+  socket
+  Use KeepAliveInterval to send a keep-alive message at regular intervals.
+  hostname
+  TLS versions 1.0 and 1.1 have known vulnerabilities and are not recommended. Use a newer TLS version instead, or use SslProtocols.None to defer to OS defaults.
+  Accept@
+  R<ReadFrameAsync>g__ThrowPrematureEOF|61_0R<ReadFrameAsync>g__ThrowMissingFrame|61_1dSystem.Net.Http.IHttpStreamHeadersHandler.OnHeader@
+  ~System.Net.Http.IHttpStreamHeadersHandler.OnStaticIndexedHeader@
+  System.Net.Http.IHttpStreamHeadersHandler.OnDynamicIndexedHeader@
+  accept
+  listen
+  WSARecv
+  WSASend
+  System.Threading.Tasks.Sources.IValueTaskSource<System.Net.Sockets.Socket>.GetResult@
+  8Failed to allocate SSL/TLS context, OpenSSL error - {0}.
+  ;Setting an SNI hostname is not supported on this API level.
+  GAuthentication failed because the remote party sent a TLS alert: '{0}'.
+  8No channel binding check for the trusted proxy scenario.
+  <Getting SSL connection info failed with OpenSSL error - {0}.
+  .SSL Handshake failed with OpenSSL error - {0}.
+  KThe server mode SSL must use a certificate with the associated private key.
+  -SSL Read BIO failed with OpenSSL error - {0}.
+  6Using SSL certificate failed with OpenSSL error - {0}.
+  BUsing SSL certificate private key failed with OpenSSL error - {0}.
+  .SSL Write BIO failed with OpenSSL error - {0}.
+    xmlns       %URI;          #FIXED 'http://www.w3.org/1999/xhtml'
+    http-equiv  CDATA          #IMPLIED
+    accept      %ContentTypes; #IMPLIED
+    accept-charset %Charsets;  #IMPLIED
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  http://crl.apple.com/root.crl0
+  https://www.apple.com/appleca/0
+  #http://ocsp.apple.com/ocsp03-wwdr190
+  *http://www.apple.com/certificateauthority/0
+  Connect
+  http/1.1
+   HTTP/1.0
+  PRI * HTTP/2.0
+  http://
+  HTTP/1.
+   HTTP/1.1
+   rows=" objectinverse<footerCustomV><\/scrsolvingChLEAKEDslaverywoundedwhereas!= 'undfor allpartly -right:Arabianbacked centuryunit ofmobile-Europe,is homerisk ofdesiredClintoncost ofage of become none...
+  here isencoded.  The balloondone by/commonbgcolorlaw of Indianaavoidedbut the2px 3pxjquery.after apolicy.men andfooter-= true;for usescreen.Indian image =family,http:// &nbsp;driverseternalsame asnoti...
+  electricscotlandcreationquantity. ISBN 0did not instance-search-" lang="speakersComputercontainsarchivesministerreactiondiscountItalianocriteriastrongly: 'http:'script'coveringofferingappearedBritish ...
+  Copyright javascriptconditionseverything<p class="technologybackground<a class="management&copy; 201javaScriptcharactersbreadcrumbthemselveshorizontalgovernmentCaliforniaactivitiesdiscoveredNavigation...
+    conversionabout the </p></div>integrated" lang="enPortuguesesubstituteindividualimpossiblemultimediaalmost allpx solid #apart fromsubject toin Englishcriticizedexcept forguidelinesoriginallyremarkab...
+  sByTagName(.jpg" alt="1px solid #.gif" alt="transparentinformationapplication" onclick="establishedadvertising.png" alt="environmentperformanceappropriate&amp;mdash;immediately</strong></rather thante...
+  <div id="illustratedengineeringterritoriesauthoritiesdistributed6" height="sans-serif;capable of disappearedinteractivelooking forit would beAfghanistanwas createdMath.floor(surroundingcan also beobse...
+  nconformidadline-height:font-family:" : "http://applicationslink" href="specifically//<![CDATA[
+  such as the influence ofa particularsrc='http://navigation" half of the substantial &nbsp;</div>advantage ofdiscovery offundamental metropolitanthe opposite" xml:lang="deliberatelyalign=centerevolutio...
+  <li class="instrumentalSoviet Unionacknowledgedwhich can bename for theattention toattempts to developmentsIn fact, the<li class="aimplicationssuitable formuch of the colonizationpresidentialcancelBub...
+  said to havein the firstwhile othershypotheticalphilosopherspower of thecontained inperformed byinability towere writtenspan style="input name="the questionintended forrejection ofimplies thatinvented...
+  <link rel=" src='http://interested inconventional " alt="" /></are generallyhas also beenmost popular correspondingcredited withtyle="border:</a></span></.gif" width="<iframe src="table class="inline-...
+  <div class="more commonlyorganisationsfunctionalitywas completed &amp;mdash; participationthe characteran additionalappears to befact that thean example ofsignificantlyonmouseover="because they async ...
+  <body>=http%3A%2F%2F<form method="method="post" /favicon.ico" });
+  (function() {recommendationform action="/transformationreconstruction.style.display According to hidden" name="along with thedocument.body.approximately Communicationspost" action="meaning &quot;--<![...
+  <table class="accompanied byaccount of the<script src="/nature of the the people in in addition tos); js.id = id" width="100%"regarding the Roman Catholican independentfollowing the .gif" width="1the ...
+  <div iwas consideredpercent of the" /></a></div>collection of descended fromsection of theaccept-charsetto be confusedmember of the padding-right:translation ofinterpretation href='http://whether or n...
+  environmental to prevent thehave been usedespecially forunderstand theis essentiallywere the firstis the largesthave been made" src="http://interpreted assecond half ofcrolling="no" is composed ofII, ...
+  <meta " href="http://"><span class="members of the window.locationvertical-align:/a> | <a href="<!doctype html>media="screen" <option value="favicon.ico" />
+  </span><a href="<a href="http://); return false;text-decoration: scrolling="no" border-collapse:associated with Bahasa IndonesiaEnglish language<text xml:space=.gif" border="0"</body>
+  overflow:hidden;img src="http://addEventListenerresponsible for s.js"></script>
+  robots" content="<div id="footer">the United States<img src="http://.jpg|right|thumb|.js"></script>
+  information about<div id="header">" action="http://<a href="https://<div id="content"</div>
+  <derived from the <img src='http://according to the 
+  style="font-size:script language="Arial, Helvetica,</a><span class="</script><script political partiestd></tr></table><href="http://www.interpretation ofrel="stylesheet" document.write('<charset="utf-...
+  coincide with thetwo-thirds of theDuring this time,during the periodannounced that hethe internationaland more recentlybelieved that theconsciousness andformerly known assurrounded by thefirst appeare...
+  <img src="http://s;text-align:centerfont-weight: bold; According to the difference between" frameborder="0" " style="position:link href="http://html4/loose.dtd">
+  <&nbsp;&nbsp;&nbsp;"><a href="http://style="float:left;concerned with the=http%3A%2F%2Fwww.in popular culturetype="text/css" />it is possible to Harvard Universitytylesheet" href="/the main characterO...
+  keywords" content="w3.org/1999/xhtml"><a target="_blank" text/html; charset=" target="_blank"><table cellpadding="autocomplete="off" text-align: center;to last version by background-color: #" href="ht...
+  <script language="//EN" "http://www.wencodeURIComponent(" href="javascript:<div class="contentdocument.write('<scposition: absolute;script src="http:// style="margin-top:.min.js"></script>
+  </html>distinction between/" target="_blank"><link href="http://encoding="utf-8"?>
+  w.addEventListener?action="http://www.icon" href="http:// style="background:type="text/css" />
+  <script  style="font-size:1></span><span id=gbLibrary of Congress<img src="http://imEnglish translationAcademy of Sciencesdiv style="display:construction of the.getElementById(id)in conjunction withEl...
+   type="text" name=">Privacy Policy</a>administered by theenableSingleRequeststyle=&quot;margin:</div></div></div><><img src="http://i style=&quot;float:referred to as the total population ofin Washing...
+  <script under the influencecontribution to theOfficial website ofheadquarters of thecentered around theimplications of thehave been developedFederal Republic ofbecame increasinglycontinuation of theNo...
+  <script type="t<a href='http://www.hortcut icon" href="</div>
+  <div class="<script src="http://" rel="stylesheet" t</div>
+  <script type=/a> <a href="http:// allowTransparency="X-UA-Compatible" conrelationship between
+  <script </a></li></ul></div>associated with the programming language</a><a href="http://</a></li><li class="form action="http://<div style="display:type="text" name="q"<table width="100%" background-p...
+  <meta http-equiv="></span><span class="0" cellspacing="0">;
+  <div cduring his lifetime,corresponding to thetype="image/x-icon" an increasing numberdiplomatic relationsare often consideredmeta charset="utf-8" <input type="text" examples include the"><img src="ht...
+  html; charset=UTF-8" setTimeout(function()display:inline-block;<input type="submit" type = 'text/javascri<img src="http://www." "http://www.w3.org/shortcut icon" href="" autocomplete="off" </a></div><...
+  <li class="css" type="text/css" <form action="http://xt/css" href="http://link rel="alternate" 
+  <script type="text/ onclick="javascript:(new Date).getTime()}height="1" width="1" People's Republic of  <a href="http://www.text-decoration:underthe beginning of the </div>
+  <script src="http://option><option value=often referred to as /option>
+  <a href="http://www</a><a href="http://w
+  <html <meta charset="utf-8">:url" content="http://.css" rel="stylesheet"style type="text/css">type="text/css" href="w3.org/1999/xhtml" xmltype="text/javascript" method="get" action="link rel="styleshe...
+  <a href="http://www.css" rel="stylesheet" </div></div><div classlanguage="javascript">aria-hidden="true">
+  <li><a href="http://ator" aria-hidden="tru> <a href="http://www.language="javascript" /option>
+  <!DOCTYPE html PUBLIC "nt-Type" content="text/<meta http-equiv="Conteransitional//EN" "http:<html xmlns="http://www-//W3C//DTD XHTML 1.0 TDTD/xhtml1-transitional//www.w3.org/TR/xhtml1/pe = 'text/javas...
+  <html xmlns="http-//W3C//DTD HTML 4.01 TentsByTagName('script')input type="hidden" nam<script type="text/javas" style="display:none;">document.getElementById(=document.createElement(' type='text/javas...
+  ... (truncated, +22 more)
+
+--- Anti-Debug/Tamper (14 matches) ---
+  signature
+  Signature
+  set_Signature$<F>k__BackingField4<Signature>k__BackingField
+  V<NtQueryInformationProcess>g____PInvoke|0_0
+  Protocol error: A received message contains a valid signature but it was not encrypted as required by the effective Protection Level.
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/blackhound.x.1643379a.o
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/blackhound.x.50c6260a.o
+  /Users/minacriss/Documents/Minasoftware/minaeraser12/Build/Intermediates.noindex/minaeraser12.build/Debug-iphoneos/minaeraser12.build/Objects-normal/arm64/main.o
+  /Users/minacriss/Documents/Minasoftware/minaeraser/Build/Intermediates.noindex/minaeraser.build/Debug-iphoneos/minaeraser.build/Objects-normal/arm64/main.o
+  /Users/minacriss/Library/Developer/Xcode/DerivedData/rc-fotukainnmbynwfdgbhyystmgylm/Build/Intermediates.noindex/rc.build/Debug-iphoneos/rc.build/Objects-normal/arm64/main.o
+  NtQueryInformationProcess
+  IsDebuggerPresent
+
+--- License/Activation (13 matches) ---
+  QRCoder is a simple library, written in C#.NET, which enables you to create QR Codes. It's licensed under the MIT-license."www.code-bude.net
+  Registration
+  Register@
+  activation-record
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/blackhound.x.1643379a.o
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/blackhound.x.50c6260a.o
+  <key>com.apple.dmd.operation.clear-activation-lock-bypass-code</key>
+  <key>com.apple.dmd.operation.fetch-activation-lock-bypass-code</key>
+  <key>com.apple.dmd.operation.fetch-unlock-token</key>
+  Organizationdistribution0px; height:relationshipdevice-width<div class="<label for="registration</noscript>
+
+--- Registry/Paths (668 matches) ---
+  8Microsoft.Win32.Registry.dllgs
+  ,System.Private.CoreLib
+  4System.Private.CoreLib.dllg
+  QRCoder.dll
+  System.Linq.dll
+   Renci.SshNet.dll$System.Net.Sockets
+  ,System.Net.Sockets.dll*System.Net.Primitives
+  2System.Net.Primitives.dll8System.Security.Cryptography
+  @System.Security.Cryptography.dll<System.Text.RegularExpressions
+  DSystem.Text.RegularExpressions.dll$System.Private.Xml
+  ,System.Private.Xml.dll System.Threading
+  (System.Threading.dll8SshNet.Security.Cryptography
+  @SshNet.Security.Cryptography.dll<System.Diagnostics.TraceSource
+  DSystem.Diagnostics.TraceSource.dll
+  RestSharp.dll&System.Net.Requests
+  .System.Net.Requests.dll.System.Linq.Expressions
+  6System.Linq.Expressions.dll
+  System.dll$System.Collections
+  ,System.Collections.dll:System.Collections.Concurrent
+  BSystem.Collections.Concurrent.dll:System.Collections.NonGeneric
+  BSystem.Collections.NonGeneric.dll<System.Collections.Specialized
+  DSystem.Collections.Specialized.dll@System.ComponentModel.Primitives
+  HSystem.ComponentModel.Primitives.dll*System.ComponentModel
+  2System.ComponentModel.dllJSystem.ComponentModel.EventBasedAsync
+  RSystem.ComponentModel.EventBasedAsync.dll$System.ObjectModel
+  ,System.ObjectModel.dllFSystem.ComponentModel.TypeConverter
+  NSystem.ComponentModel.TypeConverter.dll
+  $System.Console.dllFSystem.Diagnostics.DiagnosticSource
+  NSystem.Diagnostics.DiagnosticSource.dll4System.Diagnostics.Process
+  <System.Diagnostics.Process.dll&System.Formats.Asn1
+  .System.Formats.Asn1.dll*System.IO.Compression
+  2System.IO.Compression.dll8System.IO.Compression.Brotli
+  @System.IO.Compression.Brotli.dll
+  &System.Net.Http.dll$System.Private.Uri
+  ,System.Private.Uri.dll2System.Net.NameResolution
+  :System.Net.NameResolution.dll:System.Net.NetworkInformation
+  BSystem.Net.NetworkInformation.dll
+  &System.Net.Quic.dll&System.Net.Security
+  .System.Net.Security.dll.System.Net.ServicePoint
+  6System.Net.ServicePoint.dll<System.Net.WebHeaderCollection
+  DSystem.Net.WebHeaderCollection.dllFSystem.Private.Reflection.Execution
+  NSystem.Private.Reflection.Execution.dllBSystem.Private.StackTraceMetadata
+  JSystem.Private.StackTraceMetadata.dll2System.Private.TypeLoader
+  :System.Private.TypeLoader.dll.System.Private.Xml.Linq
+  6System.Private.Xml.Linq.dll.System.Runtime.Numerics
+  6System.Runtime.Numerics.dllg
+  NSystem.Runtime.Serialization.Primitives
+  VSystem.Runtime.Serialization.Primitives.dll,System.Security.Claims
+  4System.Security.Claims.dllBSystem.Security.Principal.Windows
+  JSystem.Security.Principal.Windows.dll2System.Threading.Channels
+  :System.Threading.Channels.dll,System.Web.HttpUtility
+  4System.Web.HttpUtility.dll
+  &System.Xml.Linq.dll
+  iremovalpro.dll
+  John Sheehan, Andrew Young, Alexey Zimarev and RestSharp community>Simple REST and HTTP API Client
+  TargetvM:System.Security.Cryptography.CryptoConfigForwarder.#cctor
+  M:System.Xml.Serialization.ReflectionXmlSerializationReader.#cctor
+  HDefaultDllImportSearchPathsAttributegs
+  *DivideByZeroException(DllNotFoundException8DuplicateWaitObjectException6EntryPointNotFoundException0ExecutionEngineExceptiong
+  ..0IndexOutOfRangeExceptionFInsufficientExecutionStackException
+  OperatingSystem4OperationCanceledException(OutOfMemoryException"OverflowException
+  TypeSystem
+  NtDllk
+  DeviceInfo(DllInjectionDetector
+  .SystemTimeProviderTimer$SystemTimeProvider
+  (ConstrainedExecution
+  FileSystemInfo
+  .AbandonedMutexException
+   ExecutionContext(IOCompletionCallback
+  "ISubsystemSession
+   SubsystemSession
+  b.SystemNetworkCredential"NetworkCredential"CredentialHostKey
+  DoExecuteAsGet
+  DoExecuteAsPost*<>c__DisplayClass46_0
+  RSystem.Configuration.ConfigurationManager>CodeArgumentReferenceExpression2CodeArrayCreateExpression4CodeArrayIndexerExpression&CodeAssignStatement0CodeAttachEventStatement*CodeAttributeArgument>CodeA...
+  CodeExpression0CodeExpressionCollection.CodeExpressionStatement8CodeFieldReferenceExpression"CodeGotoStatement*CodeIndexerExpression,CodeIterationStatement(CodeLabeledStatement
+  BApplicationScopedSettingAttribute.ApplicationSettingsBase0ApplicationSettingsGroup"AppSettingsReader*ClientSettingsSection,ConfigurationException*ConfigurationSettings"ConfigXmlDocument8DefaultSettin...
+  "ProcessWaitHandle4SYSTEM_PROCESS_INFORMATIONS
+  k $2SYSTEM_THREAD_INFORMATIONS
+  TypeDesc TypeSystemEntity
+  PointerType*SignatureTypeVariable"SignatureVariable.SignatureMethodVariable"TypeSystemContext[
+  H496B0ABE-CDEE-11d3-88E8-00902754C43A&DllImportSearchPath
+  FileSystemEntry,FileSystemEnumerator`1,FileSystemEnumerable`1
+  6FileSystemEnumerableFactory
+  VolatileObject8ExecutionContextCallbackArgs
+  OverlappedData4OnExecutionContextCallback
+  TSpanBSystem.Private.CoreLib.Generators
+  DReflectionExecutionDomainCallbacks&TypeLoaderCallbacks6StackTraceMetadataCallbacks.DynamicDelegateAugmentsY
+  NSecureExecutionRequestRejectedException
+  BeginExecute@
+  EndExecute
+  _endExecuteLock8<CommandText>k__BackingField><CommandTimeout>k__BackingField6<ExitStatus>k__BackingField:<OutputStream>k__BackingFieldJ<ExtendedOutputStream>k__BackingField
+  &SignalErrorOccurred$SignalDisconnected"EnsureNotDisposed*SystemWaitHandleCount
+  _subsystemName._errorOccuredWaitHandle<_sessionDisconnectedWaitHandle
+  *FileSystemAbstractionY
+  <System-Collections-Generic-IEnumerable<System-Net-Cookie>-GetEnumerator>d__32
+  EndEntity*XmlFileSystemResolver*<GetEntityAsync>d__10>CharEntityEncoderFallbackBuffer
+  $UndeclaredNotationDParseElementOnlyContent_LocalFrame:<EatPublicKeywordAsync>d__200:<EatSystemKeywordAsync>d__201*<GetTokenAsync>d__173D<HandleEntityReferenceAsync>d__204$<ParseAsync>d__154:<ParseAtt...
+  "GetSystemWebProxy
+  IndexExpression(InvocationExpression*InvocationExpression1
+  JSystem.Diagnostics.PerformanceCounter6System.Diagnostics.EventLog6System.Security.Permissions$ShellExecuteHelper
+  ... (truncated, +567 more)
+
+--- Error/Log (86 matches) ---
+  Exception
+  ExecutionEngineException previously indicated an unspecified fatal error in the runtime. The runtime no longer raises this exception so this type is obsolete.@
+  exception>
+  Failed
+  Warning
+  set_Exception4<Exception>k__BackingField@
+  *<Info>k__BackingField
+  Trace@
+  failed&curveEquationPassed
+  8Failed to allocate SSL/TLS context, OpenSSL error - {0}.
+  +ALPN configuration failed on this platform.
+  hNo common application protocol exists between the client and the server. Application negotiation failed.
+  +Authentication failed, see inner exception.
+  vAuthentication failed on the remote side (the stream might still be available for additional authentication attempts).
+  OAuthentication failed because the remote party has closed the transport stream.
+  KAuthentication failed because the platform does not support ephemeral keys.
+  Protocol error: A received message contains a valid signature but it was not encrypted as required by the effective Protection Level.
+  GAuthentication failed because the remote party sent a TLS alert: '{0}'.
+  "Operation failed with error - {0}.
+  =GSSAPI operation failed with status: {0} (Minor status: {1}).
+  /GSSAPI operation failed with error - {0} ({1}).
+  )GSSAPI operation failed with error - {0}.
+  )GSSAPI operation failed with status: {0}.
+  5The decryption operation failed, see inner exception.
+  5The encryption operation failed, see inner exception.
+  /The read operation failed, see inner exception.
+  0The write operation failed, see inner exception.
+  Service name check failed.
+  Service name check failed because the client did not provide a service name and the server was configured for PolicyEnforcement.Always.
+  5Opening Certificate store {0} failed, exception: {1}.
+  {0} failed with error {1}.
+  BSSL certificate private key check failed with OpenSSL error - {0}.
+  (Decrypt failed with OpenSSL error - {0}.
+  (Encrypt failed with OpenSSL error - {0}.
+  ?Fetching channel binding token failed with OpenSSL error - {0}.
+  <Getting SSL connection info failed with OpenSSL error - {0}.
+  .SSL Handshake failed with OpenSSL error - {0}.
+  9SSL certificate returned is invalid, OpenSSL error - {0}.
+  8The handshake failed due to an unexpected packet format.
+  -SSL Read BIO failed with OpenSSL error - {0}.
+  6Using SSL certificate failed with OpenSSL error - {0}.
+  BUsing SSL certificate private key failed with OpenSSL error - {0}.
+  .SSL Write BIO failed with OpenSSL error - {0}.
+  propertyListWithData:options:format:error:
+  dataWithPropertyList:format:options:error:
+  createDirectoryAtPath:withIntermediateDirectories:attributes:error:
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64/blackhound.x.1643379a.o
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/
+  /Users/josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound/.theos/obj/debug/arm64e/blackhound.x.50c6260a.o
+  /Users/minacriss/Documents/Minasoftware/minaeraser12/Build/Intermediates.noindex/minaeraser12.build/Debug-iphoneos/minaeraser12.build/Objects-normal/arm64/main.o
+  <key>com.apple.security.exception.mach-lookup.global-name</key>
+  <key>com.apple.security.exception.shared-preference.read-write</key>
+  /Users/minacriss/Documents/Minasoftware/minaeraser/Build/Intermediates.noindex/minaeraser.build/Debug-iphoneos/minaeraser.build/Objects-normal/arm64/main.o
+  /Users/minacriss/Library/Developer/Xcode/DerivedData/rc-fotukainnmbynwfdgbhyystmgylm/Build/Intermediates.noindex/rc.build/Debug-iphoneos/rc.build/Objects-normal/arm64/main.o
+  <key>com.apple.security.exception.files.absolute-path.read-only</key>
+  <key>com.apple.security.exception.files.home-relative-path.read-write</key>
+  exception
+  Fatal error. Invalid Program: attempted to call a UnmanagedCallersOnly method from managed code.
+  PER_HEAP_ISOLATED data members initialization failed
+  Creation of WaitForGCEvent failed
+  Error: %u
+  file error
+  stream error
+  data error
+  buffer error
+  Log salt
+  #fff;">Log.com"treatsheet) && 14px;sleepntentfiledja:
+  <!--American protectedNovember </style><furnitureInternet  onblur="suspendedrecipientbased on Moreover,abolishedcollectedwere madeemotionalemergencynarrativeadvocatespx;bordercommitteddir="ltr"employe...
+  <input type="hidden" language="JavaScript"  document.getElementsBg="0" cellspacing="0" ype="text/css" media="type='text/javascript'with the exception of ype="text/css" rel="st height="1" width="1" ='+...
+  Unknown exception
+  bad exception
+  runtime error 
+  TLOSS error
+  SING error
+  DOMAIN error
+  - unexpected heap error
+  - unexpected multithread lock error
+  Runtime Error!

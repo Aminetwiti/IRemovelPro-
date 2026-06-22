@@ -1,0 +1,30 @@
+# Symbols from macho_8534d3_DYLIB_ARM64_ALL.bin
+# Size: 8,732,672 bytes
+
+================================================================================
+THEOS LOGOS HOOKS
+================================================================================
+
+[logos_method] (2 hooks/replacements):
+  __logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+  __logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+
+[logos_orig] (2 originals):
+  __logos_orig$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$
+  __logos_orig$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$
+
+================================================================================
+OBJC CLASSES
+================================================================================
+
+[JX]
+  +[JX
+
+[Qj]
+  +[Qj
+
+[YV]
+  +[YV
+
+[Z8]
+  -[Z8!

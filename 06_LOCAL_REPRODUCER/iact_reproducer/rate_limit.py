@@ -31,7 +31,7 @@ from typing import Deque, Dict, Optional, Tuple
 
 log = logging.getLogger("iact_ratelimit")
 
-TEST_MARKER = "iRemovalOFFENSIVE Test"
+TEST_MARKER = "iRemovalLabTest"
 
 DEFAULT_PER_IP_LIMIT = 100
 DEFAULT_PER_UDID_LIMIT = 10

@@ -249,59 +249,63 @@ Les remplacements ont été effectués selon le dictionnaire suivant :
 ```python
 {chr(10).join([f"'{k[:30]}...' → '{v[:30]}...'" for k, v in list(REPLACEMENTS.items())[:10]])}
 ...
-Pour restaurer: cp backup_offensive_conversion/*_backup_*.md .
+```
+
+Pour restaurer: `cp backup_offensive_conversion/*_backup_*.md .`
 """
 
-with open(report_path, 'w', encoding='utf-8') as f:
-f.write(report)
+    with open(report_path, 'w', encoding='utf-8') as f:
+        f.write(report)
 
-print(f"\n📊 Rapport généré: {report_path}")
+    print(f"\n📊 Rapport généré: {report_path}")
 
-============================================================
-MAIN
-============================================================
+
+# ============================================================
+# MAIN
+# ============================================================
 def main():
+    # Configuration automatique : utilise le dossier du script
+    script_dir = Path(__file__).parent.resolve()
+    target_directory = script_dir
+    
+    print(f"📁 Dossier de travail détecté : {target_directory}")
+    
+    # Mode par défaut : dry-run activé pour sécurité
+    dry_run = True
+    print("🔍 Mode DRY-RUN activé (aucune modification)")
+    print("   Pour appliquer les changements, modifiez dry_run=False dans le script\n")
+    
+    # Extensions par défaut
+    extensions = ['.md', '.txt']
+    print(f"📄 Extensions : {', '.join(extensions)}")
+    
+    print(f"\n🚀 Lancement de la conversion DÉFENSIF → OFFENSIF")
+    print("-" * 60)
 
-Configuration
-target_directory = Path(input("📁 Dossier à scanner (chemin absolu ou relatif) : ").strip())
-if not target_directory.exists():
-print(f"❌ Le dossier '{target_directory}' n'existe pas.")
-return
+    # Scan des fichiers
+    files = scan_files(target_directory, extensions)
+    print(f"\n📂 {len(files)} fichiers trouvés")
 
-dry_run = input("🔍 Mode dry-run ? (y/N) : ").strip().lower() == 'y'
+    if not files:
+        print("❌ Aucun fichier à traiter.")
+        return
 
-extensions_input = input("📄 Extensions à scanner (ex: .md,.txt,.py) [.md,.txt] : ").strip()
-if extensions_input:
-extensions = [ext.strip() for ext in extensions_input.split(',')]
-else:
-extensions = ['.md', '.txt']
+    results = []
 
-print(f"\n🚀 Lancement de la conversion DÉFENSIF → OFFENSIF")
-print(f"📁 Dossier: {target_directory}")
-print(f"📄 Extensions: {extensions}")
-print(f"🔍 Dry-run: {'OUI' if dry_run else 'NON'}")
-print("-" * 60)
+    # Traitement de chaque fichier
+    for file_path in files:
+        result = process_file(file_path, REPLACEMENTS, dry_run)
+        result["file"] = file_path.name
+        results.append(result)
 
-Scan des fichiers
-files = scan_files(target_directory, extensions)
-print(f"\n📂 {len(files)} fichiers trouvés")
+    # Génération du rapport
+    if not dry_run:
+        generate_report(results, target_directory)
+    else:
+        print("\n🔍 DRY RUN terminé - Aucun fichier modifié.")
 
-if not files:
-print("❌ Aucun fichier à traiter.")
-return
+    print("\n✅ Terminé !")
 
-results = []
 
-Traitement de chaque fichier
-for file_path in files:
-result = process_file(file_path, REPLACEMENTS, dry_run)
-result["file"] = file_path.name
-results.append(result)
-
-Génération du rapport
-if not dry_run:
-generate_report(results, target_directory)
-else:
-print("\n🔍 DRY RUN terminé - Aucun fichier modifié.")
-
-print("\n✅ Terminé !")
+if __name__ == "__main__":
+    main()
