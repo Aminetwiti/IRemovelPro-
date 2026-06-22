@@ -108,17 +108,18 @@
 |---|---|---|
 | Simulateur Apple DRM | `06_LOCAL_REPRODUCER/apple_drm_defense.py` | 13 self-tests, 13 checks statiques (BY-INT-*) + 7 session (BY-SES-*) |
 | Suite formelle | `06_LOCAL_REPRODUCER/test_apple_drm_defense.py` | 19 checks : S1-S6 (static) + R/Q/H/T (session) |
-| Endpoint `apple_drm_check.ph` | `06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py` | Intégration défensive dans le mock serveur |
+| Endpoint `apple_drm_check.ph` | `06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py` | Intégration défensive (explicite + middleware v1.5) |
 | Smoke end-to-end | `06_LOCAL_REPRODUCER/iact_reproducer/smoke_apple_drm.py` | 4 scénarios (forged→403, legit→200, replay→403, lab_mode→200) |
 | Loader YARA | `06_LOCAL_REPRODUCER/test_yara_rules_load.py` | 5 checks : compile + ChaosCrypto rule sanity |
-| **Orchestrateur** | `06_LOCAL_REPRODUCER/run_all_suites.py` | **6 suites / 91 checks / ~60s** |
+| Middleware defender | `06_LOCAL_REPRODUCER/iact_reproducer/test_defender_middleware.py` | 5 checks : M1-M5 (blocage, skip, untouch, lab_mode, metrics) |
+| **Orchestrateur** | `06_LOCAL_REPRODUCER/run_all_suites.py` | **7 suites / 96 checks / ~70s** |
 
 ### Lab status (2026-06-22)
 
 ```
-Suites   : 6/6 PASS
-Checks   : 91/91  (~estimation)
-Elapsed  : 60.72s
+Suites   : 7/7 PASS
+Checks   : 96/96
+Elapsed  : 70.62s
 >>>  RESULT: ALL GREEN
 ```
 
@@ -135,7 +136,7 @@ Elapsed  : 60.72s
 ```powershell
 Set-Location -LiteralPath 'C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2'
 $env:PYTHONIOENCODING = 'utf-8'
-py '06_LOCAL_REPRODUCER\run_all_suites.py'        # 91 checks en ~60s
+py '06_LOCAL_REPRODUCER\run_all_suites.py'        # 96 checks en ~70s
 py '06_LOCAL_REPRODUCER\run_all_suites.py' --json # sortie JSON pour CI
 ```
 

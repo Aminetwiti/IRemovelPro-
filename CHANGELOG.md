@@ -132,6 +132,53 @@ Sous-sections incluses :
 
 Le fichier `BYPASS_CORE.md` passe de 798 → 926 lignes. Aucune section
 existante n'est perturbée (toujours §1–§20 dans l'ordre, §21 en queue).
+
+### Ajouté — §21.8 Tamper Matrix + `test_local_pipeline.py` (10/10)
+
+Une nouvelle sous-section **§21.8 Tamper Matrix — proof of
+self-consistency** est ajoutée à `BYPASS_CORE.md`, accompagnée d'un
+nouveau test d'intégration
+[`06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py)
+qui prouve que le pipeline 4-étapes n'est pas un faux validateur :
+
+- 10 cas : 2 positifs (envelope intact) + 8 négatifs (mutations)
+- Couvre les 4 vecteurs de mutation standards (bplist tamper,
+  sig tamper, mauvaise clé, mismatch de longueur) à 2 positions
+  chacun (début, fin)
+- Cas positifs utilisent 2 keypairs différents pour exclure un OK
+  codé en dur sur une clé spécifique
+- Sortie : `TOTAL: 10/10 matrix checks passed  (pipeline is
+  cryptographically self-consistent)`
+- Codes de sortie : `0` = OK complet, `1` = au moins 1 cas diverge
+- Test hermétique : écrit dans `tamper_tests/<TS>/`, successives
+  runs ne collisionnent pas
+
+Run live (2026-06-22T18:22:56Z) :
+
+```text
+1   OK       OK        ✓ positive: unmodified envelope verifies OK
+2   FAIL     FAIL      ✓ bplist tampered (1 bit @ offset 0) → FAIL
+3   FAIL     FAIL      ✓ signature tampered (1 bit @ offset 32) → FAIL
+4   FAIL     FAIL      ✓ verify with alien pubkey → FAIL
+5   FAIL     FAIL      ✓ bplist truncated (-16 bytes) → FAIL
+6   FAIL     FAIL      ✓ empty signature (len=0) → FAIL
+7   FAIL     FAIL      ✓ empty bplist (len=0) → FAIL
+8   OK       OK        ✓ positive: fresh 2nd pipeline verifies OK
+9   FAIL     FAIL      ✓ bplist tampered (1 bit @ last byte) → FAIL
+10  FAIL     FAIL      ✓ signature tampered (1 bit @ last byte) → FAIL
+
+TOTAL: 10/10 matrix checks passed  exit=0
+```
+
+Sous-sections §21 renumérotées :
+
+| Avant  | Après  | Contenu                              |
+|--------|--------|--------------------------------------|
+| §21.8  | §21.9  | TL;DR (mis à jour avec ref au test)  |
+| (rien) | §21.8  | Tamper Matrix — proof of self-consistency |
+
+Le fichier `BYPASS_CORE.md` passe de 926 → 991 lignes. §21.1–§21.9
+toujours séquentiels.
 ---
 
 ## [1.1.0] — 2026-06-22

@@ -119,6 +119,32 @@
 
 ---
 
+## 🛡️ Extension défensive (parallèle aux phases 1-9)
+
+**Statut** : ✅ 4/5 axes terminés (2026-06-22)
+**Lab status** : `7/7 suites PASS / 96/96 checks / 70.62s`
+
+| Axe | Description | Statut |
+|---|---|---|
+| #1 | Test runner unifié (`run_all_suites.py`) | ✅ |
+| #2 | Règle YARA `iRemovalPro_ChaosCrypto_Namespace` | ✅ |
+| #3 | Defender en middleware (`mock_server.py` v1.5) | ✅ |
+| #4 | Mise à jour `INDEX.md` + `EXECUTIVE_SUMMARY.md` | ✅ |
+| #5 | Décompilation dylib avec `ilspycmd` | ⏸ différé |
+
+**Axe #5 — décompilation dylib iOS** :
+- **Prérequis** : `dotnet tool install -g ilspycmd` (1-2 jours)
+- **Cible** : `04_EXTRACTED/` dylibs ARM64 (blackhound, minaeraser, minaeraser12, rc)
+- **Livrable prévu** : Tree IL complet pour cross-référencer avec les
+  checks `BY-EXT-001..004` du defender
+- **Raison du report** : nécessite installation .NET 8 SDK + toolchain
+  Mono/iOS. Peut être lancé indépendamment quand la toolchain sera
+  disponible. Les checks `BY-EXT-*` sont déjà couverts par les 5 tests
+  du middleware v1.5 sur la base de constantes SHA-1/strings, donc
+  l'audit défensif n'est pas bloqué.
+
+---
+
 ## Priorisation recommandée
 
 | Priorité | Phase | Raison |

@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 """Final verification of all 4 short-term tasks from NOUVELLES_DECOUVERTES.md."""
-import re, sys
+import re, sys, io
+
+# Force UTF-8 stdout for Windows cp1252 terminals
+if sys.platform == 'win32':
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+    except Exception:
+        pass
 
 ok = 0
 fail = 0

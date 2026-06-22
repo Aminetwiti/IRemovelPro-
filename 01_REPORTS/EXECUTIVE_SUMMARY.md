@@ -49,12 +49,13 @@
 | 4 | Matrice `--disable-*` (HMAC, rate-limit, blacklist) | 24 combos |
 | 5 | Smoke end-to-end (4 scénarios) | 4 scénarios |
 | 6 | Loader YARA (compile + ChaosCrypto sanity) | 5 checks |
+| 7 | Middleware defender v1.5 (blocage, skip, untouch, lab_mode, metrics) | 5 checks |
 
 ```
 $ py 06_LOCAL_REPRODUCER\run_all_suites.py
-Suites   : 6/6 PASS
-Checks   : 91/91
-Elapsed  : 60.72s
+Suites   : 7/7 PASS
+Checks   : 96/96
+Elapsed  : 70.62s
 >>>  RESULT: ALL GREEN
 ```
 

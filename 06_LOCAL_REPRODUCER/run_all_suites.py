@@ -14,6 +14,7 @@ Suites (ordre d'exécution) :
   S4. test_disable_flags.py                  (24 checks)
   S5. smoke_apple_drm.py                     (4 scénarios)
   S6. test_yara_rules_load.py                (5 checks)  [détection Chaos.Crypto]
+  S7. test_defender_middleware.py            (5 checks)  [middleware v1.5]
 
 Code de sortie :
   0  → toutes les suites OK
@@ -92,6 +93,14 @@ SUITES = [
         "args": [],
         "expected": 5,
         "category": "detection",
+    },
+    {
+        "id": "S7",
+        "name": "test_defender_middleware.py",
+        "path": REPRODUCER_DIR / "test_defender_middleware.py",
+        "args": [],
+        "expected": 5,
+        "category": "middleware",
     },
 ]
 

@@ -895,6 +895,7 @@ Net effect: **zero outbound traffic**, **zero real server contact**, **zero real
 python 06_LOCAL_REPRODUCER/iact_reproducer/run_reproducer.py                # run pipeline
 python 06_LOCAL_REPRODUCER/iact_reproducer/run_reproducer.py --verify \    # sign-then-verify
         <envelope.json> --pubkey <pub.pem>
+python 06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py          # 10-case tamper matrix (§21.8)
 ```
 
 **Exit codes** (from `run_reproducer.py`):
@@ -908,6 +909,13 @@ python 06_LOCAL_REPRODUCER/iact_reproducer/run_reproducer.py --verify \    # sig
 | 5    | JSON envelope malformed / missing required fields                       |
 | 6    | PKCS#1 v1.5 verification failed                                         |
 
+**Exit codes** (from `test_local_pipeline.py`):
+
+| Code | Meaning                                                |
+|-----:|--------------------------------------------------------|
+| 0    | All 10 expected/observed pairs match (pipeline sound)  |
+| 1    | At least one case diverged — pipeline NOT sound        |
+
 ### 21.7 Relationship to the rest of BYPASS_CORE.md
 
 | Section                                                              | What it covers                                       | Where the lab reproduces it                                         |
@@ -920,8 +928,9 @@ python 06_LOCAL_REPRODUCER/iact_reproducer/run_reproducer.py --verify \    # sig
 | §18 WHY "1-LINE BYPASS" IS MISLEADING                                | Five-hook chain                                      | N/A — describes the iOS-side bypass, not the network bypass         |
 | §19 LIMITATIONS                                                      | Lab does not recover the real Apple key              | Confirmed — lab uses fresh RSA-2048, never the real key             |
 | §20 COMPLETE HOOK INVENTORY                                          | Client-side override symbols                         | N/A — describes the iOS-side bypass, not the network bypass         |
+| **§22 ADVERSARIAL SIMULATION**                                       | What attackers can/cannot do with §21 alone         | [`test_adversarial.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_adversarial.py) (10 cases: 1 baseline + 9 attack variants) |
 
-### 21.9 Tamper Matrix — proof of self-consistency
+### 21.8 Tamper Matrix — proof of self-consistency
 
 A pipeline that produces a valid signature for arbitrary payloads is **not** a real cryptographic pipeline. To prove that the lab's local pipeline is genuine (not a sham that always returns OK), the reproducer ships a tamper-matrix integration test at [`06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py). It runs `orchestrator.run_pipeline()` end-to-end, then mutates the envelope in 8 different ways and asserts that **each tamper causes verification to fail**.
 
@@ -986,6 +995,6 @@ echo "exit=$?"
 | 0    | All 10 expected/observed pairs match                    |
 | 1    | At least one case diverged — pipeline NOT self-consistent |
 
-### 21.10 TL;DR
+### 21.9 TL;DR
 
 > The complete iActivation ticket pipeline is reproducible **offline** by the lab in four local steps: generate a keypair, build a `bplist00` ticket, sign it with PKCS#1 v1.5 / SHA-256, wrap it as a JSON envelope. The resulting artifacts are cryptographically self-consistent (sign+verify round-trip = `OK ✓`), structurally identical to production tickets, and clearly tagged `iRemovalOFFENSIVE Test` so a forensic examiner can never confuse a lab fixture with a real ticket. A tamper-matrix test ([`test_local_pipeline.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py)) proves the verify path is genuine (10/10: 2 positives + 8 negatives). **No license, no HWID registration, no server contact.**

@@ -439,6 +439,12 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                         "active": "blacklist" not in self.state.disabled_middleware,
                         "skipped": self.state.disabled_counters["blacklist"],
                     },
+                    "defender": {
+                        "active": "defender" not in self.state.disabled_middleware,
+                        "skipped": self.state.disabled_counters["defender"],
+                        "version": self.state.defender.VERSION,
+                        "hits_total": sum(self.state.defender_hits.values()),
+                    },
                 },
                 "limiter": self.state.limiter.snapshot(),
                 "blacklist_entries": {
@@ -470,6 +476,8 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                 f'{self.state.disabled_counters["rate_limit"]}\n'
                 f'iact_mock_skipped_guards_total{{guard="blacklist"}} '
                 f'{self.state.disabled_counters["blacklist"]}\n'
+                f'iact_mock_skipped_guards_total{{guard="defender"}} '
+                f'{self.state.disabled_counters["defender"]}\n'
                 f'iact_mock_skipped_guards_total{{guard="any"}} '
                 f'{total_skipped}\n'
                 f"# HELP iact_mock_defender_hits_total Apple DRM defender "
@@ -878,6 +886,7 @@ def run_server(
     disable_hmac: bool = False,
     disable_blacklist: bool = False,
     disable_rate_limit: bool = False,
+    disable_defender: bool = False,
 ) -> None:
     log_dir = Path(log_dir).resolve()
     auth = hmac_auth.load_or_create_state(secret_path=hmac_secret_path)
@@ -895,6 +904,8 @@ def run_server(
         disabled.add("blacklist")
     if disable_rate_limit:
         disabled.add("rate_limit")
+    if disable_defender:
+        disabled.add("defender")
     state = _State(
         log_dir, auth=auth, limiter=limiter, blacklist_=bl,
         disabled_middleware=disabled,
@@ -973,6 +984,10 @@ def _build_parser() -> argparse.ArgumentParser:
                    help="Disable HMAC-SHA256 auth (lab-only convenience, v1.2).")
     p.add_argument("--disable-blacklist", action="store_true",
                    help="Disable blacklist check (lab-only convenience, v1.4).")
+    p.add_argument("--disable-defender", action="store_true",
+                   help="Disable Apple DRM defender middleware (lab-only, "
+                        "v1.5). FORGERED TICKETS WILL PASS THROUGH. "
+                        "Use only when validating the defender itself.")
     p.add_argument("-v", "--verbose", action="store_true")
     return p
 
@@ -1004,6 +1019,7 @@ def main(argv: Optional[list] = None) -> int:
         disable_hmac=args.disable_hmac,
         disable_blacklist=args.disable_blacklist,
         disable_rate_limit=args.disable_rate_limit,
+        disable_defender=args.disable_defender,
     )
     return 0
 
