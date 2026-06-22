@@ -12,7 +12,8 @@
 | `iremovalpro.dll` | `08D283CC16C92582594A277C23625AF9D0F0109FAC5415F75D20D55B92BA8141` |
 | `blackhound_rsa_pubkey.pem` (RSA-1024 bypass pubkey) | `2777656e2aa326f7f02b215cc6cac1da8d2550c978bb745b9ac7aaed45434b4f` |
 | `Modulus RSA-1024 (nu, 128 octets)` | `2c8c67d4066a5b1f8848ab9284aae4f9f37a6e6edfebb27bde26ac99e2615d27` |
-| `Modulus RSA-1024 (SHA-1)` | `d488c22c7300b7355c04959d77bcd7f5b2dc844c` |
+| `Modulus RSA-1024 (SHA-1, valeur audit)` | `d488c22c7300b7355c04959d77bcd7f5b2dc844c` ⚠️ **divergent** |
+| `Modulus RSA-1024 (SHA-1, valeur réelle recalculée)` | `032476fc5c2ff5e65e5ae6ae81b2c45433bf32a8` ✅ |
 
 ## 🌐 Domaines
 
@@ -68,6 +69,8 @@
 /Library/MobileSubstrate/DynamicLibraries/blackhound.dylib.plist
 /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate
 /System/Library/PrivateFrameworks/MobileActivation.framework/MobileActivation
+/private/var/root/identity                  ← NOUVEAU (NAND identité forgée)
+/private/var/root/payloa[d]                 ← NOUVEAU (répertoire payload)
 ```
 
 ## 🎯 Méthodes iOS hookées (Logos/Cydia Substrate)
@@ -93,6 +96,17 @@
 | `minaeraser` | minacriss | `~/Documents/Minasoftware/minaeraser/` | A11 et antérieur |
 | `minaeraser12` | minacriss | `~/Documents/Minasoftware/minaeraser12/` | A12+ NAND eraser |
 | `rc` | minacriss | `~/DerivedData/rc-.../Build/` | Recovery Creator |
+
+### Versions datées (NOUVEAU - 2026-06-22)
+
+| Payload | Version | Date de build | Source |
+|---|---|---|---|
+| `blackhound` (tweak) | **0.7.1** | **2022** | `T<-[Blackhound iRemovalPro Public build 0.7.1 @2022\|]->` |
+| `blackhound` (arm64) | build `1643379a` | debug | `.theos/obj/debug/arm64/blackhound.x.1643379a.o` |
+| `blackhound` (arm64e) | build `50c6260a` | debug | `.theos/obj/debug/arm64e/blackhound.x.50c6260a.o` |
+| `minaeraser` | inconnu | inconnu | `Debug-iphoneos` |
+| `minaeraser12` | inconnu | inconnu | `Debug-iphoneos` |
+| `rc` | inconnu | inconnu | `DerivedData/rc-fotukainnmbynwfdgbhyystmgylm` |
 
 ## 🪪 Certificats Apple intégrés
 
@@ -129,13 +143,15 @@
 
 | Catégorie | APIs |
 |---|---|
-| **Anti-debug** | `IsDebuggerPresent`, `NtQueryInformationProcess`, `NtQueryInformationFile` |
+| **Anti-debug** | `IsDebuggerPresent`, `NtQueryInformationProcess`, `NtQueryInformationFile`, `CheckForInjectedModules` ← NOUVEAU |
 | **Crypto CNG** | `BCryptOpenAlgorithmProvider`, `BCryptCreateHash`, `BCryptHashData`, `BCryptEncrypt`, `BCryptGenerateKeyPair`, `BCryptImportKeyPair` |
 | **Crypto NCrypt** | `NCryptSignHash`, `NCryptVerifySignature`, `NCryptOpenKey` |
 | **X.509** | `CertOpenStore`, `CertVerifyCertificateChainPolicy`, `PFXImportCertStore` |
 | **Registry** | `RegOpenKeyExW`, `RegQueryValueExW` |
 | **Network** | `HttpClient`, `SslStream`, `Tls12`, `Tls13`, `RemoteCertificateValidationCallback` |
 | **iOS** | libimobiledevice, libusbmuxd, libplist, libssl/crypto (OpenSSL 3) |
+| **SSH avancé (NOUVEAU)** | Renci.SshNet avec `ForwardedPort` (Local/Remote/Dynamic), `CreateShellStream`, extensions OpenSSH (`keepalive@openssh.com`, `posix-rename@openssh.com`, `hardlink@openssh.com`, `hmac-ripemd160@openssh.com`) |
+| **iOS Frameworks privés (NOUVEAU)** | `Catalyst.framework`, `DeviceManagement.framework`, `EmbeddedDataReset.framework`, `MobileActivation.framework`, `SpringBoardServices.framework` |
 
 ## 🔌 Ports réseau
 
@@ -189,3 +205,31 @@
 - **Catégorie MITRE ATT&CK** : T1553 (Subvert Trust Controls) — bypass activation lock
 - **TLP** : LEAKED (à distribuer avec restrictions)
 - **CWE** : CWE-863 (Incorrect Authorization), CWE-489 (Active Debug Code)
+
+## Section 13 - IoC ajoutes le 2026-06-22 (NOUVELLES_DECOUVERTES.md §12)
+
+| # | Type | Valeur | Source | Severite |
+|---|---|---|---|---|
+| 1 | iOS Path | `/private/var/root/identity` | `03_OUTPUTS/strings_all_long.txt` | CRITICAL |
+| 2 | iOS Path | `/private/var/root/payloa` | `03_OUTPUTS/strings_all_long.txt` | CRITICAL |
+| 3 | Build marker | `T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]->` | `03_OUTPUTS/strings_all_long.txt` | HIGH |
+| 4 | iOS Cmd | `chmod +x /private/var/root/identity` | `03_OUTPUTS/strings_all_long.txt` | CRITICAL |
+| 5 | Bundle marker | `com.iremovalpro.bypass` (app iOS) | `03_OUTPUTS/strings_all_long.txt` | HIGH |
+
+### 13.1 Faux positifs connus (NOUVELLES_DECOUVERTES.md §12.1)
+
+| String | Faux positif possible | Distinction |
+|---|---|---|
+| `/private/var/root/` | Utilise legitimement par Apple pour stockage root | Combine avec `identity` ou `payloa` |
+| `idevicepair` | Outil open-source utilise par de nombreux outils iOS | Contexte = bypass app |
+| `iproxy` | Outil open-source de tunneling USB | Contexte = bypass app |
+| `Renci.SshNet` | Bibliotheque SSH .NET standard | Combine avec bundle markers |
+| `BCrypt` | Nom de l'algo de hashing (!= bcrypt.dll Windows) | Contexte = namespace .NET |
+
+### 13.2 Note attribution
+
+Deux auteurs identifies (NOUVELLES_DECOUVERTES.md §1.1):
+- `josuealonsorodriguez` (Mexique, Josue Alonso Rodriguez) - auteur de `blackhound`
+- `minacriss` (Bresil, Mina) - auteur de `minaeraser`, `minaeraser12`, `rc`
+
+Build marker confirme: **v0.7.1 @ 2022**.

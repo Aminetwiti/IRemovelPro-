@@ -116,7 +116,7 @@ rule iRemovalPro_HTTP_Request_Iact8
 }
 
 
-rule iRemovalPro_OFFENSIVE Lab_Marker
+rule iRemovalPro_DefensiveLab_Marker
 {
     meta:
         author = "iact8-reproducer"

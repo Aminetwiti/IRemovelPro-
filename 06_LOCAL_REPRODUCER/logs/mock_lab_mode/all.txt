@@ -1,0 +1,41 @@
+﻿python : 2026-06-22 17:02:14,634 | INFO    | iact_hmac_auth | Added HMAC 
+secret key_id=default len=32
+    + CategoryInfo          : NotSpecified: (2026-06-22 17:0...=default len=32 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-06-22 17:02:14,635 | INFO    | iact_hmac_auth | Loaded HMAC secret from 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\logs\hmac_secret.json key_id=default
+2026-06-22 17:02:14,670 | INFO    | iact_mock_server | iAct8 mock server 
+listening on http://127.0.0.1:18768
+2026-06-22 17:02:14,670 | INFO    | iact_mock_server | Log file        : 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\06_LOCAL_REPRODUCER\logs\mock_lab_mode\mock_server_requests.jsonl
+2026-06-22 17:02:14,670 | INFO    | iact_mock_server | Blacklist file  : 
+C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 
+5.2\06_LOCAL_REPRODUCER\logs\mock_lab_mode\blacklist.json
+2026-06-22 17:02:14,670 | INFO    | iact_mock_server | HMAC secret     : 
+logs/hmac_secret.json
+2026-06-22 17:02:14,670 | INFO    | iact_mock_server | Rate limits     : 
+per_ip=100 per_udid=10 / 60s
+2026-06-22 17:02:14,671 | WARNING | iact_mock_server | 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2026-06-22 17:02:14,671 | WARNING | iact_mock_server | !!  LAB PERMISSIF MODE  
+                                                !!
+2026-06-22 17:02:14,671 | WARNING | iact_mock_server | !!  Guards disabled     
+: blacklist, hmac                                            !!
+2026-06-22 17:02:14,671 | WARNING | iact_mock_server | !!  Every request is 
+counted in mock_server_requests.jsonl              !!
+2026-06-22 17:02:14,671 | WARNING | iact_mock_server | !!  via 
+record.lab_mode.disabled_middleware                             !!
+2026-06-22 17:02:14,671 | WARNING | iact_mock_server | 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2026-06-22 17:02:14,672 | INFO    | iact_mock_server | Lab marker      : 
+'iRemovalLabTest'
+2026-06-22 17:02:15,219 | INFO    | iact_mock_server | 127.0.0.1 - - "POST 
+/iremovalActivation/pub.ph HTTP/1.1" 200 -
+2026-06-22 17:02:18,819 | INFO    | iact_mock_server | 127.0.0.1 - - "GET 
+/lab_mode HTTP/1.1" 200 -
+2026-06-22 17:02:19,339 | INFO    | iact_mock_server | 127.0.0.1 - - "GET 
+/metrics.ph HTTP/1.1" 200 -

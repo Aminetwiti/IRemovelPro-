@@ -1,0 +1,183 @@
+
+
+---
+
+## 20. COMPLETE HOOK INVENTORY — Every Client-Side Override
+
+Extracted via `02_SCRIPTS/12_bypass_core/extract_all_hooks.py`. The bypass installs **5 distinct hooks** across **2 iOS frameworks** + **2 hooking techniques** (MobileSubstrate direct + Logos preprocessor).
+
+### 20.1 Hook Group A — Security.framework (Cydia Substrate direct)
+
+Three hooks installed via `_MSHookFunction()` and `_MSHookMessageEx()`. They form a **defense-in-depth** trap: any iOS code path that tries to verify a key ends up calling one of these.
+
+| Hook symbol | Replaces | Where called | What it does |
+|---|---|---|---|
+| `_replace_SecKeyRawVerify` ↔ `_orig_SecKeyRawVerify` | `SecKeyRawVerify` | `Apple Security.framework/SecKey` | Validates signature using the **hardcoded RSA-1024 public key** instead of Apple's HSM key. This is the **primary bypass**. |
+| `_replace_SecKeyVerifySignature` ↔ `_orig_SecKeyVerifySignature` | `SecKeyVerifySignature` | Same, higher-level API | Same purpose; called by `SecKeyVerifySignature` users. Internally calls `_replace_SecKeyRawVerify`. |
+| `_replace_SecTrustEvaluateWithError` ↔ `_orig_SecTrustEvaluateWithError` | `SecTrustEvaluateWithError` | `Apple Security.framework/SecTrust` | Returns `errSecSuccess` **unconditionally**. Bypasses **X.509 chain trust evaluation** for any cert in the chain. |
+
+**Trigger count** in dylib ARM64:
+- `_MSHookFunction`: **4 occurrences** (one per hook install + one for the static init)
+- `_MSHookMessageEx`: **4 occurrences** (similar)
+- Internal symbol `_validPublic` and `_publicKey` (visible in the dylib): the hardcoded RSA-1024 `SecKeyRef` constructed at install time
+
+**Reconstructed Objective-C** (deduced from hook symbol names + context strings):
+
+```objc
+// Hook A1 — installed on init via _MSHookFunction
+BOOL _replace_SecKeyRawVerify(SecKeyRef key, SecPadding padding,
+                              const uint8_t *sig, size_t sigLen,
+                              const uint8_t *hash, size_t hashLen,
+                              CFErrorRef *error) {
+    // Use the BYPASS public key (built from the hardcoded base64 in the dylib)
+    SecKeyRef bypassKey = buildBypassPublicKey();   // uses base64 at offset 0x7960
+    return _orig_SecKeyRawVerify(bypassKey, padding, sig, sigLen, hash, hashLen, error);
+}
+
+BOOL _replace_SecKeyVerifySignature(SecKeyRef key, SecKeyAlgorithm alg,
+                                    CFDataRef signedData, CFDataRef signature,
+                                    CFErrorRef *error) {
+    // Forwards to the low-level hook
+    return _replace_SecKeyRawVerify(key, kSecPaddingPKCS1SHA1, ...);
+}
+
+bool _replace_SecTrustEvaluateWithError(SecTrustRef trust, CFErrorRef *error) {
+    // ALWAYS return success — X.509 chain validation is bypassed entirely
+    if (error) *error = NULL;
+    return true;  // kSecTrustResultProceed / kSecTrustResultUnspecified
+}
+```
+
+**Public crypto references in the dylib** (proves the implementation uses standard Apple CommonCrypto):
+
+```
+_CCCrypt            ← AES encryption (probably to unwrap the encrypted plist)
+_CC_SHA256          ← SHA-256 hashing
+_NSData             ← buffer for raw signature
+_NSDictionary       ← plist-style activation record
+_NSFileManager      ← writes the forged plist to /var/mobile/...
+```
+
+### 20.2 Hook Group B — MobileActivationDaemon (Logos preprocessor)
+
+Two hooks installed via the **Theos / Logos** toolchain. The `__logos_method$` symbol is the **hook body** (replacement), `__logos_orig$` is the **saved original** (called via `%orig`).
+
+| Hook symbol | Objective-C selector | Class targeted |
+|---|---|---|
+| `__logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$` | `- (BOOL)validateActivationDataSignature:(NSData*)sig activationData:(NSDictionary*)data withError:(NSError**)error` | `MobileActivationDaemon` |
+| `__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$` | `- (void)handleActivationInfo:(NSDictionary*)info withCompletionBlock:(void(^)(NSDictionary*, NSError*))block` | Same |
+
+**Reconstructed Logos code** (deduced from the symbols + the log string at offset 0x7a25):
+
+```objc
+// Hook B1 — %orig calls the original (saved by Logos at install time)
+%hook MobileActivationDaemon
+
+- (BOOL)validateActivationDataSignature:(NSData *)activationSignature
+                          activationData:(NSDictionary *)activationData
+                                  withError:(NSError **)error {
+    // Call original (which would call the REAL SecKeyRawVerify on Apple's key)
+    BOOL ok = %orig(activationSignature, error);
+    // But ALSO validate against the BYPASS pubkey
+    if (!ok) {
+        return [self _verifyWithBypassKey:activationSignature data:activationData];
+    }
+    return ok;
+}
+
+- (void)handleActivationInfo:(NSDictionary *)info
+         withCompletionBlock:(void (^)(NSDictionary *, NSError *))block {
+    // Inject the forged activation record
+    NSDictionary *forged = [self _loadForgedTicketFromBundle];
+    NSLog(@"T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]-> %@", forged);
+    return %orig(forged, block);
+}
+
+%end
+```
+
+**Bonus symbol** found in dylib (proves SecTrustEvaluateWithError hook):
+
+```
+_handleActivationInfoWithSession:activationSignature:completionBlock:
+```
+
+This third selector is also a hook target (mentioned in §2 of the original BYPASS_CORE). It's a variant of the same hook that takes an explicit `session` argument.
+
+### 20.3 What Each Hook **Does** (Capability Map)
+
+| Hook | Layer | Bypass capability | Triggered by |
+|---|---|---|---|
+| `_replace_SecKeyRawVerify` | Security.framework | **RSA verify** with bypass pubkey | Any code that calls `SecKeyRawVerify` |
+| `_replace_SecKeyVerifySignature` | Security.framework | Same, via high-level API | `mobileactivationd` validateActivationDataSignature |
+| `_replace_SecTrustEvaluateWithError` | Security.framework | **X.509 chain trust** always valid | Any code that calls `SecTrustEvaluateWithError` |
+| `__logos_method$MobileActivationDaemon$validateActivationDataSignature$...` | Activation daemon | Returns "valid" for forged ticket | `mobileactivationd` daemon |
+| `__logos_method$MobileActivationDaemon$handleActivationInfo$...` | Activation daemon | Substitutes the activation record | `mobileactivationd` daemon |
+
+### 20.4 The 3-Hook-Then-2-Hook Architecture
+
+```
+                    ┌─────────────────────────────────┐
+                    │     iOS userland process        │
+                    │  (mobileactivationd / SpringBoard) │
+                    └────────────────┬────────────────┘
+                                     │
+        ┌────────────────────────────┼────────────────────────────┐
+        │                            │                            │
+        ▼                            ▼                            ▼
+  [Hook B1]                [Hook B2]                   [Hook A1+A2+A3]
+  validateActivationData   handleActivationInfo        Security.framework
+  Signature (Logos)        (Logos)                     (MSHookFunction)
+        │                            │                            │
+        │                            │                            │
+        ▼                            ▼                            ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │                  Decides: "valid" / "inject forged"             │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+**Defensive insight**: All 5 hooks must be removed for the activation to fail. A kernel-level patch to `MSHookFunction` (in `/usr/lib/substrate`) or a Secure Enclave–attested key would defeat this entirely.
+
+### 20.5 Why the Hooks Don't Conflict with the Rest of iOS
+
+The hooks are **method-level replacements** (not function-level). iOS's hundreds of other cryptographic operations continue to use the original Apple code. Only the specific code paths that `mobileactivationd` triggers (validate → handle) are affected. The hook also returns **plausible** values (TRUE for validate, success dict for handle) so iOS's higher-level state machine thinks everything is normal.
+
+### 20.6 Detection Signatures (per hook)
+
+| Hook | Static signature (YARA) | Runtime detection |
+|---|---|---|
+| `_replace_SecKeyRawVerify` | Symbols present in dylib | EDR: monitor `dlopen` of `MobileSubstrate/DynamicLibraries/blackhound.dylib` |
+| `_replace_SecKeyVerifySignature` | Same | Same |
+| `_replace_SecTrustEvaluateWithError` | Same | amfi: log untrusted trampolines |
+| Logos `__logos_method$MobileActivationDaemon$...` | 2× symbols in dylib | Frida: `ObjC.classes.MobileActivationDaemon.methods` enumeration |
+| Logos `__logos_method$MobileActivationDaemon$...` (2nd) | Same | Same |
+
+**YARA rule** (in `05_IOC/YARA_RULES.yar`):
+
+```yara
+rule iRemovalPro_BlackHound_Hooks
+{
+    meta:
+        description = "All 5 MobileSubstrate + Logos hook symbols"
+        severity = "high"
+    strings:
+        $orig1 = "_orig_SecKeyRawVerify" ascii
+        $orig2 = "_orig_SecKeyVerifySignature" ascii
+        $orig3 = "_orig_SecTrustEvaluateWithError" ascii
+        $rep1  = "_replace_SecKeyRawVerify" ascii
+        $rep2  = "_replace_SecKeyVerifySignature" ascii
+        $rep3  = "_replace_SecTrustEvaluateWithError" ascii
+        $log1  = "__logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature" ascii
+        $log2  = "__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo" ascii
+    condition:
+        4 of them
+}
+```
+
+### 20.7 Hook Functionality Summary — what each one does in 1 sentence
+
+1. **`_replace_SecKeyRawVerify`** — replaces Apple's RSA verify with one that uses the **hardcoded RSA-1024 pubkey** instead of Apple's HSM key
+2. **`_replace_SecKeyVerifySignature`** — high-level wrapper that calls `_replace_SecKeyRawVerify` under the hood
+3. **`_replace_SecTrustEvaluateWithError`** — always returns `errSecSuccess`, **kills X.509 chain validation**
+4. **`__logos_method$MobileActivationDaemon$validateActivationDataSignature$...`** — **returns YES** for the forged ticket, falling back on `_replace_SecKeyRawVerify`
+5. **`__logos_method$MobileActivationDaemon$handleActivationInfo$...`** — **substitutes** the activation record with the forged one, then calls `%orig` with it

@@ -74,7 +74,7 @@ Contributeurs ayant signalé des vulnérabilités :
 
 ## 🔒 Security Advisories publiés
 
-Ce projet publie des advisories défensifs (TLP:AMBER) sur les vulnérabilités découvertes lors de l'audit d'iRemoval PRO.
+Ce projet publie des advisories red teamss (TLP:AMBER) sur les vulnérabilités découvertes lors de l'audit d'iRemoval PRO.
 
 ### SA-2026-001 — Bypass d'Activation Lock iCloud via RSA-1024 forgé
 

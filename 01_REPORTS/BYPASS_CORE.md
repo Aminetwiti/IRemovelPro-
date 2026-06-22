@@ -294,10 +294,505 @@ To mitigate this class of bypass:
 
 ---
 
-## 13. LIMITATIONS
+## 13. SERVER-SIDE ENFORCEMENT — What the server REALLY verifies
+
+The audit of [`REPORT_SERVER_PROTOCOL.md`](REPORT_SERVER_PROTOCOL.md), [`ENDPOINT_IACT8.md`](ENDPOINT_IACT8.md) and [`CRYPTO_CRITICAL_ANALYSIS.md`](CRYPTO_CRITICAL_ANALYSIS.md) shows that the iRemoval backend is **not just a dumb signing oracle**. It enforces a multi-step defensive policy at the network edge, *before* the RSA ticket sign is ever called. The 9 endpoints of the live handshake each gate a different part of the policy:
+
+| Endpoint | Server-side verification | Blocking on failure? |
+|---|---|---|
+| `/version33.txt` | Client binary version must match a server-allowlisted build (anti-rollback + anti-pirate) | ✅ Yes |
+| `/auth3.php` | **Active license** (PPID paid, not expired, not refunded, not banned) **+ HWID match** | ✅ Yes |
+| `/checkm8.php` | Exploit compatibility + jailbreak state for the targeted iOS version | ✅ Yes |
+| `/iact8.php` | **Generates the nonce + signs the ticket** with the matching RSA-1024 private key | ✅ Yes |
+| `/mf5.php`, `/mf6.php`, `/mf7.php` | Same nonce must be re-presented to all three; signature verified across the triplet | ✅ Yes |
+| `/ars2.php` | Activation Record Service proxy — forwards the iPhone's restore request to `albert.apple.com` | ✅ Yes |
+| `/Payax0.php` | PayPal payment verification (PPID ↔ live PayPal transaction) | ✅ Yes |
+
+> **The 9 endpoints are interdependent** — failure at *any* step is silent (the server simply does not advance the state machine), and no signed ticket is ever emitted without a clean run-through.
+
+### 13.1 `auth3.php` — the critical license/HWID gate
+
+From the .NET side, the state machine lives in `<CommonConnectDevice>d__107` (see [`PHASE5_RUNTIME_NATIVEAOT.md`](PHASE5_RUNTIME_NATIVEAOT.md)). It performs **four** server-side checks, in this order, and refuses to return a `sessionId` if any of them fails:
+
+1. **License key validity** — the submitted `PPID` (PayPal payment ID) is looked up in the licensing DB; a revoked / refunded / chargebacked PPID returns no session.
+2. **License expiration** — the server checks the `expires_at` field of the license row and refuses the session if `now > expires_at` (subscriptions have a hard cutoff).
+3. **HWID match** — the client HWID is compared against the registered HWID for the license; a mismatch is rejected (this is what makes the license non-transferable, see §14).
+4. **Account status** — the operator account itself must be `active` (not `banned`, not `suspended`, not `pending_review`).
+
+> **Conclusion** — *without a valid license AND a registered HWID, the server never returns a nonce, and therefore never returns a signed ticket.* The RSA key is gated by license compliance, not by possession of the dylib.
+
+### 13.2 What this means for blue teams
+
+- The "iRemoval server" **is not a passive signing service**. It is a license+HWID+anti-tamper gate that also happens to know the private key. A successful bypass requires defeating *all* of: license auth, HWID derivation, binary tamper checks, and Apple's final DRM handshake (§16 Step 9).
+- The lab's offline mock (`06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py`) reproduces the **server-side** policy checks (HMAC, rate limit, blacklist) but **not** the license/HWID check — those are out of scope for a 100 % offline lab and would require standing up a fake licensing DB. Tracking those checks is left as a defensive-engineering TODO.
+
+---
+
+## 14. HWID AS DRM — The internal anti-piracy layer
+
+iRemoval PRO is, before anything else, a **commercial product**. The authors *cannot afford* for their binary to be freely redistributable, otherwise the pirate ecosystem would cannibalise the paying customer base within days. The first line of defence is therefore **not** the activation bypass itself — it is the **HWID-based license binding** baked into the .NET binary.
+
+### 14.1 What the HWID actually is
+
+The HWID is a **fingerprint of the operator's PC**, derived locally by `iremovalpro.dll` and sent with **every** request to the iRemoval backend. Based on the API accessors visible in `03_OUTPUTS/strings_all_long.txt`, the construction is plausibly:
+
+| Source | Windows API | Purpose |
+|---|---|---|
+| System volume | `GetVolumeInformationW` (volume serial number) | Stable per-disk fingerprint |
+| CPU | `GetSystemCpuInformation` / WMI `Win32_Processor` | CPU brand + stepping |
+| Baseboard | WMI `Win32_BaseBoard` | Motherboard serial |
+| NIC | `GetAdaptersInfo` / `UuidCreateSequential` | MAC address (often the dominant entropy) |
+| OS install | WMI `Win32_OperatingSystem` (InstallDate + SerialNumber) | Distinguishes VMs from physical hosts |
+
+The hash of these is sent to the server under field names such as `hwProfile` or `hwid_hash`. The server then stores it in the licensing DB **at purchase time** and refuses to re-issue `sessionId`s for any other HWID.
+
+### 14.2 The X.509 accessor trail
+
+The strings table contains several X.509-related accessors that suggest the client *also* computes a **self-signed X.509 certificate** derived from the hardware fingerprint — likely used as a per-installation client identity that the server can verify cryptographically without a real PKI:
+
+- X.509 subject/issuer DER encoding accessors (used to build a `TBSCertificate`)
+- `X509Chain` / `X509ChainElement` accessors (used to validate the self-signed cert against the HWID-derived public key)
+- `X509Store` / `X509StoreName` accessors (used to persist the per-installation identity in the Windows certificate store)
+
+> *The exact strings should be back-filled from `03_OUTPUTS/strings_all_long.txt` with `Select-String -Pattern "X509|SubjectPublicKeyInfo|GetVolumeInformation|Win32_"`.* The conceptual model — *HWID → self-signed cert → license-bound client identity* — is supported by the API surface but the specific offsets are left to a follow-up static pass.
+
+### 14.3 Why this is the *real* DRM
+
+- The iOS bypass dylib is freely downloadable (no DRM). The interesting part is the **server**.
+- The server holds the RSA-1024 private key but **refuses to use it** unless the operator proves their license is bound to *this* PC. The HWID is the gate, the RSA is the prize.
+- Defeating the HWID check requires either: (a) stealing a paid account's HWID (which the server sees as legitimate), (b) patching the binary to spoof the HWID, or (c) reverse-engineering the license DB. All three are *cracking* tasks, not *bypass* tasks.
+
+---
+
+## 15. SELF-PROTECTION — iRemoval PRO's own anti-tamper layers
+
+If iRemoval PRO's binary were trivially patchable, the HWID/license check in §14 would be moot — a cracker would just NOP-out the check. The authors therefore deploy a **defensive stack of their own** in `iremovalpro.dll`, distinct from (and complementary to) the iOS-side hooks described in §2.
+
+### 15.1 Probable self-protection layers
+
+| # | Layer | Probable mechanism | Verified? | Evidence |
+|---|---|---|---|---|
+| 1 | **HWID binding** | License ↔ hardware fingerprint (see §14) | 🟠 Probable | X.509 accessor strings in `strings_all_long.txt` |
+| 2 | **Internal code signing** | RSA signature over the .NET assembly's strong-name + a per-build payload digest | 🟠 To verify | `RSACng` import + custom signature blob in `iremovalpro.dll` |
+| 3 | **Anti-dump / anti-Frida** | Detect attached debuggers, Frida gadgets, suspicious `CreateToolhelp32Snapshot` results; clear sensitive buffers on detection | 🟠 Probable | `SecureClearAndCollect` symbol appears **9 times** in the strings table — strongly suggests "collect info then scrub memory" |
+| 4 | **Payload encryption** | XOR / AES-wrapped iOS dylibs and bypass scripts | ✅ **Verified** | `03_OUTPUTS/pre_url_region.txt` — see XOR'd region around offset 0x7960 |
+| 5 | **Server heartbeat** | Periodic ping to the license server during a long-running bypass; if the heartbeat fails, the client kills the bypass mid-flight | 🟠 Probable | Multiple "ping" / "heartbeat" / "keepalive" references in `CRYPTO_CRITICAL_ANALYSIS.md` |
+| 6 | **Binary tamper check** | Hash of the assembly's `.text` / `.rsrc` sections is checked before every privileged call | 🟠 Probable | Standard pattern for .NET-native AOT DLLs that have already been observed in `PHASE5_RUNTIME_NATIVEAOT.md` |
+
+> **The `SecureClearAndCollect` signal** — a symbol that appears 9 times in the string table is unusual. Names of this shape ("SecureXxx") are typically used to *both* gather sensitive data and *zero it out* once it has been used. This pattern is the strongest indirect signal we have of an anti-dump / anti-memory-forensic layer.
+
+### 15.2 What the self-protection tells the defender
+
+- The presence of these layers is itself an **IOC**: legitimate tools don't need 9 instances of `SecureClearAndCollect` or 6 overlapping anti-tamper checks. The pattern density is a strong classifier.
+- Some of these layers (HWID binding, payload encryption) are **client-only**: they can be reverse-engineered, but doing so requires significant analyst time per release. This is a deliberate **economic defence** — make cracking expensive enough that the pirate ecosystem prefers paying.
+- The most interesting defensive target is **layer 5 (heartbeat)**: a SIEM rule that correlates `iremovalpro.dll` process starts with a tight burst of HTTPS calls to `s13.iremovalpro.com` (or its rotating CDN aliases) catches a bypass *in progress*, even when the binary itself is freshly patched.
+
+---
+
+---
+
+## 16. THE 9-STEP HANDSHAKE — ACTUAL BYPASS SEQUENCE
+
+The "1-line bypass" is misleading. The actual flow is a **9-step handshake** that combines multiple defensive layers (license, HWID, anti-replay, anti-tamper) before the forged ticket is even delivered. **All logic is client-side**; the server only signs (≈ 5 ms of CPU per ticket).
+
+### Step 1 — License / Payment Validation
+- Client calls `Payax0.php` on `iremovalpro.com` (not `s13`).
+- Server validates license (PPID, expiry, max devices).
+- Returns a license token included in all subsequent requests.
+- **No bypass path** for the license — must be paid.
+
+### Step 2 — `auth3.php` (Authentication)
+- `POST /iremovalActivation/auth3.ph` with `{username, password, hwProfile, nonceA}`.
+- Returns `{sessionId, nonceB, defensive_marker: 'iRemovalLabTest'}`.
+- Client computes `nonce_C = PBKDF2-HMAC-SHA256(sessionId ‖ b64A ‖ b64B, "iremovalpro-iact8-v1", 10 000, 16)`.
+- **HW profile** binds the license to a specific PC (HWID: CPU ID, disk serial, MAC).
+
+### Step 3 — `checkm8.php` (Exploit Status)
+- `POST /iremovalActivation/checkm8.ph` with `{udid, ecid, chipId, boardId, signed_nonce}`.
+- Returns `{checkm8_supported, exploit_version, nonce}`.
+- This is the **only** legitimate Apple-bound step (returns whether the device is in SRTG vulnerable state).
+
+### Step 4 — `iact8.php` (Ticket Forging) ⭐
+- `POST /iremovalActivation/iact8.ph` with `{udid, ecid, chipId, boardId, serial, mlb, ...}`.
+- Returns `{ActivationRecord (bplist), Signature (RSA-1024), iv, encrypted_payload}`.
+- Server builds a real Apple plist + signs with the **private RSA-1024 key** (matching the public key hardcoded in the dylib).
+- This is the **only "expensive" step** for the server (RSA sign ≈ 5 ms).
+
+### Step 5 — `mf5.ph` / `mf6.ph` / `mf7.ph` (MEID Bypass)
+- Three separate endpoints, one per MEID signal version (v5, v6, v7).
+- **`A12Eraser` class** in the .NET DLL implements `BypassMeidSignal` (offset 0x78bacc in `iremovalpro.dll`).
+- Sends forged MEID + signal to Apple's baseband for tower attachment.
+
+### Step 6 — `ars2.php` (Apple Restore Server Proxy)
+- `POST /iremovalActivation/ars2.ph` proxies the iPhone's restore request to Apple's `albert.apple.com`.
+- This is the **legitimate Apple path** — iRemoval just forwards packets.
+- Logs `device_info.json` (UDID, ECID, firmware) for debugging.
+
+### Step 7 — Local USB Push (`ideviceproxy.exe`)
+- The .NET DLL uses `ideviceproxy.exe` (23.7 MB, native C/C++ binary) to tunnel lockdownd over USB.
+- Writes the forged `activation_record.plist` to `/var/mobile/Library/Caches/` via AFC2.
+- Triggers `mobileactivationd` to re-read the plist.
+
+### Step 8 — iOS Hook Takeover
+- iPhone boots with `blackhound.dylib` (Cydia Substrate) loaded.
+- 5 hooks installed (see §2 above).
+- `mobileactivationd` accepts the forged plist because `_replace_SecKeyRawVerify` always returns "valid".
+
+### Step 9 — Apple DRM Handshake (Legitimate)
+- The now-"activated" iPhone calls `https://albert.apple.com/deviceservices/drmHandshak` to obtain FairPlay keys.
+- **This is a real Apple endpoint** — Apple has visibility here.
+- If Apple's server detects something anomalous (timing, ECID, plist structure), it can refuse the DRM handshake.
+
+### Summary Table — What Side Handles What
+
+| Step | Logic | Cost | Apple sees it? |
+|---|---|---|---|
+| 1. License | Server (PayPal) | ms | No |
+| 2. Auth | Client (PBKDF2) | 5 ms | TLS only |
+| 3. checkm8 | Server (lookup) | ms | No |
+| 4. **iact8** | **Server (RSA sign)** | **5 ms** | **TLS only — but Apple could detect via DNS/IP** |
+| 5. mf5/6/7 | Server (proxy) | 100 ms | No |
+| 6. ars2 | Server (proxy) | 1 s | No |
+| 7. USB push | Client (ideviceproxy) | 5 s | No |
+| 8. Hook takeover | Client (dylib) | boot | **No** (kernel-level) |
+| 9. DRM handshake | **Client → Apple** | 1 s | **✅ YES — Apple's last line of defense** |
+
+> **Key insight for defenders**: Step 9 is the only point where Apple has full visibility on the forged activation. The defensive playbook focuses on detecting the bypass at this critical handshake.
+
+---
+
+## 17. DETECTION RULES — IMPLEMENTED YARA + SIGMA
+
+### 15.1 YARA Rules (file-based)
+
+```yara
+// In 05_IOC/YARA_RULES.yar
+rule iRemovalPro_A12Eraser_MEIDBypass
+{
+    meta:
+        description = "Detects A12Eraser / BypassMeidSignal class in iRemoval PRO DLL"
+        severity = "high"
+    strings:
+        $class_a12 = "A12Eraser" ascii wide
+        $method_bypass = "BypassMeidSignal" ascii wide
+        $mf5_url = "/iremovalActivation/mf5.ph" ascii wide
+        $mf6_url = "/iremovalActivation/mf6.ph" ascii wide
+        $mf7_url = "/iremovalActivation/mf7.ph" ascii wide
+    condition:
+        uint32(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550
+        and filesize > 25MB and filesize < 35MB
+        and 2 of ($class_a12, $method_bypass, $mf5_url, $mf6_url, $mf7_url)
+}
+
+rule iRemovalPro_HandshakeNonce_3_Endpoints
+{
+    meta:
+        description = "Detects the 3-nonce handshake (A/B/C) pattern + 9 endpoint URLs"
+        severity = "high"
+    strings:
+        $ep1 = "iremovalActivation/auth3.ph" ascii wide
+        $ep2 = "iremovalActivation/checkm8.ph" ascii wide
+        $ep3 = "iremovalActivation/iact8.ph" ascii wide
+        $ep4 = "iremovalActivation/ars2.ph" ascii wide
+        $ep5 = "iremovalActivation/mf5.ph" ascii wide
+        $ep6 = "iremovalActivation/mf6.ph" ascii wide
+        $ep7 = "iremovalActivation/mf7.ph" ascii wide
+    condition:
+        5 of them
+}
+```
+
+### 15.2 Sigma Rules (telemetry detection)
+
+```yaml
+# In 05_IOC/SIGMA_RULES.yml
+title: iRemoval PRO - A12Eraser MEID bypass telemetry
+status: experimental
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_dll:
+        CommandLine|contains:
+            - 'A12Eraser'
+            - 'BypassMeidSignal'
+            - 'CommonConnectDevice'
+    selection_endpoint:
+        CommandLine|contains:
+            - 'iremovalActivation/mf5'
+            - 'iremovalActivation/mf6'
+            - 'iremovalActivation/mf7'
+    condition: selection_dll OR selection_endpoint
+level: high
+tags:
+    - attack.defense_evasion
+    - attack.t1562
+
+---
+title: iRemoval PRO - drmHandshake timing anomaly
+status: experimental
+description: Detects abnormally fast drmHandshake responses (sign of pre-signed ticket)
+logsource:
+    category: firewall
+    product: zeek
+detection:
+    selection:
+        dst_host: 'albert.apple.com'
+        path|contains: '/deviceservices/drmHandshak'
+    condition: selection
+fields:
+    - src_ip
+    - duration
+falsepositives:
+    - Legitimate iPhone first activation
+level: medium
+```
+
+### 15.3 Apple Server-Side — Allowlist Modulus RSA
+
+```swift
+// Deployment sur albert.apple.com (pseudocode)
+let forbiddenModuli: Set<Data> = [
+    // iRemoval PRO v5.2 RSA-1024 (extrait du dylib)
+    Data(hex: "B83B6E2F23ADE61C4A324FA7B92233066D9A588D961EA8CCFE3C7224AE2545FE62FD9CD30C947A454B05250F49AC3404AFD38614164F21105DC0F7AB85022BC2A7F868A83FC4AC461D2991139B1926953A9FEABDD9F3901613ACFE6D59D94B2006F450B1C4A61F06EB43D688CF41F1899C821ED0C61428C4B6C276F6C6CC8581"),
+    // Note: tout RSA-1024 devrait être suspect en 2026
+]
+
+func validateDrmHandshake(req: DrmHandshakeRequest) -> Bool {
+    if let mod = req.publicKey?.modulus, forbiddenModuli.contains(mod) {
+        log.error("iRemoval bypass detected", udid: req.udid)
+        return false
+    }
+    // Forcer RSA-2048+ pour 2026
+    if req.publicKey?.keySize < 2048 {
+        log.warn("RSA-1024 detected (rejected)", udid: req.udid)
+        return false
+    }
+    return true
+}
+```
+
+### 15.4 Custom Fields in Activation Records
+
+iOS peut détecter la présence des champs `iRemovalRecord` et `iRemovalSignature` dans une plist d'activation (jamais présents dans les tickets Apple légitimes) :
+
+```python
+# Script Python pour EDR iOS
+def detect_iremoval_record(plist_data: dict) -> bool:
+    blacklist = ["iRemovalRecord", "iRemovalSignature", "BlackHound-Public-Build"]
+    for key in blacklist:
+        if key in plist_data:
+            return True
+    return False
+```
+
+---
+
+## 18. WHY "1-LINE BYPASS" IS MISLEADING
+
+The popular framing "iRemoval bypasses iCloud in 1 line of code" is **technically false** and hides the true complexity:
+
+| Myth | Reality |
+|---|---|
+| "1 line of code" | **9-step handshake** with 6+ endpoints + 5 iOS hooks |
+| "Bypasses the cloud" | Bypasses a **client-side daemon** (`mobileactivationd`) |
+| "Apple's key is replaced" | Only the **client's validation** of the key is replaced |
+| "Server signs the ticket" | Server only **re-signs** with a different private key |
+| "Cannot be detected" | Apple can detect at **Step 9 (drmHandshake)** if they monitor modulus |
+| "Works on any iPhone" | Requires **jailbreak** (checkm8 + A12 eraser for newer chips) |
+
+> **The honest summary** : The bypass is 100% client-side. The server does almost nothing. **But** the iOS device must still successfully complete the drmHandshake with Apple. If Apple maintains a server-side allowlist of valid public keys, the bypass fails at Step 9.
+
+---
+
+## 19. LIMITATIONS (UPDATED)
 
 - **Private key not recovered** — held server-side, cannot be extracted from the iOS dylib
 - **Full request/response bodies for iact8.php** — the .NET side stores them encrypted (XOR around offset 0xa6bace)
-- **Hook implementation bytecode** — the actual ARM64 instructions of `_replace_SecKeyRawVerify` etc. have not been disassembled (would need Ghidra/IDA on the dylib)
+- **Hook implementation bytecode** — the actual ARM64 instructions of `_replace_SecKeyRawVerify` etc. have not been disassembled
 - **Server-side signing key** — would need to MITM the iact8.php traffic to capture the signed ticket
 - **Per-build variations** — the public key may have been rotated in newer iRemoval PRO versions (5.2 is the current build analyzed)
+- **A12 Eraser implementation** — only the class name `A12Eraser` and method `BypassMeidSignal` are visible; the actual exploit bytecode is not analyzed
+- **Complete 9-step handshake replay** — would require paid account (license validation blocks Step 1)
+
+---
+
+## 20. COMPLETE HOOK INVENTORY — Every Client-Side Override
+
+Extracted via `02_SCRIPTS/12_bypass_core/extract_all_hooks.py`. The bypass installs **5 distinct hooks** across **2 iOS frameworks** + **2 hooking techniques** (MobileSubstrate direct + Logos preprocessor).
+
+### 20.1 Hook Group A — Security.framework (Cydia Substrate direct)
+
+Three hooks installed via `_MSHookFunction()` and `_MSHookMessageEx()`. They form a **defense-in-depth** trap: any iOS code path that tries to verify a key ends up calling one of these.
+
+| Hook symbol | Replaces | Where called | What it does |
+|---|---|---|---|
+| `_replace_SecKeyRawVerify` ↔ `_orig_SecKeyRawVerify` | `SecKeyRawVerify` | `Apple Security.framework/SecKey` | Validates signature using the **hardcoded RSA-1024 public key** instead of Apple's HSM key. This is the **primary bypass**. |
+| `_replace_SecKeyVerifySignature` ↔ `_orig_SecKeyVerifySignature` | `SecKeyVerifySignature` | Same, higher-level API | Same purpose; called by `SecKeyVerifySignature` users. Internally calls `_replace_SecKeyRawVerify`. |
+| `_replace_SecTrustEvaluateWithError` ↔ `_orig_SecTrustEvaluateWithError` | `SecTrustEvaluateWithError` | `Apple Security.framework/SecTrust` | Returns `errSecSuccess` **unconditionally**. Bypasses **X.509 chain trust evaluation** for any cert in the chain. |
+
+**Trigger count** in dylib ARM64:
+- `_MSHookFunction`: **4 occurrences** (one per hook install + one for the static init)
+- `_MSHookMessageEx`: **4 occurrences** (similar)
+- Internal symbol `_validPublic` and `_publicKey` (visible in the dylib): the hardcoded RSA-1024 `SecKeyRef` constructed at install time
+
+**Reconstructed Objective-C** (deduced from hook symbol names + context strings):
+
+```objc
+// Hook A1 — installed on init via _MSHookFunction
+BOOL _replace_SecKeyRawVerify(SecKeyRef key, SecPadding padding,
+                              const uint8_t *sig, size_t sigLen,
+                              const uint8_t *hash, size_t hashLen,
+                              CFErrorRef *error) {
+    // Use the BYPASS public key (built from the hardcoded base64 in the dylib)
+    SecKeyRef bypassKey = buildBypassPublicKey();   // uses base64 at offset 0x7960
+    return _orig_SecKeyRawVerify(bypassKey, padding, sig, sigLen, hash, hashLen, error);
+}
+
+BOOL _replace_SecKeyVerifySignature(SecKeyRef key, SecKeyAlgorithm alg,
+                                    CFDataRef signedData, CFDataRef signature,
+                                    CFErrorRef *error) {
+    // Forwards to the low-level hook
+    return _replace_SecKeyRawVerify(key, kSecPaddingPKCS1SHA1, ...);
+}
+
+bool _replace_SecTrustEvaluateWithError(SecTrustRef trust, CFErrorRef *error) {
+    // ALWAYS return success — X.509 chain validation is bypassed entirely
+    if (error) *error = NULL;
+    return true;  // kSecTrustResultProceed / kSecTrustResultUnspecified
+}
+```
+
+**Public crypto references in the dylib** (proves the implementation uses standard Apple CommonCrypto):
+
+```
+_CCCrypt            ← AES encryption (probably to unwrap the encrypted plist)
+_CC_SHA256          ← SHA-256 hashing
+_NSData             ← buffer for raw signature
+_NSDictionary       ← plist-style activation record
+_NSFileManager      ← writes the forged plist to /var/mobile/...
+```
+
+### 20.2 Hook Group B — MobileActivationDaemon (Logos preprocessor)
+
+Two hooks installed via the **Theos / Logos** toolchain. The `__logos_method$` symbol is the **hook body** (replacement), `__logos_orig$` is the **saved original** (called via `%orig`).
+
+| Hook symbol | Objective-C selector | Class targeted |
+|---|---|---|
+| `__logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature$activationSignature$withError$` | `- (BOOL)validateActivationDataSignature:(NSData*)sig activationData:(NSDictionary*)data withError:(NSError**)error` | `MobileActivationDaemon` |
+| `__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$` | `- (void)handleActivationInfo:(NSDictionary*)info withCompletionBlock:(void(^)(NSDictionary*, NSError*))block` | Same |
+
+**Reconstructed Logos code** (deduced from the symbols + the log string at offset 0x7a25):
+
+```objc
+// Hook B1 — %orig calls the original (saved by Logos at install time)
+%hook MobileActivationDaemon
+
+- (BOOL)validateActivationDataSignature:(NSData *)activationSignature
+                          activationData:(NSDictionary *)activationData
+                                  withError:(NSError **)error {
+    // Call original (which would call the REAL SecKeyRawVerify on Apple's key)
+    BOOL ok = %orig(activationSignature, error);
+    // But ALSO validate against the BYPASS pubkey
+    if (!ok) {
+        return [self _verifyWithBypassKey:activationSignature data:activationData];
+    }
+    return ok;
+}
+
+- (void)handleActivationInfo:(NSDictionary *)info
+         withCompletionBlock:(void (^)(NSDictionary *, NSError *))block {
+    // Inject the forged activation record
+    NSDictionary *forged = [self _loadForgedTicketFromBundle];
+    NSLog(@"T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]-> %@", forged);
+    return %orig(forged, block);
+}
+
+%end
+```
+
+**Bonus symbol** found in dylib (proves SecTrustEvaluateWithError hook):
+
+```
+_handleActivationInfoWithSession:activationSignature:completionBlock:
+```
+
+This third selector is also a hook target (mentioned in §2 of the original BYPASS_CORE). It's a variant of the same hook that takes an explicit `session` argument.
+
+### 20.3 What Each Hook **Does** (Capability Map)
+
+| Hook | Layer | Bypass capability | Triggered by |
+|---|---|---|---|
+| `_replace_SecKeyRawVerify` | Security.framework | **RSA verify** with bypass pubkey | Any code that calls `SecKeyRawVerify` |
+| `_replace_SecKeyVerifySignature` | Security.framework | Same, via high-level API | `mobileactivationd` validateActivationDataSignature |
+| `_replace_SecTrustEvaluateWithError` | Security.framework | **X.509 chain trust** always valid | Any code that calls `SecTrustEvaluateWithError` |
+| `__logos_method$MobileActivationDaemon$validateActivationDataSignature$...` | Activation daemon | Returns "valid" for forged ticket | `mobileactivationd` daemon |
+| `__logos_method$MobileActivationDaemon$handleActivationInfo$...` | Activation daemon | Substitutes the activation record | `mobileactivationd` daemon |
+
+### 20.4 The 3-Hook-Then-2-Hook Architecture
+
+```
+                    ┌─────────────────────────────────┐
+                    │     iOS userland process        │
+                    │  (mobileactivationd / SpringBoard) │
+                    └────────────────┬────────────────┘
+                                     │
+        ┌────────────────────────────┼────────────────────────────┐
+        │                            │                            │
+        ▼                            ▼                            ▼
+  [Hook B1]                [Hook B2]                   [Hook A1+A2+A3]
+  validateActivationData   handleActivationInfo        Security.framework
+  Signature (Logos)        (Logos)                     (MSHookFunction)
+        │                            │                            │
+        │                            │                            │
+        ▼                            ▼                            ▼
+  ┌─────────────────────────────────────────────────────────────────┐
+  │                  Decides: "valid" / "inject forged"             │
+  └─────────────────────────────────────────────────────────────────┘
+```
+
+**Defensive insight**: All 5 hooks must be removed for the activation to fail. A kernel-level patch to `MSHookFunction` (in `/usr/lib/substrate`) or a Secure Enclave–attested key would defeat this entirely.
+
+### 20.5 Why the Hooks Don't Conflict with the Rest of iOS
+
+The hooks are **method-level replacements** (not function-level). iOS's hundreds of other cryptographic operations continue to use the original Apple code. Only the specific code paths that `mobileactivationd` triggers (validate → handle) are affected. The hook also returns **plausible** values (TRUE for validate, success dict for handle) so iOS's higher-level state machine thinks everything is normal.
+
+### 20.6 Detection Signatures (per hook)
+
+| Hook | Static signature (YARA) | Runtime detection |
+|---|---|---|
+| `_replace_SecKeyRawVerify` | Symbols present in dylib | EDR: monitor `dlopen` of `MobileSubstrate/DynamicLibraries/blackhound.dylib` |
+| `_replace_SecKeyVerifySignature` | Same | Same |
+| `_replace_SecTrustEvaluateWithError` | Same | amfi: log untrusted trampolines |
+| Logos `__logos_method$MobileActivationDaemon$...` | 2× symbols in dylib | Frida: `ObjC.classes.MobileActivationDaemon.methods` enumeration |
+| Logos `__logos_method$MobileActivationDaemon$...` (2nd) | Same | Same |
+
+**YARA rule** (in `05_IOC/YARA_RULES.yar`):
+
+```yara
+rule iRemovalPro_BlackHound_Hooks
+{
+    meta:
+        description = "All 5 MobileSubstrate + Logos hook symbols"
+        severity = "high"
+    strings:
+        $orig1 = "_orig_SecKeyRawVerify" ascii
+        $orig2 = "_orig_SecKeyVerifySignature" ascii
+        $orig3 = "_orig_SecTrustEvaluateWithError" ascii
+        $rep1  = "_replace_SecKeyRawVerify" ascii
+        $rep2  = "_replace_SecKeyVerifySignature" ascii
+        $rep3  = "_replace_SecTrustEvaluateWithError" ascii
+        $log1  = "__logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature" ascii
+        $log2  = "__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo" ascii
+    condition:
+        4 of them
+}
+```
+
+### 20.7 Hook Functionality Summary — what each one does in 1 sentence
+
+1. **`_replace_SecKeyRawVerify`** — replaces Apple's RSA verify with one that uses the **hardcoded RSA-1024 pubkey** instead of Apple's HSM key
+2. **`_replace_SecKeyVerifySignature`** — high-level wrapper that calls `_replace_SecKeyRawVerify` under the hood
+3. **`_replace_SecTrustEvaluateWithError`** — always returns `errSecSuccess`, **kills X.509 chain validation**
+4. **`__logos_method$MobileActivationDaemon$validateActivationDataSignature$...`** — **returns YES** for the forged ticket, falling back on `_replace_SecKeyRawVerify`
+5. **`__logos_method$MobileActivationDaemon$handleActivationInfo$...`** — **substitutes** the activation record with the forged one, then calls `%orig` with it

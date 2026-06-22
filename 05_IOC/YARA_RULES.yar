@@ -350,3 +350,368 @@ rule iRemovalPro_BypassRSAPublicKey
         any of them
 }
 
+
+rule iRemovalPro_A12Eraser_MEIDBypass
+{
+    meta:
+        author = "audit-statique"
+        date = "2026-06-22"
+        description = "Detects A12Eraser / BypassMeidSignal class in iRemoval PRO DLL (step 5 of 9-step handshake)"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "AMBER"
+        reference = "01_REPORTS/BYPASS_CORE.md#14-the-9-step-handshake"
+
+    strings:
+        $class_a12 = "A12Eraser" ascii wide
+        $method_bypass = "BypassMeidSignal" ascii wide
+        $mf5_url = "/iremovalActivation/mf5.ph" ascii wide
+        $mf6_url = "/iremovalActivation/mf6.ph" ascii wide
+        $mf7_url = "/iremovalActivation/mf7.ph" ascii wide
+        $common_connect = "CommonConnectDevice" ascii wide
+
+    condition:
+        uint16(0) == 0x5A4D
+        and uint32(uint32(0x3C)) == 0x00004550
+        and filesize > 25MB and filesize < 35MB
+        and 3 of ($class_a12, $method_bypass, $mf5_url, $mf6_url, $mf7_url, $common_connect)
+}
+
+
+rule iRemovalPro_Handshake_9_Endpoints
+{
+    meta:
+        author = "audit-statique"
+        date = "2026-06-22"
+        description = "Detects 9-step handshake endpoint cluster (auth3, checkm8, iact8, ars2, mf5, mf6, mf7, Payax0, version33)"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "AMBER"
+        reference = "01_REPORTS/BYPASS_CORE.md#14-the-9-step-handshake"
+
+    strings:
+        $ep1 = "iremovalActivation/auth3.ph" ascii wide
+        $ep2 = "iremovalActivation/checkm8.ph" ascii wide
+        $ep3 = "iremovalActivation/iact8.ph" ascii wide
+        $ep4 = "iremovalActivation/ars2.ph" ascii wide
+        $ep5 = "iremovalActivation/mf5.ph" ascii wide
+        $ep6 = "iremovalActivation/mf6.ph" ascii wide
+        $ep7 = "iremovalActivation/mf7.ph" ascii wide
+        $ep_pay = "Payax0.ph" ascii wide
+        $ep_ver = "version33" ascii wide
+
+    condition:
+        6 of them
+}
+
+
+
+rule iRemovalPro_BlackHound_Hooks
+{
+    meta:
+        author = "audit-statique"
+        date = "2026-06-22"
+        description = "All 5 MobileSubstrate + Logos hook symbols (3 Security.framework + 2 MobileActivationDaemon)"
+        severity = "critical"
+        category = "iCloud-bypass-tool"
+        tlp = "AMBER"
+        reference = "01_REPORTS/BYPASS_CORE.md#20-complete-hook-inventory"
+
+    strings:
+        // Security.framework hooks (MobileSubstrate direct)
+        $orig1 = "_orig_SecKeyRawVerify" ascii
+        $orig2 = "_orig_SecKeyVerifySignature" ascii
+        $orig3 = "_orig_SecTrustEvaluateWithError" ascii
+        $rep1  = "_replace_SecKeyRawVerify" ascii
+        $rep2  = "_replace_SecKeyVerifySignature" ascii
+        $rep3  = "_replace_SecTrustEvaluateWithError" ascii
+        // MobileActivationDaemon hooks (Logos preprocessor)
+        $log1  = "__logos_method$_ungrouped$MobileActivationDaemon$validateActivationDataSignature" ascii
+        $log2  = "__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo" ascii
+
+    condition:
+        4 of them
+}
+
+
+// ============================================================================
+// NOUVELLES REGLES - 2026-06-22 (NOUVELLES_DECOUVERTES.md)
+// ============================================================================
+
+rule iRemovalPro_BlackHound_BuildMarker_v0_7_1
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects BlackHound tweak v0.7.1 (2022 build marker)"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $marker = "T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]->" ascii
+    condition:
+        $marker
+}
+
+rule iRemovalPro_DevPath_BlackHound_Author
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects dev build path of blackhound author (josuealonsorodriguez)"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $path1 = "josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound" ascii
+        $path2 = ".theos/obj/debug" ascii
+        $bundle = "com.panyolsoft.blackhound" ascii
+    condition:
+        all of them
+}
+
+rule iRemovalPro_DevPath_minaeraser_Author
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects dev build path of minaeraser author (minacriss)"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $path1 = "minacriss/Documents/Minasoftware/minaeraser" ascii
+        $path2 = "minacriss/Documents/Minasoftware/rc" ascii
+    condition:
+        all of them
+}
+
+rule iRemovalPro_NAND_Identity_Path
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects reference to NAND identity file path used by bypass"
+        severity = "critical"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $path1 = "/private/var/root/identity" ascii
+        $path2 = "/private/var/root/payloa" ascii
+        $cmd1 = "chmod +x /private/var/root/identity" ascii
+        $cmd2 = "rm -rf /private/var/root/identity" ascii
+    condition:
+        2 of them
+}
+
+rule iRemovalPro_AntiDebug_AntiRE
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects anti-RE / anti-Frida / anti-dump APIs in Windows binary"
+        severity = "medium"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $api1 = "IsDebuggerPresent" ascii
+        $api2 = "NtQueryInformationProcess" ascii
+        $api3 = "CheckForInjectedModules" ascii
+        $api4 = "NtQuerySystemInformation" ascii
+    condition:
+        2 of them
+}
+
+rule iRemovalPro_AntiRE_Chaos_Crypto
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects Chaos.Crypto library string (potential custom crypto wrapper)"
+        severity = "low"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $str = "An assertion in Chaos.Crypto failed" ascii
+    condition:
+        $str
+}
+
+rule iRemovalPro_iDeviceProxy_Bypass_App
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects exact command line used to launch bypass helper app"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $cmd = "ideviceproxy lao abc ofq com.iremovalpro.bypass" ascii
+        $app = "com.iremovalpro.bypass" ascii
+    condition:
+        $cmd or $app
+}
+
+rule iRemovalPro_Baseband_Eraser_Fields
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects baseband fields used by minaeraser12 (NAND eraser)"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $bb1 = "BasebandBoardSnu" ascii
+        $bb2 = "BasebandFirmwareManifestDat" ascii
+        $bb3 = "BasebandKeyHashInformatio" ascii
+        $bb4 = "BasebandRegionSK" ascii
+        $bb5 = "BasebandSerialNumbe" ascii
+        $class = "A12Eraser" ascii
+        $method = "BypassMeidSignal" ascii
+    condition:
+        4 of ($bb*) and all of ($class, $method)
+}
+
+rule iRemovalPro_iOS_Private_Frameworks
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects references to 5 iOS private frameworks used by iRemoval PRO"
+        severity = "medium"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $fw1 = "Catalyst.framework" ascii
+        $fw2 = "DeviceManagement.framework" ascii
+        $fw3 = "EmbeddedDataReset.framework" ascii
+        $fw4 = "MobileActivation.framework" ascii
+        $fw5 = "SpringBoardServices.framework" ascii
+    condition:
+        3 of them
+}
+
+rule iRemovalPro_DMD_Operations_Apple_MDM
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects Apple DMD (Device Management Daemon) operation names"
+        severity = "medium"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $dmd1 = "com.apple.dmd.operation.clear-activation-lock-bypass-code" ascii
+        $dmd2 = "com.apple.dmd.operation.fetch-activation-lock-bypass-code" ascii
+        $dmd3 = "com.apple.dmd.operation.fetch-unlock-token" ascii
+        $dmd4 = "com.apple.dmd.operation.erase-device" ascii
+        $dmd5 = "com.apple.dmd.operation.install-profile" ascii
+    condition:
+        3 of them
+}
+
+rule iRemovalPro_SSH_Tunneling_Advanced
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects Renci.SshNet advanced tunneling features"
+        severity = "medium"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+    strings:
+        $ssh1 = "ForwardedPortLocal" ascii
+        $ssh2 = "ForwardedPortRemote" ascii
+        $ssh3 = "ForwardedPortDynamic" ascii
+        $ssh4 = "keepalive@openssh.com" ascii
+        $ssh5 = "CreateShellStream" ascii
+    condition:
+        3 of them
+}
+
+rule iRemovalPro_BlackHound_BuildMarker
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects BlackHound v0.7.1 build marker (2022) — confirms sample version"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+        reference = "01_REPORTS/NOUVELLES_DECOUVERTES.md §1.2"
+    strings:
+        $marker = "T<-[Blackhound iRemovalPro Public build 0.7.1 @2022|]->" ascii
+    condition:
+        $marker
+}
+
+rule iRemovalPro_DevPath_josuealonsorodriguez
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects dev build path of blackhound author (Mexico, Josue Alonso Rodriguez)"
+        severity = "high"
+        category = "attribution"
+        tlp = "LEAKED"
+        reference = "01_REPORTS/NOUVELLES_DECOUVERTES.md §1.1"
+    strings:
+        $path1 = "josuealonsorodriguez/Documents/Pro/TweakDevelopment/blackhound" ascii
+        $path2 = ".theos/obj/debug" ascii
+    condition:
+        all of them
+}
+
+rule iRemovalPro_DevPath_minacriss
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects dev build path of minaeraser author (Brazil, Mina)"
+        severity = "high"
+        category = "attribution"
+        tlp = "LEAKED"
+        reference = "01_REPORTS/NOUVELLES_DECOUVERTES.md §1.1"
+    strings:
+        $path1 = "minacriss/Documents/Minasoftware/minaeraser" ascii
+        $path2 = "minacriss/Documents/Minasoftware/rc" ascii
+    condition:
+        all of them
+}
+
+rule iRemovalPro_AntiDebug_NtQuery
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects anti-RE/anti-Frida Windows APIs (IsDebuggerPresent, NtQueryInformationProcess, CheckForInjectedModules)"
+        severity = "medium"
+        category = "anti-re"
+        tlp = "LEAKED"
+        reference = "01_REPORTS/NOUVELLES_DECOUVERTES.md §11.3"
+    strings:
+        $api1 = "IsDebuggerPresent" ascii
+        $api2 = "NtQueryInformationProcess" ascii
+        $api3 = "CheckForInjectedModules" ascii
+    condition:
+        2 of them
+}
+
+rule iRemovalPro_ChaosCrypto_Namespace
+{
+    meta:
+        author = "defensive-research"
+        date = "2026-06-22"
+        description = "Detects unique Chaos.Crypto internal namespace — proprietary crypto module authored by iRemoval developers (not BouncyCastle, not Chaos.NaCl)"
+        severity = "high"
+        category = "iCloud-bypass-tool"
+        tlp = "LEAKED"
+        reference = "01_REPORTS/NOUVELLES_DECOUVERTES.md §14 #10"
+        notes = "Zero BouncyCastle references in DLL. Only one Chaos.* namespace (Chaos.Crypto). Verdict: iRemoval authors wrote their own crypto library and named it Chaos.Crypto. The assertion message 'An assertion in Chaos.Crypto failed' is a custom Debug.Assert string. This is a unique fingerprint."
+    strings:
+        $msg = "An assertion in Chaos.Crypto failed" ascii
+    condition:
+        $msg
+}

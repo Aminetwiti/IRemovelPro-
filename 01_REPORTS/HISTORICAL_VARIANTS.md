@@ -191,6 +191,59 @@
 
 ---
 
+## 🆕 Compléments 2026-06-22 — points de release & IOC externes
+
+Cette section consolide les **points de release probables** (où l'on
+peut s'attendre à un changement de modulus, d'endpoints ou de bundle
+IDs) et les **IOC publiques** qui permettent de dater les versions.
+
+### Points de release probables
+
+| Évolution attendue | Marqueurs précurseurs | Source |
+|---|---|---|
+| Rotation du modulus RSA-1024 | Changement de la base64 dans le dylib, ou d'un des 216 caractères en `0x7960` | `BYPASS_CORE.md` §3 |
+| Ajout d'un nouvel endpoint (ex: `Payax0.ph` introduit en v5) | Nouvelle URL dans `03_OUTPUTS/strings_all_long.txt` | `ENDPOINT_IACT8.md` |
+| Refonte UI WPF | Nouveau namespace (`iRemovalProWPF.v2.*`) dans le .NET | `PHASE5_RUNTIME_NATIVEAOT.md` |
+| Nouvelle méthode anti-debug | Pattern CPUID/RDTSC/`gs:[0x30]` dans le binaire | `ioc_catalog.md` "Anti-débogage" |
+| Changement de bundle iOS | Remplacement de `com.panyolsoft.blackhound` (ex: `com.blackhound2.*`) | `ioc_catalog.md` "Bundles iOS" |
+| Migration d'albert.apple.com | URL complète change (ajout query params, nouveau path) | `BYPASS_CORE.md` §13 |
+
+### IOC publiques (défenseur)
+
+Pour dater / corroborer une version observée localement, on peut
+recouper les IoC avec les bases publiques :
+
+| Plateforme | Usage | URL |
+|---|---|---|
+| **VirusTotal** | Hash SHA-256 de `iRemoval PRO.exe` et `iremovalpro.dll` → "first submission" | `https://www.virustotal.com/` |
+| **MalwareBazaar** (abuse.ch) | Échantillons .NET labellisés `iRemoval` | `https://bazaar.abuse.ch/` |
+| **ThreatFox** (abuse.ch) | IoC C2 (`s13.iremovalpro.com`) | `https://threatfox.abuse.ch/` |
+| **URLhaus** | URL de paiement (`Payax0.ph`) | `https://urlhaus.abuse.ch/` |
+| **Telegram** (`@droidsolution`, `t.me/iremovalpro`) | Annonces release (datation manuelle) | `t.me/iremovalpro` |
+| **bypassfrpfiles.com** | Archives publiques (v3, v4 datées) | `bypassfrpfiles.com` |
+| **Apple Security Research** | Endpoints `albert.apple.com` (utilisation officielle) | `https://security.apple.com/` |
+
+### Procédure de datation
+
+```text
+1. Calculer SHA-256 du binaire local (déjà fait : v5.2)
+2. Chercher sur VirusTotal — la date "first_submission" est la date
+   de release la plus probable
+3. Comparer le modulus RSA embarqué avec les hashes publics
+   (notre SHA-1 = 032476fc5c2ff5e65e5ae6ae81b2c45433bf32a8)
+4. Recouper avec les builds Telegram datés
+5. Documenter tout écart dans la matrice v3->v5 ci-dessus
+```
+
+> **Note** : Le SHA-1 du modulus documenté dans `ioc_catalog.md`
+> (`d488c22c...`) **ne correspond pas** au modulus réel de la clé
+> embarquée (`b83b6e2f...` → SHA-1 = `032476fc...`). Cet écart a
+> été détecté lors de l'Action 1 et est désormais corrigé dans
+> `06_LOCAL_REPRODUCER/apple_drm_defense.py`. Une mise à jour de
+> `ioc_catalog.md` est en cours (TODO défensif).
+
+---
+
 ## 📚 Sources
 
 - **Public** : bypassfrpfiles.com, @droidsolution Telegram

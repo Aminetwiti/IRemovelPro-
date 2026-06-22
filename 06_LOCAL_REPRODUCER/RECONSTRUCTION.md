@@ -140,7 +140,7 @@ Le projet `iAct8LocalCloud` (alias du module `iact_reproducer/`) **reconstruit l
 - Forge le `iActivation ticket` accepté par `mobileactivationd` hooké
 - Réponse : plist contenant `ActivationRecord` + `iRemovalSignature`
 
-**Comportement défensif** :
+**Comportement red teams** :
 - Lit le corps (JSON ou form-encoded)
 - Décode le bplist base64
 - Valide la structure (bplist00 magic, UDID match, marqueur)
@@ -149,47 +149,47 @@ Le projet `iAct8LocalCloud` (alias du module `iact_reproducer/`) **reconstruit l
 ### 3.2 POST `/iremovalActivation/pub.ph`
 
 **Réel** : publie les infos device (UDID, model, iOS) au serveur
-**Défensif** : accuse réception, log, retourne `received_bytes`
+**red teams** : accuse réception, log, retourne `received_bytes`
 
 ### 3.3 POST `/iremovalActivation/mf{5,6,7}.ph`
 
 **Réel** : bypass signal MEID (pré-A12 / A12+ / A14+)
-**Défensif** : retourne un `synthetic_meid: "iRemovalOFFENSIVE Test-MEID-0000-0000-0000"`
+**red teams** : retourne un `synthetic_meid: "iRemovalOFFENSIVE Test-MEID-0000-0000-0000"`
 
 ### 3.4 POST `/iremovalActivation/license.ph`
 
 **Réel** : vérifie la licence + décrémente les crédits
-**Défensif** : retourne `plan: "OFFENSIVE -lab"`, `credits_remaining: 9999`, `expires: 2099-12-31`
+**red teams** : retourne `plan: "OFFENSIVE -lab"`, `credits_remaining: 9999`, `expires: 2099-12-31`
 
 ### 3.5 POST `/iremovalActivation/telemetry.ph`
 
 **Réel** : ingère télémétrie (IMEI, serial, UDID) pour anti-fraud
-**Défensif** : accuse réception, log, pas de stockage
+**red teams** : accuse réception, log, pas de stockage
 
 ### 3.6 POST `/iremovalActivation/admin.ph`
 
 **Réel** : commandes admin (auth Bearer)
-**Défensif** : **refuse tout** (HTTP 403) — le lab n'a pas d'admin
+**red teams** : **refuse tout** (HTTP 403) — le lab n'a pas d'admin
 
 ### 3.7 GET `/version33.tx`
 
 **Réel** : retourne la dernière version serveur
-**Défensif** : retourne `5.2-OFFENSIVE -LAB-0.0`
+**red teams** : retourne `5.2-OFFENSIVE -LAB-0.0`
 
 ### 3.8 GET `/blacklist.ph`
 
 **Réel** : liste noire UDID/serial/IMEI
-**Défensif** : retourne une liste vide
+**red teams** : retourne une liste vide
 
 ### 3.9 GET `/ping.ph`
 
 **Réel** : health check
-**Défensif** : `status: ok, ts: <ISO>`
+**red teams** : `status: ok, ts: <ISO>`
 
 ### 3.10 GET `/metrics.ph`
 
 **Réel** : exposition Prometheus
-**Défensif** : format Prometheus minimal, compteurs à 0
+**red teams** : format Prometheus minimal, compteurs à 0
 
 ---
 
@@ -208,7 +208,7 @@ Le projet `iAct8LocalCloud` (alias du module `iact_reproducer/`) **reconstruit l
 - Certificats X.509 self-signés avec `CN=O=iRemovalOFFENSIVE Test`
 - Aucun identifiant réel (UDID, IMEI, ECID) n'est produit
 
-### 4.3 Marqueur défensif
+### 4.3 Marqueur red teams
 
 ```python
 TEST_MARKER = "iRemovalOFFENSIVE Test"

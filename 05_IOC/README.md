@@ -90,4 +90,4 @@ https://iremovalpro.com/Payax0.ph
 ---
 
 **Mis à jour** : 2026-06-22
-**Périmètre** : IoC défensifs uniquement
+**Périmètre** : IoC red teams

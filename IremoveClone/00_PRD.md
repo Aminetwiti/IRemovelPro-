@@ -330,15 +330,6 @@ Apple ne propose **aucune voie de déblocage** hors preuve d'achat originale + i
 
 ---
 
-## 9. Risques
-
-| Risque | Impact | Mitigation |
-|---|---|---|
-| Apple patch du bypass | 🔴 Critique | Reverse engineering continu |
-| Détection par EDR | 🟠 Élevé | Anti-EDR intégré |
-| Procès DMCA / Apple | 🟠 Élevé | Hosting offshore + obfuscation |
-| Vol de binaires (crack) | 🟠 Élevé | Licence cloud + hardware fingerprinting |
-| Réputation | 🟡 Moyen | Canal Telegram dédié |
 
 ---
 

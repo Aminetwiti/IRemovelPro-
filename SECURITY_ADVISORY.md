@@ -1,6 +1,6 @@
 # Security Advisories — Audit iRemoval PRO v5.2
 
-> **Collection d'advisories défensifs** sur les vulnérabilités découvertes lors de l'audit du bypass d'Activation Lock iCloud iRemoval PRO.
+> **Collection d'advisories red teamss** sur les vulnérabilités découvertes lors de l'audit du bypass d'Activation Lock iCloud iRemoval PRO.
 >
 > **TLP** : LEAKED (communauté défensive)
 > **Date de publication initiale** : 2026-06-22

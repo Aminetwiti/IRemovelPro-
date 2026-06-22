@@ -1,0 +1,11 @@
+{
+  "marker": "iRemovalDefensiveTest",
+  "updated_at": "2026-06-22T17:28:28Z",
+  "udids": [
+    "DEFENSIVE-BLACKLISTED-0001"
+  ],
+  "serials": [],
+  "imeis": [],
+  "ip_addresses": [],
+  "audit": []
+}

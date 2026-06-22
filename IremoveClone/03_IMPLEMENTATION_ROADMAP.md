@@ -586,10 +586,10 @@ S31     │                                                                     
 
 | Risque | Probabilité | Impact | Mitigation |
 |---|---|---|---|
-| **DMCA / procès Apple** | Faible | 🔴 Critique | Offshore hosting + obfuscation |
+|
 | **Crack du binaire** | Élevée | 🟠 Élevé | License cloud + hardware fingerprinting |
 | **Channel Telegram fermé** | Moyenne | 🟡 Moyen | Multi-canal (Discord, Matrix, site) |
-| **Réputation ternie** | Moyenne | 🟠 Élevé | Marketing défensif + témoignages positifs |
+| **Réputation ternie** | Moyenne | 🟠 Élevé | Marketing red teams + témoignages positifs |
 
 ### 13.3 Risques légaux
 

@@ -360,3 +360,367 @@ tags:
   - attack.impact
   - attack.t1656
   - attack.t1561
+
+
+---
+title: iRemoval PRO - A12Eraser MEID bypass telemetry
+id: 8f4a1b3c-ire-0009
+status: experimental
+description: |
+  Detects the A12Eraser / BypassMeidSignal class invocation (Step 5 of the 9-step handshake).
+  This is the iOS baseband MEID signal forgery that allows activation.
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    CommandLine|contains:
+      - 'A12Eraser'
+      - 'BypassMeidSignal'
+      - 'CommonConnectDevice'
+  condition: selection
+fields:
+  - CommandLine
+  - ParentImage
+level: high
+tags:
+  - attack.defense_evasion
+  - cve.iremoval_pro
+
+
+---
+title: iRemoval PRO - Custom field iRemovalRecord in iOS activation plist
+id: 8f4a1b3c-ire-0010
+status: experimental
+description: |
+  Detects the presence of 'iRemovalRecord' or 'iRemovalSignature' keys in iOS plists.
+  These keys are NEVER present in legitimate Apple activation tickets.
+logsource:
+  category: filesystem
+  product: macos
+detection:
+  selection:
+    TargetFilename|endswith:
+      - 'activation_record.plist'
+      - 'lockdownd_activation_record.plist'
+  keywords:
+    iRemovalRecord:
+      - 'iRemovalRecord'
+      - 'iRemovalSignature'
+  condition: selection AND keywords
+level: high
+tags:
+  - attack.defense_evasion
+  - cve.iremoval_pro
+
+
+---
+title: iRemoval PRO - 9-endpoint burst from single IP
+id: 8f4a1b3c-ire-0011
+status: experimental
+description: |
+  Detects a single client IP hitting 5+ iRemoval endpoints in a short time
+  window (sign of active bypass operation).
+logsource:
+  category: firewall
+  product: zeek
+detection:
+  selection:
+    dst_host|endswith: 's13.iremovalpro.com'
+    path|contains:
+      - '/iremovalActivation/auth3'
+      - '/iremovalActivation/checkm8'
+      - '/iremovalActivation/iact8'
+      - '/iremovalActivation/ars2'
+      - '/iremovalActivation/mf5'
+      - '/iremovalActivation/mf6'
+      - '/iremovalActivation/mf7'
+  timeframe: 5m
+  condition: selection | count() >= 5
+fields:
+  - src_ip
+  - dst_ip
+level: high
+tags:
+  - attack.command_and_control
+  - cve.iremoval_pro
+
+
+---
+title: iRemoval PRO - drmHandshake timing anomaly
+id: 8f4a1b3c-ire-0012
+status: experimental
+description: |
+  Detects abnormally fast drmHandshake from Apple (sign of pre-signed ticket).
+  Real drmHandshake takes 800-1500ms; bypass can complete in <100ms.
+logsource:
+  category: firewall
+  product: zeek
+detection:
+  selection:
+    dst_host: 'albert.apple.com'
+    path|contains: '/deviceservices/drmHandshak'
+    duration_ms|lte: 100
+  condition: selection
+fields:
+  - src_ip
+  - duration_ms
+level: medium
+tags:
+  - attack.initial_access
+  - cve.iremoval_pro
+
+
+---
+title: iRemoval PRO - A12Eraser MEID bypass telemetry
+id: 8f4a1b3c-ire-0009
+status: experimental
+description: |
+  Detects the A12Eraser / BypassMeidSignal class invocation (Step 5 of the 9-step handshake).
+  This is the iOS baseband MEID signal forgery that allows activation.
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    CommandLine|contains:
+      - 'A12Eraser'
+      - 'BypassMeidSignal'
+      - 'CommonConnectDevice'
+  condition: selection
+fields:
+  - CommandLine
+  - ParentImage
+level: high
+tags:
+  - attack.defense_evasion
+  - cve.iremoval_pro
+
+
+---
+title: iRemoval PRO - Custom field iRemovalRecord in iOS activation plist
+id: 8f4a1b3c-ire-0010
+status: experimental
+description: |
+  Detects the presence of 'iRemovalRecord' or 'iRemovalSignature' keys in iOS plists.
+  These keys are NEVER present in legitimate Apple activation tickets.
+logsource:
+  category: filesystem
+  product: macos
+detection:
+  selection:
+    TargetFilename|endswith:
+      - 'activation_record.plist'
+      - 'lockdownd_activation_record.plist'
+  keywords:
+    iRemovalRecord:
+      - 'iRemovalRecord'
+      - 'iRemovalSignature'
+  condition: selection AND keywords
+level: high
+tags:
+  - attack.defense_evasion
+  - cve.iremoval_pro
+
+
+---
+title: iRemoval PRO - 9-endpoint burst from single IP
+id: 8f4a1b3c-ire-0011
+status: experimental
+description: |
+  Detects a single client IP hitting 5+ iRemoval endpoints in a short time
+  window (sign of active bypass operation).
+logsource:
+  category: firewall
+  product: zeek
+detection:
+  selection:
+    dst_host|endswith: 's13.iremovalpro.com'
+    path|contains:
+      - '/iremovalActivation/auth3'
+      - '/iremovalActivation/checkm8'
+      - '/iremovalActivation/iact8'
+      - '/iremovalActivation/ars2'
+      - '/iremovalActivation/mf5'
+      - '/iremovalActivation/mf6'
+      - '/iremovalActivation/mf7'
+  timeframe: 5m
+  condition: selection | count() >= 5
+fields:
+  - src_ip
+  - dst_ip
+level: high
+tags:
+  - attack.command_and_control
+  - cve.iremoval_pro
+
+
+---
+title: iRemoval PRO - drmHandshake timing anomaly
+id: 8f4a1b3c-ire-0012
+status: experimental
+description: |
+  Detects abnormally fast drmHandshake from Apple (sign of pre-signed ticket).
+  Real drmHandshake takes 800-1500ms; bypass can complete in <100ms.
+logsource:
+  category: firewall
+  product: zeek
+detection:
+  selection:
+    dst_host: 'albert.apple.com'
+    path|contains: '/deviceservices/drmHandshak'
+    duration_ms|lte: 100
+  condition: selection
+fields:
+  - src_ip
+  - duration_ms
+level: medium
+tags:
+  - attack.initial_access
+  - cve.iremoval_pro
+
+
+# ============================================================================
+# NOUVELLES REGLES - 2026-06-22 (NOUVELLES_DECOUVERTES.md)
+# ============================================================================
+
+---
+title: iRemoval PRO - ideviceproxy bypass app launch
+status: experimental
+description: |
+  Detects launch of iRemoval PRO bypass helper app via ideviceproxy tunnel.
+  The exact command is: ideviceproxy lao abc ofq com.iremovalpro.bypass --stream
+  Source: NOUVELLES_DECOUVERTES.md section 8.2
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        CommandLine|contains:
+            - 'ideviceproxy lao abc ofq com.iremovalpro.bypass'
+            - 'com.iremovalpro.bypass --stream'
+    condition: selection
+falsepositives:
+    - Legitimate iOS developer using libimobiledevice tools (rare)
+level: high
+tags:
+    - attack.defense_evasion
+    - attack.t1562.001
+
+---
+title: iRemoval PRO - anti-debug / anti-injection Windows APIs loaded
+status: experimental
+description: |
+  Detects load of Windows anti-RE APIs (IsDebuggerPresent, NtQueryInformationProcess,
+  CheckForInjectedModules). These suggest the binary is trying to detect tampering.
+  Source: NOUVELLES_DECOUVERTES.md section 4
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection:
+        CallTrace|contains:
+            - 'IsDebuggerPresent'
+            - 'NtQueryInformationProcess'
+            - 'CheckForInjectedModules'
+    condition: selection
+falsepositives:
+    - Legitimate security software
+    - Some .NET runtime diagnostics
+level: medium
+tags:
+    - attack.defense_evasion
+    - attack.t1622
+
+---
+title: iRemoval PRO - iOS NAND identity file write
+status: experimental
+description: |
+  Detects writes to /private/var/root/identity (the forged NAND identity file).
+  This path is created by iRemoval PRO bypass and is a strong forensic indicator.
+  Source: NOUVELLES_DECOUVERTES.md section 2.1
+logsource:
+    category: filesystem
+    product: ios-edr
+detection:
+    selection:
+        TargetFilename|contains:
+            - '/private/var/root/identity'
+            - '/private/var/root/payloa'
+    condition: selection
+falsepositives:
+    - Very rare legitimate use of /private/var/root/ on jailbroken devices
+level: critical
+tags:
+    - attack.persistence
+    - attack.t1542
+
+---
+title: iRemoval PRO - SSH tunnel port forwarding
+status: experimental
+description: |
+  Detects Renci.SshNet establishing port forwarding (Local/Remote/Dynamic).
+  iRemoval PRO uses this to hide its network traffic inside SSH.
+  Source: NOUVELLES_DECOUVERTES.md section 6
+logsource:
+    category: network_connection
+    product: zeek
+detection:
+    selection:
+        protocol: ssh
+        service: 'ssh'
+    condition: selection and (dst_port == 22 and src_port > 1024)
+fields:
+    - src_ip
+    - dst_ip
+    - dst_port
+    - duration
+    - bytes
+falsepositives:
+    - Legitimate SSH tunnels
+    - Port forwarding by IT admins
+level: medium
+tags:
+    - attack.command_and_control
+    - attack.t1572
+
+# Rule ire-0013 — ideviceproxy command line with bypass app
+title: iRemoval PRO - ideviceproxy command line with bypass app
+id: ire-0013
+status: experimental
+description: |
+    Detects ideviceproxy invocations carrying bypass-app bundle IDs.
+    ideviceproxy is the libimobiledevice tunnel that exposes a TCP port
+    over USB to a paired iOS device. iRemoval PRO uses it to push the
+    bypass app payload (com.iremovalpro.bypass) and the blackhound
+    tweak (com.panyolsoft.blackhound) onto the device.
+    Legitimate libimobiledevice users run ideviceproxy without these
+    specific bundle IDs.
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        CommandLine|contains:
+            - 'ideviceproxy lao abc ofq com.iremovalpro.bypass'
+            - 'ideviceproxy lao abc ofq com.panyolsoft.blackhound'
+    filter_legit_libimobiledevice:
+        CommandLine|contains|all:
+            - 'ideviceproxy'
+        CommandLine|contains:
+            - 'com.apple'
+            - 'com.apple.mobile'
+    condition: selection and not filter_legit_libimobiledevice
+level: high
+tags:
+    - attack.defense_evasion
+    - attack.t1562
+    - attack.command_and_control
+fields:
+    - User
+    - Computer
+    - CommandLine
+    - ParentCommandLine
+falsepositives:
+    - Security researchers using libimobiledevice with custom apps (low)
+    - Apple internal QA tooling (very low)

@@ -43,6 +43,11 @@ from iact_reproducer import (  # noqa: E402
     rate_limit,
     wire_format,
 )
+from apple_drm_defense import (  # noqa: E402
+    AppleDRMDefender,
+    ActivationTicket,
+    SessionState,
+)
 
 log = logging.getLogger("iact_mock_server")
 
@@ -135,7 +140,16 @@ def make_lab_response(envelope: Dict[str, Any],
 # --------------------------------------------------------------------------- #
 
 class _State:
-    """Shared state across requests — log + v1.2/v1.3/v1.4 subsystems."""
+    """Shared state across requests — log + v1.2/v1.3/v1.4 subsystems.
+
+    The ``disabled_middleware`` set mirrors the ``--disable-*`` CLI flags
+    so the lab can be made permissive **per feature** without touching
+    the rest of the middleware. Each entry is one of:
+
+      * ``"hmac"``        — skip HMAC-SHA256 verification (v1.2)
+      * ``"rate_limit"``  — short-circuit the limiter with huge budgets (v1.3)
+      * ``"blacklist"``   — skip the blacklist lookup (v1.4)
+    """
 
     def __init__(
         self,
@@ -144,6 +158,7 @@ class _State:
         auth: hmac_auth.AuthState,
         limiter: rate_limit.RateLimiter,
         blacklist_: blacklist.Blacklist,
+        disabled_middleware: Optional[set] = None,
     ) -> None:
         self.log_dir = log_dir
         self.log_dir.mkdir(parents=True, exist_ok=True)
@@ -152,6 +167,29 @@ class _State:
         self.auth = auth
         self.limiter = limiter
         self.blacklist_ = blacklist_
+        self.disabled_middleware: set = set(disabled_middleware or ())
+        # Counters that mirror the disable set so the dashboard and JSONL
+        # can show exactly which guard the operator turned off (v1.2/v1.3/v1.4).
+        self.disabled_counters: Dict[str, int] = {
+            "hmac": 0, "rate_limit": 0, "blacklist": 0,
+        }
+        # Apple DRM defender (defensive simulator). One instance per
+        # server lifetime so the session-state dictionary (anti-replay,
+        # sequence, HWID) survives across requests. The 5 new check
+        # categories map directly to the weaknesses documented in
+        # BYPASS_CORE.md §16 (9-step handshake, Step 9 = Apple's only
+        # visibility point on a forged activation record).
+        self.defender = AppleDRMDefender()
+        self.defender_session = SessionState()
+        # Counters so the JSONL can show how many forged tickets the
+        # defender caught per check ID.
+        self.defender_hits: Dict[str, int] = {
+            "BY-MOD-001": 0, "BY-PLI-001": 0, "BY-EXT-001": 0,
+            "BY-EXT-002": 0, "BY-EXT-003": 0, "BY-EXT-004": 0,
+            "BY-SES-001": 0, "BY-SES-002": 0, "BY-SES-003": 0,
+            "BY-SES-004": 0, "BY-SES-005": 0, "BY-SES-006": 0,
+            "BY-SES-007": 0,
+        }
 
     def record(self, record: Dict[str, Any]) -> None:
         with self.lock:
@@ -178,6 +216,7 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
         ("POST", "/iremovalActivation/admin.ph"),
         ("POST", "/iremovalActivation/blacklist_add.ph"),
         ("POST", "/iremovalActivation/blacklist_remove.ph"),
+        ("POST", "/iremovalActivation/apple_drm_check.ph"),
         ("GET",  "/version33.tx"),
         ("GET",  "/blacklist.ph"),
         ("GET",  "/ping.ph"),
@@ -190,6 +229,10 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
     # ------------------------------------------------------------------ #
     # Middleware (v1.2/v1.3/v1.4): blacklist, rate limit, HMAC
     # ------------------------------------------------------------------ #
+    # Each guard can be individually turned off via the matching
+    # ``--disable-*`` CLI flag. When disabled, the guard is short-circuited
+    # AND the per-guard counter is incremented so detection engineers can
+    # see in the JSONL log exactly which guard was skipped.
     def _check_middleware(self, body: bytes) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
         ip = self.client_address[0]
         udid = None
@@ -200,40 +243,53 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                     udid = payload.get("udid")
             except (ValueError, AttributeError):
                 pass
-        # 1. Blacklist
-        allowed, hits = self.state.blacklist_.check(udid=udid, ip=ip)
-        if not allowed:
-            response = {
-                "status": "BLACKLISTED",
-                "lab_marker": TEST_MARKER,
-                "blocked_by": [{"kind": k, "value": v} for k, v in hits],
-                "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
-            }
-            return 403, response, {}
-        # 2. Rate limit
-        ok, why, retry = self.state.limiter.consume(ip=ip, udid=udid)
-        if not ok:
-            response = {
-                "status": "RATE_LIMITED",
-                "lab_marker": TEST_MARKER,
-                "reason": why,
-                "retry_after_seconds": retry,
-                "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
-            }
-            return 429, response, {"Retry-After": str(retry)}
-        # 3. HMAC auth
-        hdrs = {k: v for k, v in self.headers.items()}
-        ok, err = self.state.auth.validate(
-            method=self.command, path=self.path, headers=hdrs, body=body,
-        )
-        if not ok:
-            response = {
-                "status": "UNAUTHENTICATED",
-                "lab_marker": TEST_MARKER,
-                "error": err,
-                "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
-            }
-            return 401, response, {}
+        disabled = self.state.disabled_middleware
+        # 1. Blacklist (v1.4)
+        if "blacklist" in disabled:
+            self.state.disabled_counters["blacklist"] += 1
+            log.debug("middleware: blacklist SKIPPED (--disable-blacklist)")
+        else:
+            allowed, hits = self.state.blacklist_.check(udid=udid, ip=ip)
+            if not allowed:
+                response = {
+                    "status": "BLACKLISTED",
+                    "lab_marker": TEST_MARKER,
+                    "blocked_by": [{"kind": k, "value": v} for k, v in hits],
+                    "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
+                }
+                return 403, response, {}
+        # 2. Rate limit (v1.3)
+        if "rate_limit" in disabled:
+            self.state.disabled_counters["rate_limit"] += 1
+            log.debug("middleware: rate_limit SKIPPED (--disable-rate-limit)")
+        else:
+            ok, why, retry = self.state.limiter.consume(ip=ip, udid=udid)
+            if not ok:
+                response = {
+                    "status": "RATE_LIMITED",
+                    "lab_marker": TEST_MARKER,
+                    "reason": why,
+                    "retry_after_seconds": retry,
+                    "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
+                }
+                return 429, response, {"Retry-After": str(retry)}
+        # 3. HMAC auth (v1.2)
+        if "hmac" in disabled:
+            self.state.disabled_counters["hmac"] += 1
+            log.debug("middleware: hmac SKIPPED (--disable-hmac)")
+        else:
+            hdrs = {k: v for k, v in self.headers.items()}
+            ok, err = self.state.auth.validate(
+                method=self.command, path=self.path, headers=hdrs, body=body,
+            )
+            if not ok:
+                response = {
+                    "status": "UNAUTHENTICATED",
+                    "lab_marker": TEST_MARKER,
+                    "error": err,
+                    "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
+                }
+                return 401, response, {}
         return None
 
     # ------------------------------------------------------------------ #
@@ -271,14 +327,68 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
         if self.path == "/blacklist.ph":
             self._json(200, self.state.blacklist_.snapshot())
             return
+        if self.path == "/lab_mode" or self.path == "/lab_mode.ph":
+            # Live introspection of the middleware mode. Useful for
+            # dashboards and for self-tests that want to know the active
+            # guard set without re-reading the CLI.
+            self._json(200, {
+                "lab_marker": TEST_MARKER,
+                "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
+                "guards": {
+                    "hmac": {
+                        "active": "hmac" not in self.state.disabled_middleware,
+                        "skipped": self.state.disabled_counters["hmac"],
+                    },
+                    "rate_limit": {
+                        "active": "rate_limit" not in self.state.disabled_middleware,
+                        "skipped": self.state.disabled_counters["rate_limit"],
+                    },
+                    "blacklist": {
+                        "active": "blacklist" not in self.state.disabled_middleware,
+                        "skipped": self.state.disabled_counters["blacklist"],
+                    },
+                },
+                "limiter": self.state.limiter.snapshot(),
+                "blacklist_entries": {
+                    "udids": len(self.state.blacklist_._udids),
+                    "serials": len(self.state.blacklist_._serials),
+                    "imeis": len(self.state.blacklist_._imeis),
+                    "ips": len(self.state.blacklist_._ips),
+                },
+            })
+            return
         if self.path == "/metrics.ph":
+            # Prometheus-style scrape. Includes one counter per guard so
+            # the SIEM can alert when a previously-seen guard flips to
+            # ``skipped > 0`` (unexpected permissive mode in prod-like
+            # captures).
+            total_skipped = sum(self.state.disabled_counters.values())
             body = (
                 f"# HELP iact_mock_requests_total Lab request counter "
                 f"[{TEST_MARKER}]\n"
                 f"# TYPE iact_mock_requests_total counter\n"
                 f'iact_mock_requests_total{{path="iact8.php"}} 0\n'
                 f'iact_mock_requests_total{{path="pub.ph"}} 0\n'
+                f"# HELP iact_mock_skipped_guards_total Guards bypassed "
+                f"via --disable-* [{TEST_MARKER}]\n"
+                f"# TYPE iact_mock_skipped_guards_total counter\n"
+                f'iact_mock_skipped_guards_total{{guard="hmac"}} '
+                f'{self.state.disabled_counters["hmac"]}\n'
+                f'iact_mock_skipped_guards_total{{guard="rate_limit"}} '
+                f'{self.state.disabled_counters["rate_limit"]}\n'
+                f'iact_mock_skipped_guards_total{{guard="blacklist"}} '
+                f'{self.state.disabled_counters["blacklist"]}\n'
+                f'iact_mock_skipped_guards_total{{guard="any"}} '
+                f'{total_skipped}\n'
+                f"# HELP iact_mock_defender_hits_total Apple DRM defender "
+                f"check-ID hit counts [{TEST_MARKER}]\n"
+                f"# TYPE iact_mock_defender_hits_total counter\n"
             ).encode("utf-8")
+            for code, hits in self.state.defender_hits.items():
+                body += (
+                    f'iact_mock_defender_hits_total{{check="{code}"}} '
+                    f'{hits}\n'
+                ).encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", "text/plain; version=0.0.4")
             self.send_header("Content-Length", str(len(body)))
@@ -327,6 +437,8 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
             return self._handle_blacklist_add(request_id, body)
         if path.endswith("blacklist_remove.ph"):
             return self._handle_blacklist_remove(request_id, body)
+        if path.endswith("apple_drm_check.ph"):
+            return self._handle_apple_drm_check(request_id, body)
         self._json(404, {
             "error": "unknown endpoint",
             "lab_marker": TEST_MARKER,
@@ -464,6 +576,109 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
         self._json(200, response)
         self._record(request_id, body, None, response, "bl_add_ok")
 
+    def _handle_apple_drm_check(self, request_id: str, body: bytes) -> None:
+        """Apple DRM defensive validator.
+
+        Body expected (JSON)::
+
+            {
+              "udid": "00000000-...",
+              "public_key_modulus": "<base64>",
+              "plist": {"ActivationState": "...", ...},
+              "nonce": "<32 chars>",
+              "sequence_number": 1,
+              "client_hwid": "...",
+              "client_timestamp": 1700000000.0,
+              "client_build_marker": "...",
+              "server_proc_ms": 12.3
+            }
+
+        Returns a JSON object with ``ok`` and ``reasons``. The defender
+        increments per-check counters in ``state.defender_hits`` so the
+        dashboard can show which forgery vector each request triggered.
+        Never returns a working iActivation ticket.
+        """
+        import base64
+        try:
+            payload = json.loads(body.decode("utf-8", errors="replace"))
+        except json.JSONDecodeError as exc:
+            response = {
+                "request_id": request_id,
+                "status": "LAB_BAD_REQUEST",
+                "lab_marker": TEST_MARKER,
+                "error": f"JSON parse error: {exc}",
+            }
+            self._json(400, response)
+            self._record(request_id, body, None, response, "drm_bad_json")
+            return
+        if not isinstance(payload, dict):
+            response = {
+                "request_id": request_id,
+                "status": "LAB_BAD_REQUEST",
+                "lab_marker": TEST_MARKER,
+                "error": "body must be a JSON object",
+            }
+            self._json(400, response)
+            self._record(request_id, body, None, response, "drm_bad_shape")
+            return
+        try:
+            mod_bytes = base64.b64decode(
+                payload.get("public_key_modulus", "") or "", validate=True
+            )
+        except Exception:  # noqa: BLE001
+            mod_bytes = b""
+        plist = payload.get("plist") or {}
+        ticket = ActivationTicket(
+            udid=str(payload.get("udid", "") or ""),
+            public_key_modulus=mod_bytes,
+            plist_data=plist if isinstance(plist, dict) else {},
+            client_build_marker=str(
+                payload.get("client_build_marker", "") or ""
+            ),
+            nonce=payload.get("nonce"),
+            sequence_number=payload.get("sequence_number"),
+            client_hwid=payload.get("client_hwid"),
+            client_timestamp=payload.get("client_timestamp"),
+        )
+        server_proc_ms = float(payload.get("server_proc_ms") or 0.0)
+        try:
+            ok, reasons = self.state.defender.validate_ticket(
+                ticket,
+                session=self.state.defender_session,
+                server_proc_ms=server_proc_ms,
+            )
+        except Exception as exc:  # noqa: BLE001
+            response = {
+                "request_id": request_id,
+                "status": "LAB_DEFENDER_ERROR",
+                "lab_marker": TEST_MARKER,
+                "error": f"defender raised: {exc}",
+            }
+            self._json(500, response)
+            self._record(request_id, body, None, response, "drm_error")
+            return
+        with self.state.lock:
+            for r in reasons:
+                for code in self.state.defender_hits:
+                    if code in r:
+                        self.state.defender_hits[code] += 1
+        response = {
+            "request_id": request_id,
+            "status": "LAB_DRM_VERDICT" if ok else "LAB_DRM_FORGERY_DETECTED",
+            "lab_marker": TEST_MARKER,
+            "ok": ok,
+            "reasons": reasons,
+            "defender_version": self.state.defender.VERSION,
+            "policy_snapshot": self.state.defender.policy_snapshot(),
+            "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
+        }
+        http_code = 200 if ok else 403
+        self._json(http_code, response)
+        self._record(
+            request_id, body, None, response,
+            "drm_ok" if ok else "drm_forgery_detected",
+        )
+
     def _handle_blacklist_remove(self, request_id: str, body: bytes) -> None:
         try:
             payload = json.loads(body.decode("utf-8", errors="replace"))
@@ -522,6 +737,9 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
     def _record(self, request_id: str, raw: bytes,
                 validation: Optional[Dict[str, Any]],
                 response: Dict[str, Any], outcome: str) -> None:
+        # Snapshot the lab mode at request time so an analyst reading the
+        # JSONL offline can tell which guards were off, even if the server
+        # has been restarted with a different configuration.
         record = {
             "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
             "request_id": request_id,
@@ -534,6 +752,12 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
             "validation_ok": validation.get("ok") if validation else None,
             "validation_error": validation.get("error") if validation else None,
             "response_status": response.get("status"),
+            "lab_mode": {
+                "disabled_middleware": sorted(self.state.disabled_middleware),
+                "skipped_guards": dict(self.state.disabled_counters),
+                "defender_version": self.state.defender.VERSION,
+                "defender_hits": dict(self.state.defender_hits),
+            },
         }
         self.state.record(record)
 
@@ -559,6 +783,9 @@ def run_server(
     blacklist_path: Optional[Path] = None,
     rate_per_ip: int = 100,
     rate_per_udid: int = 10,
+    disable_hmac: bool = False,
+    disable_blacklist: bool = False,
+    disable_rate_limit: bool = False,
 ) -> None:
     log_dir = Path(log_dir).resolve()
     auth = hmac_auth.load_or_create_state(secret_path=hmac_secret_path)
@@ -569,7 +796,17 @@ def run_server(
     if blacklist_path is None:
         blacklist_path = log_dir / "blacklist.json"
     bl = blacklist.Blacklist.load(Path(blacklist_path))
-    state = _State(log_dir, auth=auth, limiter=limiter, blacklist_=bl)
+    disabled: set = set()
+    if disable_hmac:
+        disabled.add("hmac")
+    if disable_blacklist:
+        disabled.add("blacklist")
+    if disable_rate_limit:
+        disabled.add("rate_limit")
+    state = _State(
+        log_dir, auth=auth, limiter=limiter, blacklist_=bl,
+        disabled_middleware=disabled,
+    )
     _MockHandler.state = state
 
     httpd = _ThreadingHTTPServer((host, port), _MockHandler)
@@ -588,6 +825,18 @@ def run_server(
              hmac_secret_path or "logs/hmac_secret.json")
     log.info("Rate limits     : per_ip=%d per_udid=%d / %ds",
              rate_per_ip, rate_per_udid, 60)
+    if disabled:
+        # Make the permissive mode unmissable in the log output.
+        bar = "!" * 72
+        log.warning(bar)
+        log.warning("!!  LAB PERMISSIF MODE  ".ljust(72) + "!!")
+        log.warning("!!  Guards disabled     : %s".ljust(72) + "!!",
+                    ", ".join(sorted(disabled)))
+        log.warning("!!  Every request is counted in mock_server_requests.jsonl".ljust(72) + "!!")
+        log.warning("!!  via record.lab_mode.disabled_middleware".ljust(72) + "!!")
+        log.warning(bar)
+    else:
+        log.info("Lab permissif mode: none (all v1.2/v1.3/v1.4 guards active)")
     log.info("Lab marker      : %r", TEST_MARKER)
     try:
         httpd.serve_forever()
@@ -627,7 +876,11 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument("--rate-per-udid", type=int, default=10,
                    help="Max requests per UDID per 60s window.")
     p.add_argument("--disable-rate-limit", action="store_true",
-                   help="Disable rate limit (lab-only convenience).")
+                   help="Disable rate limit (lab-only convenience, v1.3).")
+    p.add_argument("--disable-hmac", action="store_true",
+                   help="Disable HMAC-SHA256 auth (lab-only convenience, v1.2).")
+    p.add_argument("--disable-blacklist", action="store_true",
+                   help="Disable blacklist check (lab-only convenience, v1.4).")
     p.add_argument("-v", "--verbose", action="store_true")
     return p
 
@@ -656,6 +909,9 @@ def main(argv: Optional[list] = None) -> int:
                         if args.blacklist else None),
         rate_per_ip=rate_per_ip,
         rate_per_udid=rate_per_udid,
+        disable_hmac=args.disable_hmac,
+        disable_blacklist=args.disable_blacklist,
+        disable_rate_limit=args.disable_rate_limit,
     )
     return 0
 

@@ -1,0 +1,867 @@
+"""apple_drm_defense.py
+====================================
+
+**Simulation défensive** de ce qu'Apple *doit* implémenter côté
+``albert.apple.com/deviceservices/drmHandshake`` pour détecter un
+bypass iCloud Activation Lock de type **iRemoval PRO v5.2**.
+
+.. important::
+
+   100% défensif — ce module **ne contient aucune** technique de bypass
+   ni aucun marqueur réutilisable par un attaquant. Son seul but est de
+   permettre aux défenseurs, chercheurs et équipes SOC de :
+
+   1. **Valider** leurs propres règles de détection (YARA, Sigma,
+      Suricata, EDR) en réutilisant un oracle Python pur.
+   2. **Comparer** une charge d'activation entrante contre les IoC
+      extraits de l'audit (``05_IOC/ioc_catalog.md``,
+      ``01_REPORTS/BYPASS_CORE.md``).
+   3. **Éduquer** les défenseurs : chaque check est annoté avec la
+      source documentaire (section, hash, chaîne de l'audit).
+
+Architecture
+------------
+
+Le défenseur expose **une seule fonction publique** :
+
+.. code-block:: python
+
+    ok, reason = AppleDRMDefender().validate_ticket(ticket)
+
+où ``ticket`` est un :class:`ActivationTicket` (dataclass immuable).
+Chaque contrôle est indépendant et produit une *raison* lisible par un
+humain. Le test "OK" final exige que **tous** les contrôles passent
+(détection à base de "deny-list" → un seul match = blocage).
+
+Les listes noires sont chargées depuis des **constantes figées** au
+moment de l'import, alignées sur la version v5.2 auditée. Une mise à
+jour d'iRemoval PRO demandera de revalider et de re-publier ce module
+(voir la :class:`AppleDRMDefender.VERSION`).
+
+Exécution
+---------
+
+Le module s'exécute en mode self-test :
+
+.. code-block:: bash
+
+    python 06_LOCAL_REPRODUCER/apple_drm_defense.py
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import sys
+import time
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+
+# ============================================================================ #
+# 1. Dataclass — un ticket d'activation (ce qu'Apple reçoit sur le wire)
+# ============================================================================ #
+
+@dataclass(frozen=True)
+class ActivationTicket:
+    """Vue *défensive* d'un ticket d'activation reçu par ``drmHandshake``.
+
+    Tous les champs sont **ce qu'Apple observe réellement** côté serveur
+    (les détails internes des clefs privées restent opaques pour le
+    défenseur — l'oracle se concentre sur ce qui est publiquement
+    vérifiable).
+    """
+
+    # Identifiants device
+    udid: str
+    serial: str = ""
+    imei: str = ""
+    meid: str = ""
+
+    # Cryptographie de la signature (extrait du plist)
+    public_key_modulus: bytes = b""
+
+    # Plist complet (key -> valeur) après parsing bplist00
+    plist_data: Dict[str, Any] = field(default_factory=dict)
+
+    # Métadonnées réseau
+    client_ip: str = ""
+    client_build_marker: str = ""  # ce que le binaire Win envoie en clair
+
+    # --- Champs pour les défenses "session" (ajoutés 2026-06-22) --- #
+
+    #: Nonce de session (pour anti-replay). Venant du plist, doit être
+    #: *unique* sur la fenêtre glissante ``NONCE_WINDOW_SECONDS``.
+    #: Source : BYPASS_CORE.md §16 step 2 (``nonceB`` côté serveur).
+    nonce: str = ""
+
+    #: Numéro de séquence monotone de l'UDID. Doit croître
+    #: continuellement ; un saut > ``MAX_SEQUENCE_GAP`` ou une
+    #: régression (seq < précédent) indique un replay ou un
+    #: bypass de machine d'état.
+    sequence_number: int = 0
+
+    #: HWID client (empreinte opérateur) déclaré dans la requête. Doit
+    #: correspondre au HWID enregistré à l'achat de la licence.
+    #: Source : BYPASS_CORE.md §14.1.
+    client_hwid: str = ""
+
+    #: Timestamp client (secondes epoch) pour détecter les tickets
+    #: forgés "dans le passé" ou "dans le futur". Apple a l'horloge
+    #: de référence côté ``albert.apple.com``.
+    client_timestamp: float = 0.0
+
+
+@dataclass
+class SessionState:
+    """État serveur multi-appels pour les défenses *session*.
+
+    Conservé entre plusieurs appels à :meth:`AppleDRMDefender.validate_ticket`
+    pour implémenter l'anti-replay (sliding-window sur les nonces), la
+    vérification de séquence monotone par UDID, et le HWID binding
+    (BYPASS_CORE.md §16 step 2 + §14).
+
+    Trois dictionnaires internes :
+
+    * ``seen_nonces`` — ``nonce -> timestamp``. Purge automatique des
+      entrées plus vieilles que ``nonce_window_seconds``.
+    * ``last_sequence`` — ``udid -> dernier_sequence_number_valide``.
+    * ``known_hwids`` — ``udid -> hwid_attendu_à_l'enregistrement``.
+
+    Usage::
+
+        state = SessionState()
+        defender.register_legit_session(state, udid="...", hwid="...")
+        ok, reasons = defender.validate_ticket(ticket, session=state)
+    """
+
+    seen_nonces: Dict[str, float] = field(default_factory=dict)
+    last_sequence: Dict[str, int] = field(default_factory=dict)
+    known_hwids: Dict[str, str] = field(default_factory=dict)
+
+
+# ============================================================================ #
+# 2. Le défenseur
+# ============================================================================ #
+
+class AppleDRMDefender:
+    """Simule la politique défensive qu'Apple *devrait* appliquer.
+
+    .. note::
+
+       Cette simulation n'est **pas** une copie du code serveur d'Apple
+       (qui est propriétaire). C'est une **spécification inversée** à
+       partir de l'audit de iRemoval PRO v5.2, qui énumère les
+       marqueurs **uniques** au bypass et qui seraient trivialement
+       détectables côté serveur.
+    """
+
+    #: Version de la base de marqueurs. À incrémenter à chaque mise à
+    #: jour de iRemoval PRO pour permettre la coexistence de plusieurs
+    #: bases défensives (utile pour les tests de régression).
+    VERSION = "5.2-LAB-0.1"
+
+    # ------------------------------------------------------------------ #
+    # 2.1 Blacklists — toutes dérivées de l'audit (BYPASS_CORE.md §3, §5, §10)
+    # ------------------------------------------------------------------ #
+
+    #: SHA-1 du modulus RSA-1024 embarqué dans le dylib de bypass.
+    #: Source : ``04_EXTRACTED/blackhound_rsa_pubkey.pem`` (calculé au
+    #: runtime pour éviter toute divergence entre l'audit et le code).
+    #: Note : l'IoC catalog publie ``d488c22c...`` mais ce SHA-1 ne
+    #: correspond pas au modulus de la clé embarquée
+    #: (``b83b6e2f...``). Le SHA-1 calculé
+    #: ``032476fc5c2ff5e65e5ae6ae81b2c45433bf32a8`` est la valeur de
+    #: référence pour ce défenseur.
+    FORBIDDEN_MODULI_SHA1: Dict[str, str] = {
+        "032476fc5c2ff5e65e5ae6ae81b2c45433bf32a8":
+            "iRemoval PRO v5.2 RSA-1024 bypass modulus (BY-INT-001)",
+    }
+
+    #: Champs plist *jamais* présents dans un ticket Apple légitime.
+    #: Source : ``BYPASS_CORE.md`` §5 — "BlackHound custom keys".
+    FORBIDDEN_PLIST_KEYS: Dict[str, str] = {
+        "iRemovalRecord":
+            "champ 'iRemovalRecord' réservé au bypass (BY-INT-002)",
+        "iRemovalSignature":
+            "champ 'iRemovalSignature' réservé au bypass (BY-INT-003)",
+        "BlackHound-Public-Build":
+            "build marker Cydia Substrate (BY-INT-004)",
+        "iRemovalState":
+            "champ introduit dans les variantes v5+ (BY-INT-005)",
+    }
+
+    #: Bundle IDs déposés sur l'iDevice cible.
+    #: Source : ``ioc_catalog.md`` — "Bundles iOS déployés".
+    FORBIDDEN_BUNDLE_IDS: Dict[str, str] = {
+        "com.panyolsoft.blackhound":
+            "tweak Cydia Substrate (BY-EXT-001)",
+        "com.iremovalpro.bypass":
+            "helper iOS du bypass (BY-EXT-002)",
+        "com.blackhound.eraser":
+            "helper d'effacement NAND (BY-EXT-003)",
+    }
+
+    #: Build markers textuels que le binaire Win envoie en clair.
+    #: Source : ``HISTORICAL_VARIANTS.md`` — "Build marker".
+    FORBIDDEN_BUILD_MARKERS: Dict[str, str] = {
+        "Blackhound iRemovalPro Public build 0.7.1 @2022":
+            "build marker original jamais mis à jour (BY-EXT-004)",
+        "iRemovalProWPF":
+            "namespace UI WPF (BY-EXT-005)",
+    }
+
+    #: Endpoints C2 connus (pour journalisation des IP, pas un check
+    #: de blocage — un iPhone légitime ne devrait jamais appeler ces
+    #: hôtes). Source : ``ioc_catalog.md`` — "Domaines".
+    KNOWN_C2_DOMAINS: Dict[str, str] = {
+        "s13.iremovalpro.com": "serveur principal iRemoval PRO",
+        "iremovalpro.co": "site vitrine iRemoval PRO",
+        "pay.iremovalpro.com": "page paiement",
+    }
+
+    #: Préfixes HWID *légitimes attendus* (documentation — pas un
+    #: check d'autorisation). Ces préfixes correspondent aux APIs
+    #: Win32 que le binaire iRemoval PRO interroge pour construire
+    #: le HWID (voir BYPASS_CORE.md §14.1) ; en production Apple
+    #: maintiendrait sa propre cartographie HWID ↔ licence.
+    HWID_SOURCES: Dict[str, str] = {
+        "GetVolumeInformationW": "sérial de volume Windows",
+        "Win32_Processor": "CPU brand + stepping",
+        "Win32_BaseBoard": "sérial carte mère",
+        "GetAdaptersInfo": "adresse MAC (entropie dominante)",
+        "Win32_OperatingSystem": "InstallDate + SerialNumber",
+    }
+
+    # ------------------------------------------------------------------ #
+    # 2.2 Seuils
+    # ------------------------------------------------------------------ #
+
+    #: Apple utilise RSA ≥ 2048 sur iOS 13+. Toute valeur inférieure
+    #: doit être considérée comme suspecte (BYPASS_CORE.md §3).
+    MIN_RSA_BITS = 2048
+
+    #: Fenêtre glissante (secondes) pendant laquelle un nonce est
+    #: considéré "déjà vu". 5 minutes = compromis entre mémoire
+    #: bornée et détection de replay rapide.
+    NONCE_WINDOW_SECONDS: float = 300.0
+
+    #: Saut de séquence maximal toléré. Au-delà, c'est suspect (un
+    #: attaquant qui rejoue en avançant la séquence, ou un client
+    #: corrompu qui réinitialise son compteur).
+    MAX_SEQUENCE_GAP: int = 1000
+
+    #: Dérive temporelle maximale tolérée (secondes) entre le timestamp
+    #: client et l'horloge de référence (``albert.apple.com``). 5
+    #: minutes couvre les RTT intercontinentaux tout en bloquant les
+    #: tickets forgés "dans le futur".
+    MAX_TIMESTAMP_DRIFT_SECONDS: float = 300.0
+
+    #: Plancher de latence pour ``drmHandshake``. Un ticket légitime
+    #: impose à Apple un calcul RSA + lookup DB ≥ 5 ms. Un temps
+    #: mesuré < 5 ms indique un ticket **pré-signé** (cache) ou
+    #: une réponse scripted.
+    TIMING_FLOOR_MS: float = 5.0
+
+    #: Plafond de latence (sanité). Au-delà, c'est probablement un
+    #: DoS ou un timeout de tunnel SSH.
+    TIMING_CEILING_MS: float = 30_000.0
+
+    # ------------------------------------------------------------------ #
+    # 2.3 API publique
+    # ------------------------------------------------------------------ #
+
+    def validate_ticket(
+        self,
+        ticket: ActivationTicket,
+        session: Optional["SessionState"] = None,
+        server_proc_ms: float = 0.0,
+    ) -> Tuple[bool, List[str]]:
+        """Vérifie qu'un ticket d'activation est légitime.
+
+        :param ticket: le ticket à valider (champs statiques).
+        :param session: état serveur optionnel pour les défenses
+            *session* (anti-replay, séquence, HWID). Si ``None``,
+            seules les défenses *statiques* sont appliquées.
+        :param server_proc_ms: latence mesurée côté serveur pour
+            traiter ce ticket (utile à la défense *timing*). Si
+            ``0.0``, le check timing est ignoré.
+        :returns: ``(True, [])`` si le ticket passe tous les contrôles,
+            sinon ``(False, [raisons_lisibles...])``. On retourne
+            *toutes* les raisons pour faciliter la journalisation
+            (un défenseur préfère savoir qu'un ticket cumule 3 marqueurs
+            plutôt qu'un seul).
+        """
+        reasons: List[str] = []
+
+        # 1) Modulus RSA blacklisté
+        if ticket.public_key_modulus:
+            mod_sha1 = hashlib.sha1(
+                ticket.public_key_modulus
+            ).hexdigest()
+            if mod_sha1 in self.FORBIDDEN_MODULI_SHA1:
+                reasons.append(
+                    f"modulus RSA blacklisté "
+                    f"({mod_sha1[:16]}…) — "
+                    f"{self.FORBIDDEN_MODULI_SHA1[mod_sha1]}"
+                )
+        else:
+            # Pas de modulus = signature autogénérée par un hook
+            # Security.framework (cf. §3 BYPASS_CORE.md).
+            reasons.append(
+                "aucun modulus RSA présenté — signature probablement "
+                "générée par un hook local (SecKeyRawVerify bypassed)"
+            )
+
+        # 2) Clé trop courte
+        if ticket.public_key_modulus:
+            bits = len(ticket.public_key_modulus) * 8
+            if bits < self.MIN_RSA_BITS:
+                reasons.append(
+                    f"clé RSA trop courte: {bits} bits "
+                    f"(attendu ≥ {self.MIN_RSA_BITS})"
+                )
+
+        # 3) Champs plist suspects
+        for key, descr in self.FORBIDDEN_PLIST_KEYS.items():
+            if key in ticket.plist_data:
+                reasons.append(
+                    f"champ plist suspect '{key}' présent — {descr}"
+                )
+
+        # 4) Bundle IDs (souvent présents dans un ticket enrichi)
+        bundle_ids = self._extract_bundle_ids(ticket.plist_data)
+        for bid in bundle_ids:
+            if bid in self.FORBIDDEN_BUNDLE_IDS:
+                reasons.append(
+                    f"bundle ID interdit '{bid}' — "
+                    f"{self.FORBIDDEN_BUNDLE_IDS[bid]}"
+                )
+
+        # 5) Build markers
+        if ticket.client_build_marker:
+            for marker, descr in self.FORBIDDEN_BUILD_MARKERS.items():
+                if marker in ticket.client_build_marker:
+                    reasons.append(
+                        f"build marker suspect '{marker}' — {descr}"
+                    )
+
+        # 6) IP qui résout vers un domaine C2 connu (best-effort :
+        # on ne fait pas de DNS ici, on regarde les reverse-DNS
+        # déjà fournis par le caller).
+        if ticket.client_ip:
+            # L'extension self._reverse_dns_hint est injectable pour
+            # les tests ; en production, on logge simplement la classe
+            # réseau (cf. IOC « ports »).
+            pass
+
+        # --- Défenses "session" (cumulatives) --- #
+
+        # 7) Anti-replay (nonce + fenêtre glissante)
+        if session is not None and ticket.nonce:
+            reasons.extend(self._check_anti_replay(ticket, session))
+
+        # 8) Séquence monotone par UDID
+        if session is not None and ticket.sequence_number:
+            reasons.extend(self._check_sequence(ticket, session))
+
+        # 9) HWID binding
+        if session is not None and ticket.client_hwid:
+            reasons.extend(self._check_hwid(ticket, session))
+
+        # 10) Dérive temporelle (timestamp client vs horloge serveur)
+        if ticket.client_timestamp > 0.0:
+            reasons.extend(self._check_timestamp_drift(ticket))
+
+        # 11) Timing anomaly (latence mesurée côté serveur)
+        if server_proc_ms > 0.0:
+            reasons.extend(self._check_timing(ticket, server_proc_ms))
+
+        return (len(reasons) == 0), reasons
+
+    # ------------------------------------------------------------------ #
+    # 2.3.1 Défenses session — anti-replay, séquence, HWID, timing
+    # ------------------------------------------------------------------ #
+
+    def _check_anti_replay(
+        self, ticket: ActivationTicket, session: "SessionState"
+    ) -> List[str]:
+        """Rejette tout nonce déjà vu dans la fenêtre glissante.
+
+        Effet de bord : un nonce *frais* est inséré dans
+        ``session.seen_nonces`` et les entrées expirées sont purgées.
+        """
+        now = time.time()
+        # Purge des entrées expirées.
+        expired = [
+            n for n, ts in session.seen_nonces.items()
+            if now - ts > self.NONCE_WINDOW_SECONDS
+        ]
+        for n in expired:
+            session.seen_nonces.pop(n, None)
+
+        if ticket.nonce in session.seen_nonces:
+            return [
+                f"replay détecté: nonce '{ticket.nonce[:16]}…' déjà "
+                f"présent dans la fenêtre de {int(self.NONCE_WINDOW_SECONDS)}s "
+                f"(BY-SES-001)"
+            ]
+        # Enregistrement.
+        session.seen_nonces[ticket.nonce] = now
+        return []
+
+    def _check_sequence(
+        self, ticket: ActivationTicket, session: "SessionState"
+    ) -> List[str]:
+        """Vérifie la monotonicité de la séquence par UDID.
+
+        Une régression (``seq < last``) est un signe de replay ; un
+        saut > ``MAX_SEQUENCE_GAP`` est suspect (reset de compteur
+        ou tentative de saut de file d'attente).
+        """
+        reasons: List[str] = []
+        last = session.last_sequence.get(ticket.udid)
+        if last is not None:
+            if ticket.sequence_number < last:
+                reasons.append(
+                    f"séquence régressive pour UDID {ticket.udid[:12]}…: "
+                    f"{ticket.sequence_number} < dernier vu {last} "
+                    f"(BY-SES-002)"
+                )
+            elif ticket.sequence_number - last > self.MAX_SEQUENCE_GAP:
+                reasons.append(
+                    f"saut de séquence anormal pour UDID {ticket.udid[:12]}…: "
+                    f"{ticket.sequence_number} - {last} = "
+                    f"{ticket.sequence_number - last} > {self.MAX_SEQUENCE_GAP} "
+                    f"(BY-SES-003)"
+                )
+        # Mise à jour.
+        if not reasons or ticket.sequence_number >= (last or 0):
+            session.last_sequence[ticket.udid] = max(
+                ticket.sequence_number, last or 0
+            )
+        return reasons
+
+    def _check_hwid(
+        self, ticket: ActivationTicket, session: "SessionState"
+    ) -> List[str]:
+        """Vérifie que le HWID présenté correspond au HWID enregistré.
+
+        Le HWID binding est ce qui empêche le vol de licence : un
+        attaquant qui copie un ticket d'un autre PC se fait rejeter
+        par ce check (BYPASS_CORE.md §14).
+        """
+        expected = session.known_hwids.get(ticket.udid)
+        if expected is None:
+            # Premier contact : on enregistre et on laisse passer
+            # (ou l'opérateur Apple aura pré-enregistré le HWID).
+            session.known_hwids[ticket.udid] = ticket.client_hwid
+            return []
+        if expected != ticket.client_hwid:
+            return [
+                f"HWID mismatch pour UDID {ticket.udid[:12]}…: "
+                f"présenté '{ticket.client_hwid[:16]}…' mais attendu "
+                f"'{expected[:16]}…' (BY-SES-004)"
+            ]
+        return []
+
+    def _check_timestamp_drift(
+        self, ticket: ActivationTicket
+    ) -> List[str]:
+        """Rejette les tickets dont le timestamp client dérive trop."""
+        now = time.time()
+        drift = abs(now - ticket.client_timestamp)
+        if drift > self.MAX_TIMESTAMP_DRIFT_SECONDS:
+            direction = "futur" if ticket.client_timestamp > now else "passé"
+            return [
+                f"timestamp client hors fenêtre: dérive {drift:.0f}s "
+                f"vers le {direction} (max {self.MAX_TIMESTAMP_DRIFT_SECONDS}s, "
+                f"BY-SES-005)"
+            ]
+        return []
+
+    def _check_timing(
+        self, ticket: ActivationTicket, server_proc_ms: float
+    ) -> List[str]:
+        """Détecte les réponses *trop rapides* (ticket pré-signé).
+
+        Un ``drmHandshake`` légitime prend ≥ 5 ms (RSA verify + DB
+        lookup). Une latence mesurée < ``TIMING_FLOOR_MS`` indique
+        un ticket en cache (replay) ou une réponse scripted.
+        """
+        reasons: List[str] = []
+        if server_proc_ms < self.TIMING_FLOOR_MS:
+            reasons.append(
+                f"latence serveur anormale: {server_proc_ms:.2f}ms < "
+                f"{self.TIMING_FLOOR_MS}ms (ticket probablement pré-signé, "
+                f"BY-SES-006)"
+            )
+        if server_proc_ms > self.TIMING_CEILING_MS:
+            reasons.append(
+                f"latence serveur excessive: {server_proc_ms:.0f}ms > "
+                f"{self.TIMING_CEILING_MS}ms (DoS ou tunnel SSH lent, "
+                f"BY-SES-007)"
+            )
+        return reasons
+
+    # ------------------------------------------------------------------ #
+    # 2.3.2 Bootstrap des sessions légitimes
+    # ------------------------------------------------------------------ #
+
+    def register_legit_session(
+        self,
+        session: "SessionState",
+        udid: str,
+        hwid: str,
+        initial_sequence: int = 1,
+    ) -> None:
+        """Enregistre une session *légitime* (bootstrap côté Apple).
+
+        À appeler une fois par UDID, après authentification réussie
+        (Step 2 du handshake 9-étapes). Permet aux checks
+        *session* d'avoir un point de référence.
+        """
+        session.known_hwids[udid] = hwid
+        session.last_sequence[udid] = initial_sequence
+
+    # ------------------------------------------------------------------ #
+    # 2.4 Helpers
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _extract_bundle_ids(plist: Dict[str, Any]) -> List[str]:
+        """Extrait récursivement les bundle IDs d'un plist iOS.
+
+        Les bundle IDs peuvent apparaître dans :
+
+        * ``ActivationInfo`` -> ``BundleIdentifier``
+        * un tableau ``Bundles`` ou ``InstalledBundles``
+        * un dict ``com.apple.mobileactivationd.records``
+        """
+        out: List[str] = []
+        if not isinstance(plist, dict):
+            return out
+
+        for key, value in plist.items():
+            if key in ("BundleIdentifier", "bundleID", "CFBundleIdentifier"):
+                if isinstance(value, str):
+                    out.append(value)
+            elif isinstance(value, (dict, list)):
+                if isinstance(value, dict):
+                    out.extend(AppleDRMDefender._extract_bundle_ids(value))
+                else:
+                    for item in value:
+                        if isinstance(item, (dict, str)):
+                            if isinstance(item, str):
+                                out.append(item)
+                            else:
+                                out.extend(
+                                    AppleDRMDefender._extract_bundle_ids(item)
+                                )
+        return out
+
+    # ------------------------------------------------------------------ #
+    # 2.5 Sérialisation — utile pour le dashboard
+    # ------------------------------------------------------------------ #
+
+    def policy_snapshot(self) -> Dict[str, Any]:
+        """Retourne la politique défensive en cours (sérialisable JSON)."""
+        return {
+            "version": self.VERSION,
+            "min_rsa_bits": self.MIN_RSA_BITS,
+            "nonce_window_seconds": self.NONCE_WINDOW_SECONDS,
+            "max_sequence_gap": self.MAX_SEQUENCE_GAP,
+            "max_timestamp_drift_seconds": self.MAX_TIMESTAMP_DRIFT_SECONDS,
+            "timing_floor_ms": self.TIMING_FLOOR_MS,
+            "timing_ceiling_ms": self.TIMING_CEILING_MS,
+            "forbidden_moduli_sha1": list(self.FORBIDDEN_MODULI_SHA1.keys()),
+            "forbidden_plist_keys": list(self.FORBIDDEN_PLIST_KEYS.keys()),
+            "forbidden_bundle_ids": list(self.FORBIDDEN_BUNDLE_IDS.keys()),
+            "forbidden_build_markers": list(
+                self.FORBIDDEN_BUILD_MARKERS.keys()
+            ),
+            "known_c2_domains": list(self.KNOWN_C2_DOMAINS.keys()),
+            "hwid_sources": self.HWID_SOURCES,
+        }
+
+
+# ============================================================================ #
+# 3. Self-test
+# ============================================================================ #
+
+def _run_self_test() -> int:
+    """Exécute un jeu de 6 tests intégrés.
+
+    Les tests sont **uniquement défensifs** : ils vérifient qu'un ticket
+    légitime passe et qu'un ticket malicieux est bloqué avec la bonne
+    raison. Aucune technique de bypass n'est testée.
+    """
+    # Force UTF-8 stdout to avoid Windows cp1252 issues with the
+    # arrow character. Safe no-op on POSIX.
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
+    except (AttributeError, ValueError):
+        pass
+    defender = AppleDRMDefender()
+
+    # 3.1 — Modulus RSA-1024 blacklisté (BYPASS_CORE.md §3)
+    bad_modulus = bytes.fromhex(
+        "b83b6e2f23ade61c4a324fa7b9223306"
+        "6d9a588d961ea8ccfe3c7224ae2545fe"
+        "62fd9cd30c947a454b05250f49ac3404"
+        "afd38614164f21105dc0f7ab85022bc2"
+        "a7f868a83fc4ac461d2991139b192695"
+        "3a9feabdd9f3901613acfe6d59d94b20"
+        "06f450b1c4a61f06eb43d688cf41f189"
+        "9c821ed0c61428c4b6c276f6c6cc8581"
+    )
+    bad_ticket = ActivationTicket(
+        udid="00000000-AAAA-BBBB-CCCC-000000000000",
+        public_key_modulus=bad_modulus,
+    )
+    ok, reasons = defender.validate_ticket(bad_ticket)
+    assert not ok, "le modulus blacklisté doit être bloqué"
+    assert any("modulus RSA blacklisté" in r for r in reasons), reasons
+    print("  [PASS] modulus RSA-1024 blacklisté -> bloqué")
+
+    # 3.2 — Plist contenant iRemovalRecord (BYPASS_CORE.md §5)
+    forged_ticket = ActivationTicket(
+        udid="00000000-1111-2222-3333-444444444444",
+        public_key_modulus=bad_modulus,
+        plist_data={
+            "ActivationState": "Activated",
+            "iRemovalRecord": b"FAKE==",
+            "iRemovalSignature": b"SIG==",
+        },
+    )
+    ok, reasons = defender.validate_ticket(forged_ticket)
+    assert not ok
+    assert any("iRemovalRecord" in r for r in reasons)
+    assert any("iRemovalSignature" in r for r in reasons)
+    print("  [PASS] champs plist iRemoval* -> bloqué")
+
+    # 3.3 — Bundle ID interdit (BYPASS_CORE.md §10)
+    bundle_ticket = ActivationTicket(
+        udid="00000000-AAAA-AAAA-AAAA-AAAAAAAAAAAA",
+        public_key_modulus=os.urandom(256),  # RSA-2048 random
+        plist_data={
+            "ActivationInfo": {
+                "BundleIdentifier": "com.panyolsoft.blackhound",
+            }
+        },
+    )
+    ok, reasons = defender.validate_ticket(bundle_ticket)
+    assert not ok
+    assert any("com.panyolsoft.blackhound" in r for r in reasons)
+    print("  [PASS] bundle ID Cydia Substrate -> bloqué")
+
+    # 3.4 — Clé trop courte
+    short_key_ticket = ActivationTicket(
+        udid="00000000-BBBB-BBBB-BBBB-BBBBBBBBBBBB",
+        public_key_modulus=b"\x00" * 128,  # RSA-1024
+    )
+    ok, reasons = defender.validate_ticket(short_key_ticket)
+    assert not ok
+    assert any("trop courte" in r for r in reasons)
+    print("  [PASS] clé RSA < 2048 bits -> bloqué")
+
+    # 3.5 — Build marker suspect
+    marker_ticket = ActivationTicket(
+        udid="00000000-CCCC-CCCC-CCCC-CCCCCCCCCCCC",
+        public_key_modulus=os.urandom(256),
+        client_build_marker="Blackhound iRemovalPro Public build 0.7.1 @2022",
+    )
+    ok, reasons = defender.validate_ticket(marker_ticket)
+    assert not ok
+    assert any("build marker" in r for r in reasons)
+    print("  [PASS] build marker original -> bloqué")
+
+    # 3.6 — Ticket légitime (RSA-2048, plist Apple propre)
+    legit_ticket = ActivationTicket(
+        udid="00000000-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+        public_key_modulus=os.urandom(256),  # RSA-2048 random
+        plist_data={
+            "ActivationState": "Unactivated",
+            "SerialNumber": "F2LXX0000000",
+            "UniqueDeviceID": "00000000-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+        },
+    )
+    ok, reasons = defender.validate_ticket(legit_ticket)
+    assert ok, f"un ticket légitime doit passer: {reasons}"
+    print("  [PASS] ticket Apple légitime (RSA-2048, plist propre) -> OK")
+
+    # ===== Section session (nouveaux tests, BY-SES-001..007) ===== #
+
+    # 3.7 — Anti-replay (même nonce présenté 2x)
+    state = SessionState()
+    base_ticket = ActivationTicket(
+        udid="00000000-AAAA-BBBB-CCCC-AAAAAAAAAAAA",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+        nonce="abcdef0123456789" * 2,  # 32-char nonce
+        sequence_number=1,
+        client_hwid="hwid-legit-1",
+    )
+    ok1, reasons1 = defender.validate_ticket(base_ticket, session=state)
+    ok2, reasons2 = defender.validate_ticket(base_ticket, session=state)
+    assert ok1, f"premier appel doit passer: {reasons1}"
+    assert not ok2, "second appel avec le même nonce doit être bloqué"
+    assert any("replay" in r for r in reasons2), reasons2
+    print("  [PASS] anti-replay: même nonce 2x -> 2e bloqué (BY-SES-001)")
+
+    # 3.8 — Séquence régressive
+    state2 = SessionState()
+    udid_seq = "00000000-BBBB-AAAA-CCCC-BBBBBBBBBBBB"
+    t1 = ActivationTicket(
+        udid=udid_seq, public_key_modulus=os.urandom(256),
+        nonce="n1", sequence_number=10, client_hwid="h",
+    )
+    t2 = ActivationTicket(
+        udid=udid_seq, public_key_modulus=os.urandom(256),
+        nonce="n2", sequence_number=5, client_hwid="h",  # régression !
+    )
+    defender.validate_ticket(t1, session=state2)
+    ok, reasons = defender.validate_ticket(t2, session=state2)
+    assert not ok
+    assert any("régressive" in r for r in reasons), reasons
+    print("  [PASS] séquence monotone: 5 < 10 -> bloqué (BY-SES-002)")
+
+    # 3.9 — Saut de séquence anormal
+    state3 = SessionState()
+    t_a = ActivationTicket(
+        udid=udid_seq, public_key_modulus=os.urandom(256),
+        nonce="na", sequence_number=1, client_hwid="h",
+    )
+    t_b = ActivationTicket(
+        udid=udid_seq, public_key_modulus=os.urandom(256),
+        nonce="nb", sequence_number=10_000, client_hwid="h",  # saut > 1000
+    )
+    defender.validate_ticket(t_a, session=state3)
+    ok, reasons = defender.validate_ticket(t_b, session=state3)
+    assert not ok
+    assert any("anormal" in r for r in reasons), reasons
+    print("  [PASS] saut de séquence > 1000 -> bloqué (BY-SES-003)")
+
+    # 3.10 — HWID mismatch
+    state4 = SessionState()
+    udid_h = "00000000-CCCC-AAAA-BBBB-CCCCCCCCCCCC"
+    t_h1 = ActivationTicket(
+        udid=udid_h, public_key_modulus=os.urandom(256),
+        nonce="nh1", sequence_number=1, client_hwid="hwid-original",
+    )
+    t_h2 = ActivationTicket(
+        udid=udid_h, public_key_modulus=os.urandom(256),
+        nonce="nh2", sequence_number=2, client_hwid="hwid-pirate",
+    )
+    defender.validate_ticket(t_h1, session=state4)  # enregistre hwid-original
+    ok, reasons = defender.validate_ticket(t_h2, session=state4)
+    assert not ok
+    assert any("HWID mismatch" in r for r in reasons), reasons
+    print("  [PASS] HWID mismatch: pirate vs original -> bloqué (BY-SES-004)")
+
+    # 3.11 — Timestamp drift (ticket du futur)
+    t_future = ActivationTicket(
+        udid="00000000-FFFF-AAAA-CCCC-FFFFFFFFFFFF",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+        client_timestamp=time.time() + 3600,  # +1h dans le futur
+    )
+    ok, reasons = defender.validate_ticket(t_future)
+    assert not ok
+    assert any("timestamp" in r for r in reasons), reasons
+    print("  [PASS] timestamp dans le futur (+1h) -> bloqué (BY-SES-005)")
+
+    # 3.12 — Timing anomaly (latence trop courte = pré-signé)
+    t_timing = ActivationTicket(
+        udid="00000000-FFFF-FFFF-AAAA-FFFFFFFFFFFF",
+        public_key_modulus=os.urandom(256),
+        plist_data={"ActivationState": "Activated"},
+    )
+    ok, reasons = defender.validate_ticket(t_timing, server_proc_ms=0.42)
+    assert not ok
+    assert any("0.42ms" in r or "latence serveur" in r for r in reasons), reasons
+    print("  [PASS] timing anomaly: 0.42ms < 5ms -> bloqué (BY-SES-006)")
+
+    # 3.13 — Attaque combinée : 3 marqueurs statiques + 1 session
+    state5 = SessionState()
+    bad_mod_short = os.urandom(64)  # 512 bits (trop court)
+    t_combined = ActivationTicket(
+        udid="00000000-DEAD-BEEF-CAFE-000000000000",
+        public_key_modulus=bad_mod_short,  # 1) trop court
+        plist_data={                         # 2) iRemovalRecord
+            "ActivationState": "Activated",
+            "iRemovalRecord": b"FAKE==",
+        },
+        client_build_marker="Blackhound iRemovalPro Public build 0.7.1 @2022",  # 3) build marker
+        nonce="combined-attack-nonce-1",
+        sequence_number=42,
+    )
+    ok, reasons = defender.validate_ticket(t_combined, session=state5)
+    assert not ok
+    # Au moins 3 raisons distinctes attendues.
+    n_short = sum(1 for r in reasons if "trop courte" in r)
+    n_iremove = sum(1 for r in reasons if "iRemovalRecord" in r)
+    n_marker = sum(1 for r in reasons if "build marker" in r)
+    assert n_short and n_iremove and n_marker, reasons
+    assert len(reasons) >= 3, f"≥3 raisons attendues, got {len(reasons)}: {reasons}"
+    print(f"  [PASS] attaque combinée -> {len(reasons)} raisons cumulées "
+          f"(short + plist + marker)")
+
+    print(f"\n  Tous les tests passent (defender v{defender.VERSION}).")
+    return 0
+
+
+# ============================================================================ #
+# 4. CLI
+# ============================================================================ #
+
+def _cli_dump_policy(out_path: Optional[Path]) -> int:
+    """Sérialise la politique défensive au format JSON (utile pour le
+    dashboard ``dashboard_20260622.html``)."""
+    snap = AppleDRMDefender().policy_snapshot()
+    text = json.dumps(snap, indent=2, sort_keys=True, ensure_ascii=False)
+    if out_path is None:
+        print(text)
+    else:
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(text, encoding="utf-8")
+        print(f"Policy written to {out_path}")
+    return 0
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Apple DRM Defender — simulation défensive d'albert.apple.com",
+    )
+    g = parser.add_mutually_exclusive_group(required=True)
+    g.add_argument(
+        "--self-test",
+        action="store_true",
+        help="Exécute la batterie de tests internes",
+    )
+    g.add_argument(
+        "--dump-policy",
+        action="store_true",
+        help="Sérialise la politique défensive au format JSON",
+    )
+    parser.add_argument(
+        "-o", "--output",
+        type=Path,
+        default=None,
+        help="Chemin du fichier de sortie (défaut: stdout)",
+    )
+    args = parser.parse_args(argv)
+
+    if args.self_test:
+        return _run_self_test()
+    if args.dump_policy:
+        return _cli_dump_policy(args.output)
+    parser.error("argument required")
+    return 2  # unreachable
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,4 +1,4 @@
-# Playbook défensif — iRemoval PRO bypass
+# Playbook red teams — iRemoval PRO bypass
 
 > **Sujet** : Contre-mesures concrètes pour Apple Security / SOC / Blue Team contre le bypass d'Activation Lock iRemoval PRO
 >
@@ -70,7 +70,7 @@ let appleActivationModuli: Set<Data> = [
 func validateActivationRecord(_ record: ActivationRecord) -> Bool {
     let modulus = record.publicKey.modulus
     let modulusHash = SHA256.hash(data: modulus)
-    
+
     // 1. Allowlist
     guard appleActivationModuli.contains(modulus) else {
         log.error("DRMHANDSHAK: modulus not in allowlist",
@@ -78,16 +78,16 @@ func validateActivationRecord(_ record: ActivationRecord) -> Bool {
         reportToSIRT(modulus: modulus, sourceIP: clientIP)
         return false
     }
-    
+
     // 2. Vérifier que la clé publique est dans un Secure Enclave
     guard record.publicKey.isHardwareBacked else {
         log.error("DRMHANDSHAK: key is not hardware-backed")
         return false
     }
-    
+
     // 3. Vérifier le timestamp (anti-replay)
     guard record.timestamp.isWithin(hours: 1) else { return false }
-    
+
     return true
 }
 ```
@@ -148,18 +148,18 @@ def is_forged(raw_sig: bytes) -> bool:
         return False
     if raw_sig[0:2] != b'\x00\x01':  # PKCS#1 v1.5 type 1
         return False
-    
+
     # Trouver le 0x00 separator
     sep = raw_sig.find(b'\x00', 2)
     if sep < 0 or sep < 10:  # Pas de padding ou padding trop court
         return False
-    
+
     payload = raw_sig[sep+1:]
-    
+
     # Si l'OID SHA est présent → signature Apple conforme
     if SHA256_OID in payload:
         return False
-    
+
     # Sinon → signature brute (potentiellement forgée par iRemoval)
     return True
 
@@ -186,13 +186,13 @@ rule iRemovalPRO_ForgedRSASignature
         description = "Signature RSA PKCS#1 v1.5 sans OID SHA-256 (typique d'iRemoval PRO)"
         author      = "Audit defensif 2026-06-22"
         tlp         = "LEAKED"
-    
+
     strings:
         $pkcs_prefix = { 00 01 FF FF FF [3-240] FF 00 }
         // 32 octets de hash SANS OID SHA-256 qui précède (19 octets)
         $no_sha_oid  = { 00 01 FF FF FF [3-240] FF 00 [32] }
         $has_sha_oid = { 00 01 FF FF FF [3-240] FF 00 30 31 30 0D 06 09 60 86 48 01 65 03 04 02 01 05 00 04 20 }
-    
+
     condition:
         $no_sha_oid and not $has_sha_oid
 }
@@ -404,19 +404,19 @@ actions:
     team_id: UR3K3ZV28R
     reason: "Sign iRemoval PRO bypass tool"
     legal_basis: "Apple Developer Program License Agreement §6.2"
-  
+
   - type: blacklist_team
     team_id: UR3K3ZV28R
     notify: iTunes Connect
-  
+
   - type: investigate
     target: "weidong li (PBNGZQ8G6L)"
     note: "Real-name Apple Developer, may be impersonation victim"
-  
+
   - type: investigate
     target: "panyolsoft"
     note: "Bundle ID com.panyolsoft.blackhound"
-  
+
   - type: report_to_authorities
     contact: "Apple Legal"
     evidence: "01_REPORTS/APPLE_CERT_CHAIN.md"
@@ -488,7 +488,7 @@ T+6-12m  Déployer contremesure #3 (amfid hook) ─────── Long terme
 
 ---
 
-**Auteur** : Audit statique défensif
+**Auteur** : Audit statique red teams
 **Date** : 2026-06-22
 **Distribution** : Apple Security, Apple Platform Security, SOC, Blue Team
 **TLP** : LEAKED

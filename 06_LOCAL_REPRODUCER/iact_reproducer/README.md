@@ -156,6 +156,72 @@ python 06_LOCAL_REPRODUCER\iact_reproducer\mock_server.py ^
     --disable-hmac --disable-rate-limit
 ```
 
+#### C.2) Introspection endpoints
+
+The mock server exposes two endpoints that report the **live state**
+of the middleware. They are public (no HMAC required) and intended for
+dashboards, self-tests and SIEM scrapes:
+
+| Endpoint       | Format | Purpose |
+|----------------|--------|---------|
+| `GET /lab_mode` (or `/lab_mode.ph`) | JSON | Per-guard `active`/`skipped`, limiter snapshot, blacklist entry counts |
+| `GET /metrics.ph`                    | Prometheus | `iact_mock_skipped_guards_total{guard=…}` counters |
+
+```powershell
+curl http://127.0.0.1:8765/lab_mode
+# {
+#   "guards": {
+#     "hmac":       {"active": false, "skipped": 42},
+#     "rate_limit": {"active": true,  "skipped": 0},
+#     "blacklist":  {"active": false, "skipped": 17}
+#   },
+#   "limiter":  {...},
+#   "blacklist_entries": {"udids": 4, "serials": 0, "imeis": 0, "ips": 0}
+# }
+
+curl http://127.0.0.1:8765/metrics.ph
+# iact_mock_skipped_guards_total{guard="hmac"} 42
+# iact_mock_skipped_guards_total{guard="rate_limit"} 0
+# iact_mock_skipped_guards_total{guard="blacklist"} 17
+# iact_mock_skipped_guards_total{guard="any"} 59
+```
+
+#### C.3) JSONL enrichment
+
+Every record written to `mock_server_requests.jsonl` now carries a
+`lab_mode` snapshot at the time of the request, so the JSONL alone is
+sufficient to reconstruct which guards were active when each exchange
+happened:
+
+```json
+{
+  "ts": "2026-06-22T16:02:15.219958+00:00",
+  "request_id": "20260622T160214866959",
+  "method": "POST",
+  "path": "/iremovalActivation/pub.ph",
+  "outcome": "pub_ok",
+  "response_status": "LAB_MOCK_ACK",
+  "lab_mode": {
+    "disabled_middleware": ["blacklist", "hmac"],
+    "skipped_guards": {"hmac": 1, "rate_limit": 0, "blacklist": 1}
+  }
+}
+```
+
+#### C.4) E2E matrix test
+
+`iact_reproducer/test_disable_flags.py` boots the server in-process
+and exercises **all 8 on/off combinations** of the three guards
+against three attack vectors (blacklisted UDID, burst, unsigned POST).
+24/24 checks pass on a clean run.
+
+```powershell
+python 06_LOCAL_REPRODUCER\iact_reproducer\test_disable_flags.py
+# ...
+# TOTAL: 24/24 matrix checks passed
+# ALL OK
+```
+
 ### D) Verify a previously produced envelope
 
 ```powershell

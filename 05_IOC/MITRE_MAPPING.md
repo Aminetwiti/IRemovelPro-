@@ -252,4 +252,4 @@ TA0012 - Impact (Impact/CIA)   [ X ]   T1561, T1499, T1656
 
 **Basé sur** : MITRE ATT&CK v14
 **Mis à jour** : 2026-06-22
-**Périmètre** : Mapping défensif uniquement
+**Périmètre** : Mapping red teams uniquement

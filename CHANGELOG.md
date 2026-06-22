@@ -56,6 +56,47 @@ Tests fumée exécutés :
 - strict (aucun `--disable-*`) → 401, statut `UNAUTHENTICATED`
 - partiel (`--disable-hmac` seul) → 200 OK, statut `LAB_MOCK_REFUSED`
 
+### Ajouté — introspection live, JSONL enrichi, banner, E2E matrice
+
+Au-delà des 3 flags CLI, la surface d'observation du lab est renforcée
+pour qu'un analyste (ou un dashboard) puisse savoir **à tout moment**
+quelle garde est active, combien de requêtes l'ont bypassée, et
+rejouer le diagnostic à partir du JSONL seul.
+
+- `iact_reproducer/mock_server.py`
+  - **Endpoint `GET /lab_mode`** (et `/lab_mode.ph`) — renvoie
+    l'état live de chaque garde (`active: bool`, `skipped: int`),
+    un snapshot du limiter et le nombre d'entrées dans la blacklist
+  - **Endpoint `GET /metrics.ph`** — exposition Prometheus
+    `iact_mock_skipped_guards_total{guard="hmac|rate_limit|blacklist|any"}`
+    pour alerter SIEM quand une garde flips en mode permissif
+  - **JSONL enrichi** — chaque record porte maintenant
+    `lab_mode.disabled_middleware` (snapshot trié) et
+    `lab_mode.skipped_guards` (compteurs à l'instant T)
+  - **Banner de démarrage** — quand au moins un `--disable-*` est
+    actif, un bloc `!!  LAB PERMISSIF MODE  !!` est imprimé pour
+    rendre l'état impossible à manquer dans les logs
+- `iact_reproducer/test_disable_flags.py` — nouveau script qui exerce
+  les **8 combinaisons** (3 bits on/off) × 3 vérifications = **24
+  checks** :
+  - `blacklist_blocks_bad_udid` — un UDID de la seed list doit
+    produire 403 ssi la garde est active
+  - `rate_limit_burst` — un burst de 5 requêtes doit produire 429
+    ssi la garde est active
+  - `hmac_blocks_unsigned` — une requête sans `X-Signature` doit
+    produire 401 ssi la garde est active
+  - chaque vérification est précédée d'un `limiter.reset()` pour
+    garantir l'isolation entre checks
+  - sortie : `TOTAL: 24/24 matrix checks passed`
+
+Vérifications exécutées :
+
+- `python iact_reproducer/test_disable_flags.py` → 24/24 PASS
+- `GET /lab_mode` → JSON avec 3 guards, `active`/`skipped` corrects
+- `GET /metrics.ph` → 4 séries Prometheus dont `skipped > 0` pour les
+  gardes effectivement bypassées
+- JSONL `lab_mode.disabled_middleware` cohérent avec la config CLI
+
 ---
 
 ## [1.1.0] — 2026-06-22
