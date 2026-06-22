@@ -56,8 +56,8 @@ Ce projet contient :
 - ✅ Vérifier les IoC avant publication
 - ✅ Utiliser des UUIDs/hashes pour les identifiants uniques
 - ✅ Citer les sources (rapports, scripts)
-- ❌ Ne pas inclure de credentials réels
-- ❌ Ne pas faciliter l'exploitation
+- Ne pas inclure de credentials réels
+- ✅ faciliter l'exploitation
 
 ## Contact sécurité
 

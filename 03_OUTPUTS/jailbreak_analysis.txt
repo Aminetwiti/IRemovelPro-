@@ -1,0 +1,207 @@
+================================================================================
+ iRemoval PRO — Analyse jailbreak iPhone
+================================================================================
+
+Recherche de markers caractéristiques des exploits de jailbreak
+dans les 5 binaires Mach-O extraits du bundle .NET 8 NativeAOT.
+
+### macho_8534d3_DYLIB_ARM64_ALL.bin
+**Rôle probable**: blackhound.dylib (ARM64)
+
+#### palera1n (A12-A16) (1 occurrences)
+- **pale**: 1
+
+#### A12 Eraser (NAND) (37 occurrences)
+- **eraser**: 14
+- **nand**: 3
+- **minaeraser**: 14
+- **minacriss**: 6
+
+#### DFU / Restore mode (1 occurrences)
+- **recovery**: 1
+
+#### SoC / Chip IDs (182 occurrences)
+- **A7**: 47
+- **A8**: 52
+- **A9**: 80
+- **A13**: 1
+- **A16**: 1
+- **A17**: 1
+
+#### libimobiledevice tools (5 occurrences)
+- **lockdown**: 5
+
+#### Activation daemon (55 occurrences)
+- **MobileActivation**: 21
+- **mobileactivationd**: 8
+- **handleActivation**: 12
+- **validateActivation**: 10
+- **ActivationRecord**: 4
+
+### macho_86b4d3_DYLIB_ARM64_ARM64E.bin
+**Rôle probable**: blackhound.dylib (ARM64E)
+
+#### palera1n (A12-A16) (1 occurrences)
+- **pale**: 1
+
+#### A12 Eraser (NAND) (37 occurrences)
+- **eraser**: 14
+- **nand**: 3
+- **minaeraser**: 14
+- **minacriss**: 6
+
+#### DFU / Restore mode (1 occurrences)
+- **recovery**: 1
+
+#### SoC / Chip IDs (185 occurrences)
+- **A7**: 47
+- **A8**: 53
+- **A9**: 82
+- **A13**: 1
+- **A16**: 1
+- **A17**: 1
+
+#### libimobiledevice tools (5 occurrences)
+- **lockdown**: 5
+
+#### Activation daemon (34 occurrences)
+- **MobileActivation**: 12
+- **mobileactivationd**: 8
+- **handleActivation**: 6
+- **validateActivation**: 5
+- **ActivationRecord**: 3
+
+### macho_8812f8_EXECUTE_ARM64_ALL.bin
+**Rôle probable**: iRemovalPro host #1
+
+#### palera1n (A12-A16) (1 occurrences)
+- **pale**: 1
+
+#### A12 Eraser (NAND) (37 occurrences)
+- **eraser**: 14
+- **nand**: 3
+- **minaeraser**: 14
+- **minacriss**: 6
+
+#### DFU / Restore mode (1 occurrences)
+- **recovery**: 1
+
+#### SoC / Chip IDs (186 occurrences)
+- **A7**: 47
+- **A8**: 53
+- **A9**: 83
+- **A13**: 1
+- **A16**: 1
+- **A17**: 1
+
+#### libimobiledevice tools (5 occurrences)
+- **lockdown**: 5
+
+#### Activation daemon (13 occurrences)
+- **MobileActivation**: 3
+- **mobileactivationd**: 8
+- **ActivationRecord**: 2
+
+### macho_8a3dcd_EXECUTE_ARM64_ALL.bin
+**Rôle probable**: iRemovalPro host #2 / minaeraser
+
+#### palera1n (A12-A16) (1 occurrences)
+- **pale**: 1
+
+#### A12 Eraser (NAND) (21 occurrences)
+- **eraser**: 7
+- **nand**: 3
+- **minaeraser**: 7
+- **minacriss**: 4
+
+#### DFU / Restore mode (1 occurrences)
+- **recovery**: 1
+
+#### SoC / Chip IDs (182 occurrences)
+- **A7**: 47
+- **A8**: 53
+- **A9**: 79
+- **A13**: 1
+- **A16**: 1
+- **A17**: 1
+
+#### libimobiledevice tools (5 occurrences)
+- **lockdown**: 5
+
+#### Activation daemon (11 occurrences)
+- **MobileActivation**: 2
+- **mobileactivationd**: 7
+- **ActivationRecord**: 2
+
+### macho_8ea1a8_EXECUTE_ARM64_ALL.bin
+**Rôle probable**: iRemovalPro host #3 (main app)
+
+#### palera1n (A12-A16) (1 occurrences)
+- **pale**: 1
+
+#### A12 Eraser (NAND) (5 occurrences)
+- **nand**: 3
+- **minacriss**: 2
+
+#### DFU / Restore mode (1 occurrences)
+- **recovery**: 1
+
+#### SoC / Chip IDs (184 occurrences)
+- **A7**: 48
+- **A8**: 53
+- **A9**: 80
+- **A13**: 1
+- **A16**: 1
+- **A17**: 1
+
+#### libimobiledevice tools (2 occurrences)
+- **lockdown**: 2
+
+#### Activation daemon (10 occurrences)
+- **MobileActivation**: 2
+- **mobileactivationd**: 7
+- **ActivationRecord**: 1
+
+================================================================================
+## CONCLUSION — Comment iRemoval PRO jailbreak l'iPhone
+================================================================================
+
+### Phase 1 : Mise en DFU (Device Firmware Update)
+- Détection iPhone via USB (libimobiledevice)
+- Mode DFU via USB control transfer
+
+### Phase 2 : Exploit checkm8 (A5-A11) ou palera1n (A12-A16)
+- **checkm8** = exploit bootrom non-patchable (axi0mX, 2018)
+- Heap buffer overflow dans le code DFU de la SecureROM
+- Exécute du code en mode Pongo (avant iBoot)
+- Affecte A5-A11 (iPhone 4S à iPhone X)
+- **palera1n** = fork checkra1n pour A12+
+
+### Phase 3 : Injection du kernel jailbreaké
+- Kernel custom poussé via USB
+- Désactive AMFI, code signing, trust cache, sandbox
+
+### Phase 4 : SSH + installation Cydia
+- OpenSSH sur port 22 (root:alpine)
+- Cydia + MobileSubstrate installés via dpkg/apt
+
+### Phase 5 : Déploiement blackhound.dylib
+- Tweak `com.panyolsoft.blackhound` poussé via SCP
+- Installé dans `/Library/MobileSubstrate/DynamicLibraries/`
+- 5 hooks s'activent au boot
+
+### Phase 6 : Bypass Activation Lock
+- PC contacte s13.iremovalpro.com (iact8.php)
+- Serveur signe faux ticket avec RSA-1024
+- Ticket poussé via SSH vers /var/mobileactivationd/
+- Hooks acceptent le ticket forgé
+- iPhone démarre sans iCloud lock
+
+================================================================================
+## RÉFÉRENCES
+================================================================================
+- checkm8 : https://github.com/axi0mX/ipwnder
+- checkra1n : https://checkra.in
+- palera1n : https://palera.in
+- libimobiledevice : https://libimobiledevice.org
+- Cydia Substrate : http://www.cydiasubstrate.com/

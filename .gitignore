@@ -270,45 +270,27 @@ composer.lock
 .\#*
 
 # -------------------------------------------------
-# 6. Output binaries that the RE pipeline regenerates
+# 6. Excluded text outputs (huge / regenerable only)
 # -------------------------------------------------
-# Large string dumps (regenerable)
+# Most 03_OUTPUTS/*.txt reports ARE tracked — they are
+# analysis findings.  Only the heaviest regenerable raw
+# dumps are excluded.
 03_OUTPUTS/strings_all_long.txt
 03_OUTPUTS/strings_all.txt
-03_OUTPUTS/dll_*.txt
 03_OUTPUTS/ios_binary_strings.txt
-03_OUTPUTS/bypass_dylib_symbols.txt
 03_OUTPUTS/string_table.txt
-03_OUTPUTS/pre_url_region.txt
-03_OUTPUTS/crypto_deep_analysis.txt
-03_OUTPUTS/dll_obfuscation_analysis.txt
 03_OUTPUTS/dll_strings_analysis.txt
-03_OUTPUTS/pe_report.txt
-03_OUTPUTS/strings_report.txt
-03_OUTPUTS/strings_extract.txt
-03_OUTPUTS/strings_*.txt
 
 # Ghidra text outputs (regenerable)
 03_OUTPUTS/ghidra_macho_*/run.log
 03_OUTPUTS/ghidra/*.log
+03_OUTPUTS/ghidra_macho_*/
+03_OUTPUTS/ghidra_blackhound/
+03_OUTPUTS/ghidra_test/
 
-# Static analysis dumps
-03_OUTPUTS/pre_url_region.txt
-03_OUTPUTS/bypass_dylib_symbols.txt
-
-# IRemovalPro extracted data
-IRemovalPro/extracted/
-IRemovalPro/cache/
-IRemovalPro/logs/
-IRemovalPro/*.log
-IRemovalPro/*.tmp
-
-# IremoveClone runtime artifacts
-IremoveClone/backend/storage/logs/
-IremoveClone/backend/storage/framework/
-IremoveClone/backend/bootstrap/cache/
-IremoveClone/backend/.env
-IremoveClone/backend/.env.example
+# Local reproducers large JSON dump
+06_LOCAL_REPRODUCER/logs/yara_validation_*.json
+06_LOCAL_REPRODUCER/logs/yara_report.json
 
 # -------------------------------------------------
 # 7. Sensitive IOCs (defer for now; can be flipped later)
