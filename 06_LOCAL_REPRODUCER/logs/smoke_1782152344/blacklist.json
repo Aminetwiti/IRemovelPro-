@@ -1,0 +1,20 @@
+{
+  "marker": "iRemovalDefensiveTest",
+  "updated_at": "2026-06-22T18:19:04Z",
+  "udids": [
+    "00000000-0000000000000000",
+    "LAB-BLACKLISTED-0001",
+    "LAB-BLACKLISTED-0002"
+  ],
+  "serials": [
+    "LAB-BLACKLISTED-SN-A1B2C3"
+  ],
+  "imeis": [
+    "358000000000001",
+    "358000000000002"
+  ],
+  "ip_addresses": [
+    "127.0.0.99"
+  ],
+  "audit": []
+}

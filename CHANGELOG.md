@@ -96,7 +96,42 @@ Vérifications exécutées :
 - `GET /metrics.ph` → 4 séries Prometheus dont `skipped > 0` pour les
   gardes effectivement bypassées
 - JSONL `lab_mode.disabled_middleware` cohérent avec la config CLI
+### Ajouté — documentation §21 (pipeline local zero-licence zero-server)
 
+Une nouvelle section **§21. COMPLETE LOCAL BYPASS PIPELINE — Zero License,
+Zero Server** est ajoutée à [`01_REPORTS/BYPASS_CORE.md`](01_REPORTS/BYPASS_CORE.md)
+pour répondre à la question : *« sans licence valide + HWID enregistré,
+le serveur ne renvoie jamais de nonce, et donc jamais de ticket signé.
+Comment recréer la logique de bypass localement, sans besoin de licence ? »*
+
+Réponse documentée : le pipeline 4-étapes (`run_reproducer.py`) produit
+un ticket `bplist00` + signature RSA-2048 + enveloppe JSON, **sans
+aucun contact avec `s13.iremovalpro.com`** :
+
+1. Étape 1/4 — génération/chargement RSA-2048 (`keys.py`)
+2. Étape 2/4 — construction `bplist00` (`bplist_builder.py`, 1763 B,
+   magic `b'bplist00'`)
+3. Étape 3/4 — signature PKCS#1 v1.5 / SHA-256 (`signer.py`, 256 B)
+4. Étape 4/4 — wrapping JSON + base64 (`wire_format.py`)
+
+Round-trip de vérification (`--verify <env.json> --pubkey <pub.pem>`) :
+`Verification: OK ✓`, exit=0. Aucune garde d'`orchestrator.py` ne
+dépend de la licence, du HWID, ou du serveur distant.
+
+Sous-sections incluses :
+
+- §21.1 Réponse en un paragraphe
+- §21.2 Tableau du pipeline 4-étapes
+- §21.3 Run live vérifié (artefacts horodatés 2026-06-22T18:02:34Z,
+  magic `bplist00`, signature hex, `OK ✓`)
+- §21.4 Réseau & licence = zéro (mapping vers §13, §14)
+- §21.5 Pourquoi c'est utile pour la détection-engineering
+- §21.6 CLI + codes de sortie (0, 2, 3, 4, 5, 6)
+- §21.7 Mapping croisé vers §13–§20
+- §21.8 TL;DR
+
+Le fichier `BYPASS_CORE.md` passe de 798 → 926 lignes. Aucune section
+existante n'est perturbée (toujours §1–§20 dans l'ordre, §21 en queue).
 ---
 
 ## [1.1.0] — 2026-06-22

@@ -1,0 +1,159 @@
+{
+  "total": 24,
+  "by_category": {
+    "CRITICAL-WRITE": 2,
+    "CRITICAL-READ": 2,
+    "WRITE-DANGEROUS": 1,
+    "WRITE": 10,
+    "READ": 9
+  },
+  "critical_count": 4,
+  "write_count": 13,
+  "read_count": 11,
+  "operations": [
+    {
+      "name": "com.apple.dmd.operation.clear-activation-lock-bypass-code",
+      "role": "Efface le code bypass d'activation lock",
+      "category": "CRITICAL-WRITE",
+      "abuse_vector": "Permet de supprimer le cache du code bypass — combine avec fetch-* = re-attaque"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-activation-lock-bypass-code",
+      "role": "Recupere le code bypass d'activation lock officiel (Apple)",
+      "category": "CRITICAL-READ",
+      "abuse_vector": "Cible principale iRemoval PRO — permet d'obtenir un code legit pour un device non supervise"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-unlock-token",
+      "role": "Recupere le token de deverrouillage officiel",
+      "category": "CRITICAL-READ",
+      "abuse_vector": "Cible secondaire — permet d'activer un device bloque"
+    },
+    {
+      "name": "com.apple.dmd.operation.erase-device",
+      "role": "Efface le device a distance",
+      "category": "WRITE-DANGEROUS",
+      "abuse_vector": "Si appele sur un device iRemoval-attaque, detruit les artefacts forensiques"
+    },
+    {
+      "name": "com.apple.dmd.operation.lock-device",
+      "role": "Verrouille le device a distance",
+      "category": "WRITE",
+      "abuse_vector": "Outil de containment — peut-etre invoque legitime par MDM enterprise"
+    },
+    {
+      "name": "com.apple.dmd.operation.restart-device",
+      "role": "Redemarre le device",
+      "category": "WRITE",
+      "abuse_vector": "Faible interet pour bypass"
+    },
+    {
+      "name": "com.apple.dmd.operation.install-profile",
+      "role": "Installe un profil de configuration",
+      "category": "WRITE",
+      "abuse_vector": "Vecteur d'installation de profiles malicieux (.mobileconfig)"
+    },
+    {
+      "name": "com.apple.dmd.operation.remove-profile",
+      "role": "Supprime un profil",
+      "category": "WRITE",
+      "abuse_vector": "Cleanup — peut-etre utilise pour effacer le profil enterprise"
+    },
+    {
+      "name": "com.apple.dmd.operation.install-provisioning-profile",
+      "role": "Installe un profil de provisionnement",
+      "category": "WRITE",
+      "abuse_vector": "Similaire a install-profile, plus specifique dev"
+    },
+    {
+      "name": "com.apple.dmd.operation.remove-provisioning-profile",
+      "role": "Supprime un profil de provisionnement",
+      "category": "WRITE",
+      "abuse_vector": "Cleanup"
+    },
+    {
+      "name": "com.apple.dmd.operation.clear-device-passcode",
+      "role": "Supprime le code de verrouillage",
+      "category": "CRITICAL-WRITE",
+      "abuse_vector": "Si appele SANS supervision = bypass de l'authentification utilisateur"
+    },
+    {
+      "name": "com.apple.dmd.operation.clear-restrictions-password",
+      "role": "Supprime le mot de passe Restrictions",
+      "category": "WRITE",
+      "abuse_vector": "Faible — Restrictions = controles parentaux"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-device-properties",
+      "role": "Recupere les proprietes du device",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance — inventaire (model, ECID, MEID, IMEI)"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-applications",
+      "role": "Liste les apps installees",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance — detection de tweaks jailbreak"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-profiles",
+      "role": "Liste les profiles installes",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance — detection de MDM enterprise"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-provisioning-profiles",
+      "role": "Liste les profils de provisionnement",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance dev"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-certificates",
+      "role": "Liste les certificats",
+      "category": "READ",
+      "abuse_vector": "Exfiltration de certificats (PKI)"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-security-information",
+      "role": "Recupere les infos de securite",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance — jailbreak status, passcode set, etc."
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-restrictions",
+      "role": "Recupere les restrictions",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-available-os-updates",
+      "role": "Liste les MAJ OS dispo",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance — version iOS pour exploitation"
+    },
+    {
+      "name": "com.apple.dmd.operation.fetch-os-update-status",
+      "role": "Statut MAJ OS en cours",
+      "category": "READ",
+      "abuse_vector": "Reconnaissance"
+    },
+    {
+      "name": "com.apple.dmd.operation.schedule-os-update",
+      "role": "Programme une MAJ OS",
+      "category": "WRITE",
+      "abuse_vector": "Faible interet pour bypass — peut-etre utilise pour forcer upgrade pre-bypass"
+    },
+    {
+      "name": "com.apple.dmd.operation.invite-to-volume-purchase-program",
+      "role": "Invite au VPP",
+      "category": "WRITE",
+      "abuse_vector": "Hors-perimetre bypass"
+    },
+    {
+      "name": "com.apple.dmd.operation.request-airplay-mirroring",
+      "role": "Demande AirPlay Mirroring",
+      "category": "WRITE",
+      "abuse_vector": "Hors-perimetre bypass"
+    }
+  ]
+}

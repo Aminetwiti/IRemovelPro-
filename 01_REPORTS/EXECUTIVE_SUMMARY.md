@@ -32,6 +32,35 @@
 | Payloads iOS | 4 (blackhound, minaeraser, minaeraser12, rc) |
 | Techniques anti-debug | 5+ (PEB, RDTSC, CPUID, NtQuery*, Registry) |
 | IoC catalogués | 50+ |
+| **Règles YARA totales** | **31** (dont `ChaosCrypto_Namespace` cross-plateforme) |
+| **Tests lab défensifs** | **91 checks / 6 suites — 100% PASS** |
+
+## 🛡️ Extension défensive (2026-06-22)
+
+> Une seconde couche a été ajoutée pour transformer les IoCs en mécanismes
+> vérifiables. Tous les composants sont **offline**, **déterministes** et
+> **CI-friendly** (code de sortie 0/1, mode `--json` pour pipelines).
+
+| # | Composant | Tests |
+|---|---|---|
+| 1 | `AppleDRMDefender` (simulateur) | 13 self-tests |
+| 2 | Suite formelle (19 checks statiques + session) | 19 checks |
+| 3 | Endpoint `apple_drm_check.ph` dans mock serveur | 26 endpoints |
+| 4 | Matrice `--disable-*` (HMAC, rate-limit, blacklist) | 24 combos |
+| 5 | Smoke end-to-end (4 scénarios) | 4 scénarios |
+| 6 | Loader YARA (compile + ChaosCrypto sanity) | 5 checks |
+
+```
+$ py 06_LOCAL_REPRODUCER\run_all_suites.py
+Suites   : 6/6 PASS
+Checks   : 91/91
+Elapsed  : 60.72s
+>>>  RESULT: ALL GREEN
+```
+
+Voir aussi [`NOUVELLES_DECOUVERTES.md` §16-17](NOUVELLES_DECOUVERTES.md) :
+- **§16** : matrice IoCs ↔ Défense (17 IoCs ↔ 13 mécanismes, score 13/17 = 76%)
+- **§17** : le dylib iOS est compilé en **Mono / Xamarin.iOS** (et non Objective-C natif), détectable cross-plateforme via la chaîne `An assertion in Chaos.Crypto failed`
 
 ## ⚠️ Risques
 

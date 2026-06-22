@@ -149,6 +149,7 @@ class _State:
       * ``"hmac"``        — skip HMAC-SHA256 verification (v1.2)
       * ``"rate_limit"``  — short-circuit the limiter with huge budgets (v1.3)
       * ``"blacklist"``   — skip the blacklist lookup (v1.4)
+      * ``"defender"``    — skip the Apple DRM defender (v1.5) — **DANGEROUS**
     """
 
     def __init__(
@@ -171,7 +172,7 @@ class _State:
         # Counters that mirror the disable set so the dashboard and JSONL
         # can show exactly which guard the operator turned off (v1.2/v1.3/v1.4).
         self.disabled_counters: Dict[str, int] = {
-            "hmac": 0, "rate_limit": 0, "blacklist": 0,
+            "hmac": 0, "rate_limit": 0, "blacklist": 0, "defender": 0,
         }
         # Apple DRM defender (defensive simulator). One instance per
         # server lifetime so the session-state dictionary (anti-replay,
@@ -227,7 +228,7 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
         log.info("%s - - %s", self.address_string(), format % args)
 
     # ------------------------------------------------------------------ #
-    # Middleware (v1.2/v1.3/v1.4): blacklist, rate limit, HMAC
+    # Middleware (v1.2/v1.3/v1.4): blacklist, rate limit, HMAC, defender
     # ------------------------------------------------------------------ #
     # Each guard can be individually turned off via the matching
     # ``--disable-*`` CLI flag. When disabled, the guard is short-circuited
@@ -236,6 +237,7 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
     def _check_middleware(self, body: bytes) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
         ip = self.client_address[0]
         udid = None
+        payload: Optional[Dict[str, Any]] = None
         if self.command == "POST" and body:
             try:
                 payload = json.loads(body.decode("utf-8", errors="replace"))
@@ -290,7 +292,97 @@ class _MockHandler(http.server.BaseHTTPRequestHandler):
                     "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
                 }
                 return 401, response, {}
+        # 4. Apple DRM defender (v1.5) — middleware variant
+        # The defender only fires on POSTs whose body contains
+        # ``public_key_modulus`` (the signal that the caller is attempting
+        # to forge / relay an iActivation ticket). Endpoints that do not
+        # carry a ticket (license, telemetry, blacklist_add, …) are
+        # passed through untouched so we do not break the lab surface.
+        # When ``--disable-defender`` is set we still bump the counter
+        # for transparency but skip validation entirely.
+        if payload and isinstance(payload, dict) and \
+                payload.get("public_key_modulus"):
+            if "defender" in disabled:
+                self.state.disabled_counters["defender"] += 1
+                log.debug(
+                    "middleware: defender SKIPPED (--disable-defender) "
+                    "— request body carried public_key_modulus"
+                )
+            else:
+                denied = self._run_defender(payload)
+                if denied is not None:
+                    return denied
         return None
+
+    # ------------------------------------------------------------------ #
+    # Defender helper (middleware variant)
+    # ------------------------------------------------------------------ #
+    def _run_defender(self, payload: Dict[str, Any]) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
+        """Validate ``payload`` as a tentative iActivation ticket.
+
+        Returns ``None`` if the ticket is **legit** (no forgery detected),
+        or ``(403, response, {})`` if at least one check flagged the
+        request. The defender's session state (``defender_session``) is
+        shared across requests so anti-replay / sequence / HWID checks
+        work end-to-end.
+
+        This is the **middleware variant** (v1.5) of the defender. The
+        older explicit endpoint ``/iremovalActivation/apple_drm_check.ph``
+        still works for callers that prefer an explicit verdict.
+        """
+        import base64
+        try:
+            mod_bytes = base64.b64decode(
+                payload.get("public_key_modulus", "") or "", validate=True
+            )
+        except Exception:  # noqa: BLE001
+            mod_bytes = b""
+        plist = payload.get("plist") or {}
+        ticket = ActivationTicket(
+            udid=str(payload.get("udid", "") or ""),
+            public_key_modulus=mod_bytes,
+            plist_data=plist if isinstance(plist, dict) else {},
+            client_build_marker=str(
+                payload.get("client_build_marker", "") or ""
+            ),
+            nonce=payload.get("nonce"),
+            sequence_number=payload.get("sequence_number"),
+            client_hwid=payload.get("client_hwid"),
+            client_timestamp=payload.get("client_timestamp"),
+        )
+        server_proc_ms = float(payload.get("server_proc_ms") or 0.0)
+        try:
+            ok, reasons = self.state.defender.validate_ticket(
+                ticket,
+                session=self.state.defender_session,
+                server_proc_ms=server_proc_ms,
+            )
+        except Exception as exc:  # noqa: BLE001
+            log.warning("defender raised: %s", exc)
+            return 500, {
+                "status": "LAB_DEFENDER_ERROR",
+                "lab_marker": TEST_MARKER,
+                "error": f"defender raised: {exc}",
+                "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
+            }, {}
+        with self.state.lock:
+            for r in reasons:
+                for code in self.state.defender_hits:
+                    if code in r:
+                        self.state.defender_hits[code] += 1
+        if ok:
+            return None
+        response = {
+            "status": "LAB_DRM_FORGERY_DETECTED",
+            "lab_marker": TEST_MARKER,
+            "ok": False,
+            "reasons": reasons,
+            "defender_version": self.state.defender.VERSION,
+            "policy_snapshot": self.state.defender.policy_snapshot(),
+            "intercepted_by": "middleware:defender",
+            "ts": _dt.datetime.now(tz=_dt.timezone.utc).isoformat(),
+        }
+        return 403, response, {}
 
     # ------------------------------------------------------------------ #
     # Routing

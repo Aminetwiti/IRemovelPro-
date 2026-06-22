@@ -99,4 +99,46 @@
 
 ---
 
+## 🛡️ Extension défensive (2026-06-22)
+
+> **Objectif** : transformer les découvertes défensives en mécanismes
+> vérifiables par tests reproductibles (CI-friendly).
+
+| Composant | Emplacement | Description |
+|---|---|---|
+| Simulateur Apple DRM | `06_LOCAL_REPRODUCER/apple_drm_defense.py` | 13 self-tests, 13 checks statiques (BY-INT-*) + 7 session (BY-SES-*) |
+| Suite formelle | `06_LOCAL_REPRODUCER/test_apple_drm_defense.py` | 19 checks : S1-S6 (static) + R/Q/H/T (session) |
+| Endpoint `apple_drm_check.ph` | `06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py` | Intégration défensive dans le mock serveur |
+| Smoke end-to-end | `06_LOCAL_REPRODUCER/iact_reproducer/smoke_apple_drm.py` | 4 scénarios (forged→403, legit→200, replay→403, lab_mode→200) |
+| Loader YARA | `06_LOCAL_REPRODUCER/test_yara_rules_load.py` | 5 checks : compile + ChaosCrypto rule sanity |
+| **Orchestrateur** | `06_LOCAL_REPRODUCER/run_all_suites.py` | **6 suites / 91 checks / ~60s** |
+
+### Lab status (2026-06-22)
+
+```
+Suites   : 6/6 PASS
+Checks   : 91/91  (~estimation)
+Elapsed  : 60.72s
+>>>  RESULT: ALL GREEN
+```
+
+### Documents associés
+
+| Document | Description |
+|---|---|
+| [`01_REPORTS/NOUVELLES_DECOUVERTES.md` §16](01_REPORTS/NOUVELLES_DECOUVERTES.md) | Pont IoCs ↔ Défense opérationnelle (matrice 17 IoCs ↔ 13 mécanismes) |
+| [`01_REPORTS/NOUVELLES_DECOUVERTES.md` §17](01_REPORTS/NOUVELLES_DECOUVERTES.md) | Revelation cross-plateforme : Chaos.Crypto est compilé en Mono pour iOS |
+| [`05_IOC/YARA_RULES.yar`](05_IOC/YARA_RULES.yar) | 31 règles YARA dont `iRemovalPro_ChaosCrypto_Namespace` (cross-plateforme) |
+
+### Lancer toute la suite
+
+```powershell
+Set-Location -LiteralPath 'C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2'
+$env:PYTHONIOENCODING = 'utf-8'
+py '06_LOCAL_REPRODUCER\run_all_suites.py'        # 91 checks en ~60s
+py '06_LOCAL_REPRODUCER\run_all_suites.py' --json # sortie JSON pour CI
+```
+
+---
+
 **Navigation** : [README](README.md) | [Table des matières](INDEX.md) | [Executive Summary](01_REPORTS/EXECUTIVE_SUMMARY.md)

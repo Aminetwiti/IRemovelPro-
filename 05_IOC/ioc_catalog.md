@@ -4,6 +4,29 @@
 
 ---
 
+## 📅 Datation échantillon
+
+> **Échantillon confirmé** : iRemoval PRO Premium Edition **v5.2** (fork BlackHound v0.7.1, build **2022**)
+> Source de datation : `01_REPORTS/NOUVELLES_DECOUVERTES.md` section 1.2 et `03_OUTPUTS/strings_all_long.txt:9195`
+
+| Champ | Valeur | Preuve |
+|---|---|---|
+| Nom commercial | iRemoval PRO Premium Edition v5.2 | `AUDIT_REPORT.md:14`, `EXECUTIVE_SUMMARY.md:7` |
+| Origine | Fork modifié de **Blackhound iRemovalPro v0.7.1** (2022) | `CONSOLIDATED_AUDIT.md:22` |
+| Build marker (string ASCII) | `T<-[Blackhound iRemovalPro Public build 0.7.1 @2022\|]->` | `03_OUTPUTS/strings_all_long.txt:9195` |
+| Tweak version | `0.7.1` | (extrait du build marker) |
+| Build year | `@2022` | (extrait du build marker) |
+| Build hash arm64 | `1643379a` | `.theos/obj/debug/arm64/blackhound.x.1643379a.o` |
+| Build hash arm64e | `50c6260a` | `.theos/obj/debug/arm64e/blackhound.x.50c6260a.o` |
+| Cible runtime | .NET Framework **4.5.2** | `03_OUTPUTS/strings_all_long.txt:83` |
+| Assembly version | `1.0.0.0` (par défaut — 5.2 = nom commercial) | `03_OUTPUTS/strings_all_long.txt:9609` |
+| `iRemoval PRO.exe` SHA-256 | `07452A1E12FE3A36519611B3932AE43CD2C64093981C047A788FA1939E424DB7` | `ioc_catalog.md` section 🔑 |
+| `iremovalpro.dll` SHA-256 | `08D283CC16C92582594A277C23625AF9D0F0109FAC5415F75D20D55B92BA8141` | `ioc_catalog.md` section 🔑 |
+
+> **Note** : la version `5.2` n'est pas dans les metadata PE (AssemblyVersion = 1.0.0.0). Le numéro 5.2 est le **nom commercial du produit** (cf. dossier source et 5 rapports d'audit). La **vraie** version technique du tweak est `BlackHound 0.7.1 @2022`, attestée par la string de build présente dans `iremovalpro.dll`.
+
+---
+
 ## 🔑 Hashes de fichiers
 
 | Fichier | SHA-256 |
@@ -72,6 +95,23 @@
 /private/var/root/identity                  ← NOUVEAU (NAND identité forgée)
 /private/var/root/payloa[d]                 ← NOUVEAU (répertoire payload)
 ```
+
+## 🐚 Commandes shell iOS (NOUVEAU - 2026-06-22)
+
+> Commandes SSH exécutées à distance par iRemoval PRO sur l'iPhone jailbreaké
+> Source : `NOUVELLES_DECOUVERTES.md` §2.1
+
+```bash
+chmod +x /private/var/root/identity
+rm -rf /private/var/root/identity
+rm -rf /private/var/root/payloa[d]    # tronqué en 7 chars
+```
+
+> **Implication défense** : ces commandes sont des IoCs forensiques
+> détectables dans l'historique SSH, les logs d'audit, ou le journal
+> de l'EDR iOS post-jailbreak. La commande `chmod +x` sur
+> `/private/var/root/identity` confirme que le binaire `identity` est
+> marqué exécutable (typique d'un blob Mach-O forgé).
 
 ## 🎯 Méthodes iOS hookées (Logos/Cydia Substrate)
 

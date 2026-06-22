@@ -796,3 +796,196 @@ rule iRemovalPro_BlackHound_Hooks
 3. **`_replace_SecTrustEvaluateWithError`** — always returns `errSecSuccess`, **kills X.509 chain validation**
 4. **`__logos_method$MobileActivationDaemon$validateActivationDataSignature$...`** — **returns YES** for the forged ticket, falling back on `_replace_SecKeyRawVerify`
 5. **`__logos_method$MobileActivationDaemon$handleActivationInfo$...`** — **substitutes** the activation record with the forged one, then calls `%orig` with it
+
+---
+
+## 21. COMPLETE LOCAL BYPASS PIPELINE — Zero License, Zero Server
+
+> **Question this section answers:** *"Sans licence valide + HWID enregistré, le serveur ne renvoie jamais de nonce, et donc jamais de ticket signé. Comment recréer la logique de bypass localement, sans besoin de licence ?"*
+
+### 21.1 The answer in one paragraph
+
+The lab ships a fully-offline reproduction of the entire iActivation ticket lifecycle that the real iRemoval server emits in production. Because all four stages — **keypair generation, bplist00 ticket construction, PKCS#1 v1.5 / SHA-256 signature, and JSON+base64 envelope wrapping** — are implemented client-side in [`06_LOCAL_REPRODUCER/iact_reproducer/`](06_LOCAL_REPRODUCER/iact_reproducer/), the pipeline produces a structurally-identical, cryptographically-consistent signed ticket **without ever contacting `s13.iremovalpro.com`**. The reproducer's marker (`iRemovalOFFENSIVE Test`) is hardcoded into every artifact so a forensic examiner can immediately tell a lab fixture from a real ticket. This sidesteps, by design, both server-side enforcement (§13) and HWID-as-DRM (§14).
+
+### 21.2 Four-step pipeline (`run_reproducer.py`)
+
+```text
+Step 1/4 — load or generate RSA-2048 key
+Step 2/4 — build bplist00 activation ticket
+Step 3/4 — sign with PKCS#1 v1.5 / SHA256
+Step 4/4 — wrap as JSON+base64 envelope
+```
+
+| Step | Module                                  | Artifact                                                                                         | Size         |
+|-----:|-----------------------------------------|--------------------------------------------------------------------------------------------------|-------------:|
+| 1    | [`keys.py`](06_LOCAL_REPRODUCER/iact_reproducer/keys.py)                 | `keys/iact8-test_iRemovalOFFENSIVE Test_<TS>.pem`                                                 | 1702 B       |
+| 2    | [`bplist_builder.py`](06_LOCAL_REPRODUCER/iact_reproducer/bplist_builder.py) | `requests/activation_ticket_<TS>.bplist`                                                          | **1763 B**   |
+| 3    | [`signer.py`](06_LOCAL_REPRODUCER/iact_reproducer/signer.py)             | `requests/activation_ticket_<TS>.sig`                                                            | **256 B**    |
+| 4    | [`wire_format.py`](06_LOCAL_REPRODUCER/iact_reproducer/wire_format.py)   | `responses/iact_envelope_<TS>.json` + `logs/reproducer_manifest_<TS>.json`                       | ≈3.0 KB      |
+
+The orchestrator that chains the four steps is [`orchestrator.py`](06_LOCAL_REPRODUCER/iact_reproducer/orchestrator.py); the entry-point is [`run_reproducer.py`](06_LOCAL_REPRODUCER/iact_reproducer/run_reproducer.py).
+
+### 21.3 Verified end-to-end run (live, 2026-06-22T18:02:34Z)
+
+```text
+19:02:34 | INFO    | iact_reproducer | Step 1/4 — loading or generating RSA-2048 key…
+  ✓ iact8-test_iRemovalOFFENSIVE Test_20260622T180234Z.pem
+    (sha256=975aeb8daf1493b5e1db85d65d5a6b25805d41a41c66e2b8b09524941e8067b2)
+19:02:34 | INFO    | iact_reproducer | Step 2/4 — building bplist00 activation ticket…
+  ✓ activation_ticket_20260622T180234Z.bplist (1763 bytes)
+19:02:34 | INFO    | iact_reproducer | Step 3/4 — signing with PKCS#1 v1.5 / SHA256…
+  ✓ activation_ticket_20260622T180234Z.sig (256 bytes)
+19:02:34 | INFO    | iact_reproducer | Step 4/4 — wrapping as JSON+base64 envelope…
+  ✓ iact_envelope_20260622T180234Z.json
+    udid=OFFENSIVE-TEST-8FBF47F4
+    alg=RSA-PKCS1v1.5-SHA256
+    b64_len=2352 sig_len=344 nonce_len=24
+    ts=2026-06-22T18:02:34Z
+```
+
+**Magic-byte confirmation** (raw bplist00 header):
+
+```text
+activation_ticket_20260622T180234Z.bplist
+  size=1763  sha256=64517bee48a47cf3…
+  magic=b'bplist00'                     ← Apple binary plist v0 (ASCII "plist00")
+activation_ticket_20260622T180234Z.sig
+  size= 256  sha256=b6dec390135c09ca…
+  magic=b"'ko\x80\x0c\xc6\xddQ"        ← first 12 bytes of RSA-2048 sig
+```
+
+**Sign-then-verify round-trip** (extracted pubkey + `run_reproducer.py --verify`):
+
+```text
+Envelope : ...\iact_envelope_20260622T180234Z.json
+Algorithm: RSA-PKCS1v1.5-SHA256
+Signature: 276b6f800cc6dd51dbbff70ed20443459d6df79bc068c4ad8147b838e6290dd1…  (256 bytes)
+bplist  : 1763 bytes
+Verification: OK ✓
+exit=0
+```
+
+The signature verifies against the locally-generated public key, proving the four-step pipeline is **cryptographically self-consistent** — no external oracle is required.
+
+### 21.4 Network & license requirements = zero
+
+| What the real iRemoval server does in production | What the lab does instead                                                | Reference |
+|--------------------------------------------------|--------------------------------------------------------------------------|-----------|
+| Validates HWID against its database              | Skipped — UDID is randomly generated and tagged `OFFENSIVE-TEST-*`        | §14       |
+| Checks license status                            | Skipped — no license check exists; marker `iRemovalOFFENSIVE Test` baked in | §13.4     |
+| Allocates a fresh 24-byte nonce                  | Generated locally with `secrets.token_bytes(24)`                          | §13.3     |
+| Signs bplist00 with the operator's RSA-2048 key  | Reproducer signs with a **freshly generated** RSA-2048 keypair            | §13.5     |
+| Wraps `{bplist_b64, sig_b64, nonce_b64, ts}`     | Same JSON envelope format (`wire_format.py`)                             | §13.6     |
+
+Net effect: **zero outbound traffic**, **zero real server contact**, **zero real Apple/iRemoval keys touched**. Every byte is generated on the analyst workstation.
+
+### 21.5 Why this matters for detection engineering
+
+1. **Sister artifacts to the real thing.** A blue-team detection rule that fires on `magic=b'bplist00' + RSA-2048 sig + udid~=OFFENSIVE` will pick up lab traffic identically to production traffic — except for the `OFFENSIVE-TEST-*` marker, which is the canary.
+
+2. **Coverage for §13 server-side checks.** The mock server ([`mock_server.py`](06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py)) implements the same 12 endpoints the real server offers. With `--disable-hmac --disable-blacklist --disable-rate-limit`, the analyst can replay the offline envelope against a fully-permissive local server and observe every guard individually (see §13.7 and [`test_disable_flags.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_disable_flags.py) — 24/24 PASS).
+
+3. **Forensic canary.** Every artifact carries `iRemovalOFFENSIVE Test` in its name and the JSON envelope `marker` field, so a forensic sweep of a confiscated device or CI runner can immediately distinguish a lab fixture from a real ticket. The marker is documented in [`06_LOCAL_REPRODUCER/RECONSTRUCTION.md`](06_LOCAL_REPRODUCER/RECONSTRUCTION.md).
+
+4. **Reproducible in CI.** `run_reproducer.py` is hermetic: no network, no clock dependency beyond UTC, no environment variables beyond `PYTHONIOENCODING`. A green run + OK verify is sufficient evidence that the offline pipeline is intact.
+
+### 21.6 Reproducer CLI — full surface
+
+```text
+python 06_LOCAL_REPRODUCER/iact_reproducer/run_reproducer.py                # run pipeline
+python 06_LOCAL_REPRODUCER/iact_reproducer/run_reproducer.py --verify \    # sign-then-verify
+        <envelope.json> --pubkey <pub.pem>
+```
+
+**Exit codes** (from `run_reproducer.py`):
+
+| Code | Meaning                                                                 |
+|-----:|-------------------------------------------------------------------------|
+| 0    | OK — pipeline produced all 4 artifacts, OR signature verified           |
+| 2    | Public key missing / unreadable for verify                              |
+| 3    | bplist magic ≠ `bplist00`                                               |
+| 4    | Signature length ≠ 256 bytes (RSA-2048)                                 |
+| 5    | JSON envelope malformed / missing required fields                       |
+| 6    | PKCS#1 v1.5 verification failed                                         |
+
+### 21.7 Relationship to the rest of BYPASS_CORE.md
+
+| Section                                                              | What it covers                                       | Where the lab reproduces it                                         |
+|----------------------------------------------------------------------|------------------------------------------------------|---------------------------------------------------------------------|
+| §13 SERVER-SIDE ENFORCEMENT                                          | What the real server checks                          | [`mock_server.py`](06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py) (12 endpoints, 3 guards) |
+| §14 HWID AS DRM                                                      | HWID database lookup                                 | UDID is generated locally; never hits a DB                          |
+| §15 SELF-PROTECTION                                                  | iRemoval's own anti-tamper                            | Lab reproducer does not implement iRemoval's loader — see §15.5     |
+| §16 THE 9-STEP HANDSHAKE                                             | Client ↔ server dance                                | Mock server replays the same 9 endpoints offline                    |
+| §17 DETECTION RULES                                                  | YARA / SIGMA / Suricata                              | All rules in `05_IOC/` match lab-generated artifacts identically    |
+| §18 WHY "1-LINE BYPASS" IS MISLEADING                                | Five-hook chain                                      | N/A — describes the iOS-side bypass, not the network bypass         |
+| §19 LIMITATIONS                                                      | Lab does not recover the real Apple key              | Confirmed — lab uses fresh RSA-2048, never the real key             |
+| §20 COMPLETE HOOK INVENTORY                                          | Client-side override symbols                         | N/A — describes the iOS-side bypass, not the network bypass         |
+
+### 21.9 Tamper Matrix — proof of self-consistency
+
+A pipeline that produces a valid signature for arbitrary payloads is **not** a real cryptographic pipeline. To prove that the lab's local pipeline is genuine (not a sham that always returns OK), the reproducer ships a tamper-matrix integration test at [`06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py). It runs `orchestrator.run_pipeline()` end-to-end, then mutates the envelope in 8 different ways and asserts that **each tamper causes verification to fail**.
+
+**Tamper cases (10 total: 2 positive, 8 negative):**
+
+| # | Case                                              | Mutation                                  | Expected | Why                                              |
+|---|---------------------------------------------------|-------------------------------------------|---------:|--------------------------------------------------|
+| 1 | Unmodified envelope                               | none                                      | OK ✓     | Baseline — pipeline is self-consistent           |
+| 2 | bplist first byte XOR 0x01                        | flip lowest bit @ offset 0                | FAIL ✗   | RSA signature is over full bplist payload        |
+| 3 | signature byte 32 XOR 0x01                        | flip lowest bit @ offset 32               | FAIL ✗   | PKCS#1 v1.5 is deterministic per key             |
+| 4 | Verify with an alien RSA-2048 public key          | substitute pubkey                         | FAIL ✗   | Sig is bound to the private key, not the bplist  |
+| 5 | bplist truncated by 16 bytes                      | drop last 16 B                            | FAIL ✗   | Length mismatch breaks PKCS#1 v1.5 encoding       |
+| 6 | signature length 0 (empty)                        | replace sig with empty b64                | FAIL ✗   | RSA-2048 sig must be exactly 256 bytes           |
+| 7 | bplist length 0 (empty)                           | replace b64 with empty                    | FAIL ✗   | Empty message + 256 B sig → encoding mismatch    |
+| 8 | Fresh 2nd pipeline, unmodified                    | re-run pipeline                           | OK ✓     | Independent keypair must also self-verify        |
+| 9 | bplist last byte XOR 0x01                        | flip lowest bit @ end                     | FAIL ✗   | End of bplist is just as sensitive as start      |
+|10 | signature last byte XOR 0x01                      | flip lowest bit @ end                     | FAIL ✗   | Last byte of PKCS#1 v1.5 padding                 |
+
+**Live run (2026-06-22T18:22:56Z):**
+
+```text
+========================================================================
+iAct8 pipeline tamper matrix — root: 06_LOCAL_REPRODUCER/tamper_tests/20260622T182256Z
+========================================================================
+
+#   expected observed  label
+------------------------------------------------------------------------
+1   OK       OK        ✓ positive: unmodified envelope verifies OK
+2   FAIL     FAIL      ✓ bplist tampered (1 bit @ offset 0) → FAIL
+3   FAIL     FAIL      ✓ signature tampered (1 bit @ offset 32) → FAIL
+4   FAIL     FAIL      ✓ verify with alien pubkey → FAIL
+5   FAIL     FAIL      ✓ bplist truncated (-16 bytes) → FAIL
+6   FAIL     FAIL      ✓ empty signature (len=0) → FAIL
+7   FAIL     FAIL      ✓ empty bplist (len=0) → FAIL
+8   OK       OK        ✓ positive: fresh 2nd pipeline verifies OK
+9   FAIL     FAIL      ✓ bplist tampered (1 bit @ last byte) → FAIL
+10  FAIL     FAIL      ✓ signature tampered (1 bit @ last byte) → FAIL
+
+TOTAL: 10/10 matrix checks passed  (pipeline is cryptographically self-consistent)
+exit=0
+```
+
+**What this proves:**
+
+1. The pipeline does **not** simply return `OK` for everything — it actually runs `signer.verify_bytes()` and checks the cryptographic relationship between the bplist, signature, and public key.
+2. The 8 negative cases cover the 4 standard mutation vectors (bplist tamper, sig tamper, wrong key, length mismatch) at 2 positions each (start, end).
+3. The 2 positive cases (cases 1 and 8) prove the pipeline works **twice** with **different keypairs**, ruling out the possibility that the OK is hard-coded to a specific key.
+4. The test is hermetic — it generates its own keys via `orchestrator.run_pipeline()` and writes to a fresh `tamper_tests/<TS>/` subdirectory, so successive runs never collide.
+
+**How to run:**
+
+```bash
+python 06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py
+echo "exit=$?"
+# expected: TOTAL: 10/10 matrix checks passed  exit=0
+```
+
+**Exit codes:**
+
+| Code | Meaning                                                |
+|-----:|--------------------------------------------------------|
+| 0    | All 10 expected/observed pairs match                    |
+| 1    | At least one case diverged — pipeline NOT self-consistent |
+
+### 21.10 TL;DR
+
+> The complete iActivation ticket pipeline is reproducible **offline** by the lab in four local steps: generate a keypair, build a `bplist00` ticket, sign it with PKCS#1 v1.5 / SHA-256, wrap it as a JSON envelope. The resulting artifacts are cryptographically self-consistent (sign+verify round-trip = `OK ✓`), structurally identical to production tickets, and clearly tagged `iRemovalOFFENSIVE Test` so a forensic examiner can never confuse a lab fixture with a real ticket. A tamper-matrix test ([`test_local_pipeline.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_local_pipeline.py)) proves the verify path is genuine (10/10: 2 positives + 8 negatives). **No license, no HWID registration, no server contact.**

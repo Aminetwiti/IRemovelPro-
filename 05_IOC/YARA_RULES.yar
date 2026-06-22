@@ -522,20 +522,13 @@ rule iRemovalPro_AntiDebug_AntiRE
         2 of them
 }
 
-rule iRemovalPro_AntiRE_Chaos_Crypto
-{
-    meta:
-        author = "defensive-research"
-        date = "2026-06-22"
-        description = "Detects Chaos.Crypto library string (potential custom crypto wrapper)"
-        severity = "low"
-        category = "iCloud-bypass-tool"
-        tlp = "LEAKED"
-    strings:
-        $str = "An assertion in Chaos.Crypto failed" ascii
-    condition:
-        $str
-}
+// ---------------------------------------------------------------------------
+// NOTE 2026-06-22: the simpler rule `iRemovalPro_AntiRE_Chaos_Crypto` that
+// previously lived here has been consolidated into the more thorough
+// `iRemovalPro_ChaosCrypto_Namespace` (see §17.5 of NOUVELLES_DECOUVERTES.md).
+// Keeping both would double-fire on every match and pollute the SIEM. The
+// consolidated rule preserves the same string and adds provenance metadata.
+// ---------------------------------------------------------------------------
 
 rule iRemovalPro_iDeviceProxy_Bypass_App
 {
