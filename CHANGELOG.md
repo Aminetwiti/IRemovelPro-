@@ -16,6 +16,11 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Phase 6 : sandbox comportemental
 - Phase 7 : extraction iOS components live
 
+### 📑 Documentation
+- `01_REPORTS/RAPPORT_FINAL_5_AXES.md` : rapport final consolidé
+  de la roadmap défensive 5-axes (architecture révélée, IoCs
+  confirmées, métriques, recommandations phases 5-7).
+
 ---
 
 ## [1.2.0] — 2026-06-22
