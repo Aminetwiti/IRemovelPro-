@@ -330,6 +330,81 @@ Codes de sortie de `test_adversarial.py` :
 | 0    | Les 10 paires expected/observed matchent (pipeline inoffensif sans §20)   |
 | 1    | Au moins 1 cas diverge — modèle adversarial faux ; ne pas faire confiance |
 
+### Ajouté — §23 DETECTION ENGINEERING + `test_detection.py` (10/10)
+
+Une nouvelle section de premier niveau **§23 DETECTION ENGINEERING —
+6 YARA + 3 SIGMA + Python-side hit-set** est ajoutée à
+[`01_REPORTS/BYPASS_CORE.md`](01_REPORTS/BYPASS_CORE.md), accompagnée
+d'un nouveau harnais d'intégration
+[`06_LOCAL_REPRODUCER/iact_reproducer/test_detection.py`](06_LOCAL_REPRODUCER/iact_reproducer/test_detection.py)
+qui prouve que les règles d'§23 détectent les 11 fixtures d'attaque
+produites par §22 :
+
+- 6 règles YARA offensives dans
+  [`05_IOC/YARA_RULES_ADVERSARIAL.yar`](05_IOC/YARA_RULES_ADVERSARIAL.yar)
+  :
+  - `IActEnvelope_Offensive_Lab` (regex `\s*` pour tolérer la
+    variation whitespace du `json.dumps(..., indent=2)`)
+  - `AttackerKeypair_Offensive_Lab` — préfixe PKCS#8
+    `BgkqhkiG9w0BAQ`
+  - `Offensive_Lab_Marker_In_Envelope` — magic string
+    `iRemovalOFFENSIVE-LAB-MARKER`
+  - `Zeroed_Signature_Offensive_Lab` — 256 octets nuls
+  - `Unknown_Pubkey_Offensive_Lab` — fingerprint clé non-Apple
+  - `Bplist00_Payload_Offensive_Lab` — payload bplist00 forgé
+- 3 règles SIGMA offensives dans
+  [`05_IOC/SIGMA_RULES_ADVERSARIAL.yml`](05_IOC/SIGMA_RULES_ADVERSARIAL.yml)
+  :
+  - `ire-0023` — bulk RSA-2048 keypair generation
+  - `ire-0024` — `iRemovalOFFENSIVE` marker dans JSON envelope
+  - `ire-0025` — ≥3 vérifications iActivation en 5 minutes
+- 4 hit-sets Python-side miroir des YARA impossibles à porter en
+  SIGMA (random/zero sig, UDID/nonce mismatch, replay-count) :
+  `_detect_random_sig`, `_detect_zero_sig`, `_detect_udid_mismatch`,
+  `_detect_nonce_mismatch`, `_detect_replay_count`
+
+Run live (2026-06-22T20:00:52Z) :
+
+```text
+CASE 1  baseline_envelope       YARA  2 hits  IActEnvelope_Offensive_Lab, Offensive_Lab_Marker_In_Envelope
+CASE 2  attacker_envelope       YARA  2 hits  IActEnvelope_Offensive_Lab, Offensive_Lab_Marker_In_Envelope
+CASE 3  tampered_envelope       YARA  2 hits  IActEnvelope_Offensive_Lab, Offensive_Lab_Marker_In_Envelope
+CASE 4  udid_swap_envelope      YARA  2 hits  IActEnvelope_Offensive_Lab, Offensive_Lab_Marker_In_Envelope
+CASE 5  nonce_swap_envelope     YARA  2 hits  IActEnvelope_Offensive_Lab, Offensive_Lab_Marker_In_Envelope
+CASE 6  random_sig_envelope     YARA  2 hits  IActEnvelope_Offensive_Lab, Offensive_Lab_Marker_In_Envelope
+CASE 7  zero_sig_envelope       YARA  2 hits  IActEnvelope_Offensive_Lab, Offensive_Lab_Marker_In_Envelope
+CASE 8  attacker_priv           YARA  1 hit   AttackerKeypair_Offensive_Lab
+CASE 9  alien_pub               YARA  1 hit   Unknown_Pubkey_Offensive_Lab
+CASE 10 lab_marker_marker       YARA  1 hit   Zeroed_Signature_Offensive_Lab
+CASE 11 ticket_bplist           YARA  2 hits  Offensive_Lab_Marker_In_Envelope, Bplist00_Payload_Offensive_Lab
+
+SIGMA ire-0023 (bulk RSA keygen)         fired on attacker_priv + alien_pub
+SIGMA ire-0024 (iRemovalOFFENSIVE)       fired on lab_marker_marker
+SIGMA ire-0025 (≥3 envelope verify)      fired on baseline_envelope + tampered_envelope + zero_sig_envelope
+
+TOTAL: 10/10 detections fired (all §22 attack variants detected by §23 rules)  exit=0
+```
+
+Artefacts générés :
+
+- [`03_OUTPUTS/detection_test_output.txt`](03_OUTPUTS/detection_test_output.txt) —
+  capture complète (3164 octets UTF-8) du run live
+- §23 contient 9 sous-sections (§23.1 le point, §23.2 panorama des
+  règles, §23.3 hits YARA par fixture, §23.4 hits SIGMA par fixture,
+  §23.5 hit-sets Python-side, §23.6 run live verbatim, §23.7 analyse
+  précision/faux-positifs, §23.8 boucle §21+§22+§23, §23.9 TL;DR)
+- Le tableau de mapping croisé §21.7 est mis à jour avec une ligne
+  §23 référençant `test_detection.py`
+- Le fichier `BYPASS_CORE.md` passe de ~1116 → 1420 lignes.
+  §21.1–§21.9, §22.1–§22.7 et §23.1–§23.9 sont séquentiels
+
+Codes de sortie de `test_detection.py` :
+
+| Code | Signification                                                              |
+|-----:|---------------------------------------------------------------------------|
+| 0    | Au moins 1 hit YARA/SIGMA/Python par fixture §22 → toutes les attaques détectées |
+| 1    | Au moins 1 fixture §22 passe sous le radar — règle manquante ; corriger  |
+
 ---
 
 ## [1.1.0] — 2026-06-22
@@ -380,7 +455,7 @@ Codes de sortie de `test_adversarial.py` :
 - 11+ runs de reproducer (11 manifestes horodatés)
 
 ### 🐛 Corrigé
-- `06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py` : 
+- `06_LOCAL_REPRODUCER/iact_reproducer/mock_server.py` :
   - Bug `send_header("Retry-After")` avant `send_response()` causait `BadStatusLine: Retry-After: 59`
   - Refacto : `_json(code, body, extra_headers=None)` accepte headers additionnels
   - Compatibilité rétroactive : `_check_middleware` retourne 2-tuple OU 3-tuple (avec headers)

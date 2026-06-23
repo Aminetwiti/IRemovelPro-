@@ -1,7 +1,49 @@
-﻿========================================================================
-º23 DETECTION ENGINEERING ù YARA + SIGMA ù root: C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\06_LOCAL_REPRODUCER\detection_tests\20260622T195823Z
+========================================================================
+§23 DETECTION ENGINEERING — YARA + SIGMA — root: C:\Users\amine\Downloads\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\06_LOCAL_REPRODUCER\detection_tests\20260622T200052Z
 ========================================================================
   YARA rules loaded: 6 rules compiled OK
 
 #   expected   observed   label
 ------------------------------------------------------------------------
+1   FIRED      YES        ✓ case 1: baseline env
+2   FIRED      YES        ✓ case 2: attacker re-sign
+3   FIRED      YES        ✓ case 3: TRAP attacker-self
+4   FIRED      YES        ✓ case 4: random sig
+5   FIRED      YES        ✓ case 5: zero sig
+6   FIRED      YES        ✓ case 6: tampered bplist
+7   FIRED      YES        ✓ case 7: alien pub
+8   FIRED      YES        ✓ case 8: UDID swap
+9   FIRED      YES        ✓ case 9: nonce swap
+10  FIRED      YES        ✓ case 10: replay
+
+TOTAL: 10/10 detections fired  (all §22 attack variants detected by §23 rules)
+
+========================================================================
+YARA matches per fixture
+========================================================================
+  baseline_envelope              → ['IActEnvelope_Offensive_Lab', 'Offensive_Lab_Marker_In_Envelope']
+  attacker_envelope              → ['IActEnvelope_Offensive_Lab', 'Offensive_Lab_Marker_In_Envelope']
+  tampered_envelope              → ['IActEnvelope_Offensive_Lab', 'Offensive_Lab_Marker_In_Envelope']
+  udid_swap_envelope             → ['IActEnvelope_Offensive_Lab', 'Offensive_Lab_Marker_In_Envelope']
+  nonce_swap_envelope            → ['IActEnvelope_Offensive_Lab', 'Offensive_Lab_Marker_In_Envelope']
+  random_sig_envelope            → ['IActEnvelope_Offensive_Lab', 'Offensive_Lab_Marker_In_Envelope']
+  zero_sig_envelope              → ['IActEnvelope_Offensive_Lab', 'Offensive_Lab_Marker_In_Envelope']
+  attacker_priv                  → ['AttackerKeypair_Offensive_Lab']
+  alien_pub                      → ['Unknown_Pubkey_Offensive_Lab']
+  lab_marker_marker              → ['Zeroed_Signature_Offensive_Lab']
+  ticket_bplist                  → ['Offensive_Lab_Marker_In_Envelope', 'Bplist00_Payload_Offensive_Lab']
+
+========================================================================
+§23 TAKEAWAY
+========================================================================
+  All 9 §22 attack variants are detectable by §23 rules.
+  YARA rules catch artifact patterns (envelopes, keys, bplists).
+  Python-side analogues catch semantic patterns (random/zero sig,
+  UDID/nonce mismatch, replay) that YARA cannot express cleanly.
+  SIGMA ire-0023 catches bulk RSA keypair generation (case 2/3/7).
+  SIGMA ire-0024 catches the lab_marker field leaving the host (case 3).
+  SIGMA ire-0025 catches repeated verification of the same envelope (case 10).
+
+  Net: §21 (pipeline) + §22 (attack model) + §23 (detection) =
+  complete blue-team loop — see BYPASS_CORE.md §23.
+========================================================================

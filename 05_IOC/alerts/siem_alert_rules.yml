@@ -1,0 +1,328 @@
+# ============================================================================
+# SIEM alert rules — iRemoval PRO / BlackHound bypass attempts
+# ============================================================================
+#
+# SOURCE: local_iact_reproducer / `06_LOCAL_REPRODUCER/iact_reproducer/`
+#         The lab mock server exposes three relevant signals:
+#           * `iact_mock_defender_alerts_total{severity="P1|P2|P3"}`  (counter)
+#           * `iact_mock_server_proc_ms_*`                              (timing)
+#           * `iact_mock_endpoint_status_total{endpoint=...,
+#             status="LAB_DRM_FORGERY_DETECTED|..."}`                  (counter)
+#         It also exposes a JSON view of the recent alert ring at
+#         `GET /alerts.ph` for tools that prefer structured pulls.
+#
+# SCOPE:  100% defensive. Targets the *detection* of the public iRemoval
+#         PRO v5.2 / BlackHound 0.7.1 @2022 toolchain. No offensive content.
+#
+# SEVERITY RATIONALE
+# ------------------
+# P1 (CRITICAL) — known iRemoval PRO bypass pubkey fingerprint
+#                 (sha1 032476fc5c2ff5e65e5ae6ae81b2c45433bf32a8).
+#                 Single-shot, deterministic, ~0% false positive.
+#                 Page on first occurrence.
+#
+# P2 (HIGH)     — explicit bypass markers: forbidden plist keys
+#                 (iRemovalRecord, iRemovalSignature, BlackHound-Public-Build,
+#                 iRemovalState), forbidden bundle IDs
+#                 (com.panyolsoft.blackhound, com.iremovalpro.bypass,
+#                 com.blackhound.eraser), forbidden build markers
+#                 (Blackhound iRemovalPro Public build 0.7.1 @2022,
+#                 iRemovalProWPF), missing DeviceCheck token, missing mTLS
+#                 client cert. Each is a strong, hand-curated signal.
+#                 Alert within 5 min, page on repeat (>3 in 1h from same IP).
+#
+# P3 (MEDIUM)   — session / timing anomalies: server_proc_ms claim outside
+#                 the [5ms, 30s] corridor, sequence-number gap, replayed
+#                 nonce, HWID first-seen, large modulus entropy drift.
+#                 Heuristic — needs correlation with P2 hits to triage.
+#
+# ============================================================================
+
+groups:
+  - name: iact_reproducer_alerts
+    interval: 30s
+    rules:
+
+      # -------------------------------------------------------------------
+      # P1 — known iRemoval PRO bypass public-key fingerprint
+      # -------------------------------------------------------------------
+      - alert: iRemovalPro_KnownBypassKey
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P1"}[5m]
+          ) > 0
+        for: 0m
+        labels:
+          severity: critical
+          category: icloud_bypass
+          actor: iRemovalPro_v5.2
+          actor_alias: BlackHound_0.7.1
+          mitre: T1562.001
+        annotations:
+          summary: "iRemoval PRO bypass public key fingerprint matched"
+          description: |
+            The local iActivation-ticket mock detected a request whose
+            RSA modulus sha1 is 032476fc5c2ff5e65e5ae6ae81b2c45433bf32a8.
+            This fingerprint corresponds to the public build of iRemoval
+            PRO v5.2 / BlackHound 0.7.1 (released 2022). The iActivation
+            ticket should be considered malicious. Forward the captured
+            payload to IR for forensic analysis.
+          runbook: |
+            1) Isolate the source IP from the network (P1 is single-shot).
+            2) Pull the request body from /alerts.ph (recent[]) and
+               preserve the original bytes for evidence.
+            3) Search SIEM history for the same IP — bypass tools often
+               retry against /iact8.php, /apple_drm_check.ph and
+               /iremovalActivation/* within seconds.
+            4) Cross-check the device UDID against the Apple GSX API
+               to confirm whether the device is genuinely locked.
+          reference: |
+            https://www.iremovalpro.com (commercial landing — for IOC
+            corroboration only; do NOT pay or download).
+
+      # -------------------------------------------------------------------
+      # P2 — explicit bypass markers
+      # -------------------------------------------------------------------
+      - alert: iRemovalPro_ExplicitBypassMarker_Burst
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P2"}[10m]
+          ) > 5
+        for: 1m
+        labels:
+          severity: high
+          category: icloud_bypass
+          actor: iRemovalPro_v5.2
+          mitre: T1562.001
+        annotations:
+          summary: "Burst of P2 iRemoval PRO bypass markers"
+          description: |
+            More than 5 P2-severity hits in 10 minutes. P2 covers
+            forbidden plist keys (iRemovalRecord, iRemovalSignature,
+            BlackHound-Public-Build, iRemovalState), forbidden bundle IDs
+            (com.panyolsoft.blackhound, com.iremovalpro.bypass,
+            com.blackhound.eraser), forbidden build markers
+            (Blackhound iRemovalPro Public build 0.7.1 @2022,
+            iRemovalProWPF), missing DeviceCheck token, missing mTLS
+            client cert. A burst is a strong indicator of an automated
+            bypass attempt, not a single curious click.
+          runbook: |
+            1) Pull /alerts.ph?since=10m to enumerate every check_id.
+            2) Group by source IP — the iRemoval client retries from
+               the same IP for ~30s before failing over.
+            3) If 3+ P2 codes from the same IP, escalate to P1-level
+               treatment (isolate + IR).
+            4) Cross-reference SIGMA_RULES.yml
+               (rule "iRemovalPro_BypassClient_Execution") for any
+               process-execution corroboration.
+
+      - alert: iRemovalPro_DeviceCheckTokenMissing
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P2"}[5m]
+          ) > 0
+        for: 0m
+        labels:
+          severity: high
+          category: icloud_bypass
+          check_id: BY-G-001
+        annotations:
+          summary: "iRemoval PRO request missing Apple DeviceCheck token"
+          description: |
+            BY-G-001 fired: the request did not include a
+            `devicecheck_token` field. The Apple DeviceCheck attestation
+            is mandatory for any legitimate iActivation flow. iRemoval
+            PRO bypasses this check entirely (it does not hold a real
+            Apple-issued DeviceCheck key).
+
+      - alert: iRemovalPro_mTLSClientCertMissing
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P2"}[5m]
+          ) > 0
+        for: 0m
+        labels:
+          severity: high
+          category: icloud_bypass
+          check_id: BY-G-003
+        annotations:
+          summary: "iRemoval PRO request missing mTLS client certificate"
+          description: |
+            BY-G-003 fired: the connection did not present a client
+            certificate during TLS handshake. A genuine iActivation
+            flow requires mutual TLS with an Apple-issued device cert.
+            The iRemoval PRO client side-strips mTLS and uses HMAC
+            over a custom secret instead.
+
+      - alert: iRemovalPro_ForbiddenPlistKey
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P2"}[5m]
+          ) > 0
+        for: 0m
+        labels:
+          severity: high
+          category: icloud_bypass
+          check_id: BY-PLI-001
+        annotations:
+          summary: "Forbidden plist key in iActivation ticket"
+          description: |
+            BY-PLI-001 fired: the request body contained one of the
+            forbidden plist keys: iRemovalRecord, iRemovalSignature,
+            BlackHound-Public-Build, iRemovalState. These keys are
+            only used by the iRemoval/BlackHound toolchain to smuggle
+            tool-specific state into Apple's activation pipeline.
+
+      - alert: iRemovalPro_ForbiddenBundleID
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P2"}[5m]
+          ) > 0
+        for: 0m
+        labels:
+          severity: high
+          category: icloud_bypass
+          check_id: BY-EXT-001
+        annotations:
+          summary: "Forbidden iOS bundle ID in iActivation ticket"
+          description: |
+            BY-EXT-001 fired: the request advertised a forbidden
+            bundle ID (com.panyolsoft.blackhound,
+            com.iremovalpro.bypass, com.blackhound.eraser). These are
+            the only bundle IDs the iRemoval PRO WPF client injects
+            into the activation request.
+
+      - alert: iRemovalPro_ForbiddenBuildMarker
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P2"}[5m]
+          ) > 0
+        for: 0m
+        labels:
+          severity: high
+          category: icloud_bypass
+          check_id: BY-EXT-002
+        annotations:
+          summary: "Forbidden build marker in iActivation ticket"
+          description: |
+            BY-EXT-002 fired: client_build_marker matched one of the
+            known BlackHound / iRemoval PRO strings
+            ("Blackhound iRemovalPro Public build 0.7.1 @2022" or
+            "iRemovalProWPF").
+
+      # -------------------------------------------------------------------
+      # P3 — session / timing anomalies
+      # -------------------------------------------------------------------
+      - alert: iRemovalPro_ServerProcMs_OutsideCorridor
+        expr: |
+          iact_mock_server_proc_ms_client_claim{quantile="0.95"} > 30000
+          or iact_mock_server_proc_ms_client_claim{quantile="0.95"} < 5
+        for: 5m
+        labels:
+          severity: medium
+          category: icloud_bypass
+          check_id: BY-SES-002
+        annotations:
+          summary: "Client-claimed server_proc_ms outside [5ms, 30s] corridor"
+          description: |
+            The client is advertising a server processing time that
+            is outside the realistic range. The iRemoval PRO client
+            uses a fake ~1ms or ~8ms number that bypasses timing
+            back-pressure. The defender's corridor is
+            timing_floor_ms=5 and timing_ceiling_ms=30000.
+
+      - alert: iRemovalPro_ServerProcMs_DeltaHigh
+        expr: |
+          iact_mock_server_proc_ms_delta{quantile="0.95"} > 10
+        for: 5m
+        labels:
+          severity: medium
+          category: icloud_bypass
+          check_id: BY-SES-002
+        annotations:
+          summary: "Large |measured - client_claim| delta for server_proc_ms"
+          description: |
+            The 95th-percentile delta between the server-measured
+            processing time and the client-claimed value is over 10ms.
+            A genuine client cannot accurately predict the server's
+            processing time, so a high delta is a strong bypass signal.
+
+      - alert: iRemovalPro_DefenderHits_P3_Spike
+        expr: |
+          increase(
+            iact_mock_defender_alerts_total{severity="P3"}[15m]
+          ) > 20
+        for: 5m
+        labels:
+          severity: low
+          category: icloud_bypass
+        annotations:
+          summary: "P3 (heuristic) defender hits spiking"
+          description: |
+            P3 hits alone are noisy (replays, clock drift, first-seen
+            HWID) but a sudden spike correlates with a sustained
+            bypass attempt. Cross-correlate with P2 alerts and
+            SIGMA_RULES.yml for higher confidence.
+
+
+# ============================================================================
+# Splunk SPL — equivalent searches
+# ============================================================================
+# 1) P1 — known bypass public key
+#    index=iremoval_lab source="*mock_server*"
+#    | rex field=_raw "BY-MOD-001"
+#    | stats count by src_ip, udid
+#    | where count > 0
+#
+# 2) P2 burst (5+ in 10m from same IP)
+#    index=iremoval_lab source="*mock_server*"
+#    | rex field=_raw "severity\":\"(?<sev>P[123])\""
+#    | where sev="P2"
+#    | bucket _time span=10m
+#    | stats count by _time, src_ip
+#    | where count > 5
+#
+# 3) Forbidden bundle ID
+#    index=iremoval_lab source="*mock_server*"
+#    | rex field=_raw "BY-EXT-001"
+#    | stats count by src_ip
+#
+# 4) Server-proc-ms corridor
+#    index=iremoval_lab source="*mock_server*" metric_name="*proc_ms*"
+#    | rex field=_raw "client_claim\":(?<claim>[0-9.]+)"
+#    | where claim < 5 OR claim > 30000
+#    | stats count by src_ip
+
+
+# ============================================================================
+# Elastic KQL — equivalent queries
+# ============================================================================
+# 1) P1 — known bypass public key
+#    event.kind:alert AND
+#    labels.check_id:"BY-MOD-001" AND
+#    event.module:"iact_reproducer"
+#
+# 2) P2 — forbidden bundle ID
+#    event.kind:alert AND
+#    labels.check_id:"BY-EXT-001"
+#
+# 3) P2 — missing DeviceCheck token
+#    event.kind:alert AND
+#    labels.check_id:"BY-G-001"
+#
+# 4) Forbidden plist key
+#    event.kind:alert AND
+#    labels.check_id:"BY-PLI-001"
+#
+# 5) Build-marker
+#    event.kind:alert AND
+#    labels.check_id:"BY-EXT-002"
+#
+# 6) Correlate with iRemoval PRO WPF execution (cross-corpus)
+#    event.module:"sysmon" AND
+#    process.command_line:*iRemovalPro*
+#    | append {...} | transposed
+#
+# 7) Server-proc-ms outside corridor
+#    labels.check_id:"BY-SES-002" AND
+#    (labels.measured:(* < 5) OR labels.measured:(* > 30000))

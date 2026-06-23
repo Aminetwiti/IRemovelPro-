@@ -106,7 +106,7 @@ de l'outil iRemoval PRO. Le pipeline d'attaque suit un schéma en 4 couches :
 
 1. **Utilisateur** clique sur `checkrainButt` dans l'UI WPF
 2. **EXE** appelle `Library.Action(9)` via P/Invoke
-3. **DLL** (NativeAOT) prépare l'environnement : 
+3. **DLL** (NativeAOT) prépare l'environnement :
    - Connexion USB via libimobiledevice
    - Vérification de l'état de l'appareil (`iDevice_GetState`)
    - Déclenchement de l'exploit checkm8 (DFU mode)

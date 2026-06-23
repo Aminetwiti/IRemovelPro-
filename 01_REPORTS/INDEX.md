@@ -25,6 +25,8 @@
 | 16 | [`COMPLETE_SYSTEM_ARCHITECTURE.md`](COMPLETE_SYSTEM_ARCHITECTURE.md) | 🏛️ **ARCHITECTURE** | Phase 7 | ~22 KB | **Architecture end-to-end** — flux 6 phases (setup → jailbreak → auth → exploit → activation → confirmation), 9 endpoints serveur, 3 nonces, 5 hooks, RSA-1024, ideviceproxy `lao abc ofq` |
 | 17 | [`JAILBREAK_MECHANISM.md`](JAILBREAK_MECHANISM.md) | 🔓 **JAILBREAK** | Phase 8 | ~18 KB | **Comment iRemoval PRO jailbreak l'iPhone** — flux 7 phases, checkm8/palera1n, 5 Mach-O embarqués, 319 GZIP, 156 PE, Cydia/Substrate, comparaison jailbreaks historiques |
 | 17 | [`../../CAPSTONE_REPORT.md`](../../CAPSTONE_REPORT.md) | 🏆 **CAPSTONE** | Final | ~18 KB | **Rapport final** : vue exécutive 30 sec, 17 documents, 5 SA, 5 contremesures, OSINT 3-sources, pipeline reproductible, dashboard HTML |
+| 18 | [`RAPPORT_FINAL_5_AXES.md`](RAPPORT_FINAL_5_AXES.md) | 🛡️ **5 AXES** | v5.2-LAB-0.2 | ~16 KB | **5 axes défensifs** : test runner, YARA dédup, middleware Defender, doc EDR, décompilation ilspycmd |
+| 19 | [`RAPPORT_COMPLET_V5.2-LAB-0.3.md`](RAPPORT_COMPLET_V5.2-LAB-0.3.md) | ⭐ **COMPLET v0.3** | v5.2-LAB-0.3 | ~44 KB | **Rapport consolidé final** : 5 axes + §17 (Chaos.Crypto Mono) + §18 (XOR refutation) + §19 (Bundle ID + HWID + server_proc_ms + SIEM) |
 
 ## 📚 Documents complémentaires
 
