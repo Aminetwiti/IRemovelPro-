@@ -209,6 +209,9 @@ class _State:
             "BY-E-001": 0, "BY-E-002": 0,
             # Filesystem / disk-image checks (P3).
             "BY-D-001": 0, "BY-D-002": 0,
+            # AFC injection traces (P2) — server-side relay detection.
+            "BY-AFC-001": 0, "BY-AFC-002": 0, "BY-AFC-003": 0,
+            "BY-AFC-004": 0, "BY-AFC-005": 0,
         }
         # ----------------------------------------------------------------- #
         # Item 15 — Severity-tiered alert counters + recent-alert ring.
@@ -225,12 +228,15 @@ class _State:
             # P1 — known bypass public key (page immediately).
             "BY-MOD-001": "P1",
             # P2 — explicit bypass markers (DeviceCheck / mTLS / cert
-            # pinning / MDM bypass / forbidden plist keys).
+            # pinning / MDM bypass / forbidden plist keys / AFC injection).
             "BY-PLI-001": "P2",
             "BY-EXT-001": "P2",
             "BY-G-001": "P2", "BY-G-002": "P2",
             "BY-G-003": "P2", "BY-G-004": "P2",
             "BY-F-001": "P2", "BY-F-002": "P2",
+            "BY-AFC-001": "P2", "BY-AFC-002": "P2",
+            "BY-AFC-003": "P2", "BY-AFC-004": "P2",
+            "BY-AFC-005": "P2",
             # Everything else falls back to P3 (session/timing/internal).
         }
         # ----------------------------------------------------------------- #

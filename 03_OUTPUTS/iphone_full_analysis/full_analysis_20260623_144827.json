@@ -1,0 +1,483 @@
+{
+  "metadata": {
+    "tool": "iPhone Comprehensive Analysis v1.0",
+    "timestamp": "2026-06-23T14:48:08.479093",
+    "device": {
+      "model_identifier": "iPhone16,2",
+      "model_name": "iPhone 15 Pro Max",
+      "device_name": "iPhone",
+      "serial_number": "JRFJ2K0667",
+      "udid": "00008130-001C68110AA0001C",
+      "ios_version": "16.5",
+      "ios_build": "23F77",
+      "baseband": "3.50.08",
+      "activation_state": "Unactivated",
+      "icloud_lock": true,
+      "wifi_mac": "28:34:ff:e9:bd:58",
+      "bluetooth_mac": "28:34:ff:d5:71:1e",
+      "product_type": "12A8",
+      "vendor_id": "05AC"
+    }
+  },
+  "axe1_device_info": {
+    "usb_devices": [],
+    "wmi_properties": [],
+    "apple_services": [],
+    "device_profile": {
+      "model_identifier": "iPhone16,2",
+      "model_name": "iPhone 15 Pro Max",
+      "device_name": "iPhone",
+      "serial_number": "JRFJ2K0667",
+      "udid": "00008130-001C68110AA0001C",
+      "ios_version": "16.5",
+      "ios_build": "23F77",
+      "baseband": "3.50.08",
+      "activation_state": "Unactivated",
+      "icloud_lock": true,
+      "wifi_mac": "28:34:ff:e9:bd:58",
+      "bluetooth_mac": "28:34:ff:d5:71:1e",
+      "product_type": "12A8",
+      "vendor_id": "05AC",
+      "ecid": "Not extracted (requires lockdownd)",
+      "imei": "Not extracted (requires lockdownd)",
+      "capacity_gb": "Not extracted",
+      "color": "Not extracted",
+      "firmware_version": "16.5",
+      "security_patch_level": "June 2023 (iOS 16.5)",
+      "device_class": "iPhone",
+      "product_type_identifier": "12A8",
+      "usb_vendor_id_hex": "0x05AC",
+      "usb_product_id_hex": "0x12A8",
+      "lockdownd_port": 62078,
+      "detection_timestamp": "2026-06-23T14:48:16.591140",
+      "source": "iRemoval PRO detection + USB PnP"
+    }
+  },
+  "axe2_device_logs": {
+    "usb_events": [
+      {
+        "time": "/Date(1782220267825)/",
+        "id": 19,
+        "level": "Information",
+        "message": "Installation r‚ussieÿ: Windows a install‚ la mise … jour suivanteÿ: Apple, Inc. - USBDevice - 538.0.0.0"
+      },
+      {
+        "time": "/Date(1782220267103)/",
+        "id": 225,
+        "level": "Avertissement",
+        "message": "L'application \\Device\\HarddiskVolume4\\Program Files\\Common Files\\Apple\\Mobile Device Support\\AppleMobileDeviceService.exe avec l'ID de processus 27620 a arrˆt‚ le retrait ou l'‚jection pour le p‚riph‚rique USB\\VID_05AC&PID_12A8\\00008130001C68110AA0001C."
+      },
+      {
+        "time": "/Date(1782220261319)/",
+        "id": 43,
+        "level": "Information",
+        "message": "Installation d‚marr‚e : Windows a commenc‚ l'installation de la mise … jour suivante : Apple, Inc. - USBDevice - 538.0.0.0"
+      },
+      {
+        "time": "/Date(1782216581474)/",
+        "id": 18,
+        "level": "Information",
+        "message": "Windows ne peut pas stocker les codes d'authentification Bluetooth (cl‚s de liaison) sur la carte locale. Les claviers Bluetooth ne fonctionnent peut-ˆtre pas dans le BIOS systŠme lors du d‚marrage."
+      },
+      {
+        "time": "/Date(1782159775903)/",
+        "id": 225,
+        "level": "Avertissement",
+        "message": "L'application \\Device\\HarddiskVolume4\\Program Files\\Common Files\\Apple\\Mobile Device Support\\AppleMobileDeviceService.exe avec l'ID de processus 27620 a arrˆt‚ le retrait ou l'‚jection pour le p‚riph‚rique USB\\VID_05AC&PID_12A8\\00008130001C68110AA0001C."
+      },
+      {
+        "time": "/Date(1782159211842)/",
+        "id": 24578,
+        "level": "Information",
+        "message": "Inscription de la lecture automatique r‚ussie pour le p‚riph‚riqueÿUSB\\VID_05AC&PID_12A8&REV_1602&MI_00."
+      },
+      {
+        "time": "/Date(1782159211839)/",
+        "id": 24577,
+        "level": "Information",
+        "message": "Inscription r‚ussie des couches de compatibilit‚ du programme d'acquisition d'images et du lecteur multim‚dia pour le p‚riph‚riqueÿUSB\\VID_05AC&PID_12A8&REV_1602&MI_00. Des bits de couche 0x00000001 ont ‚t‚ demand‚s, des bits de couche 0x00000001 ont ‚t‚ inscrits."
+      },
+      {
+        "time": "/Date(1782159210553)/",
+        "id": 20003,
+        "level": "Information",
+        "message": "La gestion des pilotes a termin‚ le processus d'ajout du service WinUsb pour l'ID d'instance de p‚riph‚rique USB\\VID_05AC&PID_12A8&MI_00\\7&2D6807D0&1&0000 avec le statut suivantÿ: 0."
+      },
+      {
+        "time": "/Date(1782159210551)/",
+        "id": 20003,
+        "level": "Information",
+        "message": "La gestion des pilotes a termin‚ le processus d'ajout du service WUDFWpdMtp pour l'ID d'instance de p‚riph‚rique USB\\VID_05AC&PID_12A8&MI_00\\7&2D6807D0&1&0000 avec le statut suivantÿ: 0."
+      },
+      {
+        "time": "/Date(1782159210525)/",
+        "id": 10000,
+        "level": "Information",
+        "message": "Un package de pilotes utilisant une infrastructure de pilotes mode-utilisateur version 2.31.0 est en cours d'installation sur le p‚riph‚rique USB\\VID_05AC&PID_12A8&MI_00\\7&2D6807D0&1&0000."
+      },
+      {
+        "time": "/Date(1782159210632)/",
+        "id": 24576,
+        "level": "Information",
+        "message": "L'installation des pilotes pour le p‚riph‚riqueÿUSB\\VID_05AC&PID_12A8&REV_1602&MI_00 s'est correctement d‚roul‚e."
+      },
+      {
+        "time": "/Date(1782124835559)/",
+        "id": 19,
+        "level": "Information",
+        "message": "Installation r‚ussieÿ: Windows a install‚ la mise … jour suivanteÿ: Apple, Inc. - System - 1.1.7.0"
+      },
+      {
+        "time": "/Date(1782124835214)/",
+        "id": 43,
+        "level": "Information",
+        "message": "Installation d‚marr‚e : Windows a commenc‚ l'installation de la mise … jour suivante : Apple, Inc. - System - 1.1.7.0"
+      },
+      {
+        "time": "/Date(1782124834876)/",
+        "id": 19,
+        "level": "Information",
+        "message": "Installation r‚ussieÿ: Windows a install‚ la mise … jour suivanteÿ: Apple, Inc. - USBDevice - 538.0.0.0"
+      },
+      {
+        "time": "/Date(1782124834271)/",
+        "id": 43,
+        "level": "Information",
+        "message": "Installation d‚marr‚e : Windows a commenc‚ l'installation de la mise … jour suivante : Apple, Inc. - USBDevice - 538.0.0.0"
+      },
+      {
+        "time": "/Date(1782124833959)/",
+        "id": 19,
+        "level": "Information",
+        "message": "Installation r‚ussieÿ: Windows a install‚ la mise … jour suivanteÿ: Apple, Inc. - USBDevice - 1.1.5.0"
+      },
+      {
+        "time": "/Date(1782124833541)/",
+        "id": 43,
+        "level": "Information",
+        "message": "Installation d‚marr‚e : Windows a commenc‚ l'installation de la mise … jour suivante : Apple, Inc. - USBDevice - 1.1.5.0"
+      },
+      {
+        "time": "/Date(1782123559267)/",
+        "id": 18,
+        "level": "Information",
+        "message": "Windows ne peut pas stocker les codes d'authentification Bluetooth (cl‚s de liaison) sur la carte locale. Les claviers Bluetooth ne fonctionnent peut-ˆtre pas dans le BIOS systŠme lors du d‚marrage."
+      },
+      {
+        "time": "/Date(1782065602019)/",
+        "id": 225,
+        "level": "Avertissement",
+        "message": "L'application \\Device\\HarddiskVolume4\\Users\\amine\\Desktop\\ICLOUD\\tr4mpass\\libimobiledevice-win\\irecovery.exe avec l'ID de processus 25232 a arrˆt‚ le retrait ou l'‚jection pour le p‚riph‚rique USB\\VID_05AC&PID_1281\\SDOM:01_CPID:8130_CPRV:11_CPFM:03_SCEP:01_BDID:06_ECID:001C68110AA0001C_IBFL:3D_SIKA:"
+      },
+      {
+        "time": "/Date(1782065564827)/",
+        "id": 225,
+        "level": "Avertissement",
+        "message": "L'application \\Device\\HarddiskVolume4\\Users\\amine\\Desktop\\ICLOUD\\tr4mpass\\libimobiledevice-win\\irecovery.exe avec l'ID de processus 25232 a arrˆt‚ le retrait ou l'‚jection pour le p‚riph‚rique USB\\VID_05AC&PID_1281\\SDOM:01_CPID:8130_CPRV:11_CPFM:03_SCEP:01_BDID:06_ECID:001C68110AA0001C_IBFL:3D_SIKA:"
+      }
+    ],
+    "apple_log_files": [
+      "C:\\ProgramData\\Apple Computer\\iTunes\\SC Info\\SC Info.txt",
+      "C:\\Users\\amine\\AppData\\Roaming\\Apple Computer\\Logs\\asl.111958_220626.log",
+      "C:\\Users\\amine\\AppData\\Roaming\\Apple Computer\\Logs\\asl.131016_230626.log",
+      "C:\\Users\\amine\\AppData\\Roaming\\Apple Computer\\Logs\\asl.131402_230626.log",
+      "C:\\Users\\amine\\AppData\\Roaming\\Apple Computer\\Logs\\asl.191954_220626.log",
+      "C:\\Users\\amine\\AppData\\Roaming\\Apple Computer\\iTunes\\iPhone Updater Logs\\iPhoneUpdater.log"
+    ],
+    "iremoval_logs": [
+      "c:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\logs\\hmac_secret.json",
+      "c:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\logs\\s7_standalone.log"
+    ],
+    "app_events": [
+      {
+        "time": "/Date(1782156330794)/",
+        "id": 1026,
+        "level": "Erreur",
+        "message": "Application: ilspycmd.exe\nCoreCLR Version: 6.0.1423.7309\n.NET Version: 6.0.14\nDescription: The process was terminated due to an unhandled exception.\nException Info: System.IO.IOException: La syntaxe du nom de fichier, de r‚pertoire ou de volume est incorrecte. : 'C:\\Users\\amine\\Downloads\\[Bypassfrpf"
+      },
+      {
+        "time": "/Date(1782156313525)/",
+        "id": 1026,
+        "level": "Erreur",
+        "message": "Application: ilspycmd.exe\nCoreCLR Version: 6.0.1423.7309\n.NET Version: 6.0.14\nDescription: The process was terminated due to an unhandled exception.\nException Info: System.IO.IOException: La syntaxe du nom de fichier, de r‚pertoire ou de volume est incorrecte. : 'C:\\Users\\amine\\Downloads\\[Bypassfrpf"
+      }
+    ]
+  },
+  "axe3_security_analysis": {
+    "activation_lock": {
+      "state": "Unactivated",
+      "icloud_linked": true,
+      "apple_id_bound": true,
+      "find_my_iphone": "Unknown (device unactivated)",
+      "activation_server": "albert.apple.com",
+      "drm_handshake_endpoint": "https://albert.apple.com/deviceservices/drmHandshake",
+      "activation_record_present": false,
+      "bypass_possible_via_software": false,
+      "official_unlock_method": "Apple Support with proof of purchase",
+      "security_level": "MAXIMUM — Secure Enclave + T2 chip protection"
+    },
+    "hardware": {
+      "processor": "A17 Pro (TSMC N3B)",
+      "secure_enclave": "Present — Generation 5+",
+      "sep_core": "Dedicated security coprocessor",
+      "t2_equivalent": "Secure Enclave integrated in A17",
+      "encryption_engine": "AES-256 hardware engine",
+      "key_derivation": "Hardware-backed key hierarchy",
+      "anti_replay": "Effaceable storage (EMF key protected)",
+      "trust_chain": "Boot ROM → iBoot → kernel → SEP → apps",
+      "dfw_mode": "Device Firmware Upgrade (DFU) available",
+      "recovery_mode": "Recovery OS available",
+      "pangu_checkm8": "Not applicable — A17 not vulnerable to checkm8",
+      "palera1n": "Not applicable — A17 not vulnerable",
+      "jailbreak_status": "No public jailbreak for A17/iOS 16.5"
+    },
+    "ios_features": {
+      "activation_lock_server_side": true,
+      "activation_record_encrypted": true,
+      "lockdownd_requires_pairing": true,
+      "usb_restricted_mode": true,
+      "developer_mode_required": true,
+      "sandbox_enforcement": true,
+      "code_signing_enforcement": true,
+      "rootless_filesystem": true,
+      "secure_boot_chain": true,
+      "kernel_integrity_check": true,
+      "ktrr_rokernel": true,
+      "ppl_page_protection": true,
+      "mapped_io_protection": true
+    },
+    "lockdownd": {
+      "port": 62078,
+      "protocol": "lockdownd",
+      "pairing_required": true,
+      "pairing_type": "USB host pairing",
+      "handshake": " plist-based request/response",
+      "ssl_possible": "After pairing, SSL tunnel available",
+      "activation_record_path": "/var/root/Library/Lockdown/device_private_key.pem",
+      "server_pairing_path": "/var/root/Library/Lockdown/",
+      "escrow_bag": "Required for trusted host pairing",
+      "apple_cert_chain": "Apple Root CA → Apple Mobile Device Certificate",
+      "drm_handshake_flow": "Device → drmHandshake → Apple Server → Activation Record"
+    },
+    "risk_assessment": {
+      "activation_bypass_risk": "CRITICAL — No known software bypass for A17",
+      "hardware_bypass_risk": "IMPOSSIBLE — Secure Enclave prevents direct key extraction",
+      "network_bypass_risk": "LOW — DRM handshake requires valid Apple server response",
+      "social_bypass_risk": "MEDIUM — Phishing/previous owner contact possible",
+      "official_unlock_risk": "LOW — Requires valid proof of purchase",
+      "overall_rating": "🔒 SECURE — Device is effectively locked and protected"
+    }
+  },
+  "axe4_iremoval_communication": {
+    "exe": {
+      "path": "c:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\IRemovalPro\\iRemoval PRO.exe",
+      "size_bytes": 2792448,
+      "size_mb": 2.79,
+      "sha256": "07452a1e12fe3a36519611b3932ae43c",
+      "pe_signature": "4d5a",
+      "is_pe": true
+    },
+    "dll": {
+      "path": "c:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\IRemovalPro\\iremovalpro.dll",
+      "size_bytes": 31264768,
+      "size_mb": 31.26,
+      "sha256": "08d283cc16c92582594a277c23625af9",
+      "pe_signature": "4d5a",
+      "is_pe": true,
+      "is_dotnet": false
+    },
+    "dll_strings": {
+      "server_url": [
+        "https://s13.iremovalpro.com/iremovalActivation/checkm8.ph",
+        "https://s13.iremovalpro.com/iremovalActivation/mf7.ph",
+        "https://s13.iremovalpro.com/version33.tx",
+        "https://s13.iremovalpro.com/iremovalActivation/ars2.ph",
+        "https://s13.iremovalpro.com/iremovalActivation/mf5.ph"
+      ],
+      "apple_url": [
+        "<key>com.apple.CommCenter.fine-grained</key>",
+        "*http://www.apple.com/certificateauthority/0",
+        "#http://ocsp.apple.com/ocsp03-wwdr190",
+        "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">",
+        "https://www.apple.com/appleca/0",
+        "http://crl.apple.com/root.crl0"
+      ],
+      "lockdownd": [
+        "&AmfiLockdownService:InstallationProxyServiceIFPDZ",
+        "(StartLockdownService@",
+        "<key>com.apple.private.lockdown.finegrained-set</key>",
+        "Lockdown",
+        "<string>NULL/SBLockdownEverRegisteredKey</string>",
+        "LockdownClient.LockdownServiceProvider",
+        "UidNode2NetimobiledeviceException2ConnectionFailedException*FatalPairingException,IncorrectModeException\"LockdownException4NoDeviceConnectedException$NotPairedException2PasswordRequiredException*ServiceStartException2UsbmuxConnectionException",
+        "LockdownService2PlistUsbmuxLockdownClient(UsbmuxLockdownClient\"ServiceConnection",
+        "\"get_LockdownError@",
+        "LockdownError",
+        "(LockdownErrorMethods",
+        "<string>lockdown-identities</string>",
+        "<key>com.apple.private.lockdown.finegrained-get</key>",
+        "<key>com.apple.private.lockdown.ignore-mc-name-restriction</key>"
+      ],
+      "idevice_commands": [
+        "iDevice_Pair",
+        "iDevice_LnchV2 iDevice_Activate iDevice_GetState*iDevice_EnableDevMode*Firewall_iDeviceProxy",
+        "iDevice_Tnl",
+        "ideviceproxy.ex",
+        "\"<iDevice_Tnl>b__0",
+        "iDevice_Restart,iDevice_RemoveProfiles",
+        ",<Button_Click_5>d__121,<Imei_MouseDown>d__114(<Sn_MouseDown>d__113:<iDevice_RemoveProfiles>d__81",
+        "/c ideviceproxy ad2 aw",
+        "ExecuteAsAdmin*SecureClearAndCollect$iDevice_Deactivate"
+      ],
+      "crypto_refs": [
+        "XTLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256",
+        "$RSAKeyFormatHelper'0",
+        "PurgeBuffers\"PurgeBuffersAsync@",
+        "FTLS_DH_DSS_WITH_ARIA_128_CBC_SHA256",
+        "JTLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384",
+        "v><HmacAlgorithms>k__BackingField",
+        "@TLS_DHE_PSK_WITH_AES_256_CBC_SHAE",
+        "CreateSHA256",
+        "8TLS_DHE_RSA_WITH_AES_256_CCM",
+        "aes192-cb",
+        "Keys used with the ECDsaCng algorithm must have an algorithm group of ECDsa",
+        "The DateTimeStyles values AssumeLocal and AssumeUniversal cannot be used together",
+        "TTLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384",
+        "$ImportRSAPublicKey&ImportRSAPrivateKey,<ImportFromPem>b__54_0",
+        "During tdevelopersartificialequivalentoriginatedCommissionattachment<span id=\"there wereNederlandsbeyond theregisteredjournalistfrequentlyall of thelang=\"en\" </style>"
+      ],
+      "activation_refs": [
+        "com.apple.mobileactivation",
+        "__logos_method$_ungrouped$MobileActivationDaemon$handleActivationInfo$withCompletionBlock$",
+        "<string>ActivationLock</string>",
+        "82(WaitingForActivation",
+        "&ActivateWithSession$GetActivationState",
+        "<key>com.apple.mobileactivationd.device-identifiers</key>",
+        "<string>NULL/ActivationState</string>",
+        "MobileActivationDaemon",
+        "<string>NULL/GetActivationRecord</string>",
+        "6CreateActivationSessionInfo>CreateActivationInfoWithSession@",
+        "ActivationRecord",
+        "<string>/Library/Logs/mobileactivationd/</string>",
+        "/activation_records/",
+        "<string>systemgroup.com.apple.mobileactivationd</string>",
+        "<string>RequestActivationState</string>"
+      ]
+    },
+    "available_scripts": {
+      "01_pe_analysis": [
+        "pe_parse.py"
+      ],
+      "02_strings": [
+        "strings_extract.py"
+      ],
+      "03_ios_payloads": [
+        "re_blackhound_extract.py",
+        "re_extract_macho.py",
+        "re_extract_macho2.py",
+        "re_macho_check.py"
+      ],
+      "04_deep_static": [
+        "phase4b_driver_deep.py",
+        "phase4b_from_strings.py",
+        "phase4_exe_decompile.py",
+        "re_deep.py",
+        "re_deep2.py",
+        "re_deep3.py",
+        "re_deep4.py",
+        "re_deep5.py"
+      ],
+      "05_network": [
+        "re_bypass_core_hunt.py",
+        "re_extract_certs.py",
+        "re_iact_decode.py",
+        "re_iact_decode2.py",
+        "re_iact_decode3.py",
+        "re_json_keys.py"
+      ],
+      "07_frida": [
+        "frida_trace_iRemoval.py"
+      ],
+      "08_mitmproxy": [
+        "iremo_capture.py"
+      ],
+      "09_server_probe": [
+        "dump_headers.py",
+        "fingerprint_server.py",
+        "probe_endpoints.py"
+      ],
+      "10_runtime_dump": [
+        "extract_keys_from_dump.py",
+        "memory_dump.py"
+      ],
+      "11_nativeaot_unpack": [
+        "nativeaot_unpack.py",
+        "nativeaot_unpack_v2.py"
+      ],
+      "12_bypass_core": [
+        "analyze_iact8_flow.py",
+        "analyze_remaining_binaries.py",
+        "classify_ios_binaries.py",
+        "decode_string_table.py",
+        "dump_activation_strings.py",
+        "dump_iact8_neighborhood.py",
+        "extract_all_certs.py",
+        "extract_all_hooks.py",
+        "extract_bypass_hooks.py",
+        "extract_crypto_assets.py",
+        "extract_ios_strings.py",
+        "find_decryption.py",
+        "find_deployment.py",
+        "find_ecdsa.py",
+        "find_idevice_flow.py",
+        "find_ios_app_paths.py",
+        "find_ios_plist_keys.py",
+        "find_iremov_strings.py",
+        "find_json_after_urls.py",
+        "find_json_keys.py",
+        "find_json_templates.py",
+        "find_rsa_pubkey.py",
+        "find_seckey.py",
+        "find_ssh_deployment.py",
+        "hash_bypass_pubkey.py",
+        "map_pre_url_region.py",
+        "xor_decrypt_strings.py"
+      ],
+      "13_jailbreak_analysis": [
+        "analyze_jailbreak.py",
+        "analyze_jailbreak_windows.py",
+        "extract_embedded_resources.py"
+      ],
+      "99_utils": [
+        "analyze_dll_complete.py",
+        "analyze_dll_imports.py",
+        "analyze_obfuscation.py",
+        "crypto_deep_analysis.py",
+        "detect_iphone.py",
+        "extract_strings_analysis.py",
+        "iphone_full_analysis_4axes.py",
+        "remove_defensive_terms.py",
+        "search_bundle_ids.py",
+        "test_audit_scripts.py",
+        "test_search.py",
+        "_append_s19.py"
+      ]
+    },
+    "server_connectivity": [
+      {
+        "endpoint": "version33.txt",
+        "status_code": 200,
+        "reachable": true,
+        "response_size": 3,
+        "content_preview": "7.2"
+      },
+      {
+        "endpoint": "pub.php",
+        "status_code": 404,
+        "reachable": true,
+        "response_size": 391
+      }
+    ],
+    "iremoval_processes": []
+  }
+}

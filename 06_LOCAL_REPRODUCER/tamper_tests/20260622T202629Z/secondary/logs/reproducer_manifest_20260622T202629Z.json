@@ -1,0 +1,13 @@
+{
+  "classification": "OFFENSIVE _RESEARCH",
+  "generated_at": "2026-06-22T20:26:29.775121+00:00",
+  "key_pem": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\tamper_tests\\20260622T202629Z\\secondary\\keys\\iact8-test_iRemovalOFFENSIVE Test_20260622T202629Z.pem",
+  "bplist_path": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\tamper_tests\\20260622T202629Z\\secondary\\requests\\activation_ticket_20260622T202629Z.bplist",
+  "bplist_size": 1763,
+  "signature_path": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\tamper_tests\\20260622T202629Z\\secondary\\requests\\activation_ticket_20260622T202629Z.sig",
+  "signature_size": 256,
+  "envelope_path": "C:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\06_LOCAL_REPRODUCER\\tamper_tests\\20260622T202629Z\\secondary\\responses\\iact_envelope_20260622T202629Z.json",
+  "alg": "RSA-PKCS1v1.5-SHA256",
+  "udid": "OFFENSIVE -TEST-34DEC8BA",
+  "key_fingerprint_sha256": "be8ef986e91c5bbffd4d3fd68e23f22af68c1a01d5247942d589e65ccff2d8ff"
+}

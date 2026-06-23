@@ -271,7 +271,7 @@ actions:
   - deploy_yara_wire: 05_IOC/YARA_RULES_WIRE.yar
   - deploy_suricata: 05_IOC/SURICATA_RULES.rules
   - deploy_sigma: 05_IOC/SIGMA_RULES.yml
-  - dns_sinkhole: 
+  - dns_sinkhole:
       - s13.iremovalpro.com
       - iremovalpro.com
       - iremovalpro.co

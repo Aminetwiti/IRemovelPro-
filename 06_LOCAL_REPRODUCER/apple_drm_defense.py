@@ -376,8 +376,37 @@ class AppleDRMDefender:
     DEVICECHECK_AUDIENCE: str = "com.apple.devicecheck.activation"
 
     # ------------------------------------------------------------------ #
-    # 2.3 API publique
+    # 2.2.5 Couche AFC — Détection d'injection Apple File Conduit
     # ------------------------------------------------------------------ #
+
+    #: Chaînes de caractères typiques d'une injection AFC (Apple File
+    #: Conduit) trouvées dans le plist forgé ou les traces device.
+    #: Source : ``AFC_INJECTION_ANALYSIS.md`` §2.2, §3.
+    AFC_INJECTION_STRINGS: Tuple[str, ...] = (
+        "/var/mobile/Library/Caches/activation_record.plist",
+        "/var/mobile/Library/Caches/activation_records/",
+        "/var/mobile/Library/Caches/version33.txt",
+        "com.apple.mobile.house_arrest",
+        "com.apple.mobile.afc",
+        "AFCWriteFile",
+        "AFCOpenFile",
+        "ideviceproxy",
+        "afcclient",
+        "BlackHound-AFC",
+    )
+
+    #: Marqueurs de l'état de pairing lockdown. Un ticket légitime
+    #: iTunes contient au moins un de ces champs. Un ticket injecté
+    #: via AFC2 sans iTunes les omet (BY-AFC-001).
+    AFC_LOCKDOWN_PAIRING_KEYS: Tuple[str, ...] = (
+        "PairingOptions",
+        "PairingRequestId",
+        "PairingStatus",
+        "PairingData",
+        "PairingSessionId",
+        "PairingError",
+        "PairingErrorCode",
+    )
 
     def validate_ticket(
         self,
@@ -506,8 +535,10 @@ class AppleDRMDefender:
         # un token absent est *aussi* suspect qu'un token mal-formé).
         reasons.extend(self._check_devicecheck_token(ticket))
 
-        # 17) Client-cert pinning (mTLS) — idem, toujours évalué.
-        reasons.extend(self._check_client_cert_pin(ticket))
+        # --- Couche AFC — Apple File Conduit injection detection --- #
+
+        # 18) AFC traces in plist / missing lockdown pairing
+        reasons.extend(self._check_afc_injection(ticket))
 
         return (len(reasons) == 0), reasons
 
@@ -768,6 +799,94 @@ class AppleDRMDefender:
                 f"— chaîne Apple Device CA absente (BY-G-004)"
             ]
         return []
+
+    def _check_afc_injection(self, ticket: ActivationTicket) -> List[str]:
+        """Détecte les traces d'injection AFC (Apple File Conduit).
+
+        iRemoval PRO écrit le `activation_record.plist` forgé sur
+        l'iPhone via AFC2 (mode house-arrest) sans jamais passer par
+        un lockdown iTunes légitime. Côté serveur, on détecte :
+
+        1. Absence de marqueurs lockdown pairing (BY-AFC-001)
+        2. Présence de chemins AFC dans le plist (BY-AFC-002)
+        3. Service house-arrest / AFC dans le plist (BY-AFC-003)
+        4. Marqueur version33.txt ou ideviceproxy (BY-AFC-004)
+        5. ActivationState mais DeviceCheck absent (BY-AFC-005)
+
+        Source : ``AFC_INJECTION_ANALYSIS.md`` §4, §5.
+        """
+        reasons: List[str] = []
+        plist = ticket.plist_data
+
+        # BY-AFC-001 — missing lockdown pairing record
+        # A legit iTunes activation ALWAYS includes Pairing* keys.
+        has_pairing = any(
+            k in plist for k in self.AFC_LOCKDOWN_PAIRING_KEYS
+        )
+        if not has_pairing and "ActivationState" in plist:
+            reasons.append(
+                "ActivationState présent mais aucun PairingRecord "
+                "lockdown — activation probable via AFC sans iTunes "
+                "pairing (BY-AFC-001)"
+            )
+
+        # BY-AFC-002 / BY-AFC-003 / BY-AFC-004 — AFC strings in plist
+        # We scan all string values for AFC injection traces.
+        def _scan_plist_for_afc(obj: Any) -> List[str]:
+            """Recursive scan for AFC strings in plist values."""
+            hits: List[str] = []
+            if isinstance(obj, str):
+                for s in self.AFC_INJECTION_STRINGS:
+                    if s in obj:
+                        hits.append(s)
+            elif isinstance(obj, dict):
+                for v in obj.values():
+                    hits.extend(_scan_plist_for_afc(v))
+            elif isinstance(obj, list):
+                for item in obj:
+                    hits.extend(_scan_plist_for_afc(item))
+            return hits
+
+        afc_hits = _scan_plist_for_afc(plist)
+        if afc_hits:
+            # Deduplicate while preserving order
+            seen: set = set()
+            unique_hits = []
+            for h in afc_hits:
+                if h not in seen:
+                    seen.add(h)
+                    unique_hits.append(h)
+            for h in unique_hits:
+                if "var/mobile/Library/Caches" in h:
+                    reasons.append(
+                        f"chemin AFC injecté '{h}' détecté dans plist — "
+                        f"injection directe via Apple File Conduit "
+                        f"(BY-AFC-002)"
+                    )
+                elif "house_arrest" in h or "com.apple.mobile.afc" in h:
+                    reasons.append(
+                        f"service AFC '{h}' détecté dans plist — "
+                        f"mode house-arrest / AFC2 actif (BY-AFC-003)"
+                    )
+                else:
+                    reasons.append(
+                        f"marqueur AFC '{h}' dans plist — "
+                        f"trace de l'outil iRemoval PRO / ideviceproxy "
+                        f"(BY-AFC-004)"
+                    )
+
+        # BY-AFC-005 — Activated state without DeviceCheck
+        # A legit iCloud activation always includes a valid
+        # DeviceCheck token. AFC injection skips this step.
+        if plist.get("ActivationState") == "Activated" and \
+                not ticket.devicecheck_token:
+            reasons.append(
+                "ActivationState='Activated' mais DeviceCheck token "
+                "absent — activation locale via AFC contournant "
+                "la vérification Apple (BY-AFC-005)"
+            )
+
+        return reasons
 
     # ------------------------------------------------------------------ #
     # 2.3.2 Bootstrap des sessions légitimes

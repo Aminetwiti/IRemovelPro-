@@ -1,0 +1,17 @@
+ond.status</key>
+	<true/>
+	<key>com.apple.managedconfiguration.profiled-access</key>
+	<true/>
+	<key>com.apple.mobileactivationd.spi</key>
+	<true/>
+	<key>com.apple.mobilemail.mailservices</key>
+	<true/>
+	<key>com.apple.nano.nanoregistry</key>
+	<true/>
+	<key>com.apple.nfcd.hwmanager</key>
+	<true/>
+	<key>com.apple.nfcd.seshat</key>
+	<true/>
+	<key>com.apple.private.MobileActivation</key>
+	<array>
+		<s

@@ -49,10 +49,17 @@ _TS = _dt.datetime.now(tz=_dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 _TAMPER_ROOT = _PKG_ROOT / "tamper_tests" / _TS
 
 
-def _run_pipeline() -> orchestrator.ReproducerOutput:
-    """Run the 4-step pipeline into a fresh sub-root."""
+def _run_pipeline(sub: str = "primary") -> orchestrator.ReproducerOutput:
+    """Run the 4-step pipeline into a fresh sub-root.
+
+    The 2nd invocation uses ``sub="secondary"`` so its on-disk artefacts
+    (key, bplist, sig, envelope) live in a different sub-directory and
+    cannot be overwritten by a 2nd `run_pipeline` call happening in the
+    same wall-clock second.
+    """
+    sub_root = _TAMPER_ROOT / sub
     return orchestrator.run_pipeline(
-        out_root=_TAMPER_ROOT,
+        out_root=sub_root,
         existing_pem=None,  # always generate a fresh key
         hash_name="sha256",
         udid=None,           # let the builder synthesise a tagged UDID
@@ -133,7 +140,7 @@ def main() -> int:
     print(f"iAct8 pipeline tamper matrix — root: {_TAMPER_ROOT}")
     print("=" * 72)
 
-    out = _run_pipeline()
+    out = _run_pipeline(sub="primary")
     pub_path = out.key_pem_path.with_suffix(".pub")
     if not pub_path.is_file():
         # Extract pub from priv if .pub not present (it normally is)
@@ -193,7 +200,7 @@ def main() -> int:
     cases.append(("empty bplist (len=0) → FAIL", False, ok))
 
     # 8. positive with a different fresh pipeline (also OK)
-    out2 = _run_pipeline()
+    out2 = _run_pipeline(sub="secondary")
     pub2 = out2.key_pem_path.with_suffix(".pub")
     if not pub2.is_file():
         priv2 = serialization.load_pem_private_key(

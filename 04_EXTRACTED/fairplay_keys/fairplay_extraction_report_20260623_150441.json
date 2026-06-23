@@ -1,0 +1,606 @@
+{
+  "tool": "FairPlay Key Extraction v1.0",
+  "timestamp": "2026-06-23T15:04:37.443858",
+  "dll_path": "c:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\IRemovalPro\\iremovalpro.dll",
+  "findings": {
+    "certificates": [
+      {
+        "marker": "Apple Root CA",
+        "offset": "0x0089f7b2",
+        "length": 782,
+        "sha256": "0619cd6142aea807e87f32fb2c3feaca4d38bf27e6bc2ab3b901bb226c1c0eec",
+        "file_der": "cert_0x0089f7b2_Apple_Root_CA.der",
+        "file_b64": "cert_0x0089f7b2_Apple_Root_CA.b64",
+        "file_pem": "cert_0x0089f7b2_Apple_Root_CA.pem"
+      },
+      {
+        "marker": "Apple Root CA",
+        "offset": "0x0089fbd8",
+        "length": 935,
+        "sha256": "56c0390dac16f0e3e77696ff42b6e83ef66f77fef878ba505b10571f64c9ff44",
+        "file_der": "cert_0x0089fbd8_Apple_Root_CA.der",
+        "file_b64": "cert_0x0089fbd8_Apple_Root_CA.b64",
+        "file_pem": "cert_0x0089fbd8_Apple_Root_CA.pem"
+      },
+      {
+        "marker": "Apple Worldwide Developer Relations Certification Authority",
+        "offset": "0x008a0097",
+        "length": 1174,
+        "sha256": "68722df6bf7ab3907a907aaaeac7ff3839cac6fd718403175bac53267a77f42a",
+        "file_der": "cert_0x008a0097_Apple_Worldwide_Developer_Rela.der",
+        "file_b64": "cert_0x008a0097_Apple_Worldwide_Developer_Rela.b64",
+        "file_pem": "cert_0x008a0097_Apple_Worldwide_Developer_Rela.pem"
+      },
+      {
+        "marker": "Apple Worldwide Developer Relations Certification Authority",
+        "offset": "0x008a0645",
+        "length": 935,
+        "sha256": "980e794e4b6a0cb7d5c40ee41b548deec7b45583a42aa049bd08dd7c3f86599b",
+        "file_der": "cert_0x008a0645_Apple_Worldwide_Developer_Rela.der",
+        "file_b64": "cert_0x008a0645_Apple_Worldwide_Developer_Rela.b64",
+        "file_pem": "cert_0x008a0645_Apple_Worldwide_Developer_Rela.pem"
+      },
+      {
+        "marker": "Apple Worldwide Developer Relations Certification Authority",
+        "offset": "0x008c7210",
+        "length": 935,
+        "sha256": "25930d1ba1f255eae13fd36e00d6cc9e9cf1798d226c76f6f94fb3ac24138de6",
+        "file_der": "cert_0x008c7210_Apple_Worldwide_Developer_Rela.der",
+        "file_b64": "cert_0x008c7210_Apple_Worldwide_Developer_Rela.b64",
+        "file_pem": "cert_0x008c7210_Apple_Worldwide_Developer_Rela.pem"
+      },
+      {
+        "marker": "extra(Apple,Certification,Authority,Root)",
+        "offset": "0x0089fbd4",
+        "length": 1215,
+        "sha256": "b0b1730ecbc7ff4505142c49f1295e6eda6bcaed7e2c68c5be91b5a11001f024",
+        "file_der": "cert_extra_0x0089fbd4_(1211b).der"
+      }
+    ],
+    "rsa_keys": [
+      {
+        "offset": "0x0089f8f1",
+        "length": 294,
+        "sha256": "02233ddaad63ae72154b9000d86245f922555909c89ec76073c4fd81304dd19f",
+        "has_rsa_oid": true,
+        "file_der": "rsa_pubkey_raw_0x0089f8f1.der"
+      },
+      {
+        "offset": "0x0089fcdb",
+        "length": 294,
+        "sha256": "eb4993efa9b089e593418aa893f8e93a7374d810e52fcbe01e7f1d7e92a6d024",
+        "has_rsa_oid": true,
+        "file_der": "rsa_pubkey_raw_0x0089fcdb.der"
+      },
+      {
+        "offset": "0x008a01fd",
+        "length": 294,
+        "sha256": "753b00cd69ef60605ae7cb8358ce77d5cd1072f4e6849943aced1eef920574bd",
+        "has_rsa_oid": true,
+        "file_der": "rsa_pubkey_raw_0x008a01fd.der"
+      }
+    ],
+    "fairplay_templates": [
+      {
+        "term": "fairplay-client",
+        "description": "FairPlay client entitlement",
+        "encoding": "ASCII",
+        "offset": "0x008fb556",
+        "total_hits": 1,
+        "context_file": "fp_fairplay_client_ASCII_0x008fb556.txt"
+      },
+      {
+        "term": "DeviceCertificate",
+        "description": "Device certificate reference",
+        "encoding": "ASCII",
+        "offset": "0x007cf6a2",
+        "total_hits": 4,
+        "context_file": "fp_DeviceCertificate_ASCII_0x007cf6a2.txt"
+      },
+      {
+        "term": "DeviceCertificate",
+        "description": "Device certificate reference",
+        "encoding": "ASCII",
+        "offset": "0x0082a89e",
+        "total_hits": 4,
+        "context_file": "fp_DeviceCertificate_ASCII_0x0082a89e.txt"
+      },
+      {
+        "term": "DeviceCertificate",
+        "description": "Device certificate reference",
+        "encoding": "ASCII",
+        "offset": "0x008c5fb4",
+        "total_hits": 4,
+        "context_file": "fp_DeviceCertificate_ASCII_0x008c5fb4.txt"
+      },
+      {
+        "term": "GetActivationRecord",
+        "description": "Activation record getter",
+        "encoding": "ASCII",
+        "offset": "0x008faf7b",
+        "total_hits": 1,
+        "context_file": "fp_GetActivationRecord_ASCII_0x008faf7b.txt"
+      },
+      {
+        "term": "ActivationState",
+        "description": "Activation state property",
+        "encoding": "UTF16",
+        "offset": "0x00a2fc25",
+        "total_hits": 4,
+        "context_file": "fp_ActivationState_UTF16_0x00a2fc25.txt"
+      },
+      {
+        "term": "ActivationState",
+        "description": "Activation state property",
+        "encoding": "ASCII",
+        "offset": "0x0082b817",
+        "total_hits": 4,
+        "context_file": "fp_ActivationState_ASCII_0x0082b817.txt"
+      },
+      {
+        "term": "ActivationState",
+        "description": "Activation state property",
+        "encoding": "ASCII",
+        "offset": "0x0089eca7",
+        "total_hits": 4,
+        "context_file": "fp_ActivationState_ASCII_0x0089eca7.txt"
+      },
+      {
+        "term": "ActivationRecord",
+        "description": "Activation record structure",
+        "encoding": "ASCII",
+        "offset": "0x007b2db7",
+        "total_hits": 6,
+        "context_file": "fp_ActivationRecord_ASCII_0x007b2db7.txt"
+      },
+      {
+        "term": "ActivationRecord",
+        "description": "Activation record structure",
+        "encoding": "ASCII",
+        "offset": "0x007b2dd0",
+        "total_hits": 6,
+        "context_file": "fp_ActivationRecord_ASCII_0x007b2dd0.txt"
+      },
+      {
+        "term": "ActivationRecord",
+        "description": "Activation record structure",
+        "encoding": "ASCII",
+        "offset": "0x0085af47",
+        "total_hits": 6,
+        "context_file": "fp_ActivationRecord_ASCII_0x0085af47.txt"
+      },
+      {
+        "term": "com.apple.mobileactivation",
+        "description": "Mobile activation daemon",
+        "encoding": "UTF16",
+        "offset": "0x00a683b2",
+        "total_hits": 6,
+        "context_file": "fp_com_apple_mobileactivation_UTF16_0x00a683b2.txt"
+      },
+      {
+        "term": "com.apple.mobileactivation",
+        "description": "Mobile activation daemon",
+        "encoding": "ASCII",
+        "offset": "0x0089eb6e",
+        "total_hits": 6,
+        "context_file": "fp_com_apple_mobileactivation_ASCII_0x0089eb6e.txt"
+      },
+      {
+        "term": "com.apple.mobileactivation",
+        "description": "Mobile activation daemon",
+        "encoding": "ASCII",
+        "offset": "0x008fa91d",
+        "total_hits": 6,
+        "context_file": "fp_com_apple_mobileactivation_ASCII_0x008fa91d.txt"
+      },
+      {
+        "term": "com.apple.mobileactivationd",
+        "description": "Mobile activation daemon bundle ID",
+        "encoding": "ASCII",
+        "offset": "0x0089eb6e",
+        "total_hits": 5,
+        "context_file": "fp_com_apple_mobileactivationd_ASCII_0x0089eb6e.txt"
+      },
+      {
+        "term": "com.apple.mobileactivationd",
+        "description": "Mobile activation daemon bundle ID",
+        "encoding": "ASCII",
+        "offset": "0x008fa91d",
+        "total_hits": 5,
+        "context_file": "fp_com_apple_mobileactivationd_ASCII_0x008fa91d.txt"
+      },
+      {
+        "term": "com.apple.mobileactivationd",
+        "description": "Mobile activation daemon bundle ID",
+        "encoding": "ASCII",
+        "offset": "0x008fa952",
+        "total_hits": 5,
+        "context_file": "fp_com_apple_mobileactivationd_ASCII_0x008fa952.txt"
+      },
+      {
+        "term": "com.apple.security.attestation",
+        "description": "Security attestation entitlement",
+        "encoding": "ASCII",
+        "offset": "0x008fb19f",
+        "total_hits": 1,
+        "context_file": "fp_com_apple_security_attestation_ASCII_0x008fb19f.txt"
+      },
+      {
+        "term": "MobileActivationDaemon",
+        "description": "MobileActivationDaemon class",
+        "encoding": "ASCII",
+        "offset": "0x0085af30",
+        "total_hits": 18,
+        "context_file": "fp_MobileActivationDaemon_ASCII_0x0085af30.txt"
+      },
+      {
+        "term": "MobileActivationDaemon",
+        "description": "MobileActivationDaemon class",
+        "encoding": "ASCII",
+        "offset": "0x008687f8",
+        "total_hits": 18,
+        "context_file": "fp_MobileActivationDaemon_ASCII_0x008687f8.txt"
+      },
+      {
+        "term": "MobileActivationDaemon",
+        "description": "MobileActivationDaemon class",
+        "encoding": "ASCII",
+        "offset": "0x00868868",
+        "total_hits": 18,
+        "context_file": "fp_MobileActivationDaemon_ASCII_0x00868868.txt"
+      },
+      {
+        "term": "handleActivationInfo",
+        "description": "Activation info handler method",
+        "encoding": "ASCII",
+        "offset": "0x0085b21c",
+        "total_hits": 12,
+        "context_file": "fp_handleActivationInfo_ASCII_0x0085b21c.txt"
+      },
+      {
+        "term": "handleActivationInfo",
+        "description": "Activation info handler method",
+        "encoding": "ASCII",
+        "offset": "0x0085b370",
+        "total_hits": 12,
+        "context_file": "fp_handleActivationInfo_ASCII_0x0085b370.txt"
+      },
+      {
+        "term": "handleActivationInfo",
+        "description": "Activation info handler method",
+        "encoding": "ASCII",
+        "offset": "0x0086887f",
+        "total_hits": 12,
+        "context_file": "fp_handleActivationInfo_ASCII_0x0086887f.txt"
+      },
+      {
+        "term": "validateActivationData",
+        "description": "Activation data validator",
+        "encoding": "ASCII",
+        "offset": "0x0085b1dd",
+        "total_hits": 10,
+        "context_file": "fp_validateActivationData_ASCII_0x0085b1dd.txt"
+      },
+      {
+        "term": "validateActivationData",
+        "description": "Activation data validator",
+        "encoding": "ASCII",
+        "offset": "0x0086880f",
+        "total_hits": 10,
+        "context_file": "fp_validateActivationData_ASCII_0x0086880f.txt"
+      },
+      {
+        "term": "validateActivationData",
+        "description": "Activation data validator",
+        "encoding": "ASCII",
+        "offset": "0x00868911",
+        "total_hits": 10,
+        "context_file": "fp_validateActivationData_ASCII_0x00868911.txt"
+      },
+      {
+        "term": "CreateActivationSession",
+        "description": "Activation session creator",
+        "encoding": "ASCII",
+        "offset": "0x0082b7b8",
+        "total_hits": 1,
+        "context_file": "fp_CreateActivationSession_ASCII_0x0082b7b8.txt"
+      }
+    ],
+    "ecdsa_signatures": [],
+    "pkcs7_cms": [
+      {
+        "oid_name": "signedData",
+        "total_hits": 2
+      },
+      {
+        "oid_name": "envelopedData",
+        "total_hits": 0
+      },
+      {
+        "oid_name": "data",
+        "total_hits": 4
+      }
+    ],
+    "hmac_material": [
+      {
+        "source": "logs/hmac_secret.json",
+        "content_preview": "{\n  \"key_id\": \"default\",\n  \"secret_hex\": \"21e8509369c75d4434b17e891e177f9675cf53ca7e701acbc278af59e9b55d67\",\n  \"marker\": \"iRemovalLabTest\",\n  \"created_at\": \"2026-06-22T15:28:35Z\"\n}"
+      },
+      {
+        "term": "HmacAlgorithms",
+        "encoding": "ASCII",
+        "offset": "0x007939bc",
+        "context": "t_Encryptions@\u0000§ó\u0017\u0007\u0002çÓv\u0000$get_HmacAlgorithms@\u0000ç\u0013v\u0000\u0000$set_HmacAlgorithms@\u0000§ó\u0017\u0007\u0002ç\u0013"
+      },
+      {
+        "term": "HmacAlgorithms",
+        "encoding": "ASCII",
+        "offset": "0x007939d7",
+        "context": "et_HmacAlgorithms@\u0000ç\u0013v\u0000\u0000$set_HmacAlgorithms@\u0000§ó\u0017\u0007\u0002ç\u0013v\u0000*get_HostKeyAlgorithms@\u0000"
+      },
+      {
+        "term": "HmacAlgorithms",
+        "encoding": "ASCII",
+        "offset": "0x00793fd0",
+        "context": "ryptions>k__BackingFieldçÓv><HmacAlgorithms>k__BackingFieldç\u0013vD<HostKeyAlgorit"
+      },
+      {
+        "term": "HmacAlgorithms",
+        "encoding": "ASCII",
+        "offset": "0x007943ad",
+        "context": "ÓÒ\u001a\u0016Encryptions@çÓv\u0000\u0004cÓ\u001a\u0002ÛÓ\u001a\u001cHmacAlgorithms@ç\u0013v\u0000\u0004kÔ\u001a\u0002ãÔ\u001a\"HostKeyAlgorithms@çS"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "UTF16",
+        "offset": "0x00a46ea4",
+        "context": "\u0000r\u0000v\u0000e\u0000r#è%\u001f\u0000\u0000\u0000S\u0000e\u0000r\u0000v\u0000e\u0000r\u0000 \u0000H\u0000M\u0000A\u0000C\u0000 \u0000a\u0000l\u0000g\u0000o\u0000r\u0000i\u0000t\u0000h\u0000m\u0000 \u0000n\u0000o\u0000t\u0000 \u0000f\u0000o\u0000u\u0000n\u0000dy#è"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a2bd0",
+        "context": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000§Ó8%6BCRYPT_ALG_HANDLE_HMAC_FLAG,CERT_FIND_SUBJECT_CERT§3C%\u0003\u0000X\u001cCERT_FIND_"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a2dec",
+        "context": "A\u0000\u0000\u0000\u0000\u0000\u0000\"HashAlgorithmNameÇSÃ\u000eHMACMD5\bHMAC$KeyedHashAlgorithm\u0010HMACSHA1\u0014HMACSHA25"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a2df4",
+        "context": "HashAlgorithmNameÇSÃ\u000eHMACMD5\bHMAC$KeyedHashAlgorithm\u0010HMACSHA1\u0014HMACSHA256\u0014HMACSH"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a2e0c",
+        "context": "ACMD5\bHMAC$KeyedHashAlgorithm\u0010HMACSHA1\u0014HMACSHA256\u0014HMACSHA384\u0014HMACSHA512\u001b\b§ã\u000e\u0007K¦"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a2e15",
+        "context": "C$KeyedHashAlgorithm\u0010HMACSHA1\u0014HMACSHA256\u0014HMACSHA384\u0014HMACSHA512\u001b\b§ã\u000e\u0007K¦\u0012k\u000f\u0016\u0000\u0000K\u001e"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a2e20",
+        "context": "Algorithm\u0010HMACSHA1\u0014HMACSHA256\u0014HMACSHA384\u0014HMACSHA512\u001b\b§ã\u000e\u0007K¦\u0012k\u000f\u0016\u0000\u0000K\u001e\u0000\u0002óaA\u0000\u0000\u0000\u0000\u0000\u0002"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a2e2b",
+        "context": "MACSHA1\u0014HMACSHA256\u0014HMACSHA384\u0014HMACSHA512\u001b\b§ã\u000e\u0007K¦\u0012k\u000f\u0016\u0000\u0000K\u001e\u0000\u0002óaA\u0000\u0000\u0000\u0000\u0000\u0002\u0003\u0006MD5\u001b\b§"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a33fe",
+        "context": "{A\u0000\u0000\u0002k\u0017\u0019\u000eECPoint\u0018HashProvider\u0014HMACCommon.ICspAsymmetricAlgorithm(ILiteSymmetricC"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007a8587",
+        "context": "/hûú ;²B\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0012RIPEMD160\u001aHMACRIPEMD160 HashProviderBase\u001aIHashProvider*RIPEM"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007c1a88",
+        "context": "CreateRIPEMD160\u0000\u0000§s\u0004B\u0000\u0000\u001aCreateHMACMD5\u0000\u0000§s\u0017=\u0002ç5v\u0000\u0000\u0000§=^\u0004ç5v§#L\u0007\u0000\u0000\u0004\u00137K\u0000\u0000\u001cCreateH"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007c1ab9",
+        "context": "\u0000\u0000§=^\u0004ç5v§#L\u0007\u0000\u0000\u0004\u00137K\u0000\u0000\u001cCreateHMACSHA1\u0000\u0000§\u0013\u001d=\u0002ç5v\u0000\u0000\u0000§3@^\u0004ç5v§#L\u0007\u0000 CreateHMACSHA"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007c1ae4",
+        "context": "=\u0002ç5v\u0000\u0000\u0000§3@^\u0004ç5v§#L\u0007\u0000 CreateHMACSHA256\u0000\u0000§ó\u001e=\u0002ç5v\u0000\u0000\u0000§ÓB^\u0004ç5v§#L\u0007\u0000 CreateHMACS"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007c1b11",
+        "context": "=\u0002ç5v\u0000\u0000\u0000§ÓB^\u0004ç5v§#L\u0007\u0000 CreateHMACSHA384\u0000\u0000§Ó =\u0002ç5v\u0000\u0000\u0000§sE^\u0004ç5v§#L\u0007\u0000 CreateHMACS"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007c1b3e",
+        "context": "=\u0002ç5v\u0000\u0000\u0000§sE^\u0004ç5v§#L\u0007\u0000 CreateHMACSHA512\u0000\u0000§³\"=\u0002ç5v\u0000\u0000\u0000§\u0013H^\u0004ç5v§#L\u0007\u0000&CreateHMACR"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x007c1b6b",
+        "context": "=\u0002ç5v\u0000\u0000\u0000§\u0013H^\u0004ç5v§#L\u0007\u0000&CreateHMACRIPEMD160\u0000\u0000§ó\u0005B\u0002ç5v\u0000\u0014Randomizer§$=\u0012IsEnabled"
+      },
+      {
+        "term": "HMAC",
+        "encoding": "ASCII",
+        "offset": "0x008249cd",
+        "context": "\u0014CreateHash\u0000\u0000§v=\u0002§#\u0015=\u0000\u0014CreateHMAC\u0000\u0000§v=\u0004§#\u0015=ç³\u0000 CheckSha3Support\u0000\u0000ç5v\u0002ç³\u0000\u0000"
+      }
+    ],
+    "crypto_tables": [],
+    "plist_templates": [
+      {
+        "offset": "0x0089e26f",
+        "length": 5374,
+        "has_fairplay_content": true,
+        "content_preview": "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>abs-client</key>\n\t<string>860918802</string>\n\t<key>adi-client<",
+        "file": "plist_0x0089e26f_5374b.xml"
+      },
+      {
+        "offset": "0x008a07ea",
+        "length": 238,
+        "has_fairplay_content": false,
+        "content_preview": "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>cdhashes</key>\n\t<array>\n\t\t<data>\n\t\t43rEWLeYiC/vc7O536b3Gt+q/1Q",
+        "file": "plist_0x008a07ea_238b.xml"
+      },
+      {
+        "offset": "0x008c4c02",
+        "length": 5942,
+        "has_fairplay_content": true,
+        "content_preview": "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>allow-obliterate-device</key>\n\t<true/>\n\t<key>com.apple.appletv",
+        "file": "plist_0x008c4c02_5942b.xml"
+      },
+      {
+        "offset": "0x008c73b5",
+        "length": 238,
+        "has_fairplay_content": false,
+        "content_preview": "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>cdhashes</key>\n\t<array>\n\t\t<data>\n\t\tMi+F2VOaw4yOvvGV5dm4WGgCKRE",
+        "file": "plist_0x008c73b5_238b.xml"
+      },
+      {
+        "offset": "0x008fa7e3",
+        "length": 3716,
+        "has_fairplay_content": true,
+        "content_preview": "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <key>platform-application</key>\n    <true/>\n    <key>com.apple.p",
+        "file": "plist_0x008fa7e3_3716b.xml"
+      },
+      {
+        "offset": "0x0089e2d6",
+        "length": 5271,
+        "has_fairplay_content": true,
+        "content_preview": "<plist version=\"1.0\">\n<dict>\n\t<key>abs-client</key>\n\t<string>860918802</string>\n\t<key>adi-client</key>\n\t<string>661321174</string>\n\t<key>allow-obliterate-device</key>\n\t<true/>\n\t<key>aps-connection-ini",
+        "file": "plist_0x0089e2d6_5271b.xml"
+      },
+      {
+        "offset": "0x008a0851",
+        "length": 135,
+        "has_fairplay_content": false,
+        "content_preview": "<plist version=\"1.0\">\n<dict>\n\t<key>cdhashes</key>\n\t<array>\n\t\t<data>\n\t\t43rEWLeYiC/vc7O536b3Gt+q/1Q=\n\t\t</data>\n\t</array>\n</dict>\n</plist>",
+        "file": "plist_0x008a0851_135b.xml"
+      },
+      {
+        "offset": "0x008c4c69",
+        "length": 5839,
+        "has_fairplay_content": true,
+        "content_preview": "<plist version=\"1.0\">\n<dict>\n\t<key>allow-obliterate-device</key>\n\t<true/>\n\t<key>com.apple.appletv.pbs.osupdate-service-access</key>\n\t<true/>\n\t<key>com.apple.dmd-access</key>\n\t<true/>\n\t<key>com.apple.d",
+        "file": "plist_0x008c4c69_5839b.xml"
+      },
+      {
+        "offset": "0x008c741c",
+        "length": 135,
+        "has_fairplay_content": false,
+        "content_preview": "<plist version=\"1.0\">\n<dict>\n\t<key>cdhashes</key>\n\t<array>\n\t\t<data>\n\t\tMi+F2VOaw4yOvvGV5dm4WGgCKRE=\n\t\t</data>\n\t</array>\n</dict>\n</plist>",
+        "file": "plist_0x008c741c_135b.xml"
+      },
+      {
+        "offset": "0x008fa84a",
+        "length": 3613,
+        "has_fairplay_content": true,
+        "content_preview": "<plist version=\"1.0\">\n<dict>\n    <key>platform-application</key>\n    <true/>\n    <key>com.apple.private.security.container-required</key>\n    <false/>\n    <key>abs-client</key>\n\t<string>584196299</str",
+        "file": "plist_0x008fa84a_3613b.xml"
+      },
+      {
+        "offset": "0x008a0851",
+        "length": 135,
+        "has_fairplay_content": false,
+        "content_preview": "<plist version=\"1.0\">\n<dict>\n\t<key>cdhashes</key>\n\t<array>\n\t\t<data>\n\t\t43rEWLeYiC/vc7O536b3Gt+q/1Q=\n\t\t</data>\n\t</array>\n</dict>\n</plist>",
+        "file": "plist_0x008a0851_135b.xml"
+      },
+      {
+        "offset": "0x008c741c",
+        "length": 135,
+        "has_fairplay_content": false,
+        "content_preview": "<plist version=\"1.0\">\n<dict>\n\t<key>cdhashes</key>\n\t<array>\n\t\t<data>\n\t\tMi+F2VOaw4yOvvGV5dm4WGgCKRE=\n\t\t</data>\n\t</array>\n</dict>\n</plist>",
+        "file": "plist_0x008c741c_135b.xml"
+      }
+    ],
+    "endpoint_payloads": [],
+    "blackhound": [
+      {
+        "term": "com.panyolsoft.blackhound",
+        "encoding": "ASCII",
+        "offset": "0x0085af12",
+        "context_file": "blackhound_com_panyolsoft_blackhound_ASCII_0x0085af12.txt"
+      },
+      {
+        "term": "blackhound",
+        "encoding": "UTF16",
+        "offset": "0x0084f46e",
+        "context_file": "blackhound_blackhound_UTF16_0x0084f46e.txt"
+      },
+      {
+        "term": "blackhound",
+        "encoding": "ASCII",
+        "offset": "0x00853bf5",
+        "context_file": "blackhound_blackhound_ASCII_0x00853bf5.txt"
+      },
+      {
+        "term": "Blackhound",
+        "encoding": "ASCII",
+        "offset": "0x0085b4d6",
+        "context_file": "blackhound_Blackhound_ASCII_0x0085b4d6.txt"
+      },
+      {
+        "type": "Mach-O magic",
+        "magic": "MH_MAGIC_64 LE",
+        "offset": "0x008534d3"
+      },
+      {
+        "type": "Mach-O magic",
+        "magic": "MH_MAGIC_64 LE",
+        "offset": "0x0086b4d3"
+      },
+      {
+        "type": "Mach-O magic",
+        "magic": "MH_MAGIC_64 LE",
+        "offset": "0x008812f8"
+      },
+      {
+        "type": "Mach-O magic",
+        "magic": "MH_MAGIC_64 LE",
+        "offset": "0x008a3dcd"
+      },
+      {
+        "type": "Mach-O magic",
+        "magic": "MH_MAGIC_64 LE",
+        "offset": "0x008ea1a8"
+      },
+      {
+        "type": "Mach-O magic",
+        "magic": "FAT_MAGIC",
+        "offset": "0x0084f4d3"
+      },
+      {
+        "type": "extracted_macho",
+        "path": "c:\\Users\\amine\\Downloads\\[Bypassfrpfiles.com]iRemoval PRO Premium Edition 5.2\\04_EXTRACTED\\macho_8534d3_DYLIB_ARM64_ALL.bin",
+        "size": 8732672
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+nfcd.seshat</key>
+	<true/>
+	<key>com.apple.private.MobileActivation</key>
+	<array>
+		<string>RequestActivationState</string>
+	</array>
+	<key>com.apple.private.MobileGestalt.AllowedProtectedKeys</key>
+	<true/>
+	<key>com.apple.private.bmk.allow</key>
+	<true/>
+	<key>com.apple.private.externalaccessory.showallaccessories</key>
+	<true/>
+	<key>com.apple.private.ids.messaging</key>
+	<array>
+		<string>com

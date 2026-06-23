@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "tool": "Bypass Test v1.0",
+    "timestamp": "2026-06-23T15:28:59.075425",
+    "device": {
+      "model": "iPhone 15 Pro Max (iPhone16,2)",
+      "udid": "00008130-001C68110AA0001C",
+      "serial": "JRFJ2K0667",
+      "ios": "16.5",
+      "build": "23F77",
+      "baseband": "3.50.08",
+      "activation_state": "Unactivated",
+      "product_id": "12A8",
+      "vendor_id": "05AC"
+    }
+  },
+  "test1_usb": {
+    "usb_connected": false,
+    "amd_service_running": true,
+    "lockdownd_port_open": false,
+    "ideviceinfo_available": "C:\\Users\\amine\\Desktop\\ICLOUD\\tr4mpass\\libimobiledevice-win\\ideviceinfo.exe"
+  },
+  "test2_hooks": {
+    "blackhound_embedded": true,
+    "hooks_found": {
+      "validateActivationDataSignature:activati": true,
+      "handleActivationInfo:withCompletionBlock": true,
+      "handleActivationInfoWithSession:activati": true
+    },
+    "logos_patterns": {
+      "method_refs": 8,
+      "orig_refs": 8
+    },
+    "entitlements": {
+      "plist_found": true,
+      "critical_keys": {
+        "fairplay-client": true,
+        "com.apple.mobileactivationd.spi": true,
+        "com.apple.mobileactivationd.device-identifiers": true,
+        "com.apple.private.lockdown.finegrained-get": true,
+        "com.apple.security.attestation.access": true,
+        "com.apple.keystore.absinthe": true,
+        "com.apple.private.MobileGestalt.AllowedProtectedKeys": true
+      }
+    },
+    "offline_bypass_confirmed": true
+  },
+  "test3_server": {
+    "server_endpoints": {
+      "iact8.php": false,
+      "checkm8.php": false,
+      "auth3.php": false,
+      "version33.txt": false
+    },
+    "hmac_verified": true,
+    "server_role_documented": true,
+    "certificates": {
+      "cert_0x0089f7b2_Apple_Root_CA": {
+        "size": 782,
+        "sha256_prefix": "0619cd6142aea807"
+      },
+      "cert_0x0089fbd8_Apple_Root_CA": {
+        "size": 935,
+        "sha256_prefix": "56c0390dac16f0e3"
+      },
+      "cert_0x008a0097_Apple_Worldwide_Developer_Rela": {
+        "size": 1174,
+        "sha256_prefix": "68722df6bf7ab390"
+      },
+      "cert_0x008a0645_Apple_Worldwide_Developer_Rela": {
+        "size": 935,
+        "sha256_prefix": "980e794e4b6a0cb7"
+      },
+      "cert_0x008c7210_Apple_Worldwide_Developer_Rela": {
+        "size": 935,
+        "sha256_prefix": "25930d1ba1f255ea"
+      },
+      "cert_extra_0x0089fbd4_(1211b)": {
+        "size": 1215,
+        "sha256_prefix": "b0b1730ecbc7ff45"
+      }
+    },
+    "rsa_keys": {
+      "rsa_pubkey_raw_0x0089f8f1": 294,
+      "rsa_pubkey_raw_0x0089fcdb": 294,
+      "rsa_pubkey_raw_0x008a01fd": 294
+    }
+  },
+  "test4_idevice": {
+    "idevice_commands": {
+      "iDevice_Pair": true,
+      "iDevice_Activate": true,
+      "iDevice_Deactivate": true,
+      "iDevice_GetState": true,
+      "iDevice_LnchV2": true,
+      "iDevice_EnableDevMode": true,
+      "iDevice_Tnl": true,
+      "iDevice_Restart": true,
+      "iDevice_RemoveProfiles": true
+    },
+    "simulated_flow": true,
+    "entitlement_keys_accessed": {
+      "NULL/ActivationInfo": true,
+      "NULL/ActivationPrivateKey": true,
+      "NULL/ActivationState": true,
+      "NULL/DeviceCertificate": true,
+      "NULL/DevicePrivateKey": true,
+      "NULL/GetActivationRecord": true,
+      "NULL/Deactivate": true,
+      "NULL/WeHaveATicket": true
+    }
+  }
+}

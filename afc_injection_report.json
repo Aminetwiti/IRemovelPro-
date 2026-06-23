@@ -1,0 +1,33 @@
+{
+  "scanner": "afc_injection_detector.py",
+  "version": "1.0",
+  "ts": "2026-06-23T13:51:34.073880+00:00",
+  "platform": "win32",
+  "hostname": "TWEEDEV",
+  "summary": {
+    "total_findings": 2,
+    "severity_counts": {
+      "P3": 2,
+      "cat_filesystem": 1,
+      "cat_process": 1
+    }
+  },
+  "findings": [
+    {
+      "ts": "2026-06-23T13:51:34.073880+00:00",
+      "category": "filesystem",
+      "severity": "P3",
+      "description": "No known tool directories found on disk",
+      "path": null,
+      "extra": {}
+    },
+    {
+      "ts": "2026-06-23T13:51:34.073880+00:00",
+      "category": "process",
+      "severity": "P3",
+      "description": "No AFC-related processes currently running",
+      "path": null,
+      "extra": {}
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-06-23T13:33:12.062137",
+  "devices": [
+    {
+      "friendly_name": "Apple Mobile Device USB Driver",
+      "status": "OK",
+      "vendor_id": "05AC",
+      "product_id": "12A8",
+      "serial": "00008130001C68110AA0001C",
+      "instance_id": "USB\\VID_05AC&PID_12A8\\00008130001C68110AA0001C"
+    }
+  ]
+}

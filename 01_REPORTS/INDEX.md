@@ -21,7 +21,7 @@
 | 13 | [`CRYPTO_KEY_DERIVATION.md`](CRYPTO_KEY_DERIVATION.md) | 🔑 **KDF** | Phase 4c | ~12 KB | **Algorithme PBKDF2-HMAC-SHA256** pour `nonce_C`, reconstruction C#/Python, preuves AOT |
 | 14 | [`APPLE_CERT_CHAIN.md`](APPLE_CERT_CHAIN.md) | 🍎 **PKI** | Phase 4c | ~19 KB | **8 certs X.509 Apple embarqués** : Root CA + WWDR + dev cert `weidong li` (UR3K3ZV28R) — SHA-256/AES S-box/K-table validés |
 | 15 | [`DEFENSIVE_PLAYBOOK.md`](DEFENSIVE_PLAYBOOK.md) | 🛡️ **DEFENSE** | Phase 5 | ~20 KB | **5 contre-mesures** : allowlist modulus, détection signature RSA brute, hook amfid, blocage C2, révocation PKI — avec YARA/Sigma/code |
-| 15 | [`BYPASS_CORE.md`](BYPASS_CORE.md) | 🔓 **HEART** | Phase 6 | ~13 KB | **Cœur du bypass** — 5 hooks (MobileActivationDaemon + Security.framework), **clé RSA-1024 publique extraite**, structure ticket forgé, génération de la clé |
+| 15 | [`BYPASS_CORE.md`](BYPASS_CORE.md) | 🔓 **HEART** | Phase 6 | ~95 KB | **Cœur du bypass** — 5 hooks (MobileActivationDaemon + Security.framework), **clé RSA-1024 publique extraite**, structure ticket forgé, génération de la clé. Sections **§21 Local pipeline**, **§22 Adversarial simulation**, **§23 Detection engineering** (6 YARA + 3 SIGMA, 10/10 hits) |
 | 16 | [`COMPLETE_SYSTEM_ARCHITECTURE.md`](COMPLETE_SYSTEM_ARCHITECTURE.md) | 🏛️ **ARCHITECTURE** | Phase 7 | ~22 KB | **Architecture end-to-end** — flux 6 phases (setup → jailbreak → auth → exploit → activation → confirmation), 9 endpoints serveur, 3 nonces, 5 hooks, RSA-1024, ideviceproxy `lao abc ofq` |
 | 17 | [`JAILBREAK_MECHANISM.md`](JAILBREAK_MECHANISM.md) | 🔓 **JAILBREAK** | Phase 8 | ~18 KB | **Comment iRemoval PRO jailbreak l'iPhone** — flux 7 phases, checkm8/palera1n, 5 Mach-O embarqués, 319 GZIP, 156 PE, Cydia/Substrate, comparaison jailbreaks historiques |
 | 17 | [`../../CAPSTONE_REPORT.md`](../../CAPSTONE_REPORT.md) | 🏆 **CAPSTONE** | Final | ~18 KB | **Rapport final** : vue exécutive 30 sec, 17 documents, 5 SA, 5 contremesures, OSINT 3-sources, pipeline reproductible, dashboard HTML |
@@ -140,4 +140,4 @@ Vous êtes...
 ---
 
 **Statut** : 6 rapports principaux + 3 documents complémentaires
-**Dernière MAJ** : 2026-06-22
+**Dernière MAJ** : 2026-06-22 (§23 Detection engineering ajoutée)

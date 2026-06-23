@@ -23,6 +23,54 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.3.0] — 2026-06-23
+
+### 🔒 Ajouté (AFC Injection Analysis & Forensic Detector)
+
+Analyse défensive du **vecteur AFC (Apple File Conduit)** utilisé par
+iRemoval PRO à l'étape 7 de la chaîne de bypass : écriture du
+`activation_record.plist` forgé sur l'iPhone via USB en mode Normal.
+
+#### Rapport technique
+- **`01_REPORTS/AFC_INJECTION_ANALYSIS.md`** :
+  - Mapping des commandes AFC identifiées dans `iremovalpro.dll`
+    via `02_SCRIPTS/04_deep_static/re_deep3.py` (offsets, contexte).
+  - Chemins cibles iOS : `/var/mobile/Library/Caches/activation_record.plist`,
+    `activation_records/`, `version33.txt`, etc.
+  - Analyse du durcissement iOS 26.3+ : blocage de l'écriture AFC en
+    mode Normal (AFC2 sandbox, SEP keybag binding, entitlements
+    `mobileactivationd`).
+  - Artifacts forensiques Windows : registre, fichiers temporaires,
+    logs `ideviceproxy.exe`, pairing records.
+  - Artifacts iOS : timestamps anormaux, kernel logs, strings outil
+    dans le plist, `sysdiagnose`.
+  - Règles Sigma (Sysmon Event ID 1, FIM iOS).
+
+#### Outil de détection
+- **`06_LOCAL_REPRODUCER/afc_injection_detector.py`** :
+  - Scan forensique Windows : registre (`HKLM`/`HKCU`\SOFTWARE\iRemovalPro),
+    répertoires cibles (`%LOCALAPPDATA%`, `%PROGRAMDATA%`, `%TEMP%`),
+    fichiers suspects (`activation_record.plist`, `version33.txt`, ...).
+  - Détection de processus actifs (`ideviceproxy.exe`, `afcclient.exe`).
+  - Lecture heuristique des logs (patterns `--stream`, `afc://`,
+    `/var/mobile`).
+  - Requête rapide `wevtutil` sur Sysmon (Event ID 1) si disponible.
+  - Sortie JSON + résumé console (P1/P2/P3).
+  - Usage : `python afc_injection_detector.py --scan-all`.
+
+#### Règles de détection
+- Sigma rules Sysmon + iOS FIM intégrées dans le rapport.
+- Script macOS de détection d'anomalie de pairing (`ActivationState=Unactivated`
+  mais pairing récent).
+
+#### Références projet
+- `AUDIT_REPORT.md` §5.1 (flux activate → AFC read/write)
+- `BYPASS_CORE.md` §Step 7 (USB push via AFC2)
+- `ARCHITECTURE.md` (AFC dans la stack lockdown)
+- `05_IOC/MITRE_MAPPING.md` (T1098, T1552, T1071)
+
+---
+
 ## [1.2.0] — 2026-06-22
 
 ### 🛡️ Ajouté (extension défensive — Roadmap 5 axes)
